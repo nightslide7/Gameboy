@@ -121,14 +121,16 @@ Verilog Style
 --------------------------------------------------------------------------------
 Absolutely Required Rules (if you disregard these, you will have A Bad Time)
 --------------------------------------------------------------------------------
-1. All outputs and inputs to modules must be specified in the following order:
+1. ALWAYS WRITE COMMENTS.
+
+2. All outputs and inputs to modules must be specified in the following order:
    1. Outputs from largest width to smallest width
    2. Inputs from largest width to smallest width
 
-2. All outputs must by of type "wire" (unless there's some pressing need to do
+3. All outputs must by of type "wire" (unless there's some pressing need to do
    otherwise) and all inputs must be of unspecified type.
 
-3. All variable names must be consistent across large modules. This does not
+4. All variable names must be consistent across large modules. This does not
    apply to things that are instantiated many times, like registers. The naming
    convention is to prepend the name of the module (or some abbreviation, if the
    name is too long) to the signal names. For example, the halt signal on the
@@ -140,39 +142,51 @@ Absolutely Required Rules (if you disregard these, you will have A Bad Time)
    This is stupid and annoying, but it must be followed because verilog mode can
    only wire up wires that are of the same name.
 
-4. The clock is named "clock" and is posedge. Across clock domains, it can be
+5. The clock is named "clock" and is posedge. Across clock domains, it can be
    renamed with a prefix.
 
-5. The reset is named "reset" and is posedge. If there must be more than one
+6. The reset is named "reset" and is posedge. If there must be more than one
    reset, it can be renamed with a prefix after you have asked yourself why you
    need more than one reset.
 
-6. Never continuously assign to a reg variable (i.e. reg a = 5). The only
+7. Never continuously assign to a reg variable (i.e. reg a = 5). The only
    exception is in a testbench, where for some reason "always #5 clock = ~clock"
 
 --------------------------------------------------------------------------------
 Style Rules (if you disregard these, everyone will be unhappy, including you, 
 but you won't die in a fire)
 --------------------------------------------------------------------------------
-1. Variable names in lowercaseword0_lowercaseword1_..._lowercasewordn format.
+1. ALWAYS WRITE COMMENTS IN GOOD STYLE.
+   I was using the Javadoc style of
+   /**
+    * Short description.
+    *
+    * Long description.
+    * 
+    * @inout name Description.
+    * @output name Description.
+    * @input name Description.
+    */
+
+2. Variable names in lowercaseword0_lowercaseword1_..._lowercasewordn format.
    An example of this is "cpu_halt." Name files and modules accordingly.
 
-2. Use as few inputs and outputs as possible. Go crazy inside your module, but
+3. Use as few inputs and outputs as possible. Go crazy inside your module, but
    in standard Verilog there's a penalty for having more variables, and that is
    your sanity.
 
-3. Convert indents to spaces. Hard tabs are the spawn of the devil. In emacs the
+4. Convert indents to spaces. Hard tabs are the spawn of the devil. In emacs the
    .emacs setting for this is
    (setq-default indent-tabs-mode nil)
 
-4. Use a sane indent format (that is, emacs' verilog-mode format). This can be
+5. Use a sane indent format (that is, emacs' verilog-mode format). This can be
    achieved for emacs users by selecting all and hitting tab (C-x h; TAB). For
    non-emacs users, you can run basically this command on the file in batch mode
    with 
    emacs --batch <filenames> -f verilog-batch-indent
    (I think)
 
-5. Always use begin and end after anything that allows it. Don't do things like
+6. Always use begin and end after anything that allows it. Don't do things like
    if (reset)
       var0 <= 0;
    because eventually someone will inadvertently add a line below var0 <= 0;
