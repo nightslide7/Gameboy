@@ -1,0 +1,202 @@
+================================================================================
+SystemVerilog to Verilog notes
+================================================================================
+1. Module instantiations are different. They follow the format
+
+   module ModuleName(input0, input1, ... inputM, output0, output1, ... outputN);
+      output [widthN-1:0] outputN
+      ...
+      input [widthM-1:0] inputM
+      ...
+   
+      // Code here
+
+      // Note the lack of a semicolon below
+   endmodule
+
+2. Variable types are different. No longer is everything a wire. Combinational
+   variables are "wire"s, but state variables are now "reg"s.
+
+3. There are no more always_comb blocks, only always. For always_comb, specify
+   always @(*) begin
+      // Code
+   end
+   and for state variables (registers, state machines, etc.) specify
+   always @(posedge clock or posedge reset) begin
+      // Code
+   end
+
+================================================================================
+Emacs Verilog Mode
+================================================================================
+Use emacs' verilog-mode. Install verilog-mode from
+http://www.veripool.org/projects/verilog-mode/wiki/Installing
+
+and put this in your ~/.emacs file:
+
+;; Load verilog-mode automatically and name it
+(autoload 'verilog-mode "verilog-mode" "Verilog mode" t)
+;; Add .vh files to the list of files Verilog mode updates (not on by default)
+(add-to-list 'auto-mode-alist '("\\.[ds]?vh?\\'" . verilog-mode))
+;; Verilog adds newlines by default when you write a semi-colon. This is stupid.
+;; Turn that off.
+(add-hook 'verilog-mode-hook
+	  '(lambda ()
+	     (setq verilog-auto-newline nil)
+	     ))
+
+Using verilog-mode:
+There are really two features of verilog-mode that I use, you may want to use
+more. These are AUTOINST and AUTOARG.
+
+--------------------------------------------------------------------------------
+AUTOINST
+--------------------------------------------------------------------------------
+This feature automatically wires up a new module's input and output wires to
+wires in the instantiating module that are named the same. To use this,
+instantiate your module like so:
+
+module InstanceName #(params) (/*AUTOINST*/);
+
+When you invoke verilog-mode's auto feature, it will add all the wires below the
+/*AUTOINST*/ like so:
+
+module InstanceName #(params) (/*AUTOINST*/
+       		    	      // Outputs
+			      .output0		(output0[31:0]),
+		              .output1		(output1[0]),
+		              .outputN	        (outputN[Nwidth-1:0]),
+			      // Inputs
+		              .input0		(input0[31:0]),
+		              .inputM		(inputM[Mwidth-1:0]));
+
+Note that all the wires must have exactly the same name in the instantiated
+module and the top module for this to work. This also helpfully makes it obvious
+when the wires are different sizes by explicitly specifying the width. If they
+mismatch, the compiler should warn you.
+
+--------------------------------------------------------------------------------
+AUTOARG
+--------------------------------------------------------------------------------
+This works like AUTOINST, but for the arguments in a module declaration. To use
+this, when you are declaring a new module, declare it like this:
+
+module ModuleName(/*AUTOARG*/);
+   output [31:0] output0;
+   output [3:0] output1;
+   output [Nwidth-1:0] outputN;
+   input [31:0] input0;
+   input [3:0] input1;
+   input [Mwidth-1:0] outputM;
+
+After activating verilog-mode's auto feature, the arguments will automatically
+be added to the declaration like so:
+
+module ModuleName(/*AUTOARG*/
+   // Outputs
+   inst_addr, mem_addr, mem_data_in, mem_write_en, halted,
+   // Inputs
+   clk, inst_excpt, mem_excpt, inst, mem_data_out, rst_b
+   );
+   
+   output [31:0] output0;
+   ...
+
+There are other features, which can be found at the verilog-mode home site,
+http://www.veripool.org/wiki/verilog-mode
+
+--------------------------------------------------------------------------------
+Invoking Verilog Mode
+--------------------------------------------------------------------------------
+In emacs, type
+M-x verilog-auto
+
+From the command line, for non-emacs users, type
+emacs --batch <filenames.v> -f verilog-batch-auto
+
+================================================================================
+Verilog Style
+================================================================================
+
+--------------------------------------------------------------------------------
+Absolutely Required Rules (if you disregard these, you will have A Bad Time)
+--------------------------------------------------------------------------------
+1. All outputs and inputs to modules must be specified in the following order:
+   1. Outputs from largest width to smallest width
+   2. Inputs from largest width to smallest width
+
+2. All outputs must by of type "wire" (unless there's some pressing need to do
+   otherwise) and all inputs must be of unspecified type.
+
+3. All variable names must be consistent across large modules. This does not
+   apply to things that are instantiated many times, like registers. The naming
+   convention is to prepend the name of the module (or some abbreviation, if the
+   name is too long) to the signal names. For example, the halt signal on the
+   cpu module should be called "cpu_halt."
+
+   The exception to the prepend rule is for things such as clocks and resets,
+   which are much better left being just called clock. This is covered below.
+
+   This is stupid and annoying, but it must be followed because verilog mode can
+   only wire up wires that are of the same name.
+
+4. The clock is named "clock" and is posedge. Across clock domains, it can be
+   renamed with a prefix.
+
+5. The reset is named "reset" and is posedge. If there must be more than one
+   reset, it can be renamed with a prefix after you have asked yourself why you
+   need more than one reset.
+
+6. Never continuously assign to a reg variable (i.e. reg a = 5). The only
+   exception is in a testbench, where for some reason "always #5 clock = ~clock"
+
+--------------------------------------------------------------------------------
+Style Rules (if you disregard these, everyone will be unhappy, including you, 
+but you won't die in a fire)
+--------------------------------------------------------------------------------
+1. Variable names in lowercaseword0_lowercaseword1_..._lowercasewordn format.
+   An example of this is "cpu_halt." Name files and modules accordingly.
+
+2. Use as few inputs and outputs as possible. Go crazy inside your module, but
+   in standard Verilog there's a penalty for having more variables, and that is
+   your sanity.
+
+3. Convert indents to spaces. Hard tabs are the spawn of the devil. In emacs the
+   .emacs setting for this is
+   (setq-default indent-tabs-mode nil)
+
+4. Use a sane indent format (that is, emacs' verilog-mode format). This can be
+   achieved for emacs users by selecting all and hitting tab (C-x h; TAB). For
+   non-emacs users, you can run basically this command on the file in batch mode
+   with 
+   emacs --batch <filenames> -f verilog-batch-indent
+   (I think)
+
+5. Always use begin and end after anything that allows it. Don't do things like
+   if (reset)
+      var0 <= 0;
+   because eventually someone will inadvertently add a line below var0 <= 0;
+   and forget that there is no begin and end.
+
+================================================================================
+A Note About Testbenches
+================================================================================
+
+The 341 style should be used for simple testbenches. That is, write the
+following at the top of your testbench:
+
+initial clock = 0;
+always #5 clock = ~clock;
+
+and in the main initial block do things like
+initial begin
+   repeat (5) begin
+      // Change some inputs
+      @(posedge clock);
+   end
+end
+
+And either monitor your results or display them every so often.
+
+More complicated things can be done later on, like reading assembly files from
+disk. There was a framework in 447 to do this that I will probably convert.
