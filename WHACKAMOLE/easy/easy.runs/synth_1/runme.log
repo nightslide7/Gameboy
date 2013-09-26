@@ -1,0 +1,291 @@
+
+*** Running vivado
+    with args -log top.rds -m64 -mode batch -messageDb vivado.pb -source top.tcl
+
+
+****** Vivado v2013.2 (64-bit)
+  **** Build 272601 by xbuild on Sat Jun 15 11:11:11 MDT 2013
+    ** Copyright 1986-1999, 2001-2013 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-78] Attempting to get a license: Implementation
+INFO: [Common 17-81] Feature available: Implementation
+INFO: [Common 17-78] Attempting to get a license: Synthesis
+INFO: [Common 17-81] Feature available: Synthesis
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/Vivado/2013.2/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/Vivado/2013.2/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/Vivado/2013.2/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+INFO: [Common 17-362] Using Tcl App repository from '/opt/Xilinx/Vivado/2013.2/data/XilinxTclStore'.
+INFO: [Common 17-364] Updating Tcl app persistent manifest '/root/.Xilinx/Vivado/tclapp/manifest.tcl'
+source top.tcl
+# set_param gui.test TreeTableDev
+# create_project -in_memory -part xc7vx485tffg1761-2
+# set_property board xilinx.com:virtex7:vc707:2.0 [current_project]
+# set_param project.compositeFile.enableAutoGeneration 0
+# read_verilog -sv /Gameboy/WHACKAMOLE/easy/easy.srcs/sources_1/new/top.sv
+# read_xdc /Gameboy/WHACKAMOLE/easy/easy.srcs/constrs_1/new/top.xdc
+# set_property used_in_implementation false [get_files /Gameboy/WHACKAMOLE/easy/easy.srcs/constrs_1/new/top.xdc]
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir /Gameboy/WHACKAMOLE/easy/easy.data/wt [current_project]
+# set_property parent.project_dir /Gameboy/WHACKAMOLE/easy [current_project]
+# synth_design -top top -part xc7vx485tffg1761-2
+Command: synth_design -top top -part xc7vx485tffg1761-2
+
+Starting synthesis...
+
+INFO: [Common 17-347] Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx485t'
+Xilinx IP preload is disabled
+starting Rtl Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 179.980 ; gain = 63.508
+INFO: [Synth 8-638] synthesizing module 'top' [/Gameboy/WHACKAMOLE/easy/easy.srcs/sources_1/new/top.sv:4]
+INFO: [Synth 8-638] synthesizing module 'IBUFDS' [/opt/Xilinx/Vivado/2013.2/scripts/rt/data/unisim_comp.v:6074]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DIFF_TERM bound to: TRUE - type: string 
+	Parameter DQS_BIAS bound to: FALSE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-256] done synthesizing module 'IBUFDS' (1#2) [/opt/Xilinx/Vivado/2013.2/scripts/rt/data/unisim_comp.v:6074]
+INFO: [Synth 8-256] done synthesizing module 'top' (2#2) [/Gameboy/WHACKAMOLE/easy/easy.srcs/sources_1/new/top.sv:4]
+finished Rtl Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 212.066 ; gain = 95.594
+Start RTL Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 212.066 ; gain = 95.594
+Report Check Netlist: 
+-----+-----------------+------+--------+------+-----------------
+     |Item             |Errors|Warnings|Status|Description      
+-----+-----------------+------+--------+------+-----------------
+1    |multi_driven_nets|     0|       0|Passed|Multi driven nets
+-----+-----------------+------+--------+------+-----------------
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Loading clock regions from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/virtex7/xc7vx485t/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/virtex7/xc7vx485t/ClockBuffers.xml
+Loading clock placement rules from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/ClockPlacerRules.xml
+Loading package pin functions from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/PinFunctions.xml...
+Loading package from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/virtex7/xc7vx485t/ffg1761/Package.xml
+Loading io standards from /opt/Xilinx/Vivado/2013.2/data/./parts/xilinx/virtex7/IOStandards.xml
+Loading device configuration modes from /opt/Xilinx/Vivado/2013.2/data/parts/xilinx/virtex7/ConfigModes.xml
+INFO: [Common 17-78] Attempting to get a license: Internal_bitstream
+WARNING: [Common 17-301] Failed to get a license: Internal_bitstream
+
+Processing XDC Constraints
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Parsing XDC File [/Gameboy/WHACKAMOLE/easy/easy.srcs/constrs_1/new/top.xdc]
+Finished Parsing XDC File [/Gameboy/WHACKAMOLE/easy/easy.srcs/constrs_1/new/top.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: d14dc6f3
+Xilinx IP preload is disabled
+Start RTL Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 938.273 ; gain = 821.801
+
+---------------------------------------------------------------------------------
+Applying 'set_property' XDC Constraints...
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Compilation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
+-----+-------------+-----------+---------
+     |RTL Partition|Replication|Instances
+-----+-------------+-----------+---------
+-----+-------------+-----------+---------
+
+---------------------------------------------------------------------------------
+Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx485tffg1761-2
+Part Resources:
+DSPs: 2800 (col length:140)
+BRAMs: 2060 (col length: RAMB8 0 RAMB16 0 RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+info: start optimizing sub-critical range ...
+info: done optimizing sub-critical range.
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+Start control sets optimization
+Finished control sets optimization. Modified 9 flops. Number of control sets: before: 2 after: 1
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Final Netlist Cleanup
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
+-----+-----------------+------+--------+------+-----------------
+     |Item             |Errors|Warnings|Status|Description      
+-----+-----------------+------+--------+------+-----------------
+1    |multi_driven_nets|     0|       0|Passed|Multi driven nets
+-----+-----------------+------+--------+------+-----------------
+
+---------------------------------------------------------------------------------
+Start renaming generated instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Writing Synthesis Report
+---------------------------------------------------------------------------------
+Report BlackBoxes: 
+-----+-------------+---------
+     |BlackBox name|Instances
+-----+-------------+---------
+-----+-------------+---------
+Report Cell Usage: 
+-----+------+-----
+     |Cell  |Count
+-----+------+-----
+1    |BUFG  |    1
+2    |LUT2  |    3
+3    |LUT4  |    3
+4    |LUT5  |    1
+5    |LUT6  |    6
+6    |FDRE  |    9
+7    |IBUF  |    2
+8    |IBUFDS|    1
+9    |OBUF  |    8
+-----+------+-----
+Report Instance Areas: 
+-----+--------+------+-----
+     |Instance|Module|Cells
+-----+--------+------+-----
+1    |top     |      |   34
+-----+--------+------+-----
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 938.273 ; gain = 821.801
+---------------------------------------------------------------------------------
+
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 938.273 ; gain = 821.801
+INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Opt 31-138] Pushed 0 inverter(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: 52857e09
+15 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:34 ; elapsed = 00:00:34 . Memory (MB): peak = 1027.457 ; gain = 873.789
+# write_checkpoint top.dcp
+# report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.09 . Memory (MB): peak = 1027.457 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 20 16:37:39 2013...

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="9">
+	<Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7vx485tffg1761-2" LaunchPart="xc7vx485tffg1761-2" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" State="current" Dir="$PRUNDIR/synth_1" LaunchTime="1379709420">
+		<File Type="RDS-UTIL" Name="top_utilization_synth.rpt"/>
+		<File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_1/synth_1.psg"/>
+		<File Type="RDS-UTIL-PB" Name="top_utilization_synth.pb"/>
+		<File Type="RDS-DCP" Name="top.dcp"/>
+		<File Type="VDS-TIMINGSUMMARY" Name="top_timing_summary_synth.rpt"/>
+		<File Type="VDS-TIMING-PB" Name="top_timing_summary_synth.pb"/>
+		<File Type="PA-TCL" Name="top.tcl"/>
+		<File Type="RUN-SRCS" Name="$PDATADIR/runs/synth_1/sources.xml"/>
+		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
+		<File Type="RDS-RDS" Name="top.rds"/>
+	</Run>
+	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc7vx485tffg1761-2" LaunchPart="xc7vx485tffg1761-2" ConstrsSet="constrs_1" Description="Vivado Implementation Defaults" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1379709474">
+		<File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+		<File Type="OPT-DRC" Name="top_drc_opted.rpt"/>
+		<File Type="PLACE-IO" Name="top_io_placed.rpt"/>
+		<File Type="PLACE-CLK" Name="top_clock_utilization_placed.rpt"/>
+		<File Type="PLACE-UTIL" Name="top_utilization_placed.rpt"/>
+		<File Type="PLACE-UTIL-PB" Name="top_utilization_placed.pb"/>
+		<File Type="PLACE-CTRL" Name="top_control_sets_placed.rpt"/>
+		<File Type="PLACE-SIMILARITY" Name="top_incremental_reuse_placed.rpt"/>
+		<File Type="PLACE-PRE-SIMILARITY" Name="top_incremental_reuse_pre_placed.rpt"/>
+		<File Type="PA-TCL" Name="top.tcl"/>
+		<File Type="ROUTE-DRC" Name="top_drc_routed.rpt"/>
+		<File Type="ROUTE-DRC-PB" Name="top_drc_routed.pb"/>
+		<File Type="ROUTE-PWR" Name="top_power_routed.rpt"/>
+		<File Type="ROUTE-PWR-SUM" Name="top_power_summary_routed.pb"/>
+		<File Type="ROUTE-STATUS" Name="top_route_status.rpt"/>
+		<File Type="ROUTE-STATUS-PB" Name="top_route_status.pb"/>
+		<File Type="ROUTE-DCP" Name="top_routed.dcp"/>
+		<File Type="ROUTE-TIMINGSUMMARY" Name="top_timing_summary_routed.rpt"/>
+		<File Type="ROUTE-TIMING-PB" Name="top_timing_summary_routed.pb"/>
+		<File Type="ROUTE-SIMILARITY" Name="top_incremental_reuse_routed.rpt"/>
+		<File Type="OPT-DCP" Name="top_opt.dcp"/>
+		<File Type="RDI-RDI" Name="top.rdi"/>
+		<File Type="PLACE-DCP" Name="top_placed.dcp"/>
+		<File Type="PWROPT-DCP" Name="top_pwropt.dcp"/>
+		<File Type="POSTPLACE-PWROPT-DCP" Name="top_postplace_pwropt.dcp"/>
+		<File Type="PWROPT-DRC" Name="top_drc_pwropted.rpt"/>
+		<File Type="PHYSOPT-DCP" Name="top_physopt.dcp"/>
+		<File Type="PHYSOPT-DRC" Name="top_drc_physopted.rpt"/>
+		<File Type="BG-BIT" Name="top.bit"/>
+		<File Type="BG-DRC" Name="top.drc"/>
+		<File Type="BG-BGN" Name="top.bgn"/>
+		<File Type="BG-BIN" Name="top.bin"/>
+		<File Type="BITSTR-MSK" Name="top.msk"/>
+		<File Type="BITSTR-RBT" Name="top.rbt"/>
+		<File Type="BITSTR-NKY" Name="top.nky"/>
+		<File Type="BITSTR-BMM" Name="top_bd.bmm"/>
+		<File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+	</Run>
+</Runs>
+
