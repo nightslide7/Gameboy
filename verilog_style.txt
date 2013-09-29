@@ -14,10 +14,7 @@ SystemVerilog to Verilog notes
       // Note the lack of a semicolon below
    endmodule
 
-2. Variable types are different. No longer is everything a wire. Combinational
-   variables are "wire"s, but state variables are now "reg"s.
-
-3. There are no more always_comb blocks, only always. For always_comb, specify
+2. There are no more always_comb blocks, only always. For always_comb, specify
    always @(*) begin
       // Code
    end
@@ -26,6 +23,20 @@ SystemVerilog to Verilog notes
       // Code
    end
 
+3. Variable types are different. "wire" now only refers to variables on the left
+   side of assign statements. When using a variable in an always block, anything
+   that gets assigned to must be a "reg." "reg" variables for which <= is never
+   used and whose inputs are in the sensitivity list are combinational, while
+   "reg" variables for which <= is always used and are updated on the clock and
+   reset become registers.
+   
+   What this means in absolutely simple terms: 
+   1. State "reg" variables should only be updated using <= in an "always
+      @(posedge clock or posedge reset)" block.
+   2. Combinational "reg" variables should only be updated using = in an
+      "always @(*)" block.
+   3. Combinational "wire" variables should only be updated using "assign."
+   
 ================================================================================
 Emacs Verilog Mode
 ================================================================================
@@ -127,8 +138,8 @@ Absolutely Required Rules (if you disregard these, you will have A Bad Time)
    1. Outputs from largest width to smallest width
    2. Inputs from largest width to smallest width
 
-3. All outputs must by of type "wire" (unless there's some pressing need to do
-   otherwise) and all inputs must be of unspecified type.
+3. All outputs must be typed, "wire" or "reg" (unless there's some pressing need
+   to do otherwise) and all inputs must be of unspecified type.
 
 4. All variable names must be consistent across large modules. This does not
    apply to things that are instantiated many times, like registers. The naming
@@ -149,19 +160,21 @@ Absolutely Required Rules (if you disregard these, you will have A Bad Time)
    reset, it can be renamed with a prefix after you have asked yourself why you
    need more than one reset.
 
-7. Never continuously assign to a reg variable (i.e. reg a = 5). The only
-   exception is in a testbench, where for some reason "always #5 clock = ~clock"
+7. Never continuously assign to a combinational variable (i.e. reg a = 5). Th
+   only exception is in a testbench, where for some reason
+   "initial clock = 0; always #5 clock = ~clock;"
 
 --------------------------------------------------------------------------------
 Style Rules (if you disregard these, everyone will be unhappy, including you, 
 but you won't die in a fire)
 --------------------------------------------------------------------------------
 1. ALWAYS WRITE COMMENTS IN GOOD STYLE.
-   I was using the Javadoc style of
+   I was using the Javadoc style of before each module declaration:
    /**
-    * Short description.
+    * Short description of the module.
     *
-    * Long description.
+    * Long description of the module, including any tricky edge cases,
+    * protocols, or design decisions that might affect the user.
     * 
     * @inout name Description.
     * @output name Description.
