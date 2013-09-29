@@ -4,9 +4,9 @@ SystemVerilog to Verilog notes
 1. Module instantiations are different. They follow the format
 
    module ModuleName(input0, input1, ... inputM, output0, output1, ... outputN);
-      output [widthN-1:0] outputN
+      output [widthN-1:0] outputN;
       ...
-      input [widthM-1:0] inputM
+      input [widthM-1:0] inputM;
       ...
    
       // Code here
