@@ -1,0 +1,124 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/Gameboy/AC97_work
+vAC97
+!i10b 1
+Z1 !s100 8zS=:K2a;Yo9;I;zEWX9I3
+Z2 I<bg4097`_@@dm_K99l03S1
+Z3 V8>GU<bomIXdea?ki6ZdoD2
+Z4 d/Gameboy/AC97_work
+Z5 w1380730666
+Z6 8AC97.v
+Z7 FAC97.v
+L0 8
+Z8 OV;L;10.1b;51
+r1
+!s85 0
+31
+Z9 !s108 1380731454.548177
+Z10 !s107 tb.v|AC97.v|
+Z11 !s90 AC97.v|tb.v|
+!s101 -O0
+o-O0
+Z12 n@a@c97
+vAC97Conf
+!i10b 1
+Z13 !s100 m5olTZcTf=Dk^`e?<CY<B3
+Z14 IP;V@OgRFF]k>]j`oII50_3
+Z15 VO]EeC328J]@7IQH2A_<Og3
+R4
+R5
+R6
+R7
+Z16 L0 351
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+o-O0
+Z17 n@a@c97@conf
+vACLink
+!i10b 1
+Z18 !s100 P41C=iHhcF?IidJGIiI?23
+Z19 Ig4gGm8z?X^Q4^M841CHcZ0
+Z20 VImV=ba<YonjLXl_i0JPj;0
+R4
+R5
+R6
+R7
+Z21 L0 221
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+o-O0
+Z22 n@a@c@link
+vAudioGen
+!i10b 1
+!s100 ;MoK00Mz=AO5PGdOoFnL:0
+I1`onmMLPC@?PJcJZKL9fF1
+Z23 VTaAbjKUjbHLFn_BBi^fgm3
+R4
+R5
+R6
+R7
+Z24 L0 126
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+o-O0
+Z25 n@audio@gen
+vSquareWave
+!i10b 1
+Z26 !s100 U2A?Xi:D2H7^_X2bUCnh[1
+Z27 I7HC;<2]P5R<UUDZRI?kok2
+Z28 VHMCdVCGgjbTOdI9Q=C<^z1
+R4
+R5
+R6
+R7
+Z29 L0 190
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+o-O0
+Z30 n@square@wave
+vtb
+!i10b 1
+Z31 !s100 [@7JVd10]HagZb^CJ@81z2
+Z32 IK_mll6G04@m<SPFkzBg:92
+Z33 VV@Xn<HnSRM[I5c1?BH]3a3
+R4
+Z34 w1380728066
+8tb.v
+Ftb.v
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!s101 -O0
+o-O0

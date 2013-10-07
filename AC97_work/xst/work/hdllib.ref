@@ -1,0 +1,8 @@
+MO SquareWave NULL AC97.v vlg60/_square_wave.bin 1380912349
+MO AudioGen NULL AC97.v vlg20/_audio_gen.bin 1380912349
+MO chipscope_icon NULL chipscope_icon.v vlg52/chipscope__icon.bin 1380912349
+MO rotary_controller NULL rotary_controller.v vlg60/rotary__controller.bin 1380912349
+MO chipscope_ila NULL chipscope_ila.v vlg33/chipscope__ila.bin 1380912349
+MO AC97 NULL AC97.v vlg1C/_a_c97.bin 1380912349
+MO ACLink NULL AC97.v vlg76/_a_c_link.bin 1380912349
+MO AC97Conf NULL AC97.v vlg76/_a_c97_conf.bin 1380912349
