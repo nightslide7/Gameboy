@@ -125,6 +125,27 @@ M-x verilog-auto
 From the command line, for non-emacs users, type
 emacs --batch <filenames.v> -f verilog-batch-auto
 
+--------------------------------------------------------------------------------
+Resolving Module Names
+--------------------------------------------------------------------------------
+When invoking verilog-auto, it might occur that verilog mode can't find your
+module for autowiring. This happens because of the way verilog mode looks for
+modules. There are a few criteria for verilog mode finding a module:
+
+1. It is in the same file that you invoked verilog-auto on.
+2. It is in a file with the same name as the module you are looking for, which
+   is in the directory of the current file.
+3. It is in a file with the same name as the module you are looking for, in a
+   directory listed in the variable verilog-library-directories.
+4. It is in a file listed in the variable verilog-library files. 
+
+The variables listed above can be set by appending this to your file:
+
+// Local Variables:
+// verilog-library-directories:("." "some other directory")
+// verilog-library-files:("./myfile.v" "some other file")
+// End:
+
 ================================================================================
 Verilog Style
 ================================================================================
