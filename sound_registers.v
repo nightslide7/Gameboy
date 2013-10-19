@@ -314,3 +314,12 @@ module sound_interface
    reg        ch2_on_flag = MEMORY[NR52][1];
    reg        ch1_on_flag = MEMORY[NR52][0];
    
+
+/** Combinational Sound Generation Logic
+ *  NEEDS A SENSE OF REAL TIME
+ */
+always@( * ) begin
+   if (sound_master_enable) begin
+      if (SO1_Vin & S01_ch1_enable) begin
+         
+   end
