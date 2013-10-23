@@ -1,5 +1,5 @@
 TARGET = AC97
-VLOGS = AC97.v chipscope_icon.v chipscope_ila.v
+VLOGS = ../audio_top.v AC97.v chipscope_icon.v chipscope_ila.v ../rotary_controller/rotary_controller.v ../sound_functions/sound_functions.v ../sound_registers.v 
 VLOGS_ALL = $(VLOGS) dragonforcesample.hex dragonforcesample.mcs
 
 all: fpga_target

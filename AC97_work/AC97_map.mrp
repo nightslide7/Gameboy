@@ -1,5 +1,5 @@
 Release 14.3 Map P.40xd (lin64)
-Xilinx Mapping Report File for Design 'AC97'
+Xilinx Mapping Report File for Design 'audio_top'
 
 Design Information
 ------------------
@@ -9,33 +9,33 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Fri Oct  4 14:45:59 2013
+Mapped Date    : Wed Oct 23 13:46:41 2013
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    1
+Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   117 out of  69,120    1%
-    Number used as Flip Flops:                 117
-  Number of Slice LUTs:                        128 out of  69,120    1%
-    Number used as logic:                      125 out of  69,120    1%
-      Number using O6 output only:              56
-      Number using O5 output only:              34
-      Number using O5 and O6:                   35
+  Number of Slice Registers:                   136 out of  69,120    1%
+    Number used as Flip Flops:                 136
+  Number of Slice LUTs:                        156 out of  69,120    1%
+    Number used as logic:                      153 out of  69,120    1%
+      Number using O6 output only:              86
+      Number using O5 output only:              28
+      Number using O5 and O6:                   39
     Number used as exclusive route-thru:         3
-  Number of route-thrus:                        37
-    Number using O6 output only:                37
+  Number of route-thrus:                        31
+    Number using O6 output only:                31
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    58 out of  17,280    1%
-  Number of LUT Flip Flop pairs used:          183
-    Number with an unused Flip Flop:            66 out of     183   36%
-    Number with an unused LUT:                  55 out of     183   30%
-    Number of fully used LUT-FF pairs:          62 out of     183   33%
-    Number of unique control sets:               7
+  Number of occupied Slices:                    76 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:          212
+    Number with an unused Flip Flop:            76 out of     212   35%
+    Number with an unused LUT:                  56 out of     212   26%
+    Number of fully used LUT-FF pairs:          80 out of     212   37%
+    Number of unique control sets:              14
     Number of slice register sites lost
-      to control set restrictions:               7 out of  69,120    1%
+      to control set restrictions:              20 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -46,18 +46,18 @@ Slice Logic Distribution:
   over-mapped for a non-BRAM resource or if placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        56 out of     640    8%
-    Number of LOCed IOBs:                       55 out of      56   98%
+  Number of bonded IOBs:                        61 out of     640    9%
+    Number of LOCed IOBs:                       60 out of      61   98%
 
 Specific Feature Utilization:
   Number of BUFG/BUFGCTRLs:                      1 out of      32    3%
     Number used as BUFGs:                        1
 
-Average Fanout of Non-Clock Nets:                2.65
+Average Fanout of Non-Clock Nets:                3.46
 
 Peak Memory Usage:  1120 MB
-Total REAL time to MAP completion:  15 secs 
-Total CPU time to MAP completion (all processors):   15 secs 
+Total REAL time to MAP completion:  16 secs 
+Total CPU time to MAP completion (all processors):   16 secs 
 
 Table of Contents
 -----------------
@@ -80,9 +80,6 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:PhysDesignRules:372 - Gated clock. Clock net strobe_OBUF is sourced by a
-   combinatorial pin. This is not good design practice. Use the CE pin to
-   control the loading of data into the flip-flop.
 
 Section 3 - Informational
 -------------------------
@@ -100,14 +97,14 @@ INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
    1.050 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
-INFO:Place:834 - Only a subset of IOs are locked. Out of 56 IOs, 55 are locked
+INFO:Place:834 - Only a subset of IOs are locked. Out of 61 IOs, 60 are locked
    and 1 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   2 block(s) optimized away
+   9 block(s) optimized away
 
 Section 5 - Removed Logic
 -------------------------
@@ -116,6 +113,20 @@ Optimized Block(s):
 TYPE 		BLOCK
 GND 		XST_GND
 VCC 		XST_VCC
+LUT4 		wp/Mcompar_len_counter_cmp_le0000_lutdi1
+   optimized to 0
+LUT4 		wp/Mcompar_len_counter_cmp_le0000_lutdi2
+   optimized to 0
+LUT4 		wp/Mcompar_len_counter_cmp_le0000_lutdi3
+   optimized to 0
+LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi
+   optimized to 0
+LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi1
+   optimized to 0
+LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi2
+   optimized to 0
+LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi3
+   optimized to 0
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
@@ -132,6 +143,11 @@ Section 6 - IOB Properties
 | ac97_sdata_in                      | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ac97_sdata_out                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ac97_sync                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ch3_out<0>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ch3_out<1>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ch3_out<2>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ch3_out<3>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ch3_reset_test                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | flash_a<0>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | flash_a<1>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | flash_a<2>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |

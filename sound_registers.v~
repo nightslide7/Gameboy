@@ -1,20 +1,71 @@
-/* Gameboy Sound Interface Module
+/* Gameboy Sound Registers
  * 18-545 eob
  * 
  * Register names and specifiations are taken from:
  * meatfighter.com/gameboy/TheNintendoGameboy.pdf
  * Sound registers may be set at all times while producing sound.
  * 
- * Read and Write directions in comments are coming from cartridge.
  */
 
-module sound_interface
-  (input register,
-   output wire sound_out1, sound_out2);
+module sound_registers
+  (input       [15:0]  addr,
+   input       [7:0]   data,
+   input               w_enable,
+   output wire [2:0]   ch1_sweep_time,
+   output wire         ch1_sweep_decreasing,
+   output wire [2:0]   ch1_num_sweep_shifts,
+   output wire [1:0]   ch1_wave_duty,
+   output wire [5:0]   ch1_length_data,
+   output wire [3:0]   ch1_initial_volume,
+   output wire 	       ch1_envelope_increasing,
+   output wire [2:0]   ch1_num_envelope_sweeps,
+   output wire         ch1_reset,
+   output wire         ch1_dont_loop,
+   output wire [10:0]  ch1_frequency_data,
+   output wire [1:0]   ch2_wave_duty,
+   output wire [5:0]   ch2_length_data,
+   output wire [3:0]   ch2_initial_volume,
+   output wire 	       ch2_envelope_increasing,
+   output wire [2:0]   ch2_num_envelope_sweeps,
+   output wire 	       ch2_reset,
+   output wire 	       ch2_dont_loop,
+   output wire [10:0]  ch2_frequency_data,
+   output wire         ch3_enable,
+   output wire [7:0]   ch3_length_data,
+   output wire [1:0]   ch3_output_level,
+   output wire         ch3_reset,
+   output wire         ch3_dont_loop,
+   output wire [10:0]  ch3_frequency_data,
+   output wire [127:0] ch3_samples,
+   output wire [5:0]   ch4_length_data,
+   output wire [3:0]   ch4_initial_volume,
+   output wire         ch4_envelope_increasing,
+   output wire [2:0]   ch4_num_envelope_sweeps,
+   output wire [3:0]   ch4_shift_clock_freq_data,
+   output wire         ch4_counter_width,
+   output wire [2:0]   ch4_freq_dividing_ratio,
+   output wire         ch4_reset,
+   output wire         ch4_dont_loop,
+   output wire         SO2_Vin,
+   output wire [2:0]   SO2_output_level,
+   output wire         SO1_Vin,
+   output wire [2:0]   SO1_output_level,
+   output wire         SO2_ch4_enable,
+   output wire         SO2_ch3_enable,
+   output wire         SO2_ch2_enable,
+   output wire         SO2_ch1_enable,
+   output wire         SO1_ch4_enable,
+   output wire         SO1_ch3_enable,
+   output wire         SO1_ch2_enable,
+   output wire         SO1_ch1_enable,
+   output wire         sound_master_enable,
+   output wire         ch4_on_flag,
+   output wire         ch3_on_flag,
+   output wire         ch2_on_flag,
+   output wire         ch1_on_flag
+   );
 
    /* Channel 1 - Tone & Sweep */
-   parameter NR10 = 16'hFF10, NR11 = 16'hFF11, NR12 = 16'hFF12,
-     NR13 = 16'hFF13, NR14 = 16'hFF14;
    /** NR10 - Sweep register (R/W)
     *         bit 7: Not Used
     *         bit 6-4: Sweep Time
@@ -32,9 +83,11 @@ module sound_interface
     *                    111: 54.7 ms (7/128Hz)
     *         Frequency at each shift is X(t) = X(t-1) +/- X(t-1)/2^n
     */
-   reg [2:0]   ch1_sweep_time = MEMORY[NR10][6:4];
-   reg 	       ch1_sweep_decreasing = MEMORY[NR10][3];
-   reg [2:0]   ch1_num_sweep_shifts = MEMORY[NR10][2:0];
+   reg [7:0] NR10;
+   assign ch1_sweep_time = NR10[6:4];
+   assign ch1_sweep_decreasing = NR10[3];
+   assign ch1_num_sweep_shifts = NR10[2:0];
+
    /** NR11 - Sound Length/Wave Pattern Duty register (R/W)
     *         bit 7-6: Wave Pattern Duty (Read/Write)
     *         bit 5-0: Sound Length Data (Write Only) (t1: 0-63)
@@ -47,8 +100,10 @@ module sound_interface
     *         Sound Length = (64-t1)*(1/256) seconds
     *         The Length value is only used if Bit 6 in NR14 is set.
     */
-   reg [1:0]   ch1_wave_duty = MEMORY[NR11][7:6];
-   reg [5:0]   ch1_length_data = MEMORY[NR11][5:0];
+   reg [7:0]   NR11;
+   assign ch1_wave_duty = NR11[7:6];
+   assign ch1_length_data = NR11[5:0];
+
    /** NR12 - Volume Envelope register (R/W)
     *         bit 7-4: Initial Volume of Envelope (0-0Fh) (0=No Sound)
     *         bit 3: Envelope Direction (0=Decrease, 1=Increase)
@@ -57,12 +112,16 @@ module sound_interface
     * 
     *         Length of 1 Step = n*(1/64) seconds
     */
-   reg [3:0]   ch1_initial_volume = MEMORY[NR12][7:4];
-   reg 	       ch1_envelope_increasing = MEMORY[NR12][3];
-   reg [2:0]   ch1_num_envelope_sweeps = MEMORY[NR12][2:0];
+   reg [7:0]   NR12;
+   assign ch1_initial_volume = NR12[7:4];
+   assign ch1_envelope_increasing = NR12[3];
+   assign ch1_num_envelope_sweeps = NR12[2:0];
+
    /** NR13 - Frequency lo (Write Only)
     *         Lower 8 Bits of 11-bit Frequency (x)
     */
+   reg [7:0]  NR13;
+
    /** NR14 - Frequency hi (R/W)
     *         bit 7: Initial (1=Restart Sound) (Write Only)
     *         bit 6: Counter / Consecutive Selection (R/W)
@@ -72,13 +131,13 @@ module sound_interface
     * 
     *         Frequency = 131072/(2048-x) Hz
     */
-   reg 	       ch1_reset = MEMORY[NR14][7];
-   reg 	       ch1_dont_loop = MEMORY[NR14][6];
-   reg [10:0]  ch1_frequency_data = (MEMORY[NR14][2:0]<<8)|(MEMORY[NR13]);
+   reg [7:0]  NR14;
+   assign ch1_reset = NR14[7];
+   assign ch1_dont_loop = NR14[6];
+   assign ch1_frequency_data = (NR14[2:0]<<8)|(NR13[7:0]);
+
 
    /* Channel 2 - Tone */
-   parameter NR21 = 16'hFF16, NR22 = 16'hFF17, NR23 = 16'hFF18,
-     NR24 = 16'hFF19;
    /** NR21 - Length/Wave Pattern Duty (R/W)
     *         bit 7-6: Wave Pattern Duty (R/W)
     *         bit 5-0: Sound Length Data (Write Only) (t1: 0-63)
@@ -91,8 +150,10 @@ module sound_interface
     *         Sound Length = (64-t1)*(1/256) seconds
     *         The Length value is only used if Bit 6 in NR24 is set.
     */
-   reg [1:0]   ch2_wave_duty = MEMORY[NR21][7:6];
-   reg [5:0]   ch2_length_data = MEMORY[NR21][5:0];
+   reg [7:0]  NR21;
+   assign ch2_wave_duty = NR21[7:6];
+   assign ch2_length_data = NR21[5:0];
+
    /** NR22 - Volume Envelope register (R/W)
     *         bit 7-4: Initial Volume of Envelope (0-0Fh) (0=No Sound)
     *         bit 3: Envelope Direction (0=Decrease, 1=Increase)
@@ -101,12 +162,16 @@ module sound_interface
     * 
     *         Length of 1 Step = n*(1/64) seconds
     */
-   reg [3:0]   ch2_initial_volume = MEMORY[NR22][7:4];
-   reg 	       ch2_envelope_increasing = MEMORY[NR22][3];
-   reg [2:0]   ch2_num_envelope_sweeps = MEMORY[NR22][2:0];
+   reg [7:0]  NR22;
+   assign ch2_initial_volume = NR22[7:4];
+   assign ch2_envelope_increasing = NR22[3];
+   assign ch2_num_envelope_sweeps = NR22[2:0];
+
    /** NR23 - Frequency lo (Write Only)
     *         Lower 8 Bits of 11-bit Frequency (x)
     */
+   reg [7:0]  NR23;
+
    /** NR24 - Frequency hi (R/W)
     *         bit 7: Initial (1=Restart Sound) (Write Only)
     *         bit 6: Counter / Consecutive Selection (R/W)
@@ -116,26 +181,29 @@ module sound_interface
     * 
     *         Frequency = 131072/(2048-x) Hz
     */
-   reg 	       ch2_reset = MEMORY[NR24][7];
-   reg 	       ch2_dont_loop = MEMORY[NR24][6];
-   reg [10:0]  ch2_frequency_data = (MEMORY[NR24][2:0]<<8)|(MEMORY[NR23]);
+   reg [7:0]  NR24;
+   assign ch2_reset = NR24[7];
+   assign ch2_dont_loop = NR24[6];
+   assign ch2_frequency_data = (NR24[2:0]<<8)|(NR23[7:0]);
+
 
    /* Channel 3 - Wave Output */
-   parameter NR30 = 16'hFF1A, NR31 = 16'hFF1B, NR32 = 16'hFF1C,
-     NR33 = 16'hFF1D, NR34 = 16'hFF1E, WAV_RAM_START = 16'hFF30,
-     WAV_RAM_END = 16'hFF3F;
    /** NR30 - Sound On/Off (R/W)
     *         bit 7: Sound Channel 3 Off (0=Stop, 1=Playback)
     *         bit 6-0: Not Used
     */
-   reg         ch3_enable = MEMORY[NR30][7];
+   reg [7:0]  NR30;
+   assign ch3_enable = NR30[7];
+
    /** NR31 - Sound Length (Write Only (presumably))
     *         bit 7-0: Sound Length (t1: 0-255)
     * 
     *         Sound Length = (256-t1)*(1/256) seconds
     *         This value is used only if Bit 6 in NR34 is set.
     */
-   reg [7:0]   ch3_length_data = MEMORY[NR31][7:0];
+   reg [7:0]  NR31;
+   assign ch3_length_data = NR31[7:0];
+
    /** NR32 - Select Output Level (R/W)
     *         bit 7: Not Used
     *         bit 6-5: Select Output Level
@@ -149,10 +217,14 @@ module sound_interface
     *                3: 25% Volume (Produce Wave Pattern RAM Data shifted 
     *                               twice to the right)
     */
-   reg [1:0]   ch3_output_level = MEMORY[NR32][6:5];
+   reg [7:0]  NR32;
+   assign ch3_output_level = NR32[6:5];
+
    /** NR33 - Frequency's Lower Data (Write Only)
     *         Lower 8 bits of an 11 bit frequency (x).
     */
+   reg [7:0]  NR33;
+
    /** NR34 - Frequency's Higher Data and Control (R/W)
     *         bit 7: Initial (1=Restart Sound) (Write Only)
     *         bit 6: Counter/consecutive Selection (R/W)
@@ -162,14 +234,23 @@ module sound_interface
     * 
     *         Frequency = 4194304/(64*(2048-x)) Hz = 65536/(2048-x) Hz
     */
-   reg         ch3_reset = MEMORY[NR34][7];
-   reg         ch3_dont_loop = MEMORY[NR34][6];
-   reg [10:0] ch3_frequency_data = (MEMORY[NR34][2:0]<<8)|MEMORY[NR33];
+   reg [7:0]  NR34;
+   assign ch3_reset = NR34[7];
+   assign ch3_dont_loop = NR34[6];
+   assign ch3_frequency_data = (NR34[2:0]<<8)|(NR33[7:0]);
+
    /* Wave Pattern RAM (FF30-FF3F)
     *
     * Contains arbitrary waveform data.
     * Holds 32 4-bit samples that are played back upper 4 bits first.
     */
+   reg [7:0]  WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38, WR37, WR36;
+   reg [7:0]  WR35, WR34, WR33, WR32, WR31, WR30;
+   // Samples are played zero index first
+   assign ch3_samples = 128'h11235678999876679ADFFEC985421131;//{WR30, WR31, WR32, WR33, WR34, WR35, WR36,
+//			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
+//			 WR3E, WR3F};
+   /*
    reg [3:0]  ch3_sample0 = MEMORY[FF3F][7:4];
    reg [3:0]  ch3_sample1 = MEMORY[FF3F][4:0];
    reg [3:0]  ch3_sample2 = MEMORY[FF3E][7:4];
@@ -202,9 +283,10 @@ module sound_interface
    reg [3:0]  ch3_sample29 = MEMORY[FF31][4:0];
    reg [3:0]  ch3_sample30 = MEMORY[FF30][7:4];
    reg [3:0]  ch3_sample31 = MEMORY[FF30][4:0];
+   */
+
 
    /* Channel 4 - Noise */
-   parameter NR41 = 16'hFF20, NR42 = 16'hFF21, NR43 = 16'hFF22, NR44 = 16'hFF23;
    /** NR41 - Sound Length (R/W)
     *         bit 7-6: Not Used
     *         bit 5-0: Sound Length Data (t1: 0-63)
@@ -212,7 +294,9 @@ module sound_interface
     *         Sound Length = (64-t1)*(1/256) seconds
     *         This value is only used if Bit 6 in NR44 is set
     */
-   reg [5:0]  ch4_length_data = MEMORY[NR41][5:0];
+   reg [7:0]  NR41;
+   assign ch4_length_data = NR41[5:0];
+
    /** NR42 - Volume Envelope (R/W)
     *         bit 7-4: Initial Volume of Envelope (0-0Fh) (0=No Sound)
     *         bit 3: Envelope Direction (0=Decrease, 1=Increase)
@@ -221,9 +305,11 @@ module sound_interface
     * 
     *         Length of 1 step = n*(1/64) seconds
     */
-   reg [3:0]  ch4_initial_volume = MEMORY[NR42][7:4];
-   reg        ch4_envelope_increasing = MEMORY[NR42][3];
-   reg [2:0]  ch4_num_envelope_sweeps = MEMORY[NR42][2:0];
+   reg [7:0]  NR42;
+   assign ch4_initial_volume = NR42[7:4];
+   assign ch4_envelope_increasing = NR42[3];
+   assign ch4_num_envelope_sweeps = NR42[2:0];
+
    /** NR43 - Polynomial Counter (R/W)
     *         bit 7-4: Shift Clock Frequency (s)
     *         bit 3: Counter Step/Width (0=15 bits, 1=7 bits)
@@ -238,19 +324,22 @@ module sound_interface
     *         more regular, and some frequencies will sound more like Tone
     *         than Noise.
     */
-   reg [3:0]  ch4_shift_clock_freq_data = MEMORY[NR43][7:4];
-   reg        ch4_counter_width = MEMORY[NR43][3];
-   reg [2:0]  ch4_freq_dividing_ratio = MEMORY[NR43][2:0];
+   reg [7:0]  NR43;
+   assign ch4_shift_clock_freq_data = NR43[7:4];
+   assign ch4_counter_width = NR43[3];
+   assign ch4_freq_dividing_ratio = NR43[2:0];
+
    /** NR44 - Control (R/W)
     *         bit 7: Initial (1=Restart Sound) (Write Only)
     *         bit 6: Counter/consecutive Selection (R/W)
     *                (1=Stop output when length in NR41 expires)
     */
-   reg        ch4_reset = MEMORY[NR44][7];
-   reg        ch4_dont_loop = MEMORY[NR44][6];
+   reg [7:0]  NR44;
+   assign ch4_reset = NR44[7];
+   assign ch4_dont_loop = NR44[6];
+
 
    /* Sound Control Registers */
-   parameter NR50 = 16'hFF24, NR51 = 16'hFF25, NR52 = 16'hFF26;
    /** NR50 - Channel Control / On-Off / Volume (R/W)
     *         bit 7: Output Vin to SO2 Terminal (1=Enable)
     *         bit 6-4: SO2 Output Level (Master Volume) (0-7)
@@ -263,10 +352,12 @@ module sound_interface
     *         four channels. As far as I know this feature isn't used by 
     *         any existing games.
     */
-   reg        SO2_Vin = MEMORY[NR50][7];
-   reg [2:0]  SO2_output_level = MEMORY[NR50][6:4];
-   reg        SO1_Vin = MEMORY[NR50][3];
-   reg [2:0]  SO1_output_level = MEMORY[NR50][2:0];
+   reg [7:0]  NR50;
+   assign SO2_Vin = NR50[7];
+   assign SO2_output_level = NR50[6:4];
+   assign SO1_Vin = NR50[3];
+   assign SO1_output_level = NR50[2:0];
+
    /** NR51 - Selection of Sound Output Terminal (R/W)
     *         bit 7: Output Sound 4 to SO2 Terminal
     *         bit 6: Output Sound 3 to SO2 Terminal
@@ -277,14 +368,16 @@ module sound_interface
     *         bit 1: Output Sound 2 to SO1 Terminal
     *         bit 0: Output Sound 1 to SO1 Terminal
     */
-   reg        SO2_ch4_enable = MEMORY[NR51][7];
-   reg        SO2_ch3_enable = MEMORY[NR51][6];
-   reg        SO2_ch2_enable = MEMORY[NR51][5];
-   reg        SO2_ch1_enable = MEMORY[NR51][4];
-   reg        SO1_ch4_enable = MEMORY[NR51][3];
-   reg        SO1_ch3_enable = MEMORY[NR51][2];
-   reg        SO1_ch2_enable = MEMORY[NR51][1];
-   reg        SO1_ch1_enable = MEMORY[NR51][0];
+   reg [7:0]  NR51;
+   assign SO2_ch4_enable = NR51[7];
+   assign SO2_ch3_enable = NR51[6];
+   assign SO2_ch2_enable = NR51[5];
+   assign SO2_ch1_enable = NR51[4];
+   assign SO1_ch4_enable = NR51[3];
+   assign SO1_ch3_enable = NR51[2];
+   assign SO1_ch2_enable = NR51[1];
+   assign SO1_ch1_enable = NR51[0];
+
    /** NR52 - Sound On/Off
     *         bit 7: All Sound On/Off (0: stop all sound circuits) (R/W)
     *         bit 6-4: Not Used
@@ -308,18 +401,58 @@ module sound_interface
     *         A volume envelope which has decreased to zero volume will 
     *         NOT cause the sound flag to go off.
     */
-   reg        sound_master_enable = MEMORY[NR52][7];
-   reg        ch4_on_flag = MEMORY[NR52][3];
-   reg        ch3_on_flag = MEMORY[NR52][2];
-   reg        ch2_on_flag = MEMORY[NR52][1];
-   reg        ch1_on_flag = MEMORY[NR52][0];
+   reg [7:0]  NR52;
+   assign sound_master_enable = NR52[7];
+   assign ch4_on_flag = NR52[3];
+   assign ch3_on_flag = NR52[2];
+   assign ch2_on_flag = NR52[1];
+   assign ch1_on_flag = NR52[0];
    
 
-/** Combinational Sound Generation Logic
- *  NEEDS A SENSE OF REAL TIME
+/**
+ * Combinational Register Assignment Logic
  */
 always@( * ) begin
-   if (sound_master_enable) begin
-      if (SO1_Vin & S01_ch1_enable) begin
-         
+   if (w_enable) begin
+      case (addr)
+           16'hFF10: NR10 = data;
+           16'hFF11: NR11 = data;
+           16'hFF12: NR12 = data;
+           16'hFF13: NR13 = data;
+           16'hFF14: NR14 = data;      
+           16'hFF16: NR21 = data;
+           16'hFF17: NR22 = data;
+           16'hFF18: NR23 = data;
+           16'hFF19: NR24 = data;
+           16'hFF1A: NR30 = data;
+           16'hFF1B: NR31 = data;
+           16'hFF1C: NR32 = data;
+           16'hFF1D: NR33 = data;
+           16'hFF1E: NR34 = data;
+           16'hFF30: WR30 = data;
+           16'hFF31: WR31 = data;
+           16'hFF32: WR32 = data;
+           16'hFF33: WR33 = data;
+           16'hFF34: WR34 = data;
+           16'hFF35: WR35 = data;
+           16'hFF36: WR36 = data;
+           16'hFF37: WR37 = data;
+           16'hFF38: WR38 = data;
+           16'hFF39: WR39 = data;
+           16'hFF3A: WR3A = data;
+           16'hFF3B: WR3B = data;
+           16'hFF3C: WR3C = data;
+           16'hFF3D: WR3D = data;
+           16'hFF3E: WR3E = data;
+           16'hFF3F: WR3F = data;
+           16'hFF20: NR41 = data;
+           16'hFF21: NR42 = data;
+           16'hFF22: NR43 = data;
+           16'hFF23: NR44 = data;
+           16'hFF24: NR50 = data;
+           16'hFF25: NR51 = data;
+           16'hFF26: NR52 = data;
+      endcase
    end
+end
+endmodule

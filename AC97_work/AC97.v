@@ -23,7 +23,8 @@ module AC97(
 	    output wire        flash_clk,
 	    output wire        flash_oe_n,
 	    output wire        flash_we_n,
-            output wire        strobe
+            output wire        strobe,
+	    input wire [3:0]   ch3_vol
 	);
    
 	/*AUTOWIRE*/
@@ -85,7 +86,8 @@ module AC97(
 			.flash_d	(flash_d[15:0]),
 			.sample_no      (sample_no),
                         .square_wave_enable (square_wave_enable),
-                        .level (level[3:0]));   
+                        .level (level[3:0]),
+			.ch3_vol(ch3_vol[3:0]));
         
 	ACLink link(
 		/*AUTOINST*/
@@ -139,6 +141,7 @@ module AudioGen(
 		input             sample_no,
                 input             square_wave_enable,
                 input [3:0]       level,
+		input [3:0]       ch3_vol,
 		output [19:0]     ac97_out_slot3,
 		output [19:0]     ac97_out_slot4,
 		input wire        flash_wait,
@@ -160,9 +163,9 @@ module AudioGen(
    reg [15:0] 			  curr_sample = 'h0;
    reg [15:0] 			  next_sample = 'h0;
    wire [19:0]                    square_sample;
-   reg [19:0]                     freq = 20'd140;
+   wire [10:0] 			  freq = 11'd440;
 
-   SquareWave sw(ac97_bitclk, ac97_strobe, freq, level, square_sample);   
+   SquareWave sw(ac97_bitclk, ac97_strobe, {11'b0,freq,3'b0}, level, square_sample);   
 
    // NYAN: 481488 / 2 = 240744
    // Technologic: 439858 - 240744 = 199114
@@ -190,7 +193,7 @@ module AudioGen(
    end // always @ (posedge ac97_bitclk)
    
    // Left Audio Channel
-   assign ac97_out_slot3 = square_wave_enable ? square_sample : 
+   assign ac97_out_slot3 = square_wave_enable ? (ch3_vol<<level) : 
                            {curr_sample[15:8],curr_sample[7:0],4'h0};
    // Right Audio Channel
    assign ac97_out_slot4 = ac97_out_slot3;

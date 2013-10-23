@@ -1,5 +1,14 @@
 NET "sample_no" LOC="U25";
 NET "square_wave_enable" LOC="AG27";
+NET "rotary_inc_a" LOC = "AH30";
+NET "rotary_inc_b" LOC = "AG30";
+NET "rotary_inc_a" IOSTANDARD = LVCMOS18;
+NET "rotary_inc_b" IOSTANDARD = LVCMOS18;
+NET "ch3_out<3>" LOC = "H18";
+NET "ch3_out<2>" LOC = "L18";
+NET "ch3_out<1>" LOC = "G15";
+NET "ch3_out<0>" LOC = "AD26";
+NET "led_test" LOC="G16";
 
 NET "ac97_bitclk" LOC="AF18" | TNM_NET = ac97_bitclk;
 NET "ac97_sdata_in" LOC="AE18";

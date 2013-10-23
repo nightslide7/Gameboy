@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2013-10-02T15:56:54</DateModified>
+  <DateModified>2013-10-16T10:12:53</DateModified>
   <ModuleName>AC97</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2013-10-16T09:33:41</SummaryTimeStamp>
   <SavedFilePath>/Gameboy/AC97_work/squarewave/iseconfig/AC97.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/Gameboy/AC97_work/squarewave/</ImplementationReportsDirectory>
   <DateInitialized>2013-10-02T11:08:10</DateInitialized>

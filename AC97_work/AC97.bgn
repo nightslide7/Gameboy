@@ -2,10 +2,11 @@ Release 14.3 - Bitgen P.40xd (lin64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 Loading device for application Rf_Device from file '5vlx110t.nph' in environment
 /opt/Xilinx/14.3/ISE_DS/ISE/.
-   "AC97" is an NCD, version 3.2, device xc5vlx110t, package ff1136, speed -1
+   "audio_top" is an NCD, version 3.2, device xc5vlx110t, package ff1136, speed
+-1
 Opened constraints file AC97.pcf.
 
-Fri Oct  4 14:46:35 2013
+Wed Oct 23 13:47:19 2013
 
 /opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/bitgen -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:No -g DriveDone:No AC97.ncd 
 
@@ -124,11 +125,7 @@ There were 0 CONFIG constraint(s) processed from AC97.pcf.
 
 
 Running DRC.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net strobe_OBUF is sourced by a
-   combinatorial pin. This is not good design practice. Use the CE pin to
-   control the loading of data into the flip-flop.
-DRC detected 0 errors and 1 warnings.  Please see the previously displayed
-individual error or warning messages for more details.
+DRC detected 0 errors and 0 warnings.
 Creating bit map...
 Saving bit stream in "AC97.bit".
 Bitstream generation is complete.

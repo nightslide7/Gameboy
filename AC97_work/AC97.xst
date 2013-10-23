@@ -6,7 +6,7 @@ run
 -ofn AC97
 -ofmt NGC
 -p xc5vlx110t-ff1136-1
--top AC97
+-top audio_top
 -opt_mode Speed
 -opt_level 1
 -iuc NO

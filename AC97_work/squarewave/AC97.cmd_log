@@ -1,0 +1,4 @@
+xst -intstyle ise -ifn "/Gameboy/AC97_work/squarewave/AC97.xst" -ofn "/Gameboy/AC97_work/squarewave/AC97.syr" 
+xst -intstyle ise -ifn "/Gameboy/AC97_work/squarewave/AC97.xst" -ofn "/Gameboy/AC97_work/squarewave/AC97.syr" 
+xst -intstyle ise -ifn "/Gameboy/AC97_work/squarewave/AC97.xst" -ofn "/Gameboy/AC97_work/squarewave/AC97.syr" 
+xst -intstyle ise -ifn "/Gameboy/AC97_work/squarewave/AC97.xst" -ofn "/Gameboy/AC97_work/squarewave/AC97.syr" 

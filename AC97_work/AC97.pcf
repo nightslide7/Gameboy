@@ -1,50 +1,9 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Fri Oct 04 14:46:14 2013
+// Written by: Map P.40xd on Wed Oct 23 13:46:57 2013
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "flash_we_n" LOCATE = SITE "AF20" LEVEL 1;
-COMP "flash_a<18>" LOCATE = SITE "L20" LEVEL 1;
-COMP "flash_a<19>" LOCATE = SITE "L21" LEVEL 1;
-COMP "flash_wait" LOCATE = SITE "G13" LEVEL 1;
-COMP "sample_no" LOCATE = SITE "U25" LEVEL 1;
-COMP "flash_adv_n" LOCATE = SITE "F13" LEVEL 1;
-COMP "flash_a<0>" LOCATE = SITE "K12" LEVEL 1;
-COMP "rotary_inc_a" LOCATE = SITE "AH30" LEVEL 1;
-COMP "rotary_inc_b" LOCATE = SITE "AG30" LEVEL 1;
-COMP "flash_a<1>" LOCATE = SITE "K13" LEVEL 1;
-COMP "ac97_reset_b" LOCATE = SITE "AG17" LEVEL 1;
-COMP "flash_a<2>" LOCATE = SITE "H23" LEVEL 1;
-COMP "flash_a<3>" LOCATE = SITE "G23" LEVEL 1;
-COMP "flash_a<4>" LOCATE = SITE "H12" LEVEL 1;
-COMP "flash_d<10>" LOCATE = SITE "AH19" LEVEL 1;
 COMP "square_wave_enable" LOCATE = SITE "AG27" LEVEL 1;
-COMP "flash_a<5>" LOCATE = SITE "J12" LEVEL 1;
-COMP "flash_d<11>" LOCATE = SITE "AH20" LEVEL 1;
-COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
-COMP "flash_d<12>" LOCATE = SITE "AG13" LEVEL 1;
-COMP "flash_oe_n" LOCATE = SITE "AF14" LEVEL 1;
-COMP "flash_a<7>" LOCATE = SITE "K23" LEVEL 1;
-COMP "flash_d<13>" LOCATE = SITE "AH12" LEVEL 1;
-COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
-COMP "flash_d<14>" LOCATE = SITE "AH22" LEVEL 1;
-COMP "flash_a<9>" LOCATE = SITE "L14" LEVEL 1;
-COMP "flash_d<15>" LOCATE = SITE "AG22" LEVEL 1;
-COMP "flash_clk" LOCATE = SITE "N9" LEVEL 1;
-COMP "flash_ce_n" LOCATE = SITE "AE14" LEVEL 1;
-COMP "flash_d<0>" LOCATE = SITE "AD19" LEVEL 1;
-COMP "flash_d<1>" LOCATE = SITE "AE19" LEVEL 1;
-COMP "flash_d<2>" LOCATE = SITE "AE17" LEVEL 1;
-COMP "flash_d<3>" LOCATE = SITE "AF16" LEVEL 1;
-COMP "flash_d<4>" LOCATE = SITE "AD20" LEVEL 1;
-COMP "ac97_sdata_in" LOCATE = SITE "AE18" LEVEL 1;
-COMP "flash_d<5>" LOCATE = SITE "AE21" LEVEL 1;
-COMP "flash_d<6>" LOCATE = SITE "AE16" LEVEL 1;
-COMP "flash_d<7>" LOCATE = SITE "AF15" LEVEL 1;
-COMP "flash_d<8>" LOCATE = SITE "AH13" LEVEL 1;
-COMP "flash_d<9>" LOCATE = SITE "AH14" LEVEL 1;
-COMP "ac97_sdata_out" LOCATE = SITE "AG16" LEVEL 1;
-COMP "ac97_bitclk" LOCATE = SITE "AF18" LEVEL 1;
 COMP "flash_a<10>" LOCATE = SITE "H22" LEVEL 1;
 COMP "flash_a<11>" LOCATE = SITE "G22" LEVEL 1;
 COMP "flash_a<20>" LOCATE = SITE "AE23" LEVEL 1;
@@ -56,48 +15,112 @@ COMP "flash_a<14>" LOCATE = SITE "K21" LEVEL 1;
 COMP "flash_a<23>" LOCATE = SITE "AE13" LEVEL 1;
 COMP "flash_a<15>" LOCATE = SITE "J22" LEVEL 1;
 COMP "flash_a<16>" LOCATE = SITE "L16" LEVEL 1;
-COMP "ac97_sync" LOCATE = SITE "AF19" LEVEL 1;
 COMP "flash_a<17>" LOCATE = SITE "L15" LEVEL 1;
-TIMEGRP ac97_bitclk = BEL "conf/state_FSM_FFd3" BEL "conf/state_FSM_FFd1" BEL
-        "conf/state_FSM_FFd2" BEL "rot/state_FSM_FFd2" BEL
-        "rot/state_FSM_FFd1" BEL "rot/state_FSM_FFd3" BEL "rot/level_3" BEL
-        "rot/level_2" BEL "rot/level_1" BEL "rot/level_0" BEL "link/curbit_7"
-        BEL "link/curbit_6" BEL "link/curbit_5" BEL "link/curbit_4" BEL
-        "link/curbit_3" BEL "link/curbit_2" BEL "link/curbit_1" BEL
-        "link/curbit_0" BEL "source/count_23" BEL "source/count_22" BEL
-        "source/count_21" BEL "source/count_20" BEL "source/count_19" BEL
-        "source/count_18" BEL "source/count_17" BEL "source/count_16" BEL
-        "source/count_15" BEL "source/count_14" BEL "source/count_13" BEL
-        "source/count_12" BEL "source/count_11" BEL "source/count_10" BEL
-        "source/count_9" BEL "source/count_8" BEL "source/count_7" BEL
-        "source/count_6" BEL "source/count_5" BEL "source/count_4" BEL
-        "source/count_3" BEL "source/count_2" BEL "source/count_1" BEL
-        "source/count_0" BEL "source/curr_sample_15" BEL
-        "source/curr_sample_14" BEL "source/curr_sample_13" BEL
-        "source/curr_sample_12" BEL "source/curr_sample_11" BEL
-        "source/curr_sample_10" BEL "source/curr_sample_9" BEL
-        "source/curr_sample_8" BEL "source/curr_sample_7" BEL
-        "source/curr_sample_6" BEL "source/curr_sample_5" BEL
-        "source/curr_sample_4" BEL "source/curr_sample_3" BEL
-        "source/curr_sample_2" BEL "source/curr_sample_1" BEL
-        "source/curr_sample_0" BEL "source/flash_a_23" BEL "source/flash_a_22"
-        BEL "source/flash_a_21" BEL "source/flash_a_20" BEL
-        "source/flash_a_19" BEL "source/flash_a_18" BEL "source/flash_a_17"
-        BEL "source/flash_a_16" BEL "source/flash_a_15" BEL
-        "source/flash_a_14" BEL "source/flash_a_13" BEL "source/flash_a_12"
-        BEL "source/flash_a_11" BEL "source/flash_a_10" BEL "source/flash_a_9"
-        BEL "source/flash_a_8" BEL "source/flash_a_7" BEL "source/flash_a_6"
-        BEL "source/flash_a_5" BEL "source/flash_a_4" BEL "source/flash_a_3"
-        BEL "source/flash_a_2" BEL "source/flash_a_1" BEL "source/flash_a_0"
-        BEL "source/next_sample_15" BEL "source/next_sample_14" BEL
-        "source/next_sample_13" BEL "source/next_sample_12" BEL
-        "source/next_sample_11" BEL "source/next_sample_10" BEL
-        "source/next_sample_9" BEL "source/next_sample_8" BEL
-        "source/next_sample_7" BEL "source/next_sample_6" BEL
-        "source/next_sample_5" BEL "source/next_sample_4" BEL
-        "source/next_sample_3" BEL "source/next_sample_2" BEL
-        "source/next_sample_1" BEL "source/next_sample_0" BEL
-        "source/flash_adv_n" BEL "ac97_bitclk_BUFGP/BUFG";
+COMP "flash_a<18>" LOCATE = SITE "L20" LEVEL 1;
+COMP "flash_a<19>" LOCATE = SITE "L21" LEVEL 1;
+COMP "flash_d<10>" LOCATE = SITE "AH19" LEVEL 1;
+COMP "flash_d<11>" LOCATE = SITE "AH20" LEVEL 1;
+COMP "flash_d<12>" LOCATE = SITE "AG13" LEVEL 1;
+COMP "flash_d<13>" LOCATE = SITE "AH12" LEVEL 1;
+COMP "flash_d<14>" LOCATE = SITE "AH22" LEVEL 1;
+COMP "flash_d<15>" LOCATE = SITE "AG22" LEVEL 1;
+COMP "flash_adv_n" LOCATE = SITE "F13" LEVEL 1;
+COMP "flash_clk" LOCATE = SITE "N9" LEVEL 1;
+COMP "ac97_bitclk" LOCATE = SITE "AF18" LEVEL 1;
+COMP "flash_a<0>" LOCATE = SITE "K12" LEVEL 1;
+COMP "flash_a<1>" LOCATE = SITE "K13" LEVEL 1;
+COMP "flash_a<2>" LOCATE = SITE "H23" LEVEL 1;
+COMP "flash_a<3>" LOCATE = SITE "G23" LEVEL 1;
+COMP "flash_a<4>" LOCATE = SITE "H12" LEVEL 1;
+COMP "flash_a<5>" LOCATE = SITE "J12" LEVEL 1;
+COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
+COMP "flash_a<7>" LOCATE = SITE "K23" LEVEL 1;
+COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
+COMP "flash_a<9>" LOCATE = SITE "L14" LEVEL 1;
+COMP "flash_d<0>" LOCATE = SITE "AD19" LEVEL 1;
+COMP "flash_d<1>" LOCATE = SITE "AE19" LEVEL 1;
+COMP "sample_no" LOCATE = SITE "U25" LEVEL 1;
+COMP "flash_d<2>" LOCATE = SITE "AE17" LEVEL 1;
+COMP "flash_d<3>" LOCATE = SITE "AF16" LEVEL 1;
+COMP "flash_d<4>" LOCATE = SITE "AD20" LEVEL 1;
+COMP "flash_d<5>" LOCATE = SITE "AE21" LEVEL 1;
+COMP "flash_d<6>" LOCATE = SITE "AE16" LEVEL 1;
+COMP "flash_d<7>" LOCATE = SITE "AF15" LEVEL 1;
+COMP "flash_d<8>" LOCATE = SITE "AH13" LEVEL 1;
+COMP "flash_d<9>" LOCATE = SITE "AH14" LEVEL 1;
+COMP "flash_ce_n" LOCATE = SITE "AE14" LEVEL 1;
+COMP "flash_oe_n" LOCATE = SITE "AF14" LEVEL 1;
+COMP "ac97_sdata_out" LOCATE = SITE "AG16" LEVEL 1;
+COMP "flash_we_n" LOCATE = SITE "AF20" LEVEL 1;
+COMP "flash_wait" LOCATE = SITE "G13" LEVEL 1;
+COMP "ac97_sync" LOCATE = SITE "AF19" LEVEL 1;
+COMP "ch3_out<0>" LOCATE = SITE "AD26" LEVEL 1;
+COMP "ch3_out<1>" LOCATE = SITE "G15" LEVEL 1;
+COMP "ch3_out<2>" LOCATE = SITE "L18" LEVEL 1;
+COMP "ch3_out<3>" LOCATE = SITE "H18" LEVEL 1;
+COMP "ac97_sdata_in" LOCATE = SITE "AE18" LEVEL 1;
+COMP "ac97_reset_b" LOCATE = SITE "AG17" LEVEL 1;
+COMP "rotary_inc_a" LOCATE = SITE "AH30" LEVEL 1;
+COMP "rotary_inc_b" LOCATE = SITE "AG30" LEVEL 1;
+COMP "ch3_reset_test" LOCATE = SITE "AC24" LEVEL 1;
+TIMEGRP ac97_bitclk = BEL "framediv/clock_out" BEL "framediv/counter_0" BEL
+        "framediv/counter_1" BEL "framediv/counter_2" BEL "framediv/counter_3"
+        BEL "framediv/counter_4" BEL "framediv/counter_5" BEL
+        "framediv/counter_6" BEL "framediv/counter_7" BEL "framediv/counter_8"
+        BEL "framediv/counter_9" BEL "framediv/counter_10" BEL
+        "framediv/counter_11" BEL "framediv/counter_12" BEL
+        "framediv/counter_13" BEL "framediv/counter_14" BEL
+        "gen/conf/state_FSM_FFd3" BEL "gen/conf/state_FSM_FFd1" BEL
+        "gen/conf/state_FSM_FFd2" BEL "wp/level_2" BEL "wp/level_1" BEL
+        "wp/level_0" BEL "wp/index_hi_7" BEL "wp/index_hi_6" BEL
+        "wp/index_hi_5" BEL "wp/index_hi_4" BEL "wp/index_hi_3" BEL
+        "wp/index_hi_2" BEL "gen/rot/state_FSM_FFd2" BEL
+        "gen/rot/state_FSM_FFd1" BEL "gen/rot/state_FSM_FFd3" BEL
+        "gen/rot/level_3" BEL "gen/rot/level_2" BEL "gen/rot/level_1" BEL
+        "gen/rot/level_0" BEL "gen/link/curbit_7" BEL "gen/link/curbit_6" BEL
+        "gen/link/curbit_5" BEL "gen/link/curbit_4" BEL "gen/link/curbit_3"
+        BEL "gen/link/curbit_2" BEL "gen/link/curbit_1" BEL
+        "gen/link/curbit_0" BEL "gen/source/count_23" BEL
+        "gen/source/count_22" BEL "gen/source/count_21" BEL
+        "gen/source/count_20" BEL "gen/source/count_19" BEL
+        "gen/source/count_18" BEL "gen/source/count_17" BEL
+        "gen/source/count_16" BEL "gen/source/count_15" BEL
+        "gen/source/count_14" BEL "gen/source/count_13" BEL
+        "gen/source/count_12" BEL "gen/source/count_11" BEL
+        "gen/source/count_10" BEL "gen/source/count_9" BEL
+        "gen/source/count_8" BEL "gen/source/count_7" BEL "gen/source/count_6"
+        BEL "gen/source/count_5" BEL "gen/source/count_4" BEL
+        "gen/source/count_3" BEL "gen/source/count_2" BEL "gen/source/count_1"
+        BEL "gen/source/count_0" BEL "gen/source/curr_sample_15" BEL
+        "gen/source/curr_sample_14" BEL "gen/source/curr_sample_13" BEL
+        "gen/source/curr_sample_12" BEL "gen/source/curr_sample_11" BEL
+        "gen/source/curr_sample_10" BEL "gen/source/curr_sample_9" BEL
+        "gen/source/curr_sample_8" BEL "gen/source/curr_sample_7" BEL
+        "gen/source/curr_sample_6" BEL "gen/source/curr_sample_5" BEL
+        "gen/source/curr_sample_4" BEL "gen/source/curr_sample_3" BEL
+        "gen/source/curr_sample_2" BEL "gen/source/curr_sample_1" BEL
+        "gen/source/curr_sample_0" BEL "gen/source/flash_a_23" BEL
+        "gen/source/flash_a_22" BEL "gen/source/flash_a_21" BEL
+        "gen/source/flash_a_20" BEL "gen/source/flash_a_19" BEL
+        "gen/source/flash_a_18" BEL "gen/source/flash_a_17" BEL
+        "gen/source/flash_a_16" BEL "gen/source/flash_a_15" BEL
+        "gen/source/flash_a_14" BEL "gen/source/flash_a_13" BEL
+        "gen/source/flash_a_12" BEL "gen/source/flash_a_11" BEL
+        "gen/source/flash_a_10" BEL "gen/source/flash_a_9" BEL
+        "gen/source/flash_a_8" BEL "gen/source/flash_a_7" BEL
+        "gen/source/flash_a_6" BEL "gen/source/flash_a_5" BEL
+        "gen/source/flash_a_4" BEL "gen/source/flash_a_3" BEL
+        "gen/source/flash_a_2" BEL "gen/source/flash_a_1" BEL
+        "gen/source/flash_a_0" BEL "gen/source/next_sample_15" BEL
+        "gen/source/next_sample_14" BEL "gen/source/next_sample_13" BEL
+        "gen/source/next_sample_12" BEL "gen/source/next_sample_11" BEL
+        "gen/source/next_sample_10" BEL "gen/source/next_sample_9" BEL
+        "gen/source/next_sample_8" BEL "gen/source/next_sample_7" BEL
+        "gen/source/next_sample_6" BEL "gen/source/next_sample_5" BEL
+        "gen/source/next_sample_4" BEL "gen/source/next_sample_3" BEL
+        "gen/source/next_sample_2" BEL "gen/source/next_sample_1" BEL
+        "gen/source/next_sample_0" BEL "gen/source/flash_adv_n" BEL
+        "ac97_bitclk_BUFGP/BUFG";
 TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz HIGH 50%;
 SCHEMATIC END;
 
