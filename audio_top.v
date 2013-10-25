@@ -111,8 +111,7 @@ module audio_top (input              square_wave_enable,
    
    my_clock_divider #(.DIV_SIZE(15), .DIV_OVER_TWO(12000)) 
                     framediv(.clock_out (frame_sequencer_clk),
-			  .clock_in (ac97_bitclk),
-			  .reset_b (ac97_reset_b)
+			  .clock_in (ac97_bitclk)
 			  );
 
    // The length control clock is a 256Hz clock. Audio is played in multiples
@@ -121,8 +120,7 @@ module audio_top (input              square_wave_enable,
 
    my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(1)) 
                     lendiv(.clock_out (length_cntrl_clk),
-			   .clock_in (frame_sequencer_clk),
-			   .reset_b (ac97_reset_b)
+			   .clock_in (frame_sequencer_clk)
 			   );
 
    // Channel 3 has a specific frequency for its frequency control clock
@@ -131,8 +129,7 @@ module audio_top (input              square_wave_enable,
    /* NOT PERFECT - try to fix. Is 65361.702Hz, should be 65536Hz*/
    my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(94))
                     freq3div(.clock_out (ch3_freq_cntrl_clk),
-			     .clock_in (ac97_bitclk),
-			     .reset_b (ac97_reset_b)
+			     .clock_in (ac97_bitclk)
 			     );
 
    sound_registers regs(/*AUTOINST*/
