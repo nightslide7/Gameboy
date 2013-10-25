@@ -193,7 +193,7 @@ module AudioGen(
    end // always @ (posedge ac97_bitclk)
    
    // Left Audio Channel
-   assign ac97_out_slot3 = square_wave_enable ? (ch3_vol<<level) : 
+   assign ac97_out_slot3 = square_wave_enable ? (ch3_vol<<(level+2)) : 
                            {curr_sample[15:8],curr_sample[7:0],4'h0};
    // Right Audio Channel
    assign ac97_out_slot4 = ac97_out_slot3;

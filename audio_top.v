@@ -105,6 +105,8 @@ module audio_top (input              square_wave_enable,
 	    ch3_out
 	    );*/
 
+   // The frame sequencer is a 512Hz clock from which other timing clocks
+   // are derived
    wire 			     frame_sequencer_clk;
    
    my_clock_divider #(.DIV_SIZE(15), .DIV_OVER_TWO(12000)) 
@@ -113,13 +115,25 @@ module audio_top (input              square_wave_enable,
 			  .reset_b (ac97_reset_b)
 			  );
 
+   // The length control clock is a 256Hz clock. Audio is played in multiples
+   // of 256Hz
    wire 			     length_cntrl_clk;
 
    my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(1)) 
-                   lendiv(.clock_out (length_cntrl_clk),
-			  .clock_in (frame_sequencer_clk),
-			  .reset_b (ac97_reset_b)
-			  );
+                    lendiv(.clock_out (length_cntrl_clk),
+			   .clock_in (frame_sequencer_clk),
+			   .reset_b (ac97_reset_b)
+			   );
+
+   // Channel 3 has a specific frequency for its frequency control clock
+   wire 			     ch3_freq_cntrl_clk;
+
+   /* NOT PERFECT - try to fix. Is 65361.702Hz, should be 65536Hz*/
+   my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(94))
+                    freq3div(.clock_out (ch3_freq_cntrl_clk),
+			     .clock_in (ac97_bitclk),
+			     .reset_b (ac97_reset_b)
+			     );
 
    sound_registers regs(/*AUTOINST*/
 			// Outputs
@@ -208,7 +222,8 @@ module audio_top (input              square_wave_enable,
 		     .ch3_dont_loop	(ch3_dont_loop),
 		     .ch3_frequency_data(ch3_frequency_data[10:0]),
 		     .ch3_samples	(ch3_samples[127:0]),
-		     .length_cntrl_clk(length_cntrl_clk));
+		     .length_cntrl_clk(length_cntrl_clk),
+		     .ch3_freq_cntrl_clk(ch3_freq_cntrl_clk));
 endmodule // audio_top
 
 // Local Variables:

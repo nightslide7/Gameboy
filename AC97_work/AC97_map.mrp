@@ -9,33 +9,33 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Wed Oct 23 13:46:41 2013
+Mapped Date    : Fri Oct 25 14:35:47 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   136 out of  69,120    1%
-    Number used as Flip Flops:                 136
-  Number of Slice LUTs:                        156 out of  69,120    1%
-    Number used as logic:                      153 out of  69,120    1%
-      Number using O6 output only:              86
-      Number using O5 output only:              28
-      Number using O5 and O6:                   39
-    Number used as exclusive route-thru:         3
-  Number of route-thrus:                        31
-    Number using O6 output only:                31
+  Number of Slice Registers:                   156 out of  69,120    1%
+    Number used as Flip Flops:                 156
+  Number of Slice LUTs:                        192 out of  69,120    1%
+    Number used as logic:                      187 out of  69,120    1%
+      Number using O6 output only:             109
+      Number using O5 output only:              38
+      Number using O5 and O6:                   40
+    Number used as exclusive route-thru:         5
+  Number of route-thrus:                        43
+    Number using O6 output only:                43
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    76 out of  17,280    1%
-  Number of LUT Flip Flop pairs used:          212
-    Number with an unused Flip Flop:            76 out of     212   35%
-    Number with an unused LUT:                  56 out of     212   26%
-    Number of fully used LUT-FF pairs:          80 out of     212   37%
-    Number of unique control sets:              14
+  Number of occupied Slices:                    88 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:          252
+    Number with an unused Flip Flop:            96 out of     252   38%
+    Number with an unused LUT:                  60 out of     252   23%
+    Number of fully used LUT-FF pairs:          96 out of     252   38%
+    Number of unique control sets:              18
     Number of slice register sites lost
-      to control set restrictions:              20 out of  69,120    1%
+      to control set restrictions:              28 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -50,13 +50,13 @@ IO Utilization:
     Number of LOCed IOBs:                       60 out of      61   98%
 
 Specific Feature Utilization:
-  Number of BUFG/BUFGCTRLs:                      1 out of      32    3%
-    Number used as BUFGs:                        1
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
 
-Average Fanout of Non-Clock Nets:                3.46
+Average Fanout of Non-Clock Nets:                3.63
 
-Peak Memory Usage:  1120 MB
-Total REAL time to MAP completion:  16 secs 
+Peak Memory Usage:  1121 MB
+Total REAL time to MAP completion:  15 secs 
 Total CPU time to MAP completion (all processors):   16 secs 
 
 Table of Contents
@@ -119,13 +119,13 @@ LUT4 		wp/Mcompar_len_counter_cmp_le0000_lutdi2
    optimized to 0
 LUT4 		wp/Mcompar_len_counter_cmp_le0000_lutdi3
    optimized to 0
-LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi
+LUT4 		wp/Mcompar_reg_level_cmp_gt0000_lutdi
    optimized to 0
-LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi1
+LUT4 		wp/Mcompar_reg_level_cmp_gt0000_lutdi1
    optimized to 0
-LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi2
+LUT4 		wp/Mcompar_reg_level_cmp_gt0000_lutdi2
    optimized to 0
-LUT4 		wp/Mcompar_level_cmp_gt0000_lutdi3
+LUT4 		wp/Mcompar_reg_level_cmp_gt0000_lutdi3
    optimized to 0
 
 To enable printing of redundant blocks removed and signals merged, set the

@@ -1,7 +1,7 @@
 Release 14.3 par P.40xd (lin64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-magnum.ece.cmu.edu::  Wed Oct 23 13:46:59 2013
+magnum.ece.cmu.edu::  Fri Oct 25 14:36:04 2013
 
 par -w -ol std AC97_map.ncd AC97.ncd AC97.pcf 
 
@@ -20,18 +20,18 @@ Device speed data version:  "PRODUCTION 1.73 2012-10-12".
 
 Device Utilization Summary:
 
-   Number of BUFGs                           1 out of 32      3%
+   Number of BUFGs                           2 out of 32      6%
    Number of External IOBs                  61 out of 640     9%
       Number of LOCed IOBs                  60 out of 61     98%
 
-   Number of Slices                         76 out of 17280   1%
-   Number of Slice Registers               136 out of 69120   1%
-      Number used as Flip Flops            136
+   Number of Slices                         88 out of 17280   1%
+   Number of Slice Registers               156 out of 69120   1%
+      Number used as Flip Flops            156
       Number used as Latches                 0
       Number used as LatchThrus              0
 
-   Number of Slice LUTS                    156 out of 69120   1%
-   Number of Slice LUT-Flip Flop pairs     212 out of 69120   1%
+   Number of Slice LUTS                    192 out of 69120   1%
+   Number of Slice LUT-Flip Flop pairs     252 out of 69120   1%
 
 
 Overall effort level (-ol):   Standard 
@@ -44,13 +44,13 @@ WARNING:Par:288 - The signal ac97_sdata_in_IBUF has no load.  PAR will not attem
 Starting Router
 
 
-Phase  1  : 808 unrouted;      REAL time: 7 secs 
+Phase  1  : 972 unrouted;      REAL time: 7 secs 
 
-Phase  2  : 703 unrouted;      REAL time: 8 secs 
+Phase  2  : 849 unrouted;      REAL time: 7 secs 
 
-Phase  3  : 178 unrouted;      REAL time: 8 secs 
+Phase  3  : 202 unrouted;      REAL time: 8 secs 
 
-Phase  4  : 178 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 11 secs 
+Phase  4  : 202 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 11 secs 
 
 Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 11 secs 
 
@@ -64,7 +64,7 @@ Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL 
 
 Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 11 secs 
 Total REAL time to Router completion: 11 secs 
-Total CPU time to Router completion: 10 secs 
+Total CPU time to Router completion: 11 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -82,11 +82,13 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|   ac97_bitclk_BUFGP | BUFGCTRL_X0Y0| No   |   35 |  0.289     |  1.891      |
+|   ac97_bitclk_BUFGP | BUFGCTRL_X0Y0| No   |   35 |  0.329     |  1.862      |
 +---------------------+--------------+------+------+------------+-------------+
-|    lendiv/clock_out |         Local|      |    4 |  0.153     |  0.772      |
+|  freq3div/clock_out |BUFGCTRL_X0Y31| No   |    7 |  0.111     |  1.881      |
 +---------------------+--------------+------+------+------------+-------------+
-|  framediv/clock_out |         Local|      |    3 |  0.003     |  0.620      |
+|    lendiv/clock_out |         Local|      |    4 |  0.150     |  0.638      |
++---------------------+--------------+------+------+------------+-------------+
+|  framediv/clock_out |         Local|      |    3 |  0.156     |  0.762      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -106,8 +108,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bit | SETUP       |    75.666ns|     5.714ns|       0|           0
-  clk" 12.288 MHz HIGH 50%                  | HOLD        |     0.408ns|            |       0|           0
+  TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bit | SETUP       |    75.832ns|     5.548ns|       0|           0
+  clk" 12.288 MHz HIGH 50%                  | HOLD        |     0.416ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -123,7 +125,7 @@ WARNING:Par:283 - There are 1 loadless signals in this design. This design will 
 Total REAL time to PAR completion: 14 secs 
 Total CPU time to PAR completion: 14 secs 
 
-Peak Memory Usage:  829 MB
+Peak Memory Usage:  830 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

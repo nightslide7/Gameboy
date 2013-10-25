@@ -24,7 +24,7 @@ module AC97(
 	    output wire        flash_oe_n,
 	    output wire        flash_we_n,
             output wire        strobe,
-	    input wire [3:0]   ch3_vol,
+	    input wire [3:0]   ch3_vol
 	);
    
 	/*AUTOWIRE*/

@@ -6,7 +6,7 @@ Loading device for application Rf_Device from file '5vlx110t.nph' in environment
 -1
 Opened constraints file AC97.pcf.
 
-Wed Oct 23 13:47:19 2013
+Fri Oct 25 14:36:23 2013
 
 /opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/bitgen -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ProgPin:PullUp -g DonePin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:No -g DriveDone:No AC97.ncd 
 

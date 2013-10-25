@@ -193,7 +193,7 @@ module sound_registers
     *         bit 6-0: Not Used
     */
    reg [7:0]  NR30;
-   assign ch3_enable = 8'b10000000;//***TESTING***NR30[7];
+   assign ch3_enable = 1'b1;//***TESTING***NR30[7];
 
    /** NR31 - Sound Length (Write Only (presumably))
     *         bit 7-0: Sound Length (t1: 0-255)
@@ -218,7 +218,7 @@ module sound_registers
     *                               twice to the right)
     */
    reg [7:0]  NR32;
-   assign ch3_output_level = 1;//***TESTING***NR32[6:5];
+   assign ch3_output_level = 2'd1;//***TESTING***NR32[6:5];
 
    /** NR33 - Frequency's Lower Data (Write Only)
     *         Lower 8 bits of an 11 bit frequency (x).
@@ -237,7 +237,7 @@ module sound_registers
    reg [7:0]  NR34;
    assign ch3_reset = NR34[7];
    assign ch3_dont_loop = 1;//***TESTING***NR34[6];
-   assign ch3_frequency_data = 10'b0;//***TESTING***(NR34[2:0]<<8)|(NR33[7:0]);
+   assign ch3_frequency_data = 11'b10000000000;//***TESTING***(NR34[2:0]<<8)|(NR33[7:0]);
 
    /* Wave Pattern RAM (FF30-FF3F)
     *
@@ -247,7 +247,7 @@ module sound_registers
    reg [7:0]  WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38, WR37, WR36;
    reg [7:0]  WR35, WR34, WR33, WR32, WR31, WR30;
    // Samples are played zero index first
-   assign ch3_samples = 128'h11235678999876679ADFFEC985421131;//***TESTING***{WR30, WR31, WR32, WR33, WR34, WR35, WR36,
+   assign ch3_samples = 128'h123456789ABCDEFFEDCBA987654321;//***TESTING***{WR30, WR31, WR32, WR33, WR34, WR35, WR36,
 //			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
 //			 WR3E, WR3F};
    /* DEPRECATED
