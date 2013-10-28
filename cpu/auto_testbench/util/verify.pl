@@ -85,7 +85,7 @@ my $suffix;
 foreach my $reg (@regs) {
     $keyRegVal = $keyRegisters{$reg};
     $simRegVal = $simRegisters{$reg};
-    if ($keyRegVal == $simRegVal) {
+    if (hex($keyRegVal) == hex($simRegVal)) {
         $suffix = "ok";
     } else {
         $suffix = "shit";

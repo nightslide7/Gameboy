@@ -1,0 +1,6 @@
+verilog work ../../src/cpu.v
+verilog work ../../src/alu.v
+verilog work ../../src/regfile.v
+verilog work ../../src/cpu_auto_testbench.v
+verilog work ../../src/decode.v
+verilog work ../../src/mem.v

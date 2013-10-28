@@ -26,6 +26,7 @@ open($outfileDat, ">", $outfileDatName) || die("Couldn't open $outfileDatName",
      $!);
 open($outfileHex, ">", $outfileHexName) || die("Couldn't open $outfileHexName",
      $!);
+binmode $outfileHex;
 
 my $line;
 my $hex1;
@@ -39,25 +40,27 @@ while (<$infile>) {
         $hex1 = chr(hex($1));
         $hex2 = chr(hex($2));
         $hex3 = chr(hex($3));
-        #print "$1, $2, $3; $line\n";
         print $outfileDat "$1\n$2\n$3\n";
-        print $outfileHex "$hex1$hex2$hex3";
+        print $outfileHex "$hex1";
+        print $outfileHex "$hex2";
+        print $outfileHex "$hex3";
         $bytes += 3;
     } elsif ($line =~ /^\ {3}[0-9,A-F]{4}\ ([0-9,A-F]{2})\ ([0-9,A-F]{2})/) {
         $hex1 = chr(hex($1));
         $hex2 = chr(hex($2));
-        #print "$1, $2; $line\n";
         print $outfileDat "$1\n$2\n";
-        print $outfileHex "$hex1$hex2$hex3";
+        print $outfileHex "$hex1";
+        print $outfileHex "$hex2";
         $bytes += 2;
     } elsif ($line =~ /^\ {3}[0-9,A-F]{4}\ ([0-9,A-F]{2})/) {
         $hex1 = chr(hex($1));
-        #print "$1; $line\n";
         print $outfileDat "$1\n";
         print $outfileHex "$hex1";
         $bytes ++;
     }
 }
+
+print "bytes: $bytes\n";
 
 while ($bytes < $ROM_BYTES) {
     print $outfileHex chr(0);

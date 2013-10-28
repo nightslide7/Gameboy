@@ -8,6 +8,8 @@ module cpu_auto_testbench();
 
    // Outputs
    wire       halt;
+   wire       mem_we, mem_re;
+   wire [7:0] A_data, instruction;
    
    // Inputs
    reg       clock, reset;
@@ -19,6 +21,8 @@ module cpu_auto_testbench();
 
    cpu dut(/*AUTOINST*/
            // Outputs
+           .A_data                      (A_data[7:0]),
+           .instruction                 (instruction[7:0]),
            .mem_we                      (mem_we),
            .mem_re                      (mem_re),
            .halt                        (halt),
@@ -52,7 +56,7 @@ module cpu_auto_testbench();
 
       reset <= 1'b0;
 
-      while (~halt && count < 100) begin
+      while (~halt && count < 100000) begin
          count = count + 1;
          @(posedge clock);
       end
