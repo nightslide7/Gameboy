@@ -28,7 +28,7 @@ copy %1 %~n1\%~n1%~x1
 :verification
 echo Running verification routine...
 pushd %~n1
-call run_all.bat %~f1
+call run_all.bat %~n1%~x1
 popd
 echo Verification complete!
 
