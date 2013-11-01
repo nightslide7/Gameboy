@@ -14,12 +14,13 @@ module decode(/*AUTOARG*/
    regfile_inc, regfile_jp_hl, addr_buf_load, addr_buf_write,
    data_buf_load, data_buf_write, addr_buf_load_ext,
    addr_buf_write_ext, data_buf_load_ext, data_buf_write_ext,
-   inst_reg_load, A_load, F_load, temp1_load, temp0_load,
-   regfile_data_gate, A_data_gate, F_data_gate, alu_data_gate,
-   regfile_addr_gate, alu_data1_in_sel, alu_data0_in_sel,
-   addr_ff00_sel, alu_op, alu_size, halt,
+   inst_reg_load, A_load, F_load, temp1_load, temp0_load, IF_load_l,
+   IME_set, IME_reset, regfile_data_gate, A_data_gate, F_data_gate,
+   alu_data_gate, regfile_addr_gate, interrupt_data_gate,
+   alu_data1_in_sel, alu_data0_in_sel, addr_ff00_sel, alu_op,
+   alu_size, halt,
    // Inputs
-   instruction, taken, clock, reset
+   instruction, taken, interrupt, IME_data, clock, reset
    );
    // Constant Parameters //////////////////////////////////////////////////////
    parameter
@@ -33,7 +34,6 @@ module decode(/*AUTOARG*/
    output wire        regfile_change16, regfile_inc;
    output reg         regfile_jp_hl;
    
-   
    // Buffers
    // To/from internal bus
    output reg         addr_buf_load, addr_buf_write;
@@ -44,11 +44,12 @@ module decode(/*AUTOARG*/
 
    // Registers
    output reg         inst_reg_load, A_load, F_load, temp1_load, temp0_load;
+   output reg         IF_load_l, IME_set, IME_reset;
 
    // Tristate buffer enables
    output reg         regfile_data_gate, A_data_gate, F_data_gate;
    output reg         alu_data_gate;
-   output reg         regfile_addr_gate;
+   output reg         regfile_addr_gate, interrupt_data_gate;
 
    // Mux selects
    output reg [1:0]   alu_data1_in_sel, alu_data0_in_sel;
@@ -64,7 +65,7 @@ module decode(/*AUTOARG*/
    // Inputs ///////////////////////////////////////////////////////////////////
    
    input [7:0]        instruction;
-   input              taken;
+   input              taken, interrupt, IME_data;
    
    input              clock, reset;
 
@@ -85,6 +86,9 @@ module decode(/*AUTOARG*/
 
    // Halted register
    reg                halted;
+
+   // Interrupt handling
+   reg                interrupt_handle, next_interrupt_handle;
    
    assign m_cycle = cycle[4:2];
    assign t_cycle = cycle[1:0];
@@ -106,8 +110,8 @@ module decode(/*AUTOARG*/
                              .rgf_rn_in(rn_out),
                              .rn(nin_rn_out),
                              .rn16(rn16_out),
-                             .hi(rn16_in_hi),
-                             .lo(rn16_in_lo));
+                             .hi(rn16_out_hi),
+                             .lo(rn16_out_lo));
 
    // To make PC++ easier
    reg                regfile_change16_l, regfile_inc_l, regfile_inc_pc;
@@ -128,12 +132,12 @@ module decode(/*AUTOARG*/
          cycle <= 5'd0;
          cb <= 1'b0;
          halted <= 1'd0;
+         interrupt_handle <= 1'b0;
       end else begin
          cycle <= next_cycle;
          cb <= next_cb;
-         if (halt) begin
-            halted <= 1'd1;
-         end
+         interrupt_handle <= next_interrupt_handle;
+         halted <= halt;
       end
    end
 
@@ -169,9 +173,10 @@ module decode(/*AUTOARG*/
       alu_op = 5'd0;
       alu_size = 1'd0;
 
-      // CB, cycle
+      // CB, cycle, interrupt
       next_cb = cb;
       m_cycles = 4'd1;
+      next_interrupt_handle = interrupt_handle;
 
       // Register number decoding
       rn_in = `RGF_NONE;
@@ -181,14 +186,116 @@ module decode(/*AUTOARG*/
       {rn16_in, rn16_out} = 2'd0;
       {rn16_in_hi, rn16_in_lo, rn16_out_hi, rn16_out_lo} = 4'd0;
 
+      // Interrupts
+      {IF_load_l, interrupt_data_gate, IME_set, IME_reset} = 4'd0;
+      
       // Special
-      halt = 1'b0;
+      halt = halted;
       
       // Fetch/Decode //////////////////////////////////////////////////////////
 
-      if (halted) begin
+      if (interrupt & IME_data & cycle == 5'd0) begin
+         // Go into interrupt mode, disable interrupts, SP --, TEMP1 = IntAddr
+         m_cycles = 4'd5;
+         
+         next_interrupt_handle = 1'b1;
+         if (halted) begin
+            halt = 1'b0;
+         end
+
+         IME_reset = 1'b1;
+
+         regfile_we_l = 1'b1;
+         regfile_change16_l = 1'b1;
+         regfile_inc_l = 1'b0;
+         rn_in = `RGF_SP;
+
+         interrupt_data_gate = 1'b1;
+         temp1_load = 1'b1;
+      end else if (interrupt_handle) begin
+         m_cycles = 4'd5;
+         // According to DMG emulator, this takes 5 Machine Cycles.
+         case (cycle)
+           5'd1: begin
+              // DBUF = PCH
+              rn_out = `RGF_PCH;
+              regfile_data_gate = 1'b1;
+              data_buf_load = 1'b1;
+           end
+           5'd2: begin
+              // (SP-1) = PCH, ABUF = SP - 1, SP --
+              addr_buf_write_ext = 1'b1;
+              data_buf_write_ext = 1'b1;
+              
+              rn_out = `RGF_SP;
+              regfile_addr_gate = 1'b1;
+              addr_buf_load = 1'b1;
+
+              rn_in = `RGF_SP;
+              regfile_we_l = 1'b1;
+              regfile_change16_l = 1'b1;
+              regfile_inc_l = 1'b0;
+           end
+           5'd3: begin
+              // DBUF = PCL
+              rn_out = `RGF_PCL;
+              regfile_data_gate = 1'b1;
+              data_buf_load = 1'b1;
+           end
+           5'd4: begin
+              // ABUF = SP - 2
+              rn_out = `RGF_SP;
+              regfile_addr_gate = 1'b1;
+              addr_buf_load = 1'b1;
+           end
+           5'd5: begin
+              // (SP-2) = PCL, DBUF = IntAddr, TEMP0 = IntAddr
+              addr_buf_write_ext = 1'b1;
+              data_buf_write_ext = 1'b1;
+
+              alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+              alu_op = `ALU_PASS1;
+              alu_data_gate = 1'b1;
+              data_buf_load = 1'b1;
+
+              temp0_load = 1'b1;
+           end
+           5'd6: begin
+              // TEMP1 = 0
+              alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+              alu_data0_in_sel = `ALU_0_SEL_TEMP0;
+              alu_op = `ALU_XOR;
+              alu_data_gate = 1'b1;
+              temp1_load = 1'b1;
+           end
+           5'd7: begin
+              // PCH = 0
+              alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+              alu_op = `ALU_PASS1;
+              alu_data_gate = 1'b1;
+              regfile_we_l = 1'b1;
+              rn_in = `RGF_PCH;
+           end
+           5'd8: begin
+              // PCL = IntAddr, clear IF
+              data_buf_write = 1'b1;
+              regfile_we_l = 1'b1;
+              rn_in = `RGF_PCL;
+
+              IF_load_l = 1'b1;
+           end
+         endcase
+//      end else if (halted & ~IME_data & interrupt) begin
+         // This is the crazy bug condition! We got an interrupt while the CPU
+         // was halted AND interrupts were disabled. We have to wake up and
+         // continue in a non-halt state, but SKIP the incrementation of the
+         // PC this fetch stage! How do we accomplish this feat? Well, since
+         // we were in a halt state, the PC is now pointing at the next inst-
+         // ruction.
+      end else if (halted & ~(~IME_data & interrupt)) begin
          // Do nothing
          m_cycles = 4'd1;
+         halt = 1'b1;
       end else if (cycle == 5'd0) begin
          // Fetch 0: Load ADRBUF
          m_cycles = 4'd1;
@@ -199,8 +306,13 @@ module decode(/*AUTOARG*/
       end else if (cycle == 5'd1) begin
          // Fetch 1: PC++; Load DBUF
          m_cycles = 4'd1;
+
+         if (halted & ~IME_data & interrupt) begin
+            halt = 1'b0;
+         end else begin
+            regfile_inc_pc = 1'b1;
+         end
          
-         regfile_inc_pc = 1'b1;
          addr_buf_write_ext = 1'b1;
          data_buf_load_ext = 1'b1;
       end else if (cycle == 5'd2) begin
@@ -395,9 +507,11 @@ module decode(/*AUTOARG*/
                 5'd4: begin
                    // Read mem to DBUF
                    data_buf_load_ext = 1'b1;
+                   addr_buf_write_ext = 1'b1;
                 end
                 5'd5: begin
                    // Load DBUF into A
+                   data_buf_write = 1'b1;
                    A_load = 1'b1;
                    alu_op = `ALU_PASS0;
                 end
@@ -417,9 +531,11 @@ module decode(/*AUTOARG*/
                 5'd4: begin
                    // Read mem to DBUF
                    data_buf_load_ext = 1'b1;
+                   addr_buf_write_ext = 1'b1;
                 end
                 5'd5: begin
                    // Load DBUF into A
+                   data_buf_write = 1'b1;
                    A_load = 1'b1;
                    alu_op = `ALU_PASS0;
                 end
@@ -446,6 +562,7 @@ module decode(/*AUTOARG*/
                    // A = DBUF
                    data_buf_write = 1'b1;
                    A_load = 1'b1;
+                   alu_op = `ALU_PASS0;
                 end
               endcase
            end
@@ -455,16 +572,18 @@ module decode(/*AUTOARG*/
               m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
-                   // ABUF = {ff, C}, DBUF = A
+                   // ABUF = {ff, C}
                    rn_out = `RGF_C;
                    addr_ff00_sel = 1'b1;
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
-
+                end
+                5'd4: begin
+                   // DBUF = A
                    A_data_gate = 1'b1;
                    data_buf_load = 1'b1;
                 end
-                5'd4: begin
+                5'd5: begin
                    // ({ff, C}) = A
                    addr_buf_write_ext = 1'b1;
                    data_buf_write_ext = 1'b1;
@@ -567,8 +686,8 @@ module decode(/*AUTOARG*/
               endcase
            end
 
-           // LD A, (nn) //
-           8'b11_111_010: begin
+           // LD A, (nn); LD (nn), A //
+           8'b11_111_010, 8'b11_101_010: begin
               m_cycles = 4'd4;
               case (cycle)
                 5'd3: begin
@@ -616,6 +735,7 @@ module decode(/*AUTOARG*/
                 5'd9: begin
                    // temp0 = old B
                    rn_out = `RGF_B;
+                   regfile_data_gate = 1'b1;
                    temp0_load = 1'b1;
                 end
                 5'd10: begin
@@ -637,106 +757,94 @@ module decode(/*AUTOARG*/
                    regfile_we_l = 1'b1;
                 end
                 5'd12: begin
-                   // B = old B, DBUF = (nn)
+                   // B = old B
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_op = `ALU_PASS0;
                    alu_data_gate = 1'b1;
                    rn_in = `RGF_B;
                    regfile_we_l = 1'b1;
 
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_load_ext = 1'b1;
+                   if (instruction[4]) begin
+                      // LD A, (nn): DBUF = (nn)
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_load_ext = 1'b1;
+                   end
                 end
                 5'd13: begin
-                   // A = DBUF
-                   data_buf_write = 1'b1;
-                   alu_op = `ALU_PASS0;
-                   A_load = 1'b1;
+                   if (instruction[4]) begin
+                      // LD A, (nn): A = DBUF
+                      data_buf_write = 1'b1;
+                      alu_op = `ALU_PASS0;
+                      A_load = 1'b1;
+                   end else begin
+                      // LD (nn), A: DBUF = A
+                      A_data_gate = 1'b1;
+                      data_buf_load = 1'b1;
+                   end
+                end // case: 5'd13
+                5'd14: begin
+                   if (~instruction[4]) begin
+                      // LD (nn), A: (nn) = A
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_write_ext = 1'b1;
+                   end
                 end
                 // woohoo!
               endcase
            end
-
-           // LD (nn), A //
-           8'b11_101_010: begin
-              // INVOLVES COPYPASTA FROM ABOVE
-           end
            
-           // LD A, (HLI) (i.e. LD A, (HL); HL++) //
-           8'b00_111_010: begin
+           // LD A, (HLI); LD A, (HLD) (i.e. LD A, (HL); HL++/HL--) //
+           8'b00_101_010, 8'b00_111_010: begin
               m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
-                   // Load ABUF with HL
+                   // ABUF = HL
                    regfile_addr_gate = 1'b1;
                    rn_out = `RGF_HL;
                    addr_buf_load = 1'b1;
                 end
                 5'd4: begin
-                   // Load DBUF, HL++
+                   // DBUF = (HL), HL++/HL--
                    data_buf_load_ext = 1'b1;
+                   addr_buf_write_ext = 1'b1;
                    
                    regfile_we_l = 1'b1;
                    regfile_change16_l = 1'b1;
-                   regfile_inc_l = 1'b1;
+                   if (instruction[4]) begin
+                      regfile_inc_l = 1'b0;
+                   end else begin
+                      regfile_inc_l = 1'b1;
+                   end
                    rn_in = `RGF_HL;
                 end
                 5'd5: begin
-                   // Load A from DBUF
+                   // A = (HL)
                    A_load = 1'b1;
                    alu_op = `ALU_PASS0;
                    data_buf_write = 1'b1;
                 end
               endcase
            end
-
-           // LD A, (HLD) (i.e. LD A, (HL); HL--) //
-           8'b00_111_010: begin
-              m_cycles = 4'd2;
-              case (cycle)
-                5'd3: begin
-                   // Load ABUF with HL
-                   regfile_addr_gate = 1'b1;
-                   rn_out = `RGF_HL;
-                   addr_buf_load = 1'b1;
-                end
-                5'd4: begin
-                   // Load DBUF, HL--
-                   data_buf_load_ext = 1'b1;
-                   
-                   regfile_we_l = 1'b1;
-                   regfile_change16_l = 1'b1;
-                   rn_in = `RGF_HL;
-                end
-                5'd5: begin
-                   // Load A from DBUF
-                   A_load = 1'b1;
-                   alu_op = `ALU_PASS0;
-                   data_buf_write = 1'b1;
-                end
-              endcase
-           end // case: 8'b00_111_010
 
            // LD (BC), A //
            8'b00_000_010: begin
               m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
-                   // Load BC into ABUF
+                   // ABUF = BC
                    rn_out = `RGF_BC;
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
                 end
                 5'd4: begin
-                   // Read (BC) into DBUF
-                   data_buf_load_ext = 1'b1;
-                   addr_buf_write_ext = 1'b1;
+                   // DBUF = A
+                   A_data_gate = 1'b1;
+                   data_buf_load = 1'b1;
                 end
                 5'd5: begin
-                   // Save DBUF into A
-                   A_load = 1'b1;
-                   alu_op = `ALU_PASS0;
-                   data_buf_write = 1'b1;
+                   // (BC) = A
+                   data_buf_write_ext = 1'b1;
+                   addr_buf_write_ext = 1'b1;
                 end
               endcase
            end
@@ -752,25 +860,24 @@ module decode(/*AUTOARG*/
                    addr_buf_load = 1'b1;
                 end
                 5'd4: begin
-                   // Read (DE) into DBUF
-                   data_buf_load_ext = 1'b1;
-                   addr_buf_write_ext = 1'b1;
+                   // DBUF = A
+                   A_data_gate = 1'b1;
+                   data_buf_load = 1'b1;
                 end
                 5'd5: begin
-                   // Save DBUF into A
-                   A_load = 1'b1;
-                   alu_op = `ALU_PASS0;
-                   data_buf_write = 1'b1;
+                   // (DE) = A
+                   data_buf_write_ext = 1'b1;
+                   addr_buf_write_ext = 1'b1;
                 end
               endcase
            end // case: 8'b00_010_010
 
-           // LD (HLI), A //
-           8'b00_101_010: begin
+           // LD (HLI), A; LD (HLD), A //
+           8'b00_100_010, 8'b00_110_010: begin
               m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
-                   // Load HL into ABUF, load A into DBUF
+                   // ABUF = HL, DBUF = A
                    rn_out = `RGF_HL;
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
@@ -779,42 +886,21 @@ module decode(/*AUTOARG*/
                    data_buf_load = 1'b1;
                 end
                 5'd4: begin
-                   // Write DBUF into (HL), HL++
+                   // (HL) = A, HL++/HL--
                    data_buf_write_ext = 1'b1;
                    addr_buf_write_ext = 1'b1;
 
                    regfile_we_l = 1'b1;
                    regfile_change16_l = 1'b1;
-                   regfile_inc_l = 1'b1;
+                   if (instruction[4]) begin
+                      regfile_inc_l = 1'b0;
+                   end else begin
+                      regfile_inc_l = 1'b1;
+                   end
                    rn_in = `RGF_HL;
                 end
               endcase
            end
-
-           // LD (HLD), A //
-           8'b00_110_010: begin
-              m_cycles = 4'd2;
-              case (cycle)
-                5'd3: begin
-                   // Load HL into ABUF, load A into DBUF
-                   rn_out = `RGF_HL;
-                   regfile_addr_gate = 1'b1;
-                   addr_buf_load = 1'b1;
-
-                   A_data_gate = 1'b1;
-                   data_buf_load = 1'b1;
-                end
-                5'd4: begin
-                   // Write DBUF into (HL), HL--
-                   data_buf_write_ext = 1'b1;
-                   addr_buf_write_ext = 1'b1;
-
-                   regfile_we_l = 1'b1;
-                   regfile_change16_l = 1'b1;
-                   rn_in = `RGF_HL;
-                end
-              endcase
-           end // case: 8'b00_110_010
 
            // 16-Bit Transfer Instructions /////////////////////////////////////
            
@@ -831,26 +917,30 @@ module decode(/*AUTOARG*/
                    regfile_inc_pc = 1'b1;
                 end
                 5'd4: begin
-                   // Load DBUF into LSB of r1, load ABUF, PC++
+                   // Load DBUF into LSB of r1, load ABUF
                    regfile_we_l = 1'b1;
                    nin_rn_in = instruction[5:4];
+                   rn16_in = 1'b1;
                    rn16_in_lo = 1'b1;
                    data_buf_write = 1'b1;
 
                    regfile_addr_gate = 1'b1;
                    rn_out = `RGF_PC;
-                   addr_buf_write = 1'b1;
+                   addr_buf_load = 1'b1;
                 end
                 5'd5: begin
-                   // Load DBUF with MSB of nn
+                   // Load DBUF with MSB of nn, PC++
                    addr_buf_write_ext = 1'b1;
                    data_buf_load_ext = 1'b1;
+
+                   regfile_inc_pc = 1'b1;
                 end
                 5'd6: begin
                    // Load MSB of r1 with DBUF
                    data_buf_write = 1'b1;
                    regfile_we_l = 1'b1;
                    nin_rn_in = instruction[5:4];
+                   rn16_in = 1'b1;
                    rn16_in_hi = 1'b1;
                 end
               endcase
@@ -882,7 +972,7 @@ module decode(/*AUTOARG*/
               m_cycles = 4'd4;
               case (cycle)
                 5'd3: begin
-                   // Decrement SP, load DBUF with qq[15:8]
+                   // SP --, DBUF = qqH
                    regfile_we_l = 1'b1;
                    regfile_change16_l = 1'b1;
                    rn_in = `RGF_SP;
@@ -898,7 +988,7 @@ module decode(/*AUTOARG*/
                    data_buf_load = 1'b1;
                 end
                 5'd4: begin
-                   // Load ABUF with SP-1, SP--
+                   // ABUF = SP-1, SP --
                    rn_out = `RGF_SP;
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
@@ -908,7 +998,7 @@ module decode(/*AUTOARG*/
                    rn_in = `RGF_SP;
                 end
                 5'd5: begin
-                   // Write qq[15:8] to (SP-1), load ABUF with SP-2
+                   // (SP-1) = qqH, ABUF = SP-2
                    addr_buf_write_ext = 1'b1;
                    data_buf_write_ext = 1'b1;
 
@@ -917,7 +1007,7 @@ module decode(/*AUTOARG*/
                    regfile_addr_gate = 1'b1;
                 end
                 5'd6: begin
-                   // Load DBUF with qq[7:0]
+                   // DBUF = qqL
                    if (instruction[5:4] == 2'b11) begin
                       F_data_gate = 1'b1;
                    end else begin
@@ -929,7 +1019,7 @@ module decode(/*AUTOARG*/
                    data_buf_load = 1'b1;
                 end
                 5'd7: begin
-                   // Write qq[7:0] to (SP-2)
+                   // (SP - 2) = qqL
                    addr_buf_write_ext = 1'b1;
                    data_buf_write_ext = 1'b1;
                 end
@@ -941,7 +1031,7 @@ module decode(/*AUTOARG*/
               m_cycles = 4'd3;
               case (cycle)
                 5'd3: begin
-                   // Load SP into ABUF, SP++
+                   // ABUF = SP, SP++
                    rn_out = `RGF_SP;
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
@@ -952,7 +1042,7 @@ module decode(/*AUTOARG*/
                    regfile_inc_l = 1'b1;
                 end
                 5'd4: begin
-                   // Load qqL into DBUF, load SP+1 into ABUF, SP++
+                   // DBUF = (SP), ABUF = SP+1, SP++
                    data_buf_load_ext = 1'b1;
                    addr_buf_write_ext = 1'b1;
 
@@ -966,8 +1056,10 @@ module decode(/*AUTOARG*/
                    regfile_inc_l = 1'b1;
                 end // case: 5'd4
                 5'd5: begin
-                   // Load DBUF into qqL regfile, load qqH into DBUF
+                   // qqL = (SP), DBUF = (SP+1)
+                   data_buf_write = 1'b1;
                    if (instruction[5:4] == 2'b11) begin
+                      alu_data0_in_sel = `ALU_0_SEL_DATA;
                       alu_op = `ALU_PASSF;
                       F_load = 1'b1;
                    end else begin
@@ -981,8 +1073,10 @@ module decode(/*AUTOARG*/
                    addr_buf_write_ext = 1'b1;
                 end
                 5'd6: begin
-                   // Load DBUF into qqH regfile
+                   // qqH = (SP+1)
+                   data_buf_write = 1'b1;
                    if (instruction[5:4] == 2'b11) begin
+                      alu_data0_in_sel = `ALU_0_SEL_DATA;
                       alu_op = `ALU_PASS0;
                       A_load = 1'b1;
                    end else begin
@@ -995,8 +1089,8 @@ module decode(/*AUTOARG*/
               endcase
            end // case: 8'b11_xx0_001
 
-           // LD HL, SP+e //
-           8'b00_001_000: begin
+           // LDHL, SP, e //
+           8'b11_111_000: begin
               m_cycles = 4'd3;
               case (cycle)
                 5'd3: begin
@@ -1038,7 +1132,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_FF;
                    alu_op = `ALU_ADC;
                    alu_data_gate = 1'b1;
-                   rn_in = `RGF_L;
+                   rn_in = `RGF_H;
                    regfile_we_l = 1'b1;
                 end
               endcase
@@ -1049,7 +1143,7 @@ module decode(/*AUTOARG*/
               m_cycles = 4'd5;
               case (cycle)
                 5'd3: begin
-                   // Load C into temp0, load low address byte into DBUF, PC++
+                   // TEMP0 = C, DBUF = nnL, PC++
                    regfile_data_gate = 1'b1;
                    temp0_load = 1'b1;
                    rn_out = `RGF_C;
@@ -1060,42 +1154,44 @@ module decode(/*AUTOARG*/
                    regfile_inc_pc = 1'b1;
                 end
                 5'd4: begin
-                   // Load B into temp1, load DBUF into C
+                   // TEMP1 = B
                    regfile_data_gate = 1'b1;
                    temp1_load = 1'b1;
                    rn_out = `RGF_B;
-
+                end
+                5'd5: begin
+                   // C = nnL
                    regfile_we_l = 1'b1;
                    rn_in = `RGF_C;
                    data_buf_write = 1'b1;
                 end
-                5'd5: begin
-                   // Load ABUF with PC+1, PC++
+                5'd6: begin
+                   // ABUF = PC + 1, PC++
                    addr_buf_load = 1'b1;
                    regfile_addr_gate = 1'b1;
                    rn_out = `RGF_PC;
 
                    regfile_inc_pc = 1'b1;
                 end
-                5'd6: begin
-                   // Load DBUF with high address byte
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_write_ext = 1'b1;
-                end
                 5'd7: begin
-                   // Load B with DBUF
+                   // DBUF = nnH
+                   addr_buf_write_ext = 1'b1;
+                   data_buf_load_ext = 1'b1;
+                end
+                5'd8: begin
+                   // B = nnH
                    data_buf_write = 1'b1;
                    regfile_we_l = 1'b1;
                    rn_in = `RGF_B;
                 end
-                5'd8: begin
+                5'd9: begin
                    // Load ABUF with BC
                    regfile_addr_gate = 1'b1;
                    addr_buf_load = 1'b1;
                    rn_out = `RGF_BC;
                 end
-                5'd9: begin
-                   // Load DBUF with SPL, increment BC
+                5'd10: begin
+                   // DBUF = SPL, BC ++
                    regfile_data_gate = 1'b1;
                    data_buf_load = 1'b1;
                    rn_out = `RGF_SPL;
@@ -1105,8 +1201,8 @@ module decode(/*AUTOARG*/
                    regfile_inc_l = 1'b1;
                    rn_in = `RGF_BC;
                 end // case: 5'd9
-                5'd10: begin
-                   // Write SPL to (BC), load ABUF with BC+1
+                5'd11: begin
+                   // (BC) = SPL, ABUF = BC+1
                    data_buf_write_ext = 1'b1;
                    addr_buf_write_ext = 1'b1;
 
@@ -1114,14 +1210,14 @@ module decode(/*AUTOARG*/
                    regfile_addr_gate = 1'b1;
                    rn_out = `RGF_BC;
                 end
-                5'd11: begin
-                   // Load DBUF with SPH
+                5'd12: begin
+                   // DBUF = SPH
                    regfile_data_gate = 1'b1;
                    data_buf_load = 1'b1;
                    rn_out = `RGF_SPH;
                 end
-                5'd12: begin
-                   // Write SPH to (BC+1), load B with temp1
+                5'd13: begin
+                   // (BC+1) = SPH, B = temp1
                    data_buf_write_ext = 1'b1;
                    addr_buf_write_ext = 1'b1;
 
@@ -1131,8 +1227,8 @@ module decode(/*AUTOARG*/
                    regfile_we_l = 1'b1;
                    rn_in = `RGF_B;
                 end
-                5'd13: begin
-                   // load C with temp0
+                5'd14: begin
+                   // C = temp0
                    alu_data_gate = 1'b1;
                    alu_op = `ALU_PASS0;
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
@@ -1162,6 +1258,7 @@ module decode(/*AUTOARG*/
                       data_buf_load_ext = 1'b1;
                    end
                    5'd5: begin
+                      data_buf_write = 1'b1;
                       if (instruction[5:3] != 3'b111) begin
                          // Don't change A on a compare
                          A_load = 1'b1;
@@ -1212,7 +1309,7 @@ module decode(/*AUTOARG*/
               end
            end
 
-           // INC r //
+           // INC r; DEC r //
            8'b00_xxx_10x: begin
               m_cycles = 4'd1;
               case (cycle)
@@ -1379,28 +1476,18 @@ module decode(/*AUTOARG*/
               endcase
            end
 
-           // INC ss //
-           8'b00_xx0_011: begin
+           // INC ss, DEC ss //
+           8'b00_xx0_011, 8'b00_xx1_011: begin
               m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
                    regfile_we_l = 1'b1;
                    regfile_change16_l = 1'b1;
-                   regfile_inc_l = 1'b1;
-                   rn16_in = 1'b1;
-                   nin_rn_in = instruction[5:4];
-                end
-              endcase
-           end
-           
-           // DEC ss //
-           8'b00_xx1_011: begin
-              m_cycles = 4'd2;
-              case (cycle)
-                5'd3: begin
-                   regfile_we_l = 1'b1;
-                   regfile_change16_l = 1'b1;
-                   regfile_inc_l = 1'b0;
+                   if (instruction[3]) begin
+                      regfile_inc_l = 1'b0;
+                   end else begin
+                      regfile_inc_l = 1'b1;
+                   end
                    rn16_in = 1'b1;
                    nin_rn_in = instruction[5:4];
                 end
@@ -1477,8 +1564,7 @@ module decode(/*AUTOARG*/
               end
            end
 
-           // JR e //
-//           8'b00_011_000, 8'b00_100_000, 8'b00_101_000, 8'b00_110_000, 8'b00_111_000: begin
+           // JR e; JR cc, e //
            8'b00_011_000, 8'b00_1xx_000: begin
               if ((~instruction[5]) | taken) begin
                  // JR e, JR cc, e: taken //
@@ -1532,6 +1618,7 @@ module decode(/*AUTOARG*/
                    end
                    5'd10: begin
                       // F = DBUF (== flags)
+                      data_buf_write = 1'b1;
                       alu_data0_in_sel = `ALU_0_SEL_DATA;
                       alu_op = `ALU_PASSF;
                       F_load = 1'b1;
@@ -1559,23 +1646,45 @@ module decode(/*AUTOARG*/
            end
 
            // CALL nn, CALL cc, nn //
-//           8'b11_001_101, 8'b11_000_100, 8'b11_001_100, 8'b11_010_100, 8'b11_011_100: begin
            8'b11_001_101, 8'b11_0xx_100: begin
               if (instruction[0] | taken) begin
                  // CALL nn, CALL cc, nn taken //
                  m_cycles = 4'd6;
                  case (cycle)
                    5'd3: begin
-                      // SP = SP - 1, DBUF = nnL
-                      regfile_we_l = 1'b1;
-                      regfile_change16_l = 1'b1;
-                      rn_in = `RGF_SP;
+                      // PC ++, DBUF = nnL
+                      regfile_inc_pc = 1'b1;
 
                       data_buf_load_ext = 1'b1;
                       addr_buf_write_ext = 1'b1;
                    end
                    5'd4: begin
-                      // SP = SP - 2, ABUF = SP - 1, temp0 = nnL
+                      // ABUF = PC + 1, TEMP0 = nnL
+                      rn_out = `RGF_PC;
+                      regfile_addr_gate = 1'b1;
+                      addr_buf_load = 1'b1;
+
+                      data_buf_write = 1'b1;
+                      temp0_load = 1'b1;
+                   end
+                   5'd5: begin
+                      // PC ++, DBUF = nnH
+                      regfile_inc_pc = 1'b1;
+
+                      data_buf_load_ext = 1'b1;
+                      addr_buf_write_ext = 1'b1;
+                   end
+                   5'd6: begin
+                      // TEMP1 = nnH, SP = SP - 1
+                      data_buf_write = 1'b1;
+                      temp1_load = 1'b1;
+
+                      regfile_we_l = 1'b1;
+                      regfile_change16_l = 1'b1;
+                      rn_in = `RGF_SP;
+                   end
+                   5'd7: begin
+                      // SP = SP - 2, ABUF = SP - 1
                       regfile_we_l = 1'b1;
                       regfile_change16_l = 1'b1;
                       rn_in = `RGF_SP;
@@ -1583,60 +1692,50 @@ module decode(/*AUTOARG*/
                       addr_buf_load = 1'b1;
                       regfile_addr_gate = 1'b1;
                       rn_out = `RGF_SP;
-
-                      temp0_load = 1'b1;
-                      data_buf_write = 1'b1;
                    end
-                   5'd5: begin
+                   5'd8: begin
                       // DBUF = PCH
                       data_buf_load = 1'b1;
                       regfile_data_gate = 1'b1;
                       rn_out = `RGF_PCH;
                    end
-                   5'd6: begin
-                      // (SP - 1) = PCH, ABUF = SP - 2
-                      data_buf_write_ext = 1'b1;
+                   5'd9: begin
+                      // (SP - 1) = PCH
                       addr_buf_write_ext = 1'b1;
-
-                      addr_buf_load = 1'b1;
-                      regfile_addr_gate = 1'b1;
-                      rn_out = `RGF_SP;
+                      data_buf_write_ext = 1'b1;
                    end
-                   5'd7: begin
+                   5'd10: begin
                       // DBUF = PCL
                       data_buf_load = 1'b1;
                       regfile_data_gate = 1'b1;
                       rn_out = `RGF_PCL;
                    end
-                   5'd8: begin
-                      // (SP - 2) = PCL, PC = PC + 2
-                      data_buf_write_ext = 1'b1;
-                      addr_buf_write_ext = 1'b1;
-
-                      regfile_inc_pc = 1'b1;
-                   end
-                   5'd9: begin
-                      // ABUF = PC + 2, PCL = temp0 (== nnL)
+                   5'd11: begin
+                      // ABUF = SP - 2
                       addr_buf_load = 1'b1;
                       regfile_addr_gate = 1'b1;
-                      rn_out = `RGF_PC;
-                      
+                      rn_out = `RGF_SP;
+                   end
+                   5'd12: begin
+                      // (SP - 2) = PCL
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_write_ext = 1'b1;
+                   end
+                   5'd13: begin
+                      // PCH = nnH (temp1)
+                      alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+                      alu_op = `ALU_PASS1;
+                      alu_data_gate = 1'b1;
+                      regfile_we_l = 1'b1;
+                      rn_in = `RGF_PCH;
+                   end
+                   5'd14: begin
+                      // PCL = nnL (temp0)
                       alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                       alu_op = `ALU_PASS0;
                       alu_data_gate = 1'b1;
                       regfile_we_l = 1'b1;
                       rn_in = `RGF_PCL;
-                   end
-                   5'd10: begin
-                      // DBUF = nnH
-                      data_buf_load_ext = 1'b1;
-                      addr_buf_write_ext = 1'b1;
-                   end
-                   5'd11: begin
-                      // PCH = DBUF (== nnH)
-                      data_buf_write = 1'b1;
-                      regfile_we_l = 1'b1;
-                      rn_in = `RGF_PCH;
                    end
                  endcase // case (cycle)
               end else begin // if (instruction[0] | taken)
@@ -1654,11 +1753,10 @@ module decode(/*AUTOARG*/
               end
            end // case: 8'b11_001_101 CALL nn
 
-           // RET, RETI, RET cc //
-//           8'b11_001_001, 8'b11_011_001, 8'b11_000_000, 8'b11_001_000, 8'b11_010_000, 8'b11_011_000: begin
-           8'b11_001_001, 8'b11_0xx_000: begin
+           // RET; RETI; RET cc //
+           8'b11_001_001, 8'b11_011_001, 8'b11_0xx_000: begin
               if (instruction[0] | taken) begin
-                 // RET, RETI, RET cc taken //
+                 // RET; RETI; RET cc: taken //
                  m_cycles = 4'd4;
                  case (cycle)
                    5'd3: begin
@@ -1697,15 +1795,19 @@ module decode(/*AUTOARG*/
                       rn_in = `RGF_PCH;
                    end
                    5'd7: begin
-                      // SP = SP + 2
+                      // SP = SP + 2, if RETI enable interrupts
                       rn_in = `RGF_SP;
                       regfile_change16_l = 1'b1;
                       regfile_inc_l = 1'b1;
                       regfile_we_l = 1'b1;
+
+                      if (instruction[0] & instruction[4]) begin
+                         IME_set = 1'b1;
+                      end
                    end
                  endcase // case (cycle)
               end else begin
-                 // RET cc, not taken //
+                 // RET cc: not taken //
                  m_cycles = 4'd2;
               end
            end
@@ -1801,8 +1903,6 @@ module decode(/*AUTOARG*/
                 end
               endcase
            end // case: 8'b11_xxx_111
-           
-
 
       // General-Purpose Arithmetic/CPU Control Instructions ///////////////////
 
@@ -1851,6 +1951,26 @@ module decode(/*AUTOARG*/
                    alu_op = `ALU_SCF;
                    F_load = 1'b1;
                 end
+              endcase
+           end
+
+           // DI //
+           8'b11_110_011: begin
+              m_cycles = 4'd1;
+              case(cycle)
+                 5'd3: begin
+                    IME_reset = 1'b1;
+                 end
+              endcase
+           end
+
+           // EI //
+           8'b11_111_011: begin
+              m_cycles = 4'd1;
+              case(cycle)
+                 5'd3: begin
+                    IME_set = 1'b1;
+                 end
               endcase
            end
            
@@ -1940,49 +2060,84 @@ module decode(/*AUTOARG*/
            
            // Bit Operations ///////////////////////////////////////////////////
 
-           // BIT //
-           8'b01_xxx_xxx: begin
-             if (instruction[2:0] == 3'b110) begin
-                // BIT b, (HL)
-                m_cycles = 4'd3;
-                case (cycle)
-                  5'd5: begin
-                     // ABUF = HL
-                     rn_out = `RGF_HL;
-                     regfile_addr_gate = 1'b1;
-                     addr_buf_load = 1'b1;
-                  end
-                  5'd6: begin
-                     // DBUF = (HL)
-                     addr_buf_write_ext = 1'b1;
-                     data_buf_load_ext = 1'b1;
-                  end
-                  5'd7: begin
-                     // Set the fucking flags
-                     alu_data1_in_sel = `ALU_1_SEL_DATA;
-                     alu_data0_in_sel = `ALU_0_SEL_TEMP0;
-                     alu_op = `ALU_BIT;
-                     F_load = 1'b1;
-                  end
-                endcase
-             end else begin
-                // BIT b, r
-                m_cycles = 4'd2;
-                case (cycle)
-                  5'd5: begin
-                     nin_rn_out = instruction[2:0];
-                     if (nin_rn_out == 3'b111) begin
-                        alu_data1_in_sel = `ALU_1_SEL_A;
-                     end else begin
-                        regfile_data_gate = 1'b1;
-                        alu_data1_in_sel = `ALU_1_SEL_DATA;
-                     end
-                     alu_data0_in_sel = `ALU_0_SEL_TEMP0;
-                     alu_op = `ALU_BIT;
-                     F_load = 1'b1;
-                  end
-                endcase
-             end // else: !if(instruction[2:0] == 3'b110)
+           // BIT, SET, RESET //
+           8'b01_xxx_xxx, 8'b11_xxx_xxx, 8'b10_xxx_xxx: begin
+              if (instruction[2:0] == 3'b110) begin
+                 // BIT b, (HL)
+                 m_cycles = 4'd3;
+                 case (cycle)
+                   5'd5: begin
+                      // temp0 = DBUF (instruction)
+                      data_buf_write = 1'b1;
+                      temp0_load = 1'b1;
+                   end
+                   5'd6: begin
+                      // ABUF = HL
+                      rn_out = `RGF_HL;
+                      regfile_addr_gate = 1'b1;
+                      addr_buf_load = 1'b1;
+                   end
+                   5'd7: begin
+                      // DBUF = (HL)
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_load_ext = 1'b1;
+                   end
+                   5'd8: begin
+                      // Set the flags
+                      data_buf_write = 1'b1;
+                      alu_data1_in_sel = `ALU_1_SEL_DATA;
+                      alu_data0_in_sel = `ALU_0_SEL_TEMP0;
+                      alu_op = `ALU_BIT;
+                      F_load = 1'b1;
+                   end
+                 endcase
+              end else begin
+                 // BIT b, r
+                 m_cycles = 4'd2;
+                 case (cycle)
+                   5'd5: begin
+                      // TEMP0 = DBUF (instruction)
+                      data_buf_write = 1'b1;
+                      temp0_load = 1'b1;
+                   end
+                   5'd6: begin
+                      // TEMP1 = r
+                      nin_rn_out = instruction[2:0];
+                      if (nin_rn_out == 3'b111) begin
+                         A_data_gate = 1'b1;
+                      end else begin
+                         regfile_data_gate = 1'b1;
+                      end
+                      temp1_load = 1'b1;
+                   end
+                   5'd7: begin
+                      // Perform op
+                      alu_data0_in_sel = `ALU_0_SEL_TEMP0;
+                      alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+                      nin_rn_in = instruction[2:0];
+                      
+                      if (instruction[7:6] == 2'b01) begin
+                         // BIT
+                         alu_op = `ALU_BIT;
+                         F_load = 1'b1;
+                      end else begin
+                         if (nin_rn_in == 3'b111) begin
+                            A_load = 1'b1;
+                         end else begin
+                            regfile_we_l = 1'b1;
+                         end
+                         alu_data_gate = 1'b1;
+                         if (instruction[7:6] == 2'b11) begin
+                            // SET
+                            alu_op = `ALU_SET;
+                         end else begin
+                            // RESET
+                            alu_op = `ALU_RES;
+                         end
+                      end
+                   end
+                 endcase
+              end // else: !if(instruction[2:0] == 3'b110)
            end // case: 8'b01_xxx_xxx
 
          endcase // case (instruction)
@@ -1997,6 +2152,7 @@ module decode(/*AUTOARG*/
       if (next_cycle_high[5:2] == m_cycles) begin
          next_cycle = 5'b0;
          next_cb = 1'b0;
+         next_interrupt_handle = 1'b0;
       end else begin
          next_cycle = next_cycle_high[4:0];
       end

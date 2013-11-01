@@ -15,20 +15,23 @@
  */
 module cpu(/*AUTOARG*/
    // Outputs
-   A_data, instruction, mem_we, mem_re, halt,
+   A_data, instruction, IF_data, IE_data, mem_we, mem_re, halt,
    // Inouts
    addr_ext, data_ext,
    // Inputs
-   clock, reset
+   IF_in, IE_in, IF_load, IE_load, clock, reset
    );
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
 
    output wire [7:0] A_data, instruction;
+   output wire [4:0] IF_data, IE_data;
    
    output wire  mem_we, mem_re;
    output wire  halt;
-   
+
+   input [4:0]  IF_in, IE_in;
+   input wire   IF_load, IE_load;
    input        clock, reset;
 
    // Constant Parameters //////////////////////////////////////////////////////
@@ -46,8 +49,61 @@ module cpu(/*AUTOARG*/
 
    // Registers
    wire [7:0]   F_data, temp1_data, temp0_data;
+   wire [4:0]   IF_in_l;
+   wire         IME_data;
 //   wire [7:0]   A_data, instruction;  
 
+   reg [4:0]   interrupt_mask; // IF mask
+   reg [2:0]   interrupt_sel; // select
+   reg [3:0]   interrupt_addr_bits; // bits [6:3] of interrupt jump addr  
+
+   wire         IF_load_l; // Decode output: mask IF with the interrupt
+   wire         interrupt_data_gate; // Decode output: gate interrupt address
+   wire         interrupt; // Decode input: is there an interrupt?
+   
+   assign interrupt = ~((IF_data & IE_data) == 5'd0);
+   assign IF_in_l = (IF_load_l) ? IF_data & interrupt_mask : IF_in;
+   
+   always @(*) begin
+      // interrupt select and mask priority decoder/encoder
+      casex (IF_data & IE_data)
+        5'bxx_xx1: begin
+           interrupt_sel = 3'd0;
+           interrupt_mask = 5'b11_110;
+        end
+        5'bxx_x10: begin
+           interrupt_sel = 3'd1;
+           interrupt_mask = 5'b11_101;
+        end
+        5'bxx_100: begin
+           interrupt_sel = 3'd2;
+           interrupt_mask = 5'b11_011;
+        end
+        5'bx1_000: begin
+           interrupt_sel = 3'd3;
+           interrupt_mask = 5'b10_111;
+        end
+        5'b10_000: begin
+           interrupt_sel = 3'd4;
+           interrupt_mask = 5'b01_111;
+        end
+        5'b00_000: begin
+           interrupt_sel = 3'd0;
+           interrupt_mask = 5'b11_111;
+        end
+      endcase // casex (IF_data & IE_data)
+
+      // Interrupt jump address mux
+      case (interrupt_sel)
+        3'd0: interrupt_addr_bits = 4'b1000;
+        3'd1: interrupt_addr_bits = 4'b1001;
+        3'd2: interrupt_addr_bits = 4'b1010;
+        3'd3: interrupt_addr_bits = 4'b1011;
+        3'd4: interrupt_addr_bits = 4'b1100;
+        default: interrupt_addr_bits = 4'd0;
+      endcase // case (interrupt_sel)
+   end
+   
    // ALU
    wire [7:0]   alu_data_out;
    reg [7:0]    alu_data1_in, alu_data0_in;
@@ -76,7 +132,8 @@ module cpu(/*AUTOARG*/
    
    // Registers
    wire        inst_reg_load, A_load, F_load, temp1_load, temp0_load;
-
+   wire        IME_set, IME_reset;
+   
    // Tristate buffer enables
    wire        regfile_data_gate, A_data_gate, F_data_gate, regfile_addr_gate;
    wire        alu_data_gate;
@@ -113,19 +170,19 @@ module cpu(/*AUTOARG*/
 
    always @(*) begin
       case (alu_data0_in_sel)
-         2'b00: alu_data0_in = data_bus;
-         2'b01: alu_data0_in = temp0_data;
-         2'b10: alu_data0_in = {2'd0, data_bus[5:3], 3'd0};
-         2'b11: alu_data0_in = (temp0_data[7]) ? 8'hff : 8'h00;
+         `ALU_0_SEL_DATA: alu_data0_in = data_bus;
+         `ALU_0_SEL_TEMP0: alu_data0_in = temp0_data;
+         `ALU_0_SEL_RSTP: alu_data0_in = {2'd0, data_bus[5:3], 3'd0};
+         `ALU_0_SEL_FF: alu_data0_in = (temp0_data[7]) ? 8'hff : 8'h00;
       endcase
    end
 
    always @(*) begin
       case (alu_data1_in_sel)
-        2'b00: alu_data1_in = A_data;
-        2'b01: alu_data1_in = data_bus;
-        2'b10: alu_data1_in = regfile_data_out;
-        2'b11: alu_data1_in = temp1_data;
+        `ALU_1_SEL_A: alu_data1_in = A_data;
+        `ALU_1_SEL_DATA: alu_data1_in = data_bus;
+        `ALU_1_SEL_RGF: alu_data1_in = regfile_data_out;
+        `ALU_1_SEL_TEMP1: alu_data1_in = temp1_data;
       endcase
    end
 
@@ -149,7 +206,7 @@ module cpu(/*AUTOARG*/
                            .bus_ext_write(data_buf_write_ext),
                            .clock(clock),
                            .reset(reset));
-   
+
    // Registers ////////////////////////////////////////////////////////////////
 
    // TODO: make into a single always block
@@ -183,6 +240,24 @@ module cpu(/*AUTOARG*/
                               .load(temp0_load),
                               .clock(clock),
                               .reset(reset));
+
+   register #(5, 0) IF_reg(.q(IF_data),
+                           .d(IF_in_l),
+                           .load(IF_load_l | IF_load),
+                           .clock(clock),
+                           .reset(reset));
+
+   register #(5, 0) IE_reg(.q(IE_data),
+                           .d(IE_in),
+                           .load(IE_load),
+                           .clock(clock),
+                           .reset(reset));
+
+   register #(1, 0) IME_reg(.q(IME_data),
+                            .d(IME_set),
+                            .load(IME_set | IME_reset),
+                            .clock(clock),
+                            .reset(reset));
    
    // Tristate buffers /////////////////////////////////////////////////////////
    
@@ -198,11 +273,15 @@ module cpu(/*AUTOARG*/
    tristate #(.width(8)) alu_data_tri(.out(data_bus),
                                       .in(alu_data_out),
                                       .en(alu_data_gate));
-   
+   tristate #(.width(8)) interrupt_addr_tri(.out(data_bus),
+                                            .in({1'd0, interrupt_addr_bits,
+                                                 3'd0}),
+                                            .en(interrupt_data_gate));   
    tristate #(.width(16)) regfile_addr_tri(.out(addr_bus),
                                    .in(regfile_data_addr[15:0]),
                                    .en(regfile_addr_gate));
 
+   
    // ALU //////////////////////////////////////////////////////////////////////
 
    alu gb80_alu(/*AUTOINST*/
@@ -256,11 +335,15 @@ module cpu(/*AUTOARG*/
                       .F_load           (F_load),
                       .temp1_load       (temp1_load),
                       .temp0_load       (temp0_load),
+                      .IF_load_l        (IF_load_l),
+                      .IME_set          (IME_set),
+                      .IME_reset        (IME_reset),
                       .regfile_data_gate(regfile_data_gate),
                       .A_data_gate      (A_data_gate),
                       .F_data_gate      (F_data_gate),
                       .alu_data_gate    (alu_data_gate),
                       .regfile_addr_gate(regfile_addr_gate),
+                      .interrupt_data_gate(interrupt_data_gate),
                       .alu_data1_in_sel (alu_data1_in_sel[1:0]),
                       .alu_data0_in_sel (alu_data0_in_sel[1:0]),
                       .addr_ff00_sel    (addr_ff00_sel),
@@ -270,6 +353,8 @@ module cpu(/*AUTOARG*/
                       // Inputs
                       .instruction      (instruction[7:0]),
                       .taken            (taken),
+                      .interrupt        (interrupt),
+                      .IME_data         (IME_data),
                       .clock            (clock),
                       .reset            (reset));
 
@@ -463,6 +548,7 @@ module buffer(/*AUTOARG*/
    end
    
 endmodule // buffer
+
 
 // Local Variables:
 // verilog-library-directories:(".")

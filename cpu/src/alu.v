@@ -232,16 +232,16 @@ module alu
            alu_flags_out[F_C] = alu_flags_in[F_C];
            alu_flags_out[F_H] = 1'b1;
            alu_flags_out[F_N] = 1'b0;
-           alu_flags_out[F_Z] = ~alu_data0_in[bit_index];
+           alu_flags_out[F_Z] = ~alu_data1_in[bit_index];
         end
         `ALU_SET: begin
            alu_flags_out = alu_flags_in;
-           alu_data_out = alu_data0_in;
+           alu_data_out = alu_data1_in;
            alu_data_out[bit_index] = 1'b1;
         end
         `ALU_RES: begin
            alu_flags_out = alu_flags_in;
-           alu_data_out = alu_data0_in;
+           alu_data_out = alu_data1_in;
            alu_data_out[bit_index] = 1'b0;
         end
         `ALU_SWAP: begin
