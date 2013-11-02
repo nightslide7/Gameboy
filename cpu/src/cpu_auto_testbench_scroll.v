@@ -88,7 +88,7 @@ module cpu_auto_testbench();
              ~mem_we && ~mem_re) begin
             if (mmod.data[16'hff44] >= 8'd153) begin
                // Speed up the damn process
-               mmod.data[16'hff44] = 8'd140;
+               mmod.data[16'hff44] = 8'd140; // 8'd0;
             end else begin
                mmod.data[16'hff44] = mmod.data[16'hff44] + 8'd1;
             end
