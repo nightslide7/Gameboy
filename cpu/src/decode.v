@@ -1276,6 +1276,7 @@ module decode(/*AUTOARG*/
                         3'b101: alu_op = `ALU_XOR;
                         3'b111: alu_op = `ALU_SUB;
                       endcase // case (instruction[5:3])
+                      A_load = 1'b1;
                    end
                  endcase
               end else begin
@@ -1309,70 +1310,107 @@ module decode(/*AUTOARG*/
               end
            end
 
-           // INC r; DEC r //
-           8'b00_xxx_10x: begin
-              m_cycles = 4'd1;
+           // 8-bit arithmetic immediate operations //
+           8'b11_xxx_110: begin
+              m_cycles = 4'd2;
               case (cycle)
                 5'd3: begin
-                   nin_rn_in = instruction[5:3];
-                   nin_rn_out = instruction[5:3];
-                   if (instruction[5:3] == 3'b111) begin
-                      A_load = 1'b1;
-                      alu_data1_in_sel = `ALU_1_SEL_A;
-                   end else begin
-                      regfile_we_l = 1'b1;
-                      alu_data1_in_sel = `ALU_1_SEL_RGF;
-                      alu_data_gate = 1'b1;
-                   end
-                   if (instruction[0]) begin
-                      alu_op = `ALU_DEC;
-                   end else begin
-                      alu_op = `ALU_INC;
-                   end
-                   F_load = 1'b1;
-                end
-              endcase
-           end
-
-           // INC (HL), DEC (HL) //
-           8'b00_110_10x: begin
-              m_cycles = 4'd3;
-              case (cycle)
-                5'd3: begin
-                   // ABUF = HL
-                   rn_out = `RGF_HL;
-                   regfile_addr_gate = 1'b1;
-                end
-                5'd4: begin
-                   // DBUF = (HL)
+                   // DBUF = n, PC++
                    addr_buf_write_ext = 1'b1;
                    data_buf_load_ext = 1'b1;
+
+                   regfile_inc_pc = 1'b1;
                 end
-                5'd5: begin
-                   // temp1 = (HL)
+                5'd4: begin
                    data_buf_write = 1'b1;
-                   temp1_load = 1'b1;
-                end
-                5'd6: begin
-                   // DBUF = (HL) +/- 1
-                   alu_data1_in_sel = `ALU_1_SEL_TEMP1;
-                   if (instruction[0]) begin
-                      alu_op = `ALU_DEC;
-                   end else begin
-                      alu_op = `ALU_INC;
+                   if (instruction[5:3] != 3'b111) begin
+                      // Don't change A on a compare
+                      A_load = 1'b1;
                    end
                    F_load = 1'b1;
-                   alu_data_gate = 1'b1;
-                   data_buf_load = 1'b1;
+                   case (instruction[5:3])
+                     // ADD: 000, ADC: 001, SUB: 010, SBC: 011,
+                     // AND: 100, OR: 110, XOR: 101, CP: 111
+                     3'b000: alu_op = `ALU_ADD;
+                     3'b001: alu_op = `ALU_ADC;
+                     3'b010: alu_op = `ALU_SUB;
+                     3'b011: alu_op = `ALU_SBC;
+                     3'b100: alu_op = `ALU_AND;
+                     3'b110: alu_op = `ALU_OR;
+                     3'b101: alu_op = `ALU_XOR;
+                     3'b111: alu_op = `ALU_SUB;
+                   endcase // case (instruction[5:3])
+                   A_load = 1'b1;
                 end
-                5'd7: begin
-                   // (HL) = (HL) +/- 1
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_write_ext = 1'b1;
-                end
-              endcase
+              endcase // case (cycle)
            end
            
+           // INC r; DEC r; INC (HL); DEC(HL) //
+           8'b00_xxx_10x: begin
+              // INC (HL); DEC (HL) //
+              if (instruction[5:3] == 3'b110) begin
+                 m_cycles = 4'd3;
+                 case (cycle)
+                   5'd3: begin
+                      // ABUF = HL
+                      rn_out = `RGF_HL;
+                      regfile_addr_gate = 1'b1;
+                      addr_buf_load = 1'b1;
+                   end
+                   5'd4: begin
+                      // DBUF = (HL)
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_load_ext = 1'b1;
+                   end
+                   5'd5: begin
+                      // temp1 = (HL)
+                      data_buf_write = 1'b1;
+                      temp1_load = 1'b1;
+                   end
+                   5'd6: begin
+                      // DBUF = (HL) +/- 1
+                      alu_data1_in_sel = `ALU_1_SEL_TEMP1;
+                      if (instruction[0]) begin
+                         alu_op = `ALU_DEC;
+                      end else begin
+                         alu_op = `ALU_INC;
+                      end
+                      F_load = 1'b1;
+                      alu_data_gate = 1'b1;
+                      data_buf_load = 1'b1;
+                   end
+                   5'd7: begin
+                      // (HL) = (HL) +/- 1
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_write_ext = 1'b1;
+                   end
+                 endcase
+              end else begin
+                 // INC r, DEC r //
+                 m_cycles = 4'd1;
+                 case (cycle)
+                   5'd3: begin
+                      nin_rn_in = instruction[5:3];
+                      nin_rn_out = instruction[5:3];
+                      if (instruction[5:3] == 3'b111) begin
+                         A_load = 1'b1;
+                         alu_data1_in_sel = `ALU_1_SEL_A;
+                      end else begin
+                         regfile_we_l = 1'b1;
+                         alu_data1_in_sel = `ALU_1_SEL_RGF;
+                         alu_data_gate = 1'b1;
+                      end
+                      if (instruction[0]) begin
+                         alu_op = `ALU_DEC;
+                      end else begin
+                         alu_op = `ALU_INC;
+                      end
+                      F_load = 1'b1;
+                   end
+                 endcase // case (cycle)
+              end
+           end
+
            // 16-Bit Arithmetic Operation Instructions /////////////////////////
 
            // ADD HL, ss //
@@ -1398,6 +1436,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_data1_in_sel = `ALU_1_SEL_TEMP1;
                    alu_op = `ALU_ADD;
+                   alu_size = `ALU_SIZE_16;
                    F_load = 1'b1;
                    alu_data_gate = 1'b1;
                    regfile_we_l = 1'b1;
@@ -1407,7 +1446,7 @@ module decode(/*AUTOARG*/
                    // temp0 = ssH
                    nin_rn_out = instruction[5:4];
                    rn16_out = 1'b1;
-                   rn16_out_lo = 1'b1;
+                   rn16_out_hi = 1'b1;
                    regfile_data_gate = 1'b1;
                    temp0_load = 1'b1;
                 end
@@ -1417,6 +1456,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_data1_in_sel = `ALU_1_SEL_RGF;
                    alu_op = `ALU_ADC;
+                   alu_size = `ALU_SIZE_16;
                    F_load = 1'b1;
                    alu_data_gate = 1'b1;
                    regfile_we_l = 1'b1;
@@ -1491,6 +1531,25 @@ module decode(/*AUTOARG*/
                    rn16_in = 1'b1;
                    nin_rn_in = instruction[5:4];
                 end
+              endcase
+           end
+
+           // Rotate A Instructions (WHY OH GOD WHY) ///////////////////////////
+
+           8'b00_000_111, 8'b00_010_111, 8'b00_001_111, 8'b00_011_111: begin
+              m_cycles = 4'd1;
+              case (cycle)
+                5'd3: begin
+                   case (instruction[4:3])
+                     2'b00: alu_op = `ALU_RLC;
+                     2'b01: alu_op = `ALU_RRC;
+                     2'b10: alu_op = `ALU_RL;
+                     2'b11: alu_op = `ALU_RR;
+                   endcase // case (cycle)
+                   alu_data1_in_sel = `ALU_1_SEL_A;
+                   A_load = 1'b1;
+                   F_load = 1'b1;
+                end // case: 5'd3
               endcase
            end
            
@@ -1641,6 +1700,7 @@ module decode(/*AUTOARG*/
            8'b11_101_001: begin
               m_cycles = 4'd1;
               if (cycle == 5'd3) begin
+                 regfile_we_l = 1'b1;
                  regfile_jp_hl = 1'b1;
               end
            end
@@ -1822,7 +1882,6 @@ module decode(/*AUTOARG*/
             101 28 0010 1000
             110 30 0011 0000
             111 38 0011 1000
-            The reset value is ((instruction << 2) >> 5) << 3
             */
            8'b11_xxx_111: begin
               m_cycles = 4'd4;
@@ -1879,11 +1938,14 @@ module decode(/*AUTOARG*/
                    regfile_we_l = 1'b1;
                 end
                 5'd8: begin
-                   // temp0 = temp1
+                   // temp0 = temp1, (SP - 2) = PCL
                    alu_data_gate = 1'b1;
                    alu_op = `ALU_PASS1;
                    alu_data1_in_sel = `ALU_1_SEL_TEMP1;
                    temp0_load = 1'b1;
+
+                   addr_buf_write_ext = 1'b1;
+                   data_buf_write_ext = 1'b1;
                 end
                 5'd9: begin
                    // temp1 = temp0 ^ temp1 (== temp1 ^ temp1 == 0)
@@ -1903,7 +1965,7 @@ module decode(/*AUTOARG*/
                 end
               endcase
            end // case: 8'b11_xxx_111
-
+           
       // General-Purpose Arithmetic/CPU Control Instructions ///////////////////
 
            // DAA //
@@ -1973,7 +2035,7 @@ module decode(/*AUTOARG*/
                  end
               endcase
            end
-           
+
          endcase // casex (instruction)
       
       // CB Instructions ///////////////////////////////////////////////////////
@@ -2083,12 +2145,36 @@ module decode(/*AUTOARG*/
                       data_buf_load_ext = 1'b1;
                    end
                    5'd8: begin
-                      // Set the flags
+                      // TEMP1 = DBUF
                       data_buf_write = 1'b1;
-                      alu_data1_in_sel = `ALU_1_SEL_DATA;
+                      temp1_load = 1'b1;
+                   end
+                   5'd9: begin
+                      // Perform op
+                      alu_data1_in_sel = `ALU_1_SEL_TEMP1;
                       alu_data0_in_sel = `ALU_0_SEL_TEMP0;
-                      alu_op = `ALU_BIT;
-                      F_load = 1'b1;
+                      if (instruction[7:6] == 2'b01) begin
+                         // BIT
+                         alu_op = `ALU_BIT;
+                         F_load = 1'b1;
+                      end else begin
+                         // DBUF = result
+                         alu_data_gate = 1'b1;
+                         data_buf_load = 1'b1;
+                         if (instruction[7:6] == 2'b11) begin
+                            // SET
+                            alu_op = `ALU_SET;
+                         end else begin
+                            // RES
+                            alu_op = `ALU_RES;
+                         end
+                      end
+                   end // case: 5'd9
+                   5'd10: begin
+                      if (instruction[7:6] != 2'b01) begin
+                         addr_buf_write_ext = 1'b1;
+                         data_buf_write_ext = 1'b1;
+                      end
                    end
                  endcase
               end else begin
