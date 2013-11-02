@@ -591,8 +591,8 @@ module decode(/*AUTOARG*/
               endcase
            end
 
-           // LD A, (n) (LD A, (n + 0xFF00)) //
-           8'b11_110_000: begin
+           // LD A, (n) (LD A, (n + 0xFF00)); LD (n), A //
+           8'b11_110_000, 8'b11_100_000: begin
               m_cycles = 4'd3;
               case (cycle)
                 5'd3: begin
@@ -614,7 +614,7 @@ module decode(/*AUTOARG*/
                    // ABUF = (C + 0xFF00), C = old C
                    rn_out = `RGF_C;
                    regfile_addr_gate = 1'b1;
-                   addr_buf_write = 1'b1;
+                   addr_buf_load = 1'b1;
                    addr_ff00_sel = 1'b1;
 
                    rn_in = `RGF_C;
@@ -624,64 +624,29 @@ module decode(/*AUTOARG*/
                    alu_data_gate = 1'b1;
                 end // case: 5'd5
                 5'd6: begin
-                   // DBUF = (n), PC++
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_load_ext = 1'b1;
-
+                   if (instruction[4]) begin
+                      // LD A, (n): DBUF = (n), PC++
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_load_ext = 1'b1;
+                   end else begin
+                      // LD (n), A: DBUF = A, PC++
+                      A_data_gate = 1'b1;
+                      data_buf_load = 1'b1;
+                   end
+                   
                    regfile_inc_pc = 1'b1;
                 end
                 5'd7: begin
-                   // A = (n)
-                   data_buf_write = 1'b1;
-                   alu_op = `ALU_PASS0;
-                   A_load = 1'b1;
-                end
-              endcase
-           end
-
-           // LD (n), A (also LD (n + 0xff00), A) //
-           8'b11_100_000: begin
-              m_cycles = 4'd3;
-              case (cycle)
-                5'd3: begin
-                   // DBUF = n, temp0 = old C
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_load_ext = 1'b1;
-
-                   rn_out = `RGF_C;
-                   regfile_data_gate = 1'b1;
-                   temp0_load = 1'b1;
-                end
-                5'd4: begin
-                   // C = n
-                   rn_in = `RGF_C;
-                   regfile_we_l = 1'b1;
-                   data_buf_write = 1'b1;
-                end
-                5'd5: begin
-                   // ABUF = (C + 0xff00), C = old C
-                   rn_out = `RGF_C;
-                   regfile_addr_gate = 1'b1;
-                   addr_buf_write = 1'b1;
-                   addr_ff00_sel = 1'b1;
-
-                   rn_in = `RGF_C;
-                   regfile_we_l = 1'b1;
-                   alu_data0_in_sel = `ALU_0_SEL_TEMP0;
-                   alu_op = `ALU_PASS0;
-                   alu_data_gate = 1'b1;
-                end
-                5'd6: begin
-                   // DBUF = A, PC++
-                   A_data_gate = 1'b1;
-                   data_buf_load = 1'b1;
-
-                   regfile_inc_pc = 1'b1;
-                end
-                5'd7: begin
-                   // (n) = A
-                   addr_buf_write_ext = 1'b1;
-                   data_buf_write_ext = 1'b1;
+                   if (instruction[4]) begin
+                      // LD A, (n): A = (n)
+                      data_buf_write = 1'b1;
+                      alu_op = `ALU_PASS0;
+                      A_load = 1'b1;
+                   end else begin
+                      // LD (n), A: (n) = A
+                      addr_buf_write_ext = 1'b1;
+                      data_buf_write_ext = 1'b1;
+                   end
                 end
               endcase
            end
