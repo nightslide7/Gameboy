@@ -18,9 +18,15 @@ module audio_top (input              square_wave_enable,
 		  output wire        flash_oe_n,
 		  output wire        flash_we_n,
 		  output wire        strobe,
-		  output wire [3:0] 			     ch3_out,
+		  input wire ch1_reset_test,
+		  input wire ch2_reset_test,
 		  input wire ch3_reset_test
 		  );
+   wire [3:0] 		     ch1_level;
+   wire [3:0] 		     ch2_level;
+   wire [3:0] 		     ch3_level;
+   
+   
    reg [15:0] 			     reg_addr=16'hffff;
    reg [7:0] 			     reg_data=8'hff;
    reg 				     reg_w_enable=0;
@@ -98,12 +104,9 @@ module audio_top (input              square_wave_enable,
 	    .rotary_inc_b		(rotary_inc_b),
 	    .flash_wait			(flash_wait),
 	    .flash_d			(flash_d[15:0]),
-	    .ch3_vol			(ch3_out[3:0]));/*square_wave_enable, sample_no, ac97_bitclk, ac97_sdata_in,
-	    rotary_inc_a, rotary_inc_b, ac97_sdata_out, ac97_sync,
-	    ac97_reset_b, flash_wait, flash_d, flash_a, flash_adv_n,
-	    flash_ce_n, flash_clk, flash_oe_n, flash_we_n, strobe,
-	    ch3_out
-	    );*/
+	    .ch1_level			(ch1_level[3:0]),
+	    .ch2_level			(ch2_level[3:0]),
+	    .ch3_level			(ch3_level[3:0]));
 
    // The frame sequencer is a 512Hz clock from which other timing clocks
    // are derived
@@ -114,6 +117,24 @@ module audio_top (input              square_wave_enable,
 			  .clock_in (ac97_bitclk)
 			  );
 
+   // The frequency sweep clock is a 128Hz clock. The frequency is swept
+   // in multiples of 128Hz
+   wire 			     square_sweep_cntrl_clk;
+
+   my_clock_divider #(.DIV_SIZE(3), .DIV_OVER_TWO(2))
+                    sweepdiv(.clock_out (square_sweep_cntrl_clk),
+			     .clock_in (frame_sequencer_clk)
+			     );
+
+   // The volume envelope clock is a 64Hz clock. The volume is stepped
+   // in multiples of 64Hz
+   wire 			     square_envelope_cntrl_clk;
+
+   my_clock_divider #(.DIV_SIZE(4), .DIV_OVER_TWO(4))
+                    envdiv(.clock_out (square_envelope_cntrl_clk),
+			   .clock_in (frame_sequencer_clk)
+			   );
+   
    // The length control clock is a 256Hz clock. Audio is played in multiples
    // of 256Hz
    wire 			     length_cntrl_clk;
@@ -123,10 +144,21 @@ module audio_top (input              square_wave_enable,
 			   .clock_in (frame_sequencer_clk)
 			   );
 
-   // Channel 3 has a specific frequency for its frequency control clock
+   // Channels 1 and 2 have a specific frequency of 131072Hz for their
+   // frequency control clock
+   wire 			     ch1_2_freq_cntrl_clk;
+
+   /* NOT PERFECT - try to fix. Is 130723.404Hz, should be 131072Hz */
+   my_clock_divider #(.DIV_SIZE(6), .DIV_OVER_TWO(47))
+                    freq12div(.clock_out (ch1_2_freq_cntrl_clk),
+			      .clock_in (ac97_bitclk)
+			      );
+   
+   // Channel 3 has a specific frequency of 65536Hz for its frequency 
+   // control clock
    wire 			     ch3_freq_cntrl_clk;
 
-   /* NOT PERFECT - try to fix. Is 65361.702Hz, should be 65536Hz*/
+   /* NOT PERFECT - try to fix. Is 65361.702Hz, should be 65536Hz */
    my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(94))
                     freq3div(.clock_out (ch3_freq_cntrl_clk),
 			     .clock_in (ac97_bitclk)
@@ -187,35 +219,54 @@ module audio_top (input              square_wave_enable,
 			.ch2_on_flag	(ch2_on_flag),
 			.ch1_on_flag	(ch1_on_flag),
 			// Inputs
-			.addr		(reg_addr[15:0]),
-			.data		(reg_data[7:0]),
-			.w_enable	(reg_w_enable));/*reg_addr, reg_data, reg_w_enable, ch1_sweep_time,
-			ch1_sweep_decreasing, ch1_num_sweep_shifts,
-			ch1_wave_duty, ch1_length_data, ch1_initial_volume,
-			ch1_envelope_increasing, ch1_num_envelope_sweeps,
-			ch1_reset, ch1_dont_loop, ch1_frequency_data,
-			ch2_wave_duty, ch2_length_data, ch2_initial_volume,
-			ch2_envelope_increasing, ch2_num_envelope_sweeps,
-			ch2_reset, ch2_dont_loop, ch2_frequency_data,
-			ch3_enable, ch3_length_data, ch3_output_level,
-			ch3_reset, ch3_dont_loop, ch3_frequency_data,
-			ch3_samples, ch4_length_data, ch4_initial_volume,
-			ch4_envelope_increasing, ch4_num_envelope_sweeps,
-			ch4_shift_clock_freq_data, ch4_counter_width,
-			ch4_freq_dividing_ratio, ch4_reset, ch4_dont_loop,
-			SO2_Vin, SO2_output_level, SO1_Vin, SO1_output_level,
-			SO2_ch4_enable, SO2_ch3_enable, SO2_ch2_enable,
-			SO2_ch1_enable, SO1_ch4_enable, SO1_ch3_enable,
-			SO1_ch2_enable, SO1_ch1_enable, sound_master_enable,
-			ch4_on_flag, ch3_on_flag, ch2_on_flag, ch1_on_flag
-			);*/
-
+			.reg_addr	(reg_addr[15:0]),
+			.reg_data	(reg_data[7:0]),
+			.reg_w_enable	(reg_w_enable));
+   
+   SquareWave ch1(// Outputs
+		  .level		(ch1_level[3:0]),
+		  // Inputs
+		  .length_cntrl_clk     (length_cntrl_clk),
+		  .sweep_cntrl_clk	(square_sweep_cntrl_clk),
+		  .env_cntrl_clk	(square_envelope_cntrl_clk),
+		  .freq_cntrl_clk       (ch1_2_freq_cntrl_clk),
+		  .sweep_time		(ch1_sweep_time[2:0]),
+		  .sweep_decreasing	(ch1_sweep_decreasing),
+		  .num_sweep_shifts	(ch1_num_sweep_shifts[2:0]),
+		  .wave_duty		(ch1_wave_duty[1:0]),
+		  .length_data		(ch1_length_data[5:0]),
+		  .initial_volume	(ch1_initial_volume[3:0]),
+		  .envelope_increasing	(ch1_envelope_increasing),
+		  .num_envelope_sweeps	(ch1_num_envelope_sweeps[2:0]),
+		  .reset		(ch1_reset_test),//***TESTING***
+		  .dont_loop		(ch1_dont_loop),
+		  .frequency_data	(ch1_frequency_data[10:0]));
+   
+   SquareWave ch2(// Outputs
+		  .level		(ch2_level[3:0]),
+		  // Inputs
+		  .length_cntrl_clk     (length_cntrl_clk),
+		  .sweep_cntrl_clk	(square_sweep_cntrl_clk),
+		  .env_cntrl_clk	(square_envelope_cntrl_clk),
+		  .freq_cntrl_clk       (ch1_2_freq_cntrl_clk),
+		  .sweep_time		(3'd0),
+		  .sweep_decreasing	(1'd0),
+		  .num_sweep_shifts	(3'd0),
+		  .wave_duty		(ch2_wave_duty[1:0]),
+		  .length_data		(ch2_length_data[5:0]),
+		  .initial_volume	(ch2_initial_volume[3:0]),
+		  .envelope_increasing	(ch2_envelope_increasing),
+		  .num_envelope_sweeps	(ch2_num_envelope_sweeps[2:0]),
+		  .reset		(ch2_reset_test),//***TESTING***
+		  .dont_loop		(ch2_dont_loop),
+		  .frequency_data	(ch2_frequency_data[10:0]));
+   
    WaveformPlayer wp(.clk(ac97_bitclk),
-		     .level(ch3_out),
+		     .level(ch3_level),
 		     .ch3_enable	(ch3_enable),
 		     .ch3_length_data(ch3_length_data[7:0]),
 		     .ch3_output_level(ch3_output_level[1:0]),
-		     .ch3_reset	(ch3_reset_test),
+		     .ch3_reset	(ch3_reset_test),//***TESTING***
 		     .ch3_dont_loop	(ch3_dont_loop),
 		     .ch3_frequency_data(ch3_frequency_data[10:0]),
 		     .ch3_samples	(ch3_samples[127:0]),
@@ -224,5 +275,6 @@ module audio_top (input              square_wave_enable,
 endmodule // audio_top
 
 // Local Variables:
-// verilog-library-directories:("." "./AC97_work" "./sound_functions")
+// verilog-library-directories:("." "./AC97_work/" "./sound_functions/")
+// verilog-library-files:("./sound_functions/sound_functions.v")
 // End:

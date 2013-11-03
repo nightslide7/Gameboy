@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 
@@ -112,7 +112,6 @@ Compiling verilog file "AC97.v" in library work
 Module <audio_top> compiled
 Module <AC97> compiled
 Module <AudioGen> compiled
-Module <SquareWave> compiled
 Module <ACLink> compiled
 Compiling verilog file "chipscope_icon.v" in library work
 Module <AC97Conf> compiled
@@ -122,8 +121,9 @@ Compiling verilog file "../rotary_controller/rotary_controller.v" in library wor
 Module <chipscope_ila> compiled
 Compiling verilog file "../sound_functions/sound_functions.v" in library work
 Module <rotary_controller> compiled
-Compiling verilog file "../sound_registers.v" in library work
 Module <WaveformPlayer> compiled
+Compiling verilog file "../sound_registers.v" in library work
+Module <SquareWave> compiled
 Compiling verilog file "../my_clock_divider.v" in library work
 Module <sound_registers> compiled
 Module <my_clock_divider> compiled
@@ -143,14 +143,28 @@ Analyzing hierarchy for module <my_clock_divider> in library <work> with paramet
 	DIV_SIZE = "00000000000000000000000000001111"
 
 Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
+	DIV_OVER_TWO = "00000000000000000000000000000010"
+	DIV_SIZE = "00000000000000000000000000000011"
+
+Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
+	DIV_OVER_TWO = "00000000000000000000000000000100"
+	DIV_SIZE = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
 	DIV_OVER_TWO = "00000000000000000000000000000001"
 	DIV_SIZE = "00000000000000000000000000000010"
+
+Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
+	DIV_OVER_TWO = "00000000000000000000000000101111"
+	DIV_SIZE = "00000000000000000000000000000110"
 
 Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
 	DIV_OVER_TWO = "00000000000000000000000001011110"
 	DIV_SIZE = "00000000000000000000000000000111"
 
 Analyzing hierarchy for module <sound_registers> in library <work>.
+
+Analyzing hierarchy for module <SquareWave> in library <work>.
 
 Analyzing hierarchy for module <WaveformPlayer> in library <work>.
 
@@ -161,9 +175,6 @@ Analyzing hierarchy for module <AudioGen> in library <work>.
 Analyzing hierarchy for module <ACLink> in library <work>.
 
 Analyzing hierarchy for module <AC97Conf> in library <work>.
-
-Analyzing hierarchy for module <SquareWave> in library <work> with parameters.
-	strobe_rate = "00001011101101000100"
 
 
 =========================================================================
@@ -181,10 +192,6 @@ Module <rotary_controller> is correct for synthesis.
 Analyzing module <AudioGen> in library <work>.
 Module <AudioGen> is correct for synthesis.
  
-Analyzing module <SquareWave> in library <work>.
-	strobe_rate = 20'b00001011101101000100
-Module <SquareWave> is correct for synthesis.
- 
 Analyzing module <ACLink> in library <work>.
 Module <ACLink> is correct for synthesis.
  
@@ -197,20 +204,38 @@ Analyzing module <my_clock_divider.1> in library <work>.
 Module <my_clock_divider.1> is correct for synthesis.
  
 Analyzing module <my_clock_divider.2> in library <work>.
-	DIV_OVER_TWO = 32'sb00000000000000000000000000000001
-	DIV_SIZE = 32'sb00000000000000000000000000000010
+	DIV_OVER_TWO = 32'sb00000000000000000000000000000010
+	DIV_SIZE = 32'sb00000000000000000000000000000011
 Module <my_clock_divider.2> is correct for synthesis.
  
 Analyzing module <my_clock_divider.3> in library <work>.
+	DIV_OVER_TWO = 32'sb00000000000000000000000000000100
+	DIV_SIZE = 32'sb00000000000000000000000000000100
+Module <my_clock_divider.3> is correct for synthesis.
+ 
+Analyzing module <my_clock_divider.4> in library <work>.
+	DIV_OVER_TWO = 32'sb00000000000000000000000000000001
+	DIV_SIZE = 32'sb00000000000000000000000000000010
+Module <my_clock_divider.4> is correct for synthesis.
+ 
+Analyzing module <my_clock_divider.5> in library <work>.
+	DIV_OVER_TWO = 32'sb00000000000000000000000000101111
+	DIV_SIZE = 32'sb00000000000000000000000000000110
+Module <my_clock_divider.5> is correct for synthesis.
+ 
+Analyzing module <my_clock_divider.6> in library <work>.
 	DIV_OVER_TWO = 32'sb00000000000000000000000001011110
 	DIV_SIZE = 32'sb00000000000000000000000000000111
-Module <my_clock_divider.3> is correct for synthesis.
+Module <my_clock_divider.6> is correct for synthesis.
  
 Analyzing module <sound_registers> in library <work>.
 Module <sound_registers> is correct for synthesis.
  
+Analyzing module <SquareWave> in library <work>.
+Module <SquareWave> is correct for synthesis.
+ 
 Analyzing module <WaveformPlayer> in library <work>.
-WARNING:Xst:790 - "../sound_functions/sound_functions.v" line 71: Index value(s) does not match array range, simulation mismatch.
+WARNING:Xst:790 - "../sound_functions/sound_functions.v" line 72: Index value(s) does not match array range, simulation mismatch.
 Module <WaveformPlayer> is correct for synthesis.
  
 
@@ -222,7 +247,6 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <my_clock_divider_1>.
     Related source file is "../my_clock_divider.v".
-WARNING:Xst:647 - Input <reset_b> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <clock_out>.
     Found 15-bit up counter for signal <counter>.
     Summary:
@@ -233,9 +257,8 @@ Unit <my_clock_divider_1> synthesized.
 
 Synthesizing Unit <my_clock_divider_2>.
     Related source file is "../my_clock_divider.v".
-WARNING:Xst:647 - Input <reset_b> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <clock_out>.
-    Found 2-bit up counter for signal <counter>.
+    Found 3-bit up counter for signal <counter>.
     Summary:
 	inferred   1 Counter(s).
 	inferred   1 D-type flip-flop(s).
@@ -244,13 +267,42 @@ Unit <my_clock_divider_2> synthesized.
 
 Synthesizing Unit <my_clock_divider_3>.
     Related source file is "../my_clock_divider.v".
-WARNING:Xst:647 - Input <reset_b> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <clock_out>.
+    Found 4-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <my_clock_divider_3> synthesized.
+
+
+Synthesizing Unit <my_clock_divider_4>.
+    Related source file is "../my_clock_divider.v".
+    Found 1-bit register for signal <clock_out>.
+    Found 2-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <my_clock_divider_4> synthesized.
+
+
+Synthesizing Unit <my_clock_divider_5>.
+    Related source file is "../my_clock_divider.v".
+    Found 1-bit register for signal <clock_out>.
+    Found 6-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <my_clock_divider_5> synthesized.
+
+
+Synthesizing Unit <my_clock_divider_6>.
+    Related source file is "../my_clock_divider.v".
     Found 1-bit register for signal <clock_out>.
     Found 7-bit up counter for signal <counter>.
     Summary:
 	inferred   1 Counter(s).
 	inferred   1 D-type flip-flop(s).
-Unit <my_clock_divider_3> synthesized.
+Unit <my_clock_divider_6> synthesized.
 
 
 Synthesizing Unit <sound_registers>.
@@ -279,17 +331,16 @@ WARNING:Xst:646 - Signal <NR33> is assigned but never used. This unconnected sig
 WARNING:Xst:646 - Signal <NR32> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <NR31> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <NR30> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR24<5:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR14<5:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR10<7>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR10>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR11>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR12>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR13>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+WARNING:Xst:646 - Signal <NR24<6:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR23> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR22> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR21> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR14<6:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR13> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR12> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR11> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <NR10> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:737 - Found 8-bit latch for signal <NR14>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR21>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR22>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
-WARNING:Xst:737 - Found 8-bit latch for signal <NR23>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <NR24>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <NR34>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
 WARNING:Xst:737 - Found 8-bit latch for signal <NR41>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
@@ -302,23 +353,68 @@ WARNING:Xst:737 - Found 8-bit latch for signal <NR52>. Latches may be generated 
 Unit <sound_registers> synthesized.
 
 
+Synthesizing Unit <SquareWave>.
+    Related source file is "../sound_functions/sound_functions.v".
+    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 144.
+    Found 5-bit up counter for signal <env_counter>.
+    Found 5-bit comparator equal for signal <env_counter$cmp_eq0000> created at line 271.
+    Found 4-bit comparator less for signal <env_counter$cmp_lt0000> created at line 271.
+    Found 12-bit register for signal <freq_counter>.
+    Found 12-bit adder for signal <freq_counter$share0000> created at line 157.
+    Found 9-bit up counter for signal <len_counter>.
+    Found 10-bit comparator lessequal for signal <len_counter$cmp_le0000> created at line 144.
+    Found 4-bit up counter for signal <num_env_done>.
+    Found 4-bit up counter for signal <num_sweeps_done>.
+    Found 4-bit comparator not equal for signal <num_sweeps_done$cmp_ne0000> created at line 233.
+    Found 4-bit register for signal <reg_level>.
+    Found 12-bit comparator equal for signal <reg_level$cmp_eq0001> created at line 164.
+    Found 12-bit comparator equal for signal <reg_level$cmp_eq0003> created at line 177.
+    Found 12-bit comparator equal for signal <reg_level$cmp_eq0005> created at line 190.
+    Found 12-bit comparator greatequal for signal <reg_level$cmp_ge0000> created at line 168.
+    Found 9-bit comparator lessequal for signal <reg_level$cmp_le0000> created at line 155.
+    Found 4-bit updown counter for signal <reg_vol>.
+    Found 4-bit comparator greatequal for signal <reg_vol$cmp_ge0000> created at line 273.
+    Found 4-bit comparator greatequal for signal <reg_vol$cmp_ge0001> created at line 271.
+    Found 4-bit comparator lessequal for signal <reg_vol$cmp_le0000> created at line 276.
+    Found 4-bit comparator less for signal <reg_vol$cmp_lt0000> created at line 273.
+    Found 5-bit comparator not equal for signal <reg_vol$cmp_ne0000> created at line 271.
+    Found 4-bit up counter for signal <sweep_counter>.
+    Found 12-bit register for signal <true_freq>.
+    Found 12-bit adder for signal <true_freq$addsub0000> created at line 230.
+    Found 12-bit adder for signal <true_freq$addsub0001> created at line 239.
+    Found 4-bit comparator equal for signal <true_freq$cmp_eq0000> created at line 233.
+    Found 4-bit comparator greatequal for signal <true_freq$cmp_ge0000> created at line 249.
+    Found 4-bit comparator less for signal <true_freq$cmp_lt0000> created at line 233.
+    Found 12-bit comparator less for signal <true_freq$cmp_lt0001> created at line 239.
+    Found 12-bit addsub carry in for signal <true_freq$share0000>.
+    Found 12-bit shifter logical right for signal <true_freq$shift0000> created at line 239.
+    Found 8-bit adder for signal <true_len$sub0000> created at line 137.
+    Summary:
+	inferred   6 Counter(s).
+	inferred  28 D-type flip-flop(s).
+	inferred   6 Adder/Subtractor(s).
+	inferred  18 Comparator(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <SquareWave> synthesized.
+
+
 Synthesizing Unit <WaveformPlayer>.
     Related source file is "../sound_functions/sound_functions.v".
 WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 46.
+    Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 48.
     Found 12-bit up counter for signal <freq_counter>.
-    Found 12-bit comparator equal for signal <freq_counter$cmp_eq0000> created at line 60.
+    Found 12-bit comparator equal for signal <freq_counter$cmp_eq0000> created at line 61.
     Found 8-bit register for signal <index_hi>.
-    Found 9-bit comparator lessequal for signal <index_hi$cmp_le0000> created at line 68.
-    Found 12-bit comparator not equal for signal <index_hi$cmp_ne0000> created at line 60.
+    Found 9-bit comparator lessequal for signal <index_hi$cmp_le0000> created at line 69.
+    Found 12-bit comparator not equal for signal <index_hi$cmp_ne0000> created at line 61.
     Found 8-bit adder for signal <index_hi$share0000>.
     Found 9-bit up counter for signal <len_counter>.
-    Found 10-bit comparator lessequal for signal <len_counter$cmp_le0000> created at line 46.
-    Found 3-bit subtractor for signal <level$addsub0000> created at line 86.
-    Found 4-bit shifter logical right for signal <level$shift0001> created at line 86.
+    Found 10-bit comparator lessequal for signal <len_counter$cmp_le0000> created at line 48.
+    Found 3-bit subtractor for signal <level$addsub0000> created at line 87.
+    Found 4-bit shifter logical right for signal <level$shift0001> created at line 87.
     Found 4-bit register for signal <reg_level>.
-    Found 9-bit comparator greater for signal <reg_level$cmp_gt0000> created at line 68.
-    Found 8-bit comparator lessequal for signal <reg_level$cmp_le0000> created at line 70.
+    Found 9-bit comparator greater for signal <reg_level$cmp_gt0000> created at line 69.
+    Found 8-bit comparator lessequal for signal <reg_level$cmp_le0000> created at line 71.
     Found 12-bit adder for signal <true_freq>.
     Found 9-bit adder for signal <true_len>.
     Summary:
@@ -350,11 +446,33 @@ Synthesizing Unit <rotary_controller>.
 Unit <rotary_controller> synthesized.
 
 
+Synthesizing Unit <AudioGen>.
+    Related source file is "AC97.v".
+WARNING:Xst:1305 - Output <flash_clk> is never assigned. Tied to value 0.
+WARNING:Xst:1780 - Signal <square_sample> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 24-bit register for signal <flash_a>.
+    Found 1-bit register for signal <flash_adv_n>.
+    Found 5-bit adder carry out for signal <ac97_out_slot3$addsub0001> created at line 199.
+    Found 4-bit adder carry out for signal <ac97_out_slot3$addsub0002> created at line 199.
+    Found 20-bit shifter logical left for signal <ac97_out_slot3$shift0000> created at line 199.
+    Found 24-bit up counter for signal <count>.
+    Found 24-bit comparator greatequal for signal <count$cmp_ge0000> created at line 180.
+    Found 16-bit register for signal <curr_sample>.
+    Found 16-bit register for signal <next_sample>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  57 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <AudioGen> synthesized.
+
+
 Synthesizing Unit <ACLink>.
     Related source file is "AC97.v".
 WARNING:Xst:646 - Signal <latched_inbits> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit 256-to-1 multiplexer for signal <ac97_sdata_out>.
-    Found 8-bit comparator less for signal <ac97_sync$cmp_lt0000> created at line 282.
+    Found 8-bit comparator less for signal <ac97_sync$cmp_lt0000> created at line 258.
     Found 8-bit up counter for signal <curbit>.
     Found 256-bit register for signal <inbits>.
 INFO:Xst:738 - HDL ADVISOR - 256 flip-flops were inferred for signal <inbits>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
@@ -385,41 +503,6 @@ Synthesizing Unit <AC97Conf>.
 Unit <AC97Conf> synthesized.
 
 
-Synthesizing Unit <SquareWave>.
-    Related source file is "AC97.v".
-WARNING:Xst:647 - Input <ac97_bitclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 20-bit adder for signal <old_strobe_counter_2$add0000> created at line 216.
-    Found 20-bit comparator greatequal for signal <sample$cmp_ge0000> created at line 228.
-    Found 20-bit up accumulator for signal <strobe_counter>.
-    Found 20-bit comparator greatequal for signal <strobe_counter$cmp_ge0000> created at line 217.
-    Summary:
-	inferred   1 Accumulator(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   2 Comparator(s).
-Unit <SquareWave> synthesized.
-
-
-Synthesizing Unit <AudioGen>.
-    Related source file is "AC97.v".
-WARNING:Xst:1305 - Output <flash_clk> is never assigned. Tied to value 0.
-WARNING:Xst:646 - Signal <square_sample> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 24-bit register for signal <flash_a>.
-    Found 1-bit register for signal <flash_adv_n>.
-    Found 4-bit adder carry out for signal <ac97_out_slot3$addsub0001> created at line 196.
-    Found 20-bit shifter logical left for signal <ac97_out_slot3$shift0000> created at line 196.
-    Found 24-bit up counter for signal <count>.
-    Found 24-bit comparator greatequal for signal <count$cmp_ge0000> created at line 177.
-    Found 16-bit register for signal <curr_sample>.
-    Found 16-bit register for signal <next_sample>.
-    Summary:
-	inferred   1 Counter(s).
-	inferred  57 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
-	inferred   1 Combinational logic shifter(s).
-Unit <AudioGen> synthesized.
-
-
 Synthesizing Unit <AC97>.
     Related source file is "AC97.v".
 WARNING:Xst:653 - Signal <ac97_out_slot6> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000.
@@ -445,27 +528,10 @@ WARNING:Xst:646 - Signal <ch4_dont_loop> is assigned but never used. This unconn
 WARNING:Xst:646 - Signal <ch4_counter_width> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch3_reset> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch3_on_flag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_wave_duty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch2_reset> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch2_on_flag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_num_envelope_sweeps> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_length_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_initial_volume> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_frequency_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_envelope_increasing> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch2_dont_loop> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_wave_duty> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_sweep_time> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_sweep_decreasing> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch1_reset> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ch1_on_flag> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_num_sweep_shifts> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_num_envelope_sweeps> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_length_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_initial_volume> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_frequency_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_envelope_increasing> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <ch1_dont_loop> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <SO2_output_level> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <SO2_ch4_enable> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <SO2_ch3_enable> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -486,46 +552,59 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 7
- 12-bit adder                                          : 1
- 20-bit adder                                          : 1
+# Adders/Subtractors                                   : 19
+ 12-bit adder                                          : 7
+ 12-bit addsub carry/borrow in                         : 2
  3-bit subtractor                                      : 1
  4-bit adder carry out                                 : 1
- 8-bit adder                                           : 1
+ 5-bit adder carry out                                 : 1
+ 8-bit adder                                           : 3
  9-bit adder                                           : 1
- 9-bit adder carry out                                 : 1
-# Counters                                             : 8
+ 9-bit adder carry out                                 : 3
+# Counters                                             : 23
  12-bit up counter                                     : 1
  15-bit up counter                                     : 1
  2-bit up counter                                      : 1
  24-bit up counter                                     : 1
- 4-bit updown counter                                  : 1
+ 3-bit up counter                                      : 1
+ 4-bit up counter                                      : 7
+ 4-bit updown counter                                  : 3
+ 5-bit up counter                                      : 2
+ 6-bit up counter                                      : 1
  7-bit up counter                                      : 1
  8-bit up counter                                      : 1
- 9-bit up counter                                      : 1
-# Accumulators                                         : 1
- 20-bit up accumulator                                 : 1
-# Registers                                            : 265
- 1-bit register                                        : 260
+ 9-bit up counter                                      : 3
+# Registers                                            : 274
+ 1-bit register                                        : 263
+ 12-bit register                                       : 4
  16-bit register                                       : 2
  24-bit register                                       : 1
- 4-bit register                                        : 1
+ 4-bit register                                        : 3
  8-bit register                                        : 1
-# Latches                                              : 17
- 8-bit latch                                           : 17
-# Comparators                                          : 10
- 10-bit comparator lessequal                           : 1
- 12-bit comparator equal                               : 1
+# Latches                                              : 10
+ 8-bit latch                                           : 10
+# Comparators                                          : 44
+ 10-bit comparator lessequal                           : 3
+ 12-bit comparator equal                               : 7
+ 12-bit comparator greatequal                          : 2
+ 12-bit comparator less                                : 2
  12-bit comparator not equal                           : 1
- 20-bit comparator greatequal                          : 2
  24-bit comparator greatequal                          : 1
+ 4-bit comparator equal                                : 2
+ 4-bit comparator greatequal                           : 6
+ 4-bit comparator less                                 : 6
+ 4-bit comparator lessequal                            : 2
+ 4-bit comparator not equal                            : 2
+ 5-bit comparator equal                                : 2
+ 5-bit comparator not equal                            : 2
  8-bit comparator less                                 : 1
  8-bit comparator lessequal                            : 1
  9-bit comparator greater                              : 1
- 9-bit comparator lessequal                            : 1
+ 9-bit comparator lessequal                            : 3
 # Multiplexers                                         : 1
  1-bit 256-to-1 multiplexer                            : 1
-# Logic shifters                                       : 2
+# Logic shifters                                       : 4
+ 12-bit shifter logical right                          : 2
  20-bit shifter logical left                           : 1
  4-bit shifter logical right                           : 1
 
@@ -560,8 +639,6 @@ Optimizing FSM <gen/rot/state/FSM> on signal <state[1:3]> with gray encoding.
  0101  | 111
  0110  | 101
 -------------------
-WARNING:Xst:1290 - Hierarchical block <sw> is unconnected in block <source>.
-   It will be removed from the design.
 WARNING:Xst:1710 - FF/Latch <reg_level_3> (without init value) has a constant value of 0 in block <wp>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2404 -  FFs/Latches <reg_level<3:3>> (without init value) have a constant value of 0 in block <WaveformPlayer>.
 
@@ -570,42 +647,54 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # FSMs                                                 : 2
-# Adders/Subtractors                                   : 7
- 12-bit adder                                          : 1
- 20-bit adder                                          : 1
+# Adders/Subtractors                                   : 19
+ 12-bit adder                                          : 7
+ 12-bit addsub carry/borrow in                         : 2
  3-bit subtractor                                      : 1
  4-bit adder carry out                                 : 1
- 8-bit adder                                           : 1
+ 5-bit adder carry out                                 : 1
+ 8-bit adder                                           : 3
  9-bit adder                                           : 1
- 9-bit adder carry out                                 : 1
-# Counters                                             : 8
+ 9-bit adder carry out                                 : 3
+# Counters                                             : 23
  12-bit up counter                                     : 1
  15-bit up counter                                     : 1
  2-bit up counter                                      : 1
  24-bit up counter                                     : 1
- 4-bit updown counter                                  : 1
+ 3-bit up counter                                      : 1
+ 4-bit up counter                                      : 7
+ 4-bit updown counter                                  : 3
+ 5-bit up counter                                      : 2
+ 6-bit up counter                                      : 1
  7-bit up counter                                      : 1
  8-bit up counter                                      : 1
- 9-bit up counter                                      : 1
-# Accumulators                                         : 1
- 20-bit up accumulator                                 : 1
-# Registers                                            : 71
- Flip-Flops                                            : 71
-# Latches                                              : 17
- 8-bit latch                                           : 17
-# Comparators                                          : 10
- 10-bit comparator lessequal                           : 1
- 12-bit comparator equal                               : 1
+ 9-bit up counter                                      : 3
+# Registers                                            : 130
+ Flip-Flops                                            : 130
+# Latches                                              : 10
+ 8-bit latch                                           : 10
+# Comparators                                          : 44
+ 10-bit comparator lessequal                           : 3
+ 12-bit comparator equal                               : 7
+ 12-bit comparator greatequal                          : 2
+ 12-bit comparator less                                : 2
  12-bit comparator not equal                           : 1
- 20-bit comparator greatequal                          : 2
  24-bit comparator greatequal                          : 1
+ 4-bit comparator equal                                : 2
+ 4-bit comparator greatequal                           : 6
+ 4-bit comparator less                                 : 6
+ 4-bit comparator lessequal                            : 2
+ 4-bit comparator not equal                            : 2
+ 5-bit comparator equal                                : 2
+ 5-bit comparator not equal                            : 2
  8-bit comparator less                                 : 1
  8-bit comparator lessequal                            : 1
  9-bit comparator greater                              : 1
- 9-bit comparator lessequal                            : 1
+ 9-bit comparator lessequal                            : 3
 # Multiplexers                                         : 1
  1-bit 256-to-1 multiplexer                            : 1
-# Logic shifters                                       : 2
+# Logic shifters                                       : 4
+ 12-bit shifter logical right                          : 2
  20-bit shifter logical left                           : 1
  4-bit shifter logical right                           : 1
 
@@ -616,46 +705,28 @@ Macro Statistics
 =========================================================================
 INFO:Xst:2261 - The FF/Latch <NR50_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR50_1> <NR50_2> <NR50_3> <NR50_4> <NR50_5> <NR50_6> <NR50_7> 
 INFO:Xst:2261 - The FF/Latch <NR43_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR43_1> <NR43_2> <NR43_3> <NR43_4> <NR43_5> <NR43_6> <NR43_7> 
-INFO:Xst:2261 - The FF/Latch <NR13_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR13_1> <NR13_2> <NR13_3> <NR13_4> <NR13_5> <NR13_6> <NR13_7> 
 INFO:Xst:2261 - The FF/Latch <NR41_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR41_1> <NR41_2> <NR41_3> <NR41_4> <NR41_5> <NR41_6> <NR41_7> 
-INFO:Xst:2261 - The FF/Latch <NR11_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR11_1> <NR11_2> <NR11_3> <NR11_4> <NR11_5> <NR11_6> <NR11_7> 
 INFO:Xst:2261 - The FF/Latch <NR34_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR34_1> <NR34_2> <NR34_3> <NR34_4> <NR34_5> <NR34_6> <NR34_7> 
-INFO:Xst:2261 - The FF/Latch <NR23_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR23_1> <NR23_2> <NR23_3> <NR23_4> <NR23_5> <NR23_6> <NR23_7> 
 INFO:Xst:2261 - The FF/Latch <NR51_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR51_1> <NR51_2> <NR51_3> <NR51_4> <NR51_5> <NR51_6> <NR51_7> 
-INFO:Xst:2261 - The FF/Latch <NR21_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR21_1> <NR21_2> <NR21_3> <NR21_4> <NR21_5> <NR21_6> <NR21_7> 
 INFO:Xst:2261 - The FF/Latch <NR44_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR44_1> <NR44_2> <NR44_3> <NR44_4> <NR44_5> <NR44_6> <NR44_7> 
 INFO:Xst:2261 - The FF/Latch <NR14_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR14_1> <NR14_2> <NR14_3> <NR14_4> <NR14_5> <NR14_6> <NR14_7> 
 INFO:Xst:2261 - The FF/Latch <NR42_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR42_1> <NR42_2> <NR42_3> <NR42_4> <NR42_5> <NR42_6> <NR42_7> 
-INFO:Xst:2261 - The FF/Latch <NR12_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR12_1> <NR12_2> <NR12_3> <NR12_4> <NR12_5> <NR12_6> <NR12_7> 
-INFO:Xst:2261 - The FF/Latch <NR10_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR10_1> <NR10_2> <NR10_3> <NR10_4> <NR10_5> <NR10_6> <NR10_7> 
 INFO:Xst:2261 - The FF/Latch <NR24_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR24_1> <NR24_2> <NR24_3> <NR24_4> <NR24_5> <NR24_6> <NR24_7> 
 INFO:Xst:2261 - The FF/Latch <NR52_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR52_1> <NR52_2> <NR52_3> <NR52_4> <NR52_5> <NR52_6> <NR52_7> 
-INFO:Xst:2261 - The FF/Latch <NR22_0> in Unit <sound_registers> is equivalent to the following 7 FFs/Latches, which will be removed : <NR22_1> <NR22_2> <NR22_3> <NR22_4> <NR22_5> <NR22_6> <NR22_7> 
-WARNING:Xst:1710 - FF/Latch <NR10_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR11_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR12_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR13_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR14_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR21_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR22_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR23_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR24_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR34_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR41_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR42_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR43_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR44_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR50_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <NR51_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <NR52_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <strobe_counter_1> has a constant value of 0 in block <SquareWave>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strobe_counter_2> has a constant value of 0 in block <SquareWave>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strobe_counter_3> has a constant value of 0 in block <SquareWave>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strobe_counter_4> has a constant value of 0 in block <SquareWave>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strobe_counter_5> has a constant value of 0 in block <SquareWave>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <strobe_counter_0> of sequential type is unconnected in block <SquareWave>.
+WARNING:Xst:1710 - FF/Latch <NR51_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR50_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR44_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR43_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR42_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR41_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR34_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR24_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <NR14_0> (without init value) has a constant value of 1 in block <sound_registers>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <audio_top> ...
+
+Optimizing unit <SquareWave> ...
 
 Optimizing unit <WaveformPlayer> ...
 WARNING:Xst:1293 - FF/Latch <index_hi_0> has a constant value of 1 in block <WaveformPlayer>. This FF/Latch will be trimmed during the optimization process.
@@ -663,25 +734,43 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_hi_1> has a c
 
 Optimizing unit <rotary_controller> ...
 
-Optimizing unit <ACLink> ...
-
-Optimizing unit <SquareWave> ...
-
 Optimizing unit <AudioGen> ...
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_6> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_7> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_8> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_9> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_10> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_11> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_12> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_13> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_14> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_15> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_16> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_17> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_18> of sequential type is unconnected in block <audio_top>.
-WARNING:Xst:2677 - Node <gen/source/sw/strobe_counter_19> of sequential type is unconnected in block <audio_top>.
+
+Optimizing unit <ACLink> ...
+WARNING:Xst:1710 - FF/Latch <ch2/num_sweeps_done_3> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/num_sweeps_done_2> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/num_sweeps_done_1> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/num_sweeps_done_0> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/sweep_counter_3> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/sweep_counter_2> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/sweep_counter_0> (without init value) has a constant value of 1 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch2/sweep_counter_1> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/num_sweeps_done_3> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/num_sweeps_done_2> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/num_sweeps_done_1> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/num_sweeps_done_0> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/sweep_counter_3> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/sweep_counter_2> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/sweep_counter_0> (without init value) has a constant value of 1 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ch1/sweep_counter_1> (without init value) has a constant value of 0 in block <audio_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <ch2/len_counter_8> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_7> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_6> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_5> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_4> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_3> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_2> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_1> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch2/len_counter_0> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_8> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_7> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_6> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_5> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_4> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_3> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_2> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_1> of sequential type is unconnected in block <audio_top>.
+WARNING:Xst:2677 - Node <ch1/len_counter_0> of sequential type is unconnected in block <audio_top>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -693,8 +782,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 156
- Flip-Flops                                            : 156
+# Registers                                            : 254
+ Flip-Flops                                            : 254
 
 =========================================================================
 
@@ -720,34 +809,35 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : NO
 
 Design Statistics
-# IOs                              : 61
+# IOs                              : 59
 
 Cell Usage :
-# BELS                             : 366
+# BELS                             : 709
 #      GND                         : 1
-#      INV                         : 12
-#      LUT1                        : 40
-#      LUT2                        : 11
-#      LUT3                        : 35
-#      LUT4                        : 27
-#      LUT5                        : 38
-#      LUT6                        : 44
-#      MUXCY                       : 78
+#      INV                         : 22
+#      LUT1                        : 71
+#      LUT2                        : 77
+#      LUT3                        : 66
+#      LUT4                        : 60
+#      LUT5                        : 44
+#      LUT6                        : 106
+#      MUXCY                       : 134
 #      MUXF7                       : 11
 #      VCC                         : 1
-#      XORCY                       : 68
-# FlipFlops/Latches                : 156
-#      FD                          : 11
-#      FDE                         : 66
-#      FDR                         : 35
-#      FDRE                        : 43
+#      XORCY                       : 116
+# FlipFlops/Latches                : 254
+#      FD                          : 15
+#      FDE                         : 101
+#      FDR                         : 56
+#      FDRE                        : 75
 #      FDRS                        : 1
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+#      FDS                         : 6
+# Clock Buffers                    : 5
+#      BUFG                        : 4
 #      BUFGP                       : 1
-# IO Buffers                       : 59
-#      IBUF                        : 22
-#      OBUF                        : 37
+# IO Buffers                       : 57
+#      IBUF                        : 24
+#      OBUF                        : 33
 =========================================================================
 
 Device utilization summary:
@@ -757,23 +847,23 @@ Selected Device : 5vlx110tff1136-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             156  out of  69120     0%  
- Number of Slice LUTs:                  207  out of  69120     0%  
-    Number used as Logic:               207  out of  69120     0%  
+ Number of Slice Registers:             254  out of  69120     0%  
+ Number of Slice LUTs:                  446  out of  69120     0%  
+    Number used as Logic:               446  out of  69120     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    241
-   Number with an unused Flip Flop:      85  out of    241    35%  
-   Number with an unused LUT:            34  out of    241    14%  
-   Number of fully used LUT-FF pairs:   122  out of    241    50%  
-   Number of unique control sets:        18
+ Number of LUT Flip Flop pairs used:    472
+   Number with an unused Flip Flop:     218  out of    472    46%  
+   Number with an unused LUT:            26  out of    472     5%  
+   Number of fully used LUT-FF pairs:   228  out of    472    48%  
+   Number of unique control sets:        35
 
 IO Utilization: 
- Number of IOs:                          61
- Number of bonded IOBs:                  60  out of    640     9%  
+ Number of IOs:                          59
+ Number of bonded IOBs:                  58  out of    640     9%  
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+ Number of BUFG/BUFGCTRLs:                5  out of     32    15%  
 
 ---------------------------
 Partition Resource Summary:
@@ -793,14 +883,17 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-ac97_bitclk                        | BUFGP                  | 123   |
-framediv/clock_out                 | NONE(lendiv/clock_out) | 3     |
-freq3div/clock_out1                | BUFG                   | 21    |
-lendiv/clock_out                   | NONE(wp/len_counter_8) | 9     |
------------------------------------+------------------------+-------+
+-----------------------------------+-------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)   | Load  |
+-----------------------------------+-------------------------+-------+
+ac97_bitclk                        | BUFGP                   | 130   |
+framediv/clock_out                 | NONE(sweepdiv/clock_out)| 12    |
+envdiv/clock_out1                  | BUFG                    | 26    |
+sweepdiv/clock_out1                | BUFG                    | 24    |
+freq12div/clock_out1               | BUFG                    | 32    |
+freq3div/clock_out1                | BUFG                    | 21    |
+lendiv/clock_out                   | NONE(wp/len_counter_8)  | 9     |
+-----------------------------------+-------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -813,8 +906,8 @@ Speed Grade: -1
 
    Minimum period: 4.259ns (Maximum Frequency: 234.787MHz)
    Minimum input arrival time before clock: 3.539ns
-   Maximum output required time after clock: 8.851ns
-   Maximum combinational path delay: 8.628ns
+   Maximum output required time after clock: 13.277ns
+   Maximum combinational path delay: 13.823ns
 
 Timing Detail:
 --------------
@@ -823,7 +916,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bitclk'
   Clock period: 4.259ns (frequency: 234.787MHz)
-  Total number of paths / destination ports: 18023 / 242
+  Total number of paths / destination ports: 18087 / 256
 -------------------------------------------------------------------------
 Delay:               4.259ns (Levels of Logic = 31)
   Source:            gen/source/count_1 (FF)
@@ -874,49 +967,142 @@ Delay:               4.259ns (Levels of Logic = 31)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'framediv/clock_out'
-  Clock period: 2.072ns (frequency: 482.625MHz)
-  Total number of paths / destination ports: 10 / 6
+  Clock period: 2.290ns (frequency: 436.681MHz)
+  Total number of paths / destination ports: 60 / 24
 -------------------------------------------------------------------------
-Delay:               2.072ns (Levels of Logic = 1)
-  Source:            lendiv/counter_0 (FF)
-  Destination:       lendiv/counter_0 (FF)
+Delay:               2.290ns (Levels of Logic = 1)
+  Source:            envdiv/counter_3 (FF)
+  Destination:       envdiv/counter_0 (FF)
   Source Clock:      framediv/clock_out rising
   Destination Clock: framediv/clock_out rising
 
-  Data Path: lendiv/counter_0 to lendiv/counter_0
+  Data Path: envdiv/counter_3 to envdiv/counter_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              3   0.471   0.587  lendiv/counter_0 (lendiv/counter_0)
-     LUT2:I0->O            3   0.094   0.347  lendiv/clock_out_cmp_eq00001 (lendiv/clock_out_not0002_inv)
-     FDR:R                     0.573          lendiv/counter_0
+     FDR:C->Q              2   0.471   0.794  envdiv/counter_3 (envdiv/counter_3)
+     LUT4:I0->O            5   0.094   0.358  envdiv/clock_out_cmp_eq00001 (envdiv/clock_out_cmp_eq0000)
+     FDR:R                     0.573          envdiv/counter_0
     ----------------------------------------
-    Total                      2.072ns (1.138ns logic, 0.934ns route)
-                                       (54.9% logic, 45.1% route)
+    Total                      2.290ns (1.138ns logic, 1.152ns route)
+                                       (49.7% logic, 50.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'envdiv/clock_out1'
+  Clock period: 3.270ns (frequency: 305.810MHz)
+  Total number of paths / destination ports: 275 / 42
+-------------------------------------------------------------------------
+Delay:               3.270ns (Levels of Logic = 3)
+  Source:            ch2/env_counter_0 (FF)
+  Destination:       ch2/reg_vol_3 (FF)
+  Source Clock:      envdiv/clock_out1 rising
+  Destination Clock: envdiv/clock_out1 rising
+
+  Data Path: ch2/env_counter_0 to ch2/reg_vol_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              7   0.471   1.006  ch2/env_counter_0 (ch2/env_counter_0)
+     LUT5:I0->O            1   0.094   0.789  ch2/reg_vol_not000132 (ch2/reg_vol_not000132)
+     LUT6:I2->O            1   0.094   0.000  ch2/reg_vol_not0001761 (ch2/reg_vol_not000176)
+     MUXF7:I0->O           4   0.251   0.352  ch2/reg_vol_not000176_f7 (ch2/reg_vol_not0001)
+     FDE:CE                    0.213          ch2/reg_vol_0
+    ----------------------------------------
+    Total                      3.270ns (1.123ns logic, 2.147ns route)
+                                       (34.3% logic, 65.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'sweepdiv/clock_out1'
+  Clock period: 2.871ns (frequency: 348.311MHz)
+  Total number of paths / destination ports: 260 / 23
+-------------------------------------------------------------------------
+Delay:               2.871ns (Levels of Logic = 14)
+  Source:            ch1/true_freq_7 (FF)
+  Destination:       ch1/true_freq_11 (FF)
+  Source Clock:      sweepdiv/clock_out1 rising
+  Destination Clock: sweepdiv/clock_out1 rising
+
+  Data Path: ch1/true_freq_7 to ch1/true_freq_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              7   0.471   0.743  ch1/true_freq_7 (ch1/true_freq_7)
+     LUT3:I0->O            1   0.094   0.000  ch1/Maddsub_true_freq_share0000_lut<0> (ch1/Maddsub_true_freq_share0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  ch1/Maddsub_true_freq_share0000_cy<0> (ch1/Maddsub_true_freq_share0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<1> (ch1/Maddsub_true_freq_share0000_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<2> (ch1/Maddsub_true_freq_share0000_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<3> (ch1/Maddsub_true_freq_share0000_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<4> (ch1/Maddsub_true_freq_share0000_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<5> (ch1/Maddsub_true_freq_share0000_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<6> (ch1/Maddsub_true_freq_share0000_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<7> (ch1/Maddsub_true_freq_share0000_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<8> (ch1/Maddsub_true_freq_share0000_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<9> (ch1/Maddsub_true_freq_share0000_cy<9>)
+     MUXCY:CI->O           0   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<10> (ch1/Maddsub_true_freq_share0000_cy<10>)
+     XORCY:CI->O           1   0.357   0.480  ch1/Maddsub_true_freq_share0000_xor<11> (ch1/true_freq_share0000<11>)
+     LUT2:I1->O            1   0.094   0.000  ch1/true_freq_mux0000<11>1 (ch1/true_freq_mux0000<11>)
+     FDE:D                    -0.018          ch1/true_freq_11
+    ----------------------------------------
+    Total                      2.871ns (1.648ns logic, 1.223ns route)
+                                       (57.4% logic, 42.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'freq12div/clock_out1'
+  Clock period: 3.213ns (frequency: 311.236MHz)
+  Total number of paths / destination ports: 1316 / 32
+-------------------------------------------------------------------------
+Delay:               3.213ns (Levels of Logic = 14)
+  Source:            ch1/freq_counter_0 (FF)
+  Destination:       ch1/freq_counter_11 (FF)
+  Source Clock:      freq12div/clock_out1 rising
+  Destination Clock: freq12div/clock_out1 rising
+
+  Data Path: ch1/freq_counter_0 to ch1/freq_counter_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             4   0.471   0.352  ch1/freq_counter_0 (ch1/freq_counter_0)
+     INV:I->O              1   0.238   0.000  ch1/Madd_freq_counter_share0000_lut<0>_INV_0 (ch1/Madd_freq_counter_share0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  ch1/Madd_freq_counter_share0000_cy<0> (ch1/Madd_freq_counter_share0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<1> (ch1/Madd_freq_counter_share0000_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<2> (ch1/Madd_freq_counter_share0000_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<3> (ch1/Madd_freq_counter_share0000_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<4> (ch1/Madd_freq_counter_share0000_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<5> (ch1/Madd_freq_counter_share0000_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<6> (ch1/Madd_freq_counter_share0000_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<7> (ch1/Madd_freq_counter_share0000_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<8> (ch1/Madd_freq_counter_share0000_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<9> (ch1/Madd_freq_counter_share0000_cy<9>)
+     MUXCY:CI->O           0   0.026   0.000  ch1/Madd_freq_counter_share0000_cy<10> (ch1/Madd_freq_counter_share0000_cy<10>)
+     XORCY:CI->O           1   0.357   1.069  ch1/Madd_freq_counter_share0000_xor<11> (ch1/freq_counter_share0000<11>)
+     LUT6:I0->O            1   0.094   0.000  ch1/freq_counter_mux0000<11>1 (ch1/freq_counter_mux0000<11>)
+     FDRE:D                   -0.018          ch1/freq_counter_11
+    ----------------------------------------
+    Total                      3.213ns (1.792ns logic, 1.421ns route)
+                                       (55.8% logic, 44.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'freq3div/clock_out1'
-  Clock period: 3.193ns (frequency: 313.185MHz)
-  Total number of paths / destination ports: 427 / 42
+  Clock period: 3.284ns (frequency: 304.507MHz)
+  Total number of paths / destination ports: 355 / 42
 -------------------------------------------------------------------------
-Delay:               3.193ns (Levels of Logic = 3)
-  Source:            wp/freq_counter_11 (FF)
-  Destination:       wp/index_hi_7 (FF)
+Delay:               3.284ns (Levels of Logic = 2)
+  Source:            wp/freq_counter_10 (FF)
+  Destination:       wp/freq_counter_11 (FF)
   Source Clock:      freq3div/clock_out1 rising
   Destination Clock: freq3div/clock_out1 rising
 
-  Data Path: wp/freq_counter_11 to wp/index_hi_7
+  Data Path: wp/freq_counter_10 to wp/freq_counter_11
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              2   0.471   0.978  wp/freq_counter_11 (wp/freq_counter_11)
-     LUT5:I0->O            4   0.094   0.726  wp/freq_counter_cmp_eq00001259 (wp/freq_counter_cmp_eq00001259)
-     LUT6:I3->O            1   0.094   0.000  wp/index_hi_not000211 (wp/index_hi_not00021)
-     MUXF7:I1->O           6   0.254   0.363  wp/index_hi_not00021_f7 (wp/index_hi_not0002)
-     FDRE:CE                   0.213          wp/index_hi_2
+     FDR:C->Q              2   0.471   1.074  wp/freq_counter_10 (wp/freq_counter_10)
+     LUT6:I0->O            3   0.094   0.587  wp/freq_counter_cmp_eq00001234 (wp/freq_counter_cmp_eq00001234)
+     LUT3:I1->O           11   0.094   0.391  wp/Mcount_freq_counter_val1 (wp/Mcount_freq_counter_val)
+     FDR:R                     0.573          wp/freq_counter_1
     ----------------------------------------
-    Total                      3.193ns (1.126ns logic, 2.067ns route)
-                                       (35.3% logic, 64.7% route)
+    Total                      3.284ns (1.232ns logic, 2.052ns route)
+                                       (37.5% logic, 62.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'lendiv/clock_out'
@@ -946,10 +1132,82 @@ Delay:               2.567ns (Levels of Logic = 6)
                                        (53.6% logic, 46.4% route)
 
 =========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'envdiv/clock_out1'
+  Total number of paths / destination ports: 34 / 34
+-------------------------------------------------------------------------
+Offset:              2.185ns (Levels of Logic = 2)
+  Source:            ch1_reset_test (PAD)
+  Destination:       ch1/reg_vol_3 (FF)
+  Destination Clock: envdiv/clock_out1 rising
+
+  Data Path: ch1_reset_test to ch1/reg_vol_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            83   0.818   0.473  ch1_reset_test_IBUF (ch1_reset_test_IBUF)
+     MUXF7:S->O            4   0.329   0.352  ch1/reg_vol_not000171_f7 (ch1/reg_vol_not0001)
+     FDE:CE                    0.213          ch1/reg_vol_0
+    ----------------------------------------
+    Total                      2.185ns (1.360ns logic, 0.825ns route)
+                                       (62.2% logic, 37.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'sweepdiv/clock_out1'
+  Total number of paths / destination ports: 318 / 24
+-------------------------------------------------------------------------
+Offset:              3.092ns (Levels of Logic = 15)
+  Source:            ch1_reset_test (PAD)
+  Destination:       ch1/true_freq_11 (FF)
+  Destination Clock: sweepdiv/clock_out1 rising
+
+  Data Path: ch1_reset_test to ch1/true_freq_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            83   0.818   0.617  ch1_reset_test_IBUF (ch1_reset_test_IBUF)
+     LUT3:I2->O            1   0.094   0.000  ch1/Maddsub_true_freq_share0000_lut<0> (ch1/Maddsub_true_freq_share0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  ch1/Maddsub_true_freq_share0000_cy<0> (ch1/Maddsub_true_freq_share0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<1> (ch1/Maddsub_true_freq_share0000_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<2> (ch1/Maddsub_true_freq_share0000_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<3> (ch1/Maddsub_true_freq_share0000_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<4> (ch1/Maddsub_true_freq_share0000_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<5> (ch1/Maddsub_true_freq_share0000_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<6> (ch1/Maddsub_true_freq_share0000_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<7> (ch1/Maddsub_true_freq_share0000_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<8> (ch1/Maddsub_true_freq_share0000_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<9> (ch1/Maddsub_true_freq_share0000_cy<9>)
+     MUXCY:CI->O           0   0.026   0.000  ch1/Maddsub_true_freq_share0000_cy<10> (ch1/Maddsub_true_freq_share0000_cy<10>)
+     XORCY:CI->O           1   0.357   0.480  ch1/Maddsub_true_freq_share0000_xor<11> (ch1/true_freq_share0000<11>)
+     LUT2:I1->O            1   0.094   0.000  ch1/true_freq_mux0000<11>1 (ch1/true_freq_mux0000<11>)
+     FDE:D                    -0.018          ch1/true_freq_11
+    ----------------------------------------
+    Total                      3.092ns (1.995ns logic, 1.097ns route)
+                                       (64.5% logic, 35.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'freq12div/clock_out1'
+  Total number of paths / destination ports: 36 / 36
+-------------------------------------------------------------------------
+Offset:              1.864ns (Levels of Logic = 1)
+  Source:            ch1_reset_test (PAD)
+  Destination:       ch1/freq_counter_11 (FF)
+  Destination Clock: freq12div/clock_out1 rising
+
+  Data Path: ch1_reset_test to ch1/freq_counter_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            83   0.818   0.473  ch1_reset_test_IBUF (ch1_reset_test_IBUF)
+     FDRE:R                    0.573          ch1/freq_counter_0
+    ----------------------------------------
+    Total                      1.864ns (1.391ns logic, 0.473ns route)
+                                       (74.6% logic, 25.4% route)
+
+=========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'freq3div/clock_out1'
   Total number of paths / destination ports: 22 / 22
 -------------------------------------------------------------------------
-Offset:              3.044ns (Levels of Logic = 2)
+Offset:              2.685ns (Levels of Logic = 2)
   Source:            ch3_reset_test (PAD)
   Destination:       wp/freq_counter_11 (FF)
   Destination Clock: freq3div/clock_out1 rising
@@ -958,12 +1216,12 @@ Offset:              3.044ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            19   0.818   1.168  ch3_reset_test_IBUF (ch3_reset_test_IBUF)
-     LUT6:I0->O           11   0.094   0.391  wp/Mcount_freq_counter_val1 (wp/Mcount_freq_counter_val)
+     IBUF:I->O            19   0.818   0.809  ch3_reset_test_IBUF (ch3_reset_test_IBUF)
+     LUT3:I0->O           11   0.094   0.391  wp/Mcount_freq_counter_val1 (wp/Mcount_freq_counter_val)
      FDR:R                     0.573          wp/freq_counter_1
     ----------------------------------------
-    Total                      3.044ns (1.485ns logic, 1.559ns route)
-                                       (48.8% logic, 51.2% route)
+    Total                      2.685ns (1.485ns logic, 1.200ns route)
+                                       (55.3% logic, 44.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'lendiv/clock_out'
@@ -998,7 +1256,7 @@ Offset:              3.539ns (Levels of Logic = 3)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             5   0.818   0.995  rotary_inc_b_IBUF (rotary_inc_b_IBUF)
-     LUT5:I0->O            1   0.094   0.973  gen/rot/level_not0001_SW0 (N8)
+     LUT5:I0->O            1   0.094   0.973  gen/rot/level_not0001_SW0 (N16)
      LUT6:I1->O            4   0.094   0.352  gen/rot/level_not0001 (gen/rot/level_not0001)
      FDE:CE                    0.213          gen/rot/level_0
     ----------------------------------------
@@ -1007,9 +1265,9 @@ Offset:              3.539ns (Levels of Logic = 3)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bitclk'
-  Total number of paths / destination ports: 311 / 28
+  Total number of paths / destination ports: 387 / 28
 -------------------------------------------------------------------------
-Offset:              8.851ns (Levels of Logic = 8)
+Offset:              9.711ns (Levels of Logic = 10)
   Source:            gen/rot/level_0 (FF)
   Destination:       ac97_sdata_out (PAD)
   Source Clock:      ac97_bitclk rising
@@ -1018,82 +1276,121 @@ Offset:              8.851ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             17   0.471   1.061  gen/rot/level_0 (gen/rot/level_0)
-     LUT5:I0->O            4   0.094   0.496  gen/source/ac97_out_slot3<13>41 (gen/source/ac97_out_slot3<13>_bdd2)
-     LUT5:I4->O            1   0.094   0.973  gen/source/ac97_out_slot3<17>11 (gen/ac97_out_slot3<17>)
-     LUT6:I1->O            2   0.094   0.978  gen/link/Mmux_ac97_sdata_out_16 (gen/link/Mmux_ac97_sdata_out_16)
-     LUT6:I1->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_13 (gen/link/Mmux_ac97_sdata_out_13)
-     LUT5:I1->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_7 (gen/link/Mmux_ac97_sdata_out_7)
-     MUXF7:I0->O           1   0.251   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
-     LUT2:I1->O            1   0.094   0.336  gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
-     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
-    ----------------------------------------
-    Total                      8.851ns (3.738ns logic, 5.113ns route)
-                                       (42.2% logic, 57.8% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'freq3div/clock_out1'
-  Total number of paths / destination ports: 101 / 4
--------------------------------------------------------------------------
-Offset:              8.622ns (Levels of Logic = 9)
-  Source:            wp/reg_level_0 (FF)
-  Destination:       ac97_sdata_out (PAD)
-  Source Clock:      freq3div/clock_out1 rising
-
-  Data Path: wp/reg_level_0 to ac97_sdata_out
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDRE:C->Q            10   0.471   0.838  wp/reg_level_0 (wp/reg_level_0)
-     LUT5:I1->O            4   0.094   0.496  gen/source/ac97_out_slot3<12>31 (gen/source/ac97_out_slot3<12>_bdd3)
-     LUT5:I4->O            1   0.094   0.710  gen/source/ac97_out_slot3<4>11 (gen/ac97_out_slot3<4>)
-     LUT6:I3->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_15_G (N45)
-     MUXF7:I1->O           2   0.254   0.978  gen/link/Mmux_ac97_sdata_out_15 (gen/link/Mmux_ac97_sdata_out_15)
+     FDE:C->Q             18   0.471   1.162  gen/rot/level_0 (gen/rot/level_0)
+     LUT6:I0->O            2   0.094   0.485  gen/source/Sh421 (gen/source/N6)
+     LUT6:I5->O            4   0.094   0.592  gen/source/Sh41 (gen/source/Sh4)
+     LUT5:I3->O            1   0.094   0.480  gen/source/ac97_out_slot3<4>_SW0 (N33)
+     LUT5:I4->O            1   0.094   0.480  gen/source/ac97_out_slot3<4> (gen/ac97_out_slot3<4>)
+     LUT6:I5->O            2   0.094   0.978  gen/link/Mmux_ac97_sdata_out_15 (gen/link/Mmux_ac97_sdata_out_15)
      LUT6:I1->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_11 (gen/link/Mmux_ac97_sdata_out_11)
      LUT4:I0->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_6 (gen/link/Mmux_ac97_sdata_out_6)
      MUXF7:I1->O           1   0.254   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
      LUT2:I1->O            1   0.094   0.336  gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
      OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
     ----------------------------------------
-    Total                      8.622ns (3.995ns logic, 4.627ns route)
-                                       (46.3% logic, 53.7% route)
+    Total                      9.711ns (3.929ns logic, 5.782ns route)
+                                       (40.5% logic, 59.5% route)
 
 =========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 42 / 1
+Timing constraint: Default OFFSET OUT AFTER for Clock 'freq12div/clock_out1'
+  Total number of paths / destination ports: 2856 / 1
 -------------------------------------------------------------------------
-Delay:               8.628ns (Levels of Logic = 8)
-  Source:            square_wave_enable (PAD)
+Offset:              13.277ns (Levels of Logic = 12)
+  Source:            ch1/reg_level_0 (FF)
   Destination:       ac97_sdata_out (PAD)
+  Source Clock:      freq12div/clock_out1 rising
 
-  Data Path: square_wave_enable to ac97_sdata_out
+  Data Path: ch1/reg_level_0 to ac97_sdata_out
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            21   0.818   1.081  square_wave_enable_IBUF (square_wave_enable_IBUF)
-     LUT5:I0->O            1   0.094   0.973  gen/source/ac97_out_slot3<17>11 (gen/ac97_out_slot3<17>)
-     LUT6:I1->O            2   0.094   0.978  gen/link/Mmux_ac97_sdata_out_16 (gen/link/Mmux_ac97_sdata_out_16)
-     LUT6:I1->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_13 (gen/link/Mmux_ac97_sdata_out_13)
-     LUT5:I1->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_7 (gen/link/Mmux_ac97_sdata_out_7)
-     MUXF7:I0->O           1   0.251   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
+     FDS:C->Q              7   0.471   1.006  ch1/reg_level_0 (ch1/reg_level_0)
+     LUT6:I1->O            4   0.094   0.805  gen/source/Madd_ac97_out_slot3_addsub0002_xor<2>111 (gen/source/N4)
+     LUT6:I2->O            3   0.094   1.080  gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>1 (gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>)
+     LUT6:I0->O            5   0.094   1.091  gen/source/Madd_ac97_out_slot3_addsub0001_xor<3>121 (gen/source/N9)
+     LUT6:I0->O            3   0.094   0.800  gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>11 (gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>)
+     LUT6:I2->O            4   0.094   1.085  gen/source/Sh51 (gen/source/Sh5)
+     LUT6:I0->O            1   0.094   0.973  gen/source/ac97_out_slot3<9>1 (gen/ac97_out_slot3<9>)
+     LUT6:I1->O            2   0.094   0.715  gen/link/Mmux_ac97_sdata_out_14 (gen/link/Mmux_ac97_sdata_out_14)
+     LUT6:I3->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_11 (gen/link/Mmux_ac97_sdata_out_11)
+     LUT4:I0->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_6 (gen/link/Mmux_ac97_sdata_out_6)
+     MUXF7:I1->O           1   0.254   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
      LUT2:I1->O            1   0.094   0.336  gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
      OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
     ----------------------------------------
-    Total                      8.628ns (3.991ns logic, 4.637ns route)
-                                       (46.3% logic, 53.7% route)
+    Total                     13.277ns (4.117ns logic, 9.160ns route)
+                                       (31.0% logic, 69.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'freq3div/clock_out1'
+  Total number of paths / destination ports: 620 / 1
+-------------------------------------------------------------------------
+Offset:              12.087ns (Levels of Logic = 11)
+  Source:            wp/reg_level_2 (FF)
+  Destination:       ac97_sdata_out (PAD)
+  Source Clock:      freq3div/clock_out1 rising
+
+  Data Path: wp/reg_level_2 to ac97_sdata_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.471   0.715  wp/reg_level_2 (wp/reg_level_2)
+     LUT6:I3->O            3   0.094   1.080  gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>1 (gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>)
+     LUT6:I0->O            5   0.094   1.091  gen/source/Madd_ac97_out_slot3_addsub0001_xor<3>121 (gen/source/N9)
+     LUT6:I0->O            3   0.094   0.800  gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>11 (gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>)
+     LUT6:I2->O            4   0.094   1.085  gen/source/Sh51 (gen/source/Sh5)
+     LUT6:I0->O            1   0.094   0.973  gen/source/ac97_out_slot3<9>1 (gen/ac97_out_slot3<9>)
+     LUT6:I1->O            2   0.094   0.715  gen/link/Mmux_ac97_sdata_out_14 (gen/link/Mmux_ac97_sdata_out_14)
+     LUT6:I3->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_11 (gen/link/Mmux_ac97_sdata_out_11)
+     LUT4:I0->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_6 (gen/link/Mmux_ac97_sdata_out_6)
+     MUXF7:I1->O           1   0.254   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
+     LUT2:I1->O            1   0.094   0.336  gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
+     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
+    ----------------------------------------
+    Total                     12.087ns (4.023ns logic, 8.064ns route)
+                                       (33.3% logic, 66.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 1940 / 1
+-------------------------------------------------------------------------
+Delay:               13.823ns (Levels of Logic = 13)
+  Source:            ch2_reset_test (PAD)
+  Destination:       ac97_sdata_out (PAD)
+
+  Data Path: ch2_reset_test to ac97_sdata_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            77   0.818   1.205  ch2_reset_test_IBUF (ch2/true_freq_mux00041)
+     LUT6:I0->O            4   0.094   0.805  gen/source/Madd_ac97_out_slot3_addsub0002_xor<2>111 (gen/source/N4)
+     LUT6:I2->O            3   0.094   1.080  gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>1 (gen/source/Madd_ac97_out_slot3_addsub0001_lut<2>)
+     LUT6:I0->O            5   0.094   1.091  gen/source/Madd_ac97_out_slot3_addsub0001_xor<3>121 (gen/source/N9)
+     LUT6:I0->O            3   0.094   0.800  gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>11 (gen/source/Madd_ac97_out_slot3_addsub0001_cy<3>)
+     LUT6:I2->O            4   0.094   1.085  gen/source/Sh51 (gen/source/Sh5)
+     LUT6:I0->O            1   0.094   0.973  gen/source/ac97_out_slot3<9>1 (gen/ac97_out_slot3<9>)
+     LUT6:I1->O            2   0.094   0.715  gen/link/Mmux_ac97_sdata_out_14 (gen/link/Mmux_ac97_sdata_out_14)
+     LUT6:I3->O            1   0.094   0.789  gen/link/Mmux_ac97_sdata_out_11 (gen/link/Mmux_ac97_sdata_out_11)
+     LUT4:I0->O            1   0.094   0.000  gen/link/Mmux_ac97_sdata_out_6 (gen/link/Mmux_ac97_sdata_out_6)
+     MUXF7:I1->O           1   0.254   0.480  gen/link/Mmux_ac97_sdata_out_5_f7 (gen/link/Mmux_ac97_sdata_out_5_f7)
+     LUT2:I1->O            1   0.094   0.336  gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
+     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
+    ----------------------------------------
+    Total                     13.823ns (4.464ns logic, 9.359ns route)
+                                       (32.3% logic, 67.7% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.78 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 9.93 secs
  
 --> 
 
 
-Total memory usage is 678528 kilobytes
+Total memory usage is 681900 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  147 (   0 filtered)
-Number of infos    :   20 (   0 filtered)
+Number of warnings :  130 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
 

@@ -24,7 +24,9 @@ module AC97(
 	    output wire        flash_oe_n,
 	    output wire        flash_we_n,
             output wire        strobe,
-	    input wire [3:0]   ch3_vol
+	    input wire [3:0]   ch1_level,
+	    input wire [3:0]   ch2_level,
+	    input wire [3:0]   ch3_level
 	);
    
 	/*AUTOWIRE*/
@@ -87,7 +89,9 @@ module AC97(
 			.sample_no      (sample_no),
                         .square_wave_enable (square_wave_enable),
                         .level (level[3:0]),
-			.ch3_vol(ch3_vol[3:0]));
+			.ch1_level(ch1_level[3:0]),
+			.ch2_level(ch2_level[3:0]),
+			.ch3_level(ch3_level[3:0]));
         
 	ACLink link(
 		/*AUTOINST*/
@@ -141,7 +145,9 @@ module AudioGen(
 		input             sample_no,
                 input             square_wave_enable,
                 input [3:0]       level,
-		input [3:0]       ch3_vol,
+		input [3:0]       ch1_level,
+		input [3:0]       ch2_level,
+		input [3:0]       ch3_level,
 		output [19:0]     ac97_out_slot3,
 		output [19:0]     ac97_out_slot4,
 		input wire        flash_wait,
@@ -163,9 +169,6 @@ module AudioGen(
    reg [15:0] 			  curr_sample = 'h0;
    reg [15:0] 			  next_sample = 'h0;
    wire [19:0]                    square_sample;
-   wire [10:0] 			  freq = 11'd440;
-
-   SquareWave sw(ac97_bitclk, ac97_strobe, {11'b0,freq,3'b0}, level, square_sample);   
 
    // NYAN: 481488 / 2 = 240744
    // Technologic: 439858 - 240744 = 199114
@@ -193,41 +196,14 @@ module AudioGen(
    end // always @ (posedge ac97_bitclk)
    
    // Left Audio Channel
-   assign ac97_out_slot3 = square_wave_enable ? (ch3_vol<<(level+2)) : 
+   assign ac97_out_slot3 = square_wave_enable ? ((ch1_level+ch2_level+ch3_level)<<(level)) : 
                            {curr_sample[15:8],curr_sample[7:0],4'h0};
    // Right Audio Channel
    assign ac97_out_slot4 = ac97_out_slot3;
    
 endmodule
 
-module SquareWave(
-	          input              ac97_bitclk,
-	          input              ac97_strobe,
-                  input [19:0]       freq,
-                  input [3:0]        level,
-	          output wire [19:0] sample
-	          );
-   parameter strobe_rate = 20'd47940;
-   
-   reg [19:0]                        strobe_counter = 20'b0;
-   
-   always @(posedge ac97_strobe) begin
-//      if (ac97_strobe) begin
-      strobe_counter = strobe_counter + freq;
-      if (strobe_counter >= strobe_rate) begin
-	 strobe_counter = 20'b0;
-      end
-//      end
-//      else begin
-//	 bitclk_counter = bitclk_counter + 1;
-//      end
-   end
 
-   // amplitude is set as signed 20 bit value.
-   // beware of clipping when adding signals together.
-   assign sample = ((strobe_counter >= strobe_rate/2) ? 
-                    20'b0 : {2'd0, level[3:0], 14'h0});// {1'b1, ~level[3:0], 15'h0}
-endmodule
 
 /* Timing diagrams for ACLink:
  *   http://nyus.joshuawise.com/ac97-clocking.scale.jpg
