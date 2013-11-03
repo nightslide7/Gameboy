@@ -5,6 +5,11 @@
  */
 
 /**
+ * Obligatory default nettype
+ */
+`default_nettype none
+
+/**
  * ALU operations
  */
 `define ALU_ADD 5'd0
@@ -28,6 +33,12 @@
 `define ALU_SRA 5'd18
 `define ALU_SRL 5'd19
 `define ALU_PASS0 5'd20
+`define ALU_PASS1 5'd21
+`define ALU_PASSF 5'd22
+`define ALU_BIT 5'd23
+`define ALU_SET 5'd24
+`define ALU_RES 5'd25
+`define ALU_SWAP 5'd26
 
 /**
  * ALU size select
@@ -78,3 +89,43 @@
 `define NIN_HL 3'b010
 `define NIN_SP 3'b011
 
+/**
+ * ALU mux selects
+ */
+`define ALU_1_SEL_A 2'd0
+`define ALU_1_SEL_DATA 2'd1
+`define ALU_1_SEL_RGF 2'd2
+`define ALU_1_SEL_TEMP1 2'd3
+`define ALU_0_SEL_DATA 2'd0
+`define ALU_0_SEL_TEMP0 2'd1
+`define ALU_0_SEL_RSTP 2'd2
+`define ALU_0_SEL_FF 2'd3
+
+/**
+ * Multibyte instruction codes
+ */
+`define MB_NONE 3'h0
+`define MB_CB 3'h1
+`define MB_BIT 3'h2
+`define MB_SET 3'h3
+`define MB_RES 3'h4
+
+/**
+ * Small chart of values
+ * 0000  0  0
+ * 0001  1  1
+ * 0010  2  2
+ * 0011  3  3
+ * 0100  4  4
+ * 0101  5  5
+ * 0110  6  6
+ * 0111  7  7
+ * 1000  8  8
+ * 1001  9  9
+ * 1010 10  A
+ * 1011 11  B
+ * 1100 12  C
+ * 1101 13  D
+ * 1110 14  E
+ * 1111 15  F
+ */

@@ -58,8 +58,18 @@ module cpu_auto_testbench();
    always #5 clock = ~clock;
    always @(posedge clock) ce = ~ce;
 
+`define MODE_WAIT 2'b10
+`define MODE_RENDER 2'b00
+
+`define RENDER_CYCLES 50 // 440
+   
+   reg [1:0]  mode;
+   integer    mode_count;
+   
    initial begin
       count = 0;
+      mode_count = 0;
+      mode = `MODE_WAIT;
       reset <= 1'b1;
       IF_load <= 1'b0;
       IE_load <= 1'b0;
@@ -70,8 +80,25 @@ module cpu_auto_testbench();
 
       reset <= 1'b0;
 
-      while (~halt && count < 100000) begin
+      while (~halt && count < 2000000) begin
+         mode_count = mode_count + 1;
          count = count + 1;
+
+         if (mode == `MODE_RENDER && mode_count >= `RENDER_CYCLES && 
+             ~mem_we && ~mem_re) begin
+            if (mmod.data[16'hff44] >= 8'd153) begin
+               // Speed up the damn process
+               mmod.data[16'hff44] = 8'd140; // 8'd0;
+            end else begin
+               mmod.data[16'hff44] = mmod.data[16'hff44] + 8'd1;
+            end
+            mode_count = 0;
+         end
+
+         if (mode == `MODE_WAIT && mmod.data[16'hff40] == 8'h91) begin
+            mode = `MODE_RENDER;
+         end
+         
          @(posedge clock);
       end
 

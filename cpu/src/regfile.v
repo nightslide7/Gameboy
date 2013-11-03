@@ -33,9 +33,9 @@
  * @input rn_in The register code to select the input register.
  * @input rn_out The register code to select the output register.
  * @input we Writes to the selected register if this signal is asserted.
- * @input change_pc If asserted, the PC is incremented or decremented.
- * @input inc 1 indicates the PC should be incremented. 0 indicates that it
- *    should be decremented.
+ * @input change16 If asserted, the selected 16-bit register is incremented.
+ * @input inc 1 indicates the selected 16-bit register should be incremented.
+ *    0 indicates that it should be decremented.
  * @input reset Posedge reset.
  * @input clock Clock signal.
  */
@@ -44,12 +44,12 @@ module regfile(/*AUTOARG*/
    regfile_data_out,
    // Inputs
    regfile_data_in, regfile_rn_in, regfile_rn_out, regfile_we,
-   regfile_change_pc, regfile_inc_pc, reset, clock, halt
+   regfile_change16, regfile_inc, regfile_jp_hl, reset, clock, halt
    );
    output wire [15:0] regfile_data_out;
    input [7:0]        regfile_data_in;
    input [4:0]        regfile_rn_in, regfile_rn_out;
-   input              regfile_we, regfile_change_pc, regfile_inc_pc;
+   input              regfile_we, regfile_change16, regfile_inc, regfile_jp_hl;
    input              reset, clock;
    input              halt;
 
@@ -57,7 +57,7 @@ module regfile(/*AUTOARG*/
    integer            i;
 
    wire [2:0]         ri_in, ri_out;
-   wire               hi_in, full_out, hi_out;
+   wire               full_in, hi_in, full_out, hi_out;
 
    wire [7:0]         data_out8;
    
@@ -65,6 +65,7 @@ module regfile(/*AUTOARG*/
    assign hi_out = regfile_rn_out[3];
    assign ri_out = regfile_rn_out[2:0];
 
+   assign full_in = regfile_rn_in[4];
    assign hi_in = regfile_rn_in[3];
    assign ri_in = regfile_rn_in[2:0];
    
@@ -74,7 +75,7 @@ module regfile(/*AUTOARG*/
             mem[i] <= 16'd0;
          end
       end
-      else if (regfile_we) begin
+/*      else if (regfile_we) begin
          if (regfile_change_pc & regfile_inc_pc) begin
             mem[4] <= mem[4] + 16'd1;
          end
@@ -85,6 +86,19 @@ module regfile(/*AUTOARG*/
             mem[ri_in][15:8] <= regfile_data_in;
          end
          else begin
+            mem[ri_in][7:0] <= regfile_data_in;
+         end
+      end*/ // always @ (posedge clock or posedge reset)
+      else if (regfile_we) begin
+         if (regfile_jp_hl) begin
+            mem[4] <= mem[2];
+         end else if (full_in & regfile_change16 & regfile_inc) begin
+            mem[ri_in] <= mem[ri_in] + 16'd1;
+         end else if (full_in & regfile_change16 & ~regfile_inc) begin
+            mem[ri_in] <= mem[ri_in] - 16'd1;
+         end else if (hi_in) begin
+            mem[ri_in][15:8] <= regfile_data_in;
+         end else begin
             mem[ri_in][7:0] <= regfile_data_in;
          end
       end
