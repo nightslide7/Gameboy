@@ -1,0 +1,119 @@
+Release 14.3 par P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+magnum.ece.cmu.edu::  Mon Oct 28 11:55:27 2013
+
+par -w -intstyle ise -ol high -mt off tb_map.ncd tb.ncd tb.pcf 
+
+
+Constraints file: tb.pcf.
+Loading device for application Rf_Device from file '5vlx110t.nph' in environment /opt/Xilinx/14.3/ISE_DS/ISE/.
+   "tb" is an NCD, version 3.2, device xc5vlx110t, package ff1136, speed -1
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 0.950 Volts. (default - Range: 0.950 to 1.050 Volts)
+
+INFO:Par:282 - No user timing constraints were detected or you have set the option to ignore timing constraints ("par
+   -x"). Place and Route will run in "Performance Evaluation Mode" to automatically improve the performance of all
+   internal clocks in this design. Because there are not defined timing requirements, a timing score will not be
+   reported in the PAR report in this mode. The PAR timing summary will list the performance achieved for each clock.
+   Note: For the fastest runtime, set the effort level to "std".  For best performance, set the effort level to "high".
+
+Device speed data version:  "PRODUCTION 1.73 2012-10-12".
+
+
+
+Device Utilization Summary:
+
+   Number of BUFGs                           1 out of 32      3%
+   Number of External IOBs                  33 out of 640     5%
+      Number of LOCed IOBs                  17 out of 33     51%
+
+   Number of RAMB36_EXPs                     8 out of 148     5%
+   Number of Slices                         16 out of 17280   1%
+   Number of Slice Registers                 3 out of 69120   1%
+      Number used as Flip Flops              3
+      Number used as Latches                 0
+      Number used as LatchThrus              0
+
+   Number of Slice LUTS                     24 out of 69120   1%
+   Number of Slice LUT-Flip Flop pairs      27 out of 69120   1%
+
+
+Overall effort level (-ol):   High 
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 6 secs 
+Finished initial Timing Analysis.  REAL time: 6 secs 
+
+Starting Router
+
+
+Phase  1  : 1053 unrouted;      REAL time: 7 secs 
+
+Phase  2  : 475 unrouted;      REAL time: 7 secs 
+
+Phase  3  : 101 unrouted;      REAL time: 8 secs 
+
+Phase  4  : 101 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
+
+Updating file: tb.ncd with current fully routed design.
+
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+Total REAL time to Router completion: 11 secs 
+Total CPU time to Router completion: 11 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+INFO:Par:459 - The Clock Report is not displayed in the non timing-driven mode.
+Timing Score: 0 (Setup: 0, Hold: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+------------------------------------------------------------------------------------------------------
+  Constraint                                | Requested  | Actual     | Logic  | Absolute   |Number of
+                                            |            |            | Levels | Slack      |errors   
+------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 14 secs 
+Total CPU time to PAR completion: 14 secs 
+
+Peak Memory Usage:  828 MB
+
+Placer: Placement generated during map.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 0
+Number of info messages: 2
+
+Writing design to file tb.ncd
+
+
+
+PAR done!

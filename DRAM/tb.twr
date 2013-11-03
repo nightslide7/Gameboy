@@ -1,0 +1,91 @@
+--------------------------------------------------------------------------------
+Release 14.3 Trace  (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 1 -n
+3 -fastpaths -xml tb.twx tb.ncd -o tb.twr tb.pcf -ucf tb.ucf
+
+Design file:              tb.ncd
+Physical constraint file: tb.pcf
+Device,package,speed:     xc5vlx110t,ff1136,-1 (PRODUCTION 1.73 2012-10-12, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clka
+------------+------------+------------+------------------+--------+
+            |Max Setup to|Max Hold to |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+addra<0>    |    1.850(R)|    2.952(R)|clka_BUFGP        |   0.000|
+addra<1>    |    1.684(R)|    2.814(R)|clka_BUFGP        |   0.000|
+addra<2>    |    1.683(R)|    2.783(R)|clka_BUFGP        |   0.000|
+addra<3>    |    3.800(R)|    0.685(R)|clka_BUFGP        |   0.000|
+addra<4>    |    1.349(R)|    2.997(R)|clka_BUFGP        |   0.000|
+addra<5>    |    1.409(R)|    2.958(R)|clka_BUFGP        |   0.000|
+addra<6>    |    1.953(R)|    2.937(R)|clka_BUFGP        |   0.000|
+addra<7>    |    1.684(R)|    3.130(R)|clka_BUFGP        |   0.000|
+addra<8>    |    1.253(R)|    2.954(R)|clka_BUFGP        |   0.000|
+addra<9>    |    1.279(R)|    3.037(R)|clka_BUFGP        |   0.000|
+addra<10>   |    1.421(R)|    3.112(R)|clka_BUFGP        |   0.000|
+addra<11>   |    1.254(R)|    2.978(R)|clka_BUFGP        |   0.000|
+addra<12>   |    2.134(R)|    2.377(R)|clka_BUFGP        |   0.000|
+addra<13>   |    2.371(R)|    2.194(R)|clka_BUFGP        |   0.000|
+addra<14>   |    2.457(R)|    2.147(R)|clka_BUFGP        |   0.000|
+dina<0>     |    1.768(R)|    2.831(R)|clka_BUFGP        |   0.000|
+dina<1>     |    2.046(R)|    2.810(R)|clka_BUFGP        |   0.000|
+dina<2>     |    1.661(R)|    2.787(R)|clka_BUFGP        |   0.000|
+dina<3>     |    1.499(R)|    2.977(R)|clka_BUFGP        |   0.000|
+dina<4>     |    1.193(R)|    2.973(R)|clka_BUFGP        |   0.000|
+dina<5>     |    1.212(R)|    2.949(R)|clka_BUFGP        |   0.000|
+dina<6>     |    1.567(R)|    2.859(R)|clka_BUFGP        |   0.000|
+dina<7>     |    1.224(R)|    2.983(R)|clka_BUFGP        |   0.000|
+wea         |    2.402(R)|    2.585(R)|clka_BUFGP        |   0.000|
+------------+------------+------------+------------------+--------+
+
+Clock clka to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+douta<0>    |   13.822(R)|clka_BUFGP        |   0.000|
+douta<1>    |   13.658(R)|clka_BUFGP        |   0.000|
+douta<2>    |   13.666(R)|clka_BUFGP        |   0.000|
+douta<3>    |   15.605(R)|clka_BUFGP        |   0.000|
+douta<4>    |   13.806(R)|clka_BUFGP        |   0.000|
+douta<5>    |   15.491(R)|clka_BUFGP        |   0.000|
+douta<6>    |   15.662(R)|clka_BUFGP        |   0.000|
+douta<7>    |   15.602(R)|clka_BUFGP        |   0.000|
+------------+------------+------------------+--------+
+
+
+Analysis completed Mon Oct 28 11:55:50 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 597 MB
+
+
+

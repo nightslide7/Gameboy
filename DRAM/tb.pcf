@@ -1,0 +1,24 @@
+//! **************************************************************************
+// Written by: Map P.40xd on Mon Oct 28 11:55:26 2013
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "douta<0>" LOCATE = SITE "AE24" LEVEL 1;
+COMP "douta<1>" LOCATE = SITE "AD24" LEVEL 1;
+COMP "douta<2>" LOCATE = SITE "AD25" LEVEL 1;
+COMP "douta<3>" LOCATE = SITE "G16" LEVEL 1;
+COMP "clka" LOCATE = SITE "AH15" LEVEL 1;
+COMP "douta<4>" LOCATE = SITE "AD26" LEVEL 1;
+COMP "douta<5>" LOCATE = SITE "G15" LEVEL 1;
+COMP "douta<6>" LOCATE = SITE "L18" LEVEL 1;
+COMP "douta<7>" LOCATE = SITE "H18" LEVEL 1;
+COMP "addra<0>" LOCATE = SITE "AF26" LEVEL 1;
+COMP "wea" LOCATE = SITE "AC24" LEVEL 1;
+COMP "dina<0>" LOCATE = SITE "AC25" LEVEL 1;
+COMP "addra<1>" LOCATE = SITE "AF25" LEVEL 1;
+COMP "dina<1>" LOCATE = SITE "AE26" LEVEL 1;
+COMP "addra<2>" LOCATE = SITE "AG27" LEVEL 1;
+COMP "dina<2>" LOCATE = SITE "AE27" LEVEL 1;
+COMP "addra<3>" LOCATE = SITE "U25" LEVEL 1;
+SCHEMATIC END;
+
