@@ -4,3 +4,9 @@ map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -regist
 par -w -intstyle ise -ol high -mt off tb_map.ncd tb.ncd tb.pcf 
 trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml tb.twx tb.ncd -o tb.twr tb.pcf -ucf tb.ucf 
 bitgen -intstyle ise -f tb.ut tb.ncd 
+xst -intstyle ise -ifn "C:/Users/Joseph/Documents/GitHub/Gameboy/DRAM/tb.xst" -ofn "C:/Users/Joseph/Documents/GitHub/Gameboy/DRAM/tb.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc tb.ucf -p xc5vlx110t-ff1136-1 tb.ngc tb.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o tb_map.ncd tb.ngd tb.pcf 
+par -w -intstyle ise -ol high -mt off tb_map.ncd tb.ncd tb.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml tb.twx tb.ncd -o tb.twr tb.pcf -ucf tb.ucf 
+bitgen -intstyle ise -f tb.ut tb.ncd 

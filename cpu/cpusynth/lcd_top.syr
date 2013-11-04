@@ -1,0 +1,1254 @@
+Release 14.3 - xst P.40xd (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: lcd_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "lcd_top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "lcd_top"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-2-ff1136
+
+---- Source Options
+Top Module Name                    : lcd_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Off
+Reduce Control Sets                : Off
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "regfile.v" in library work
+Compiling verilog include file "cpu.vh"
+Compiling verilog file "mux.v" in library work
+Module <regfile> compiled
+Compiling verilog file "lcd_top.v" in library work
+Module <mux> compiled
+Compiling verilog file "lcd_control.v" in library work
+Module <lcd_top> compiled
+Compiling verilog file "ipcore_dir/blockram.v" in library work
+Module <lcd_control> compiled
+Compiling verilog file "display_signal.v" in library work
+Module <blockram> compiled
+WARNING:HDLCompilers:38 - "display_signal.v" line 27 Macro 'cwait' redefined
+Compiling verilog file "display_hex.v" in library work
+Module <display_signal> compiled
+Module <display_hex> compiled
+Compiling verilog file "decode.v" in library work
+Compiling verilog include file "cpu.vh"
+Module <decode_ascii_hex> compiled
+Compiling verilog file "cpu.v" in library work
+Compiling verilog include file "cpu.vh"
+Module <decode> compiled
+Module <cpu> compiled
+Module <rn_decode> compiled
+Module <tristate> compiled
+Module <register> compiled
+Compiling verilog file "clock_divider.v" in library work
+Module <buffer> compiled
+Compiling verilog file "button.v" in library work
+Module <clock_divider> compiled
+Compiling verilog file "alu.v" in library work
+Compiling verilog include file "cpu.vh"
+Module <button> compiled
+Module <alu> compiled
+No errors in compilation
+Analysis of file <"lcd_top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <lcd_top> in library <work>.
+
+Analyzing hierarchy for module <display_signal> in library <work> with parameters.
+	channels = "00000000000000000000000000010000"
+	width = "00000000000000000000000001000000"
+
+Analyzing hierarchy for module <button> in library <work> with parameters.
+	delay_cycles = "00000000010110111000110110000000"
+	delay_cycles_width = "00000000000000000000000000010111"
+
+Analyzing hierarchy for module <lcd_control> in library <work>.
+
+Analyzing hierarchy for module <display_hex> in library <work>.
+
+Analyzing hierarchy for module <cpu> in library <work> with parameters.
+	F_C = "00000000000000000000000000000000"
+	F_H = "00000000000000000000000000000001"
+	F_N = "00000000000000000000000000000010"
+	F_Z = "00000000000000000000000000000011"
+
+Analyzing hierarchy for module <clock_divider> in library <work> with parameters.
+	BITS = "00000000000000000000000000000010"
+
+Analyzing hierarchy for module <mux> in library <work> with parameters.
+	channels = "00000000000000000000000000010000"
+	width = "00000000000000000000000000000100"
+
+Analyzing hierarchy for module <decode_ascii_hex> in library <work>.
+
+Analyzing hierarchy for module <buffer> in library <work> with parameters.
+	reset_value = "00000000000000000000000000000000"
+	width = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <buffer> in library <work> with parameters.
+	reset_value = "00000000000000000000000000000000"
+	width = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <register> in library <work> with parameters.
+	reset_value = "00000000000000000000000000000000"
+	width = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <register> in library <work> with parameters.
+	reset_value = "00000000000000000000000000000000"
+	width = "00000000000000000000000000000101"
+
+Analyzing hierarchy for module <register> in library <work> with parameters.
+	reset_value = "00000000000000000000000000000000"
+	width = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <tristate> in library <work> with parameters.
+	width = "00000000000000000000000000001000"
+
+Analyzing hierarchy for module <tristate> in library <work> with parameters.
+	width = "00000000000000000000000000010000"
+
+Analyzing hierarchy for module <alu> in library <work> with parameters.
+	F_C = "00000000000000000000000000000000"
+	F_H = "00000000000000000000000000000001"
+	F_N = "00000000000000000000000000000010"
+	F_Z = "00000000000000000000000000000011"
+
+Analyzing hierarchy for module <regfile> in library <work>.
+
+Analyzing hierarchy for module <decode> in library <work> with parameters.
+	F_C = "00000000000000000000000000000000"
+	F_H = "00000000000000000000000000000001"
+	F_N = "00000000000000000000000000000010"
+	F_Z = "00000000000000000000000000000011"
+
+Analyzing hierarchy for module <rn_decode> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <lcd_top>.
+WARNING:Xst:2211 - "ipcore_dir/blockram.v" line 94: Instantiating black box module <blockram>.
+Module <lcd_top> is correct for synthesis.
+ 
+Analyzing module <display_signal> in library <work>.
+	Calling function <log2>.
+	Calling function <log2>.
+	channels = 32'sb00000000000000000000000000010000
+	width = 32'sb00000000000000000000000001000000
+Module <display_signal> is correct for synthesis.
+ 
+Analyzing module <mux> in library <work>.
+	Calling function <log2>.
+	channels = 32'sb00000000000000000000000000010000
+	width = 32'sb00000000000000000000000000000100
+Module <mux> is correct for synthesis.
+ 
+Analyzing module <button> in library <work>.
+	delay_cycles = 32'sb00000000010110111000110110000000
+	delay_cycles_width = 32'sb00000000000000000000000000010111
+Module <button> is correct for synthesis.
+ 
+Analyzing module <lcd_control> in library <work>.
+Module <lcd_control> is correct for synthesis.
+ 
+Analyzing module <display_hex> in library <work>.
+Module <display_hex> is correct for synthesis.
+ 
+Analyzing module <decode_ascii_hex> in library <work>.
+Module <decode_ascii_hex> is correct for synthesis.
+ 
+Analyzing module <cpu> in library <work>.
+	F_C = 32'sb00000000000000000000000000000000
+	F_H = 32'sb00000000000000000000000000000001
+	F_N = 32'sb00000000000000000000000000000010
+	F_Z = 32'sb00000000000000000000000000000011
+Module <cpu> is correct for synthesis.
+ 
+Analyzing module <buffer.1> in library <work>.
+	reset_value = 32'sb00000000000000000000000000000000
+	width = 32'sb00000000000000000000000000010000
+Module <buffer.1> is correct for synthesis.
+ 
+Analyzing module <buffer.2> in library <work>.
+	reset_value = 32'sb00000000000000000000000000000000
+	width = 32'sb00000000000000000000000000001000
+Module <buffer.2> is correct for synthesis.
+ 
+Analyzing module <register.1> in library <work>.
+	reset_value = 32'sb00000000000000000000000000000000
+	width = 32'sb00000000000000000000000000001000
+Module <register.1> is correct for synthesis.
+ 
+Analyzing module <register.2> in library <work>.
+	reset_value = 32'sb00000000000000000000000000000000
+	width = 32'sb00000000000000000000000000000101
+Module <register.2> is correct for synthesis.
+ 
+Analyzing module <register.3> in library <work>.
+	reset_value = 32'sb00000000000000000000000000000000
+	width = 32'sb00000000000000000000000000000001
+Module <register.3> is correct for synthesis.
+ 
+Analyzing module <tristate.1> in library <work>.
+	width = 32'sb00000000000000000000000000001000
+Module <tristate.1> is correct for synthesis.
+ 
+Analyzing module <tristate.2> in library <work>.
+	width = 32'sb00000000000000000000000000010000
+Module <tristate.2> is correct for synthesis.
+ 
+Analyzing module <alu> in library <work>.
+	F_C = 32'sb00000000000000000000000000000000
+	F_H = 32'sb00000000000000000000000000000001
+	F_N = 32'sb00000000000000000000000000000010
+	F_Z = 32'sb00000000000000000000000000000011
+Module <alu> is correct for synthesis.
+ 
+Analyzing module <regfile> in library <work>.
+Module <regfile> is correct for synthesis.
+ 
+Analyzing module <decode> in library <work>.
+	F_C = 32'sb00000000000000000000000000000000
+	F_H = 32'sb00000000000000000000000000000001
+	F_N = 32'sb00000000000000000000000000000010
+	F_Z = 32'sb00000000000000000000000000000011
+Module <decode> is correct for synthesis.
+ 
+Analyzing module <rn_decode> in library <work>.
+Module <rn_decode> is correct for synthesis.
+ 
+Analyzing module <clock_divider> in library <work>.
+	BITS = 32'sb00000000000000000000000000000010
+Module <clock_divider> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <i> in unit <regfile> has a constant value of 101 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <button>.
+    Related source file is "button.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clock                     (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 23-bit register for signal <count>.
+    Found 23-bit adder for signal <next_count$addsub0000> created at line 67.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  23 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <button> synthesized.
+
+
+Synthesizing Unit <lcd_control>.
+    Related source file is "lcd_control.v".
+WARNING:Xst:646 - Signal <temp2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <temp1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 19                                             |
+    | Transitions        | 39                                             |
+    | Inputs             | 8                                              |
+    | Outputs            | 19                                             |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 000000                                         |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit register for signal <sf_d>.
+    Found 25-bit comparator greater for signal <control$cmp_gt0000> created at line 119.
+    Found 25-bit comparator greater for signal <control$cmp_gt0001> created at line 121.
+    Found 25-bit comparator lessequal for signal <control$cmp_le0000> created at line 119.
+    Found 25-bit comparator lessequal for signal <control$cmp_le0001> created at line 121.
+    Found 25-bit comparator lessequal for signal <control$cmp_le0002> created at line 292.
+    Found 25-bit comparator lessequal for signal <control$cmp_le0003> created at line 302.
+    Found 25-bit comparator lessequal for signal <control$cmp_le0004> created at line 149.
+    Found 25-bit register for signal <count>.
+    Found 25-bit up counter for signal <count_temp>.
+    Found 25-bit comparator greatequal for signal <state$cmp_ge0000> created at line 111.
+    Found 25-bit comparator greatequal for signal <state$cmp_ge0001> created at line 241.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  29 D-type flip-flop(s).
+	inferred   9 Comparator(s).
+Unit <lcd_control> synthesized.
+
+
+Synthesizing Unit <clock_divider>.
+    Related source file is "clock_divider.v".
+    Found 2-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <clock_divider> synthesized.
+
+
+Synthesizing Unit <mux>.
+    Related source file is "mux.v".
+    Found 4-bit 16-to-1 multiplexer for signal <out>.
+    Summary:
+	inferred   4 Multiplexer(s).
+Unit <mux> synthesized.
+
+
+Synthesizing Unit <decode_ascii_hex>.
+    Related source file is "display_hex.v".
+    Found 16x8-bit ROM for signal <ascii>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <decode_ascii_hex> synthesized.
+
+
+Synthesizing Unit <buffer_1>.
+    Related source file is "cpu.v".
+    Found 16-bit tristate buffer for signal <bus_in>.
+    Found 16-bit tristate buffer for signal <bus_ext>.
+    Found 16-bit register for signal <q>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+	inferred  32 Tristate(s).
+Unit <buffer_1> synthesized.
+
+
+Synthesizing Unit <buffer_2>.
+    Related source file is "cpu.v".
+    Found 8-bit tristate buffer for signal <bus_in>.
+    Found 8-bit tristate buffer for signal <bus_ext>.
+    Found 8-bit register for signal <q>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred  16 Tristate(s).
+Unit <buffer_2> synthesized.
+
+
+Synthesizing Unit <register_1>.
+    Related source file is "cpu.v".
+    Found 8-bit register for signal <q>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <register_1> synthesized.
+
+
+Synthesizing Unit <register_2>.
+    Related source file is "cpu.v".
+    Found 5-bit register for signal <q>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+Unit <register_2> synthesized.
+
+
+Synthesizing Unit <register_3>.
+    Related source file is "cpu.v".
+    Found 1-bit register for signal <q<0>>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <register_3> synthesized.
+
+
+Synthesizing Unit <tristate_1>.
+    Related source file is "cpu.v".
+    Found 8-bit tristate buffer for signal <out>.
+    Summary:
+	inferred   8 Tristate(s).
+Unit <tristate_1> synthesized.
+
+
+Synthesizing Unit <tristate_2>.
+    Related source file is "cpu.v".
+    Found 16-bit tristate buffer for signal <out>.
+    Summary:
+	inferred  16 Tristate(s).
+Unit <tristate_2> synthesized.
+
+
+Synthesizing Unit <alu>.
+    Related source file is "alu.v".
+WARNING:Xst:646 - Signal <result_low> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <result_high> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <intermediate_result2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <intermediate_result1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <carry> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_7>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_6>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_5>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_4>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_3>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_2>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_1>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <alu_data_out_0>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0000> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0001> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0002> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0003> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0004> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0005> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0006> created at line 90.
+    Found 1-bit xor2 for signal <alu_flags_out_3$xor0007> created at line 90.
+    Found 8-bit adder carry out for signal <old_intermediate_result1_17$addsub0001> created at line 133.
+    Found 4-bit comparator greater for signal <old_intermediate_result1_17$cmp_gt0000> created at line 132.
+    Found 9-bit subtractor for signal <old_intermediate_result1_18$addsub0000> created at line 147.
+    Found 8-bit comparator greater for signal <old_intermediate_result2_19$cmp_gt0000> created at line 138.
+    Found 9-bit addsub for signal <old_intermediate_result2_19$share0000>.
+    Found 5-bit adder for signal <old_result_high_12$addsub0000> created at line 73.
+    Found 5-bit adder for signal <old_result_high_16$addsub0000> created at line 113.
+    Found 5-bit adder for signal <old_result_low_11$addsub0000> created at line 69.
+    Found 5-bit adder for signal <old_result_low_11$addsub0001> created at line 69.
+    Found 5-bit adder for signal <old_result_low_8$addsub0000> created at line 52.
+    Summary:
+	inferred  16 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <alu> synthesized.
+
+
+Synthesizing Unit <regfile>.
+    Related source file is "regfile.v".
+WARNING:Xst:647 - Input <halt> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 16-bit 5-to-1 multiplexer for signal <$varindex0000> created at line 115.
+    Summary:
+	inferred  80 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  32 Multiplexer(s).
+Unit <regfile> synthesized.
+
+
+Synthesizing Unit <rn_decode>.
+    Related source file is "cpu.v".
+Unit <rn_decode> synthesized.
+
+
+Synthesizing Unit <display_signal>.
+    Related source file is "display_signal.v".
+    Found 4-bit register for signal <count>.
+    Found 1-bit register for signal <cstate>.
+    Found 4-bit subtractor for signal <next_count$addsub0000> created at line 53.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <display_signal> synthesized.
+
+
+Synthesizing Unit <display_hex>.
+    Related source file is "display_hex.v".
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 2                                              |
+    | Clock              | clock                     (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <display_hex> synthesized.
+
+
+Synthesizing Unit <decode>.
+    Related source file is "decode.v".
+WARNING:Xst:646 - Signal <t_cycle> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <m_cycles> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <m_cycle> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit register for signal <cb>.
+    Found 5-bit register for signal <cycle>.
+    Found 1-bit register for signal <halted>.
+    Found 1-bit register for signal <interrupt_handle>.
+    Found 4-bit comparator equal for signal <next_cb$cmp_eq0000> created at line 2203.
+    Found 6-bit adder for signal <next_cycle_high>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <decode> synthesized.
+
+
+Synthesizing Unit <cpu>.
+    Related source file is "cpu.v".
+WARNING:Xst:646 - Signal <interrupt_sel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <flags<2:1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_5> of Case statement line 100 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <$old_interrupt_sel_5> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Using one-hot encoding for signal <$old_interrupt_sel_5>.
+Unit <cpu> synthesized.
+
+
+Synthesizing Unit <lcd_top>.
+    Related source file is "lcd_top.v".
+WARNING:Xst:647 - Input <flash_d<15:8>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <flash_wait> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <GPIO_SW_E> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <GPIO_SW_W> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <regs_data<47:16>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <nextString> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <bram_addr<16>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IF_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IE_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_3> for signal <cstate>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 8                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 1                                              |
+    | Clock              | clock                     (rising_edge)        |
+    | Reset              | reset                     (positive)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16-bit comparator lessequal for signal <addr_in_flash>.
+    Found 8-bit tristate buffer for signal <data_ext>.
+    Found 8-bit up counter for signal <FF44_data>.
+    Found 8-bit comparator greatequal for signal <FF44_data$cmp_ge0000> created at line 289.
+    Found 9-bit comparator greatequal for signal <FF44_data$cmp_ge0001> created at line 287.
+    Found 9-bit up counter for signal <v_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred   3 Comparator(s).
+	inferred   8 Tristate(s).
+Unit <lcd_top> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x8-bit ROM                                          : 1
+# Adders/Subtractors                                   : 21
+ 16-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 23-bit adder                                          : 1
+ 4-bit subtractor                                      : 1
+ 5-bit adder                                           : 12
+ 5-bit adder carry in                                  : 1
+ 6-bit adder                                           : 1
+ 8-bit adder carry out                                 : 1
+ 9-bit addsub                                          : 1
+ 9-bit subtractor                                      : 1
+# Counters                                             : 4
+ 2-bit up counter                                      : 1
+ 25-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+ 9-bit up counter                                      : 1
+# Registers                                            : 99
+ 1-bit register                                        : 85
+ 16-bit register                                       : 1
+ 23-bit register                                       : 1
+ 25-bit register                                       : 1
+ 4-bit register                                        : 2
+ 5-bit register                                        : 3
+ 8-bit register                                        : 6
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 15
+ 16-bit comparator lessequal                           : 1
+ 25-bit comparator greatequal                          : 2
+ 25-bit comparator greater                             : 2
+ 25-bit comparator lessequal                           : 5
+ 4-bit comparator equal                                : 1
+ 4-bit comparator greater                              : 1
+ 8-bit comparator greatequal                           : 1
+ 8-bit comparator greater                              : 1
+ 9-bit comparator greatequal                           : 1
+# Multiplexers                                         : 4
+ 1-bit 8-to-1 multiplexer                              : 1
+ 16-bit 5-to-1 multiplexer                             : 2
+ 4-bit 16-to-1 multiplexer                             : 1
+# Tristates                                            : 11
+ 16-bit tristate buffer                                : 3
+ 8-bit tristate buffer                                 : 8
+# Xors                                                 : 8
+ 1-bit xor2                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_3> for best encoding.
+Optimizing FSM <cstate/FSM> on signal <cstate[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 00
+ 001   | 01
+ 100   | 11
+-------------------
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <hex_decoder/state/FSM> on signal <state[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 10
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <lcd/state/FSM> on signal <state[1:19]> with one-hot encoding.
+-------------------------------
+ State  | Encoding
+-------------------------------
+ 000000 | 0000000000000000001
+ 000001 | 0000000000000000010
+ 000010 | 0000000000000000100
+ 000011 | 0000000000000001000
+ 000100 | 0000000000000010000
+ 000101 | 0000000000000100000
+ 000110 | 0000000000010000000
+ 000111 | 0000000001000000000
+ 001000 | 0000000100000000000
+ 001001 | 0010000000000000000
+ 001011 | 0100000000000000000
+ 001110 | 0000100000000000000
+ 010000 | 0000010000000000000
+ 100101 | 0000000000001000000
+ 100110 | 0000000000100000000
+ 100111 | 0000000010000000000
+ 101000 | 0000001000000000000
+ 101011 | 1000000000000000000
+ 101110 | 0001000000000000000
+-------------------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <inc_button/state/FSM> on signal <state[1:2]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 10
+-------------------
+Reading core <ipcore_dir/blockram.ngc>.
+Loading core <blockram> for timing and area information for instance <br>.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <F_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <F_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <F_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <F_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_0> (without init value) has a constant value of 0 in block <IE_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_1> (without init value) has a constant value of 0 in block <IE_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_2> (without init value) has a constant value of 0 in block <IE_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_3> (without init value) has a constant value of 0 in block <IE_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <q_4> (without init value) has a constant value of 0 in block <IE_reg>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <interrupt_handle> (without init value) has a constant value of 0 in block <gb80_decode>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1290 - Hierarchical block <IF_reg> is unconnected in block <gb80_cpu>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <IE_reg> is unconnected in block <gb80_cpu>.
+   It will be removed from the design.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <q_0> is unconnected in block <IME_reg>.
+WARNING:Xst:1290 - Hierarchical block <IME_reg> is unconnected in block <gb80_cpu>.
+   It will be removed from the design.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 4
+# ROMs                                                 : 1
+ 16x8-bit ROM                                          : 1
+# Adders/Subtractors                                   : 18
+ 16-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 23-bit adder                                          : 1
+ 4-bit adder                                           : 1
+ 4-bit adder carry in                                  : 1
+ 4-bit subtractor                                      : 1
+ 5-bit adder                                           : 5
+ 5-bit adder carry in                                  : 3
+ 6-bit adder                                           : 1
+ 8-bit adder carry out                                 : 1
+ 9-bit addsub                                          : 1
+ 9-bit subtractor                                      : 1
+# Counters                                             : 4
+ 2-bit up counter                                      : 1
+ 25-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+ 9-bit up counter                                      : 1
+# Registers                                            : 220
+ Flip-Flops                                            : 220
+# Latches                                              : 8
+ 1-bit latch                                           : 8
+# Comparators                                          : 15
+ 16-bit comparator lessequal                           : 1
+ 25-bit comparator greatequal                          : 2
+ 25-bit comparator greater                             : 2
+ 25-bit comparator lessequal                           : 5
+ 4-bit comparator equal                                : 1
+ 4-bit comparator greater                              : 1
+ 8-bit comparator greatequal                           : 1
+ 8-bit comparator greater                              : 1
+ 9-bit comparator greatequal                           : 1
+# Multiplexers                                         : 4
+ 1-bit 8-to-1 multiplexer                              : 1
+ 16-bit 5-to-1 multiplexer                             : 2
+ 4-bit 16-to-1 multiplexer                             : 1
+# Xors                                                 : 8
+ 1-bit xor2                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <IE_reg/q_4> in Unit <cpu> is equivalent to the following 4 FFs/Latches, which will be removed : <IE_reg/q_3> <IE_reg/q_2> <IE_reg/q_1> <IE_reg/q_0> 
+WARNING:Xst:1710 - FF/Latch <IE_reg/q_4> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <IF_reg/q_4> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IF_reg/q_3> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IF_reg/q_2> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IF_reg/q_1> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IF_reg/q_0> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2042 - Unit lcd_top: 16 internal tristates are replaced by logic (pull-up yes): N10, N11, N12, N13, N14, N15, N16, N17, N18, N19, N4, N5, N6, N7, N8, N9.
+WARNING:Xst:2040 - Unit lcd_top: 24 multi-source signals are replaced by logic (pull-up yes): data_ext<0>, data_ext<1>, data_ext<2>, data_ext<3>, data_ext<4>, data_ext<5>, data_ext<6>, data_ext<7>, gb80_cpu/addr_bus<0>, gb80_cpu/addr_bus<10>, gb80_cpu/addr_bus<11>, gb80_cpu/addr_bus<12>, gb80_cpu/addr_bus<13>, gb80_cpu/addr_bus<14>, gb80_cpu/addr_bus<15>, gb80_cpu/addr_bus<1>, gb80_cpu/addr_bus<2>, gb80_cpu/addr_bus<3>, gb80_cpu/addr_bus<4>, gb80_cpu/addr_bus<5>, gb80_cpu/addr_bus<6>, gb80_cpu/addr_bus<7>, gb80_cpu/addr_bus<8>, gb80_cpu/addr_bus<9>.
+WARNING:Xst:2042 - Unit tristate_2: 16 internal tristates are replaced by logic (pull-up yes): out<0>, out<10>, out<11>, out<12>, out<13>, out<14>, out<15>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>, out<8>, out<9>.
+WARNING:Xst:2042 - Unit tristate_1: 8 internal tristates are replaced by logic (pull-up yes): out<0>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>.
+WARNING:Xst:2042 - Unit buffer_2: 16 internal tristates are replaced by logic (pull-up yes): bus_ext<0>, bus_ext<1>, bus_ext<2>, bus_ext<3>, bus_ext<4>, bus_ext<5>, bus_ext<6>, bus_ext<7>, bus_in<0>, bus_in<1>, bus_in<2>, bus_in<3>, bus_in<4>, bus_in<5>, bus_in<6>, bus_in<7>.
+
+Optimizing unit <lcd_top> ...
+
+Optimizing unit <button> ...
+
+Optimizing unit <lcd_control> ...
+
+Optimizing unit <register_1> ...
+
+Optimizing unit <alu> ...
+
+Optimizing unit <regfile> ...
+
+Optimizing unit <decode> ...
+
+Optimizing unit <display_signal> ...
+
+Optimizing unit <display_hex> ...
+WARNING:Xst:1710 - FF/Latch <gb80_cpu/F_reg/q_3> (without init value) has a constant value of 0 in block <lcd_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gb80_cpu/F_reg/q_2> (without init value) has a constant value of 0 in block <lcd_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gb80_cpu/F_reg/q_1> (without init value) has a constant value of 0 in block <lcd_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <gb80_cpu/F_reg/q_0> (without init value) has a constant value of 0 in block <lcd_top>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <gb80_cpu/IME_reg/q_0> is unconnected in block <lcd_top>.
+WARNING:Xst:1710 - FF/Latch <gb80_cpu/gb80_decode/interrupt_handle> (without init value) has a constant value of 0 in block <lcd_top>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block lcd_top, actual ratio is 2.
+FlipFlop gb80_cpu/inst_reg/q_1 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 274
+ Flip-Flops                                            : 274
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : lcd_top.ngr
+Top Level Output File Name         : lcd_top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 58
+
+Cell Usage :
+# BELS                             : 1704
+#      GND                         : 2
+#      INV                         : 4
+#      LUT1                        : 55
+#      LUT2                        : 51
+#      LUT3                        : 102
+#      LUT4                        : 178
+#      LUT5                        : 302
+#      LUT6                        : 779
+#      MUXCY                       : 101
+#      MUXF7                       : 31
+#      VCC                         : 2
+#      XORCY                       : 97
+# FlipFlops/Latches                : 282
+#      FD                          : 25
+#      FDC                         : 46
+#      FDCE                        : 149
+#      FDP                         : 4
+#      FDR                         : 45
+#      FDS                         : 4
+#      FDSE                        : 1
+#      LD                          : 8
+# RAMS                             : 16
+#      RAMB36_EXP                  : 16
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 46
+#      IBUF                        : 10
+#      OBUF                        : 20
+#      OBUFT                       : 16
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             282  out of  69120     0%  
+ Number of Slice LUTs:                 1471  out of  69120     2%  
+    Number used as Logic:              1471  out of  69120     2%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1515
+   Number with an unused Flip Flop:    1233  out of   1515    81%  
+   Number with an unused LUT:            44  out of   1515     2%  
+   Number of fully used LUT-FF pairs:   238  out of   1515    15%  
+   Number of unique control sets:        21
+
+IO Utilization: 
+ Number of IOs:                          58
+ Number of bonded IOBs:                  47  out of    640     7%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               16  out of    148    10%  
+    Number using Block RAM only:         16
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                                                         | Clock buffer(FF name)                                                                                                             | Load  |
+-------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+ac97_bitclk                                                                          | BUFGP                                                                                                                             | 125   |
+br/N1                                                                                | NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 16    |
+cdiv/counter_11                                                                      | BUFG                                                                                                                              | 165   |
+gb80_cpu/gb80_alu/alu_data_out_7_not0001(gb80_cpu/gb80_alu/alu_data_out_7_not00011:O)| NONE(*)(gb80_cpu/gb80_alu/alu_data_out_7)                                                                                         | 8     |
+-------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                                                                                                                                                                                                  | Buffer(FF name)                                                                                                                   | Load  |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+GPIO_SW_C                                                                                                                                                                                                                                                       | IBUF                                                                                                                              | 199   |
+br/N1(br/XST_GND:G)                                                                                                                                                                                                                                             | NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B)| 64    |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/cascadelata_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/cascadelatb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/cascaderega_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/cascaderegb_tmp(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 10.157ns (Maximum Frequency: 98.456MHz)
+   Minimum input arrival time before clock: 3.335ns
+   Maximum output required time after clock: 8.128ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bitclk'
+  Clock period: 7.210ns (frequency: 138.690MHz)
+  Total number of paths / destination ports: 7457 / 154
+-------------------------------------------------------------------------
+Delay:               7.210ns (Levels of Logic = 8)
+  Source:            lcd/count_1 (FF)
+  Destination:       lcd/count_temp_24 (FF)
+  Source Clock:      ac97_bitclk rising
+  Destination Clock: ac97_bitclk rising
+
+  Data Path: lcd/count_1 to lcd/count_temp_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               8   0.396   0.694  lcd/count_1 (lcd/count_1)
+     LUT4:I0->O            1   0.086   0.412  lcd/state_cmp_eq00001_SW0 (N811)
+     LUT6:I5->O            4   0.086   0.832  lcd/state_cmp_eq00001 (lcd/N6)
+     LUT6:I1->O            7   0.086   0.314  lcd/state_cmp_eq0001110 (lcd/N5)
+     MUXF7:S->O            2   0.281   0.905  lcd/state_cmp_eq00021_f7 (lcd/N7)
+     LUT6:I0->O           20   0.086   0.500  lcd/state_cmp_eq00022 (lcd/state_cmp_eq0002)
+     LUT3:I2->O            2   0.086   0.905  hex_decoder/display_hex_done1 (display_hex_done)
+     LUT6:I0->O            6   0.086   0.510  sig_disp/next_count<3>21 (display_signal_done)
+     LUT6:I4->O           25   0.086   0.393  lcd/count_temp_or000056 (lcd/count_temp_or0000)
+     FDR:R                     0.468          lcd/count_temp_0
+    ----------------------------------------
+    Total                      7.210ns (1.747ns logic, 5.463ns route)
+                                       (24.2% logic, 75.8% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'cdiv/counter_11'
+  Clock period: 10.157ns (frequency: 98.456MHz)
+  Total number of paths / destination ports: 50164414 / 306
+-------------------------------------------------------------------------
+Delay:               10.157ns (Levels of Logic = 16)
+  Source:            gb80_cpu/inst_reg/q_1_1 (FF)
+  Destination:       gb80_cpu/F_reg/q_7 (FF)
+  Source Clock:      cdiv/counter_11 rising
+  Destination Clock: cdiv/counter_11 rising
+
+  Data Path: gb80_cpu/inst_reg/q_1_1 to gb80_cpu/F_reg/q_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             8   0.396   0.851  gb80_cpu/inst_reg/q_1_1 (gb80_cpu/inst_reg/q_1_1)
+     LUT5:I0->O           19   0.086   0.684  gb80_cpu/gb80_decode/old_m_cycles_26_and00201 (gb80_cpu/gb80_decode/old_m_cycles_26_and0020)
+     LUT6:I3->O            1   0.086   0.487  gb80_cpu/gb80_decode/rn_out_mux0000<0>1224_SW1 (N376)
+     LUT6:I4->O            1   0.086   0.000  gb80_cpu/gb80_decode/rn_out_mux0000<0>1230_G (N799)
+     MUXF7:I1->O           3   0.214   0.421  gb80_cpu/gb80_decode/rn_out_mux0000<0>1230 (gb80_cpu/gb80_decode/rn_out_mux0000<0>1230)
+     LUT6:I5->O            1   0.086   0.412  gb80_cpu/gb80_decode/rn_out_mux0000<0>1275_SW1 (N435)
+     LUT6:I5->O            4   0.086   0.425  gb80_cpu/gb80_decode/rn_out<1>102 (gb80_cpu/gb80_decode/rn_out<1>)
+     LUT5:I4->O            1   0.086   0.412  gb80_cpu/gb80_regfile/regfile_data_out<4>1_SW0_SW0_SW0 (N479)
+     LUT6:I5->O           28   0.086   0.519  gb80_cpu/gb80_regfile/regfile_data_out<4>1_SW0 (N227)
+     LUT6:I5->O            1   0.086   0.662  gb80_cpu/gb80_regfile/regfile_data_out<1>1_SW3 (N455)
+     LUT6:I2->O            6   0.086   0.435  gb80_cpu/gb80_regfile/regfile_data_out<1>1 (gb80_cpu/regfile_data_addr<1>)
+     LUT6:I5->O           43   0.086   0.597  gb80_cpu/alu_data1_in<1> (gb80_cpu/alu_data1_in<1>)
+     LUT2:I0->O            5   0.086   0.430  gb80_cpu/gb80_alu/_old_intermediate_result2_19<4>110 (gb80_cpu/gb80_alu/N48)
+     LUT6:I5->O            7   0.086   0.440  gb80_cpu/gb80_alu/old_intermediate_result2_19_mux0000<5>11 (gb80_cpu/gb80_alu/N10)
+     LUT5:I4->O            1   0.086   0.662  gb80_cpu/gb80_alu/_old_intermediate_result2_19<7>_SW3 (N474)
+     LUT6:I2->O            2   0.086   0.823  gb80_cpu/gb80_alu/_old_intermediate_result2_19<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_19<7>)
+     LUT6:I1->O            1   0.086   0.000  gb80_cpu/gb80_alu/alu_flags_out_3_mux00001080 (gb80_cpu/alu_flags_out<3>)
+     FDCE:D                   -0.022          gb80_cpu/F_reg/q_7
+    ----------------------------------------
+    Total                     10.157ns (1.900ns logic, 8.257ns route)
+                                       (18.7% logic, 81.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'gb80_cpu/gb80_alu/alu_data_out_7_not0001'
+  Clock period: 6.834ns (frequency: 146.330MHz)
+  Total number of paths / destination ports: 1347 / 8
+-------------------------------------------------------------------------
+Delay:               6.834ns (Levels of Logic = 10)
+  Source:            gb80_cpu/gb80_alu/alu_data_out_1 (LATCH)
+  Destination:       gb80_cpu/gb80_alu/alu_data_out_7 (LATCH)
+  Source Clock:      gb80_cpu/gb80_alu/alu_data_out_7_not0001 falling
+  Destination Clock: gb80_cpu/gb80_alu/alu_data_out_7_not0001 falling
+
+  Data Path: gb80_cpu/gb80_alu/alu_data_out_1 to gb80_cpu/gb80_alu/alu_data_out_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               3   0.610   0.609  gb80_cpu/gb80_alu/alu_data_out_1 (gb80_cpu/gb80_alu/alu_data_out_1)
+     LUT4:I1->O            4   0.086   0.425  gb80_cpu/alu_data1_in<1>11 (N25)
+     LUT6:I5->O            4   0.086   0.613  gb80_cpu/alu_data1_in<1>_SW0 (N282)
+     LUT3:I0->O            1   0.086   0.901  gb80_cpu/gb80_alu/Madd__old_result_low_13_xor<3>111_SW0 (N350)
+     LUT6:I0->O           16   0.086   0.481  gb80_cpu/gb80_alu/Madd__old_result_low_13_xor<3>111 (gb80_cpu/gb80_alu/N89)
+     LUT3:I2->O            3   0.086   0.421  gb80_cpu/gb80_alu/_old_intermediate_result2_19<4>210 (gb80_cpu/gb80_alu/N64)
+     LUT6:I5->O            1   0.086   0.487  gb80_cpu/gb80_alu/old_intermediate_result2_19_mux0000<4>1 (gb80_cpu/gb80_alu/old_intermediate_result2_19_mux0000<4>)
+     LUT6:I4->O            1   0.086   0.412  gb80_cpu/gb80_alu/_old_intermediate_result2_19<7>_SW2 (N473)
+     LUT6:I5->O            2   0.086   0.416  gb80_cpu/gb80_alu/_old_intermediate_result2_19<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_19<7>)
+     LUT6:I5->O            1   0.086   0.600  gb80_cpu/gb80_alu/alu_data_out_7_mux0000204 (gb80_cpu/gb80_alu/alu_data_out_7_mux0000204)
+     LUT6:I3->O            1   0.086   0.000  gb80_cpu/gb80_alu/alu_data_out_7_mux0000295 (gb80_cpu/gb80_alu/alu_data_out_7_mux0000)
+     LD:D                     -0.066          gb80_cpu/gb80_alu/alu_data_out_7
+    ----------------------------------------
+    Total                      6.834ns (1.470ns logic, 5.364ns route)
+                                       (21.5% logic, 78.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bitclk'
+  Total number of paths / destination ports: 66 / 66
+-------------------------------------------------------------------------
+Offset:              3.335ns (Levels of Logic = 4)
+  Source:            GPIO_SW_C (PAD)
+  Destination:       lcd/count_temp_24 (FF)
+  Destination Clock: ac97_bitclk rising
+
+  Data Path: GPIO_SW_C to lcd/count_temp_24
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           221   0.694   0.625  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
+     LUT6:I4->O            1   0.086   0.487  lcd/count_temp_or000013 (lcd/count_temp_or000013)
+     LUT6:I4->O            1   0.086   0.412  lcd/count_temp_or000044 (lcd/count_temp_or000044)
+     LUT6:I5->O           25   0.086   0.393  lcd/count_temp_or000056 (lcd/count_temp_or0000)
+     FDR:R                     0.468          lcd/count_temp_0
+    ----------------------------------------
+    Total                      3.335ns (1.420ns logic, 1.915ns route)
+                                       (42.6% logic, 57.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'cdiv/counter_11'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              2.384ns (Levels of Logic = 4)
+  Source:            flash_d<7> (PAD)
+  Destination:       gb80_cpu/data_buf/q_7 (FF)
+  Destination Clock: cdiv/counter_11 rising
+
+  Data Path: flash_d<7> to gb80_cpu/data_buf/q_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.694   0.600  flash_d_7_IBUF (flash_d_7_IBUF)
+     LUT3:I0->O            1   0.086   0.412  data_ext<7>LogicTrst_SW0 (N83)
+     LUT5:I4->O            3   0.086   0.421  data_ext<7>LogicTrst (data_ext<7>)
+     LUT5:I4->O            1   0.086   0.000  gb80_cpu/data_buf/q_mux0000<7>1 (gb80_cpu/data_buf/q_mux0000<7>)
+     FDCE:D                   -0.022          gb80_cpu/data_buf/q_7
+    ----------------------------------------
+    Total                      2.384ns (0.952ns logic, 1.432ns route)
+                                       (39.9% logic, 60.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bitclk'
+  Total number of paths / destination ports: 185 / 6
+-------------------------------------------------------------------------
+Offset:              8.128ns (Levels of Logic = 8)
+  Source:            lcd/count_1 (FF)
+  Destination:       LCD_FPGA_E (PAD)
+  Source Clock:      ac97_bitclk rising
+
+  Data Path: lcd/count_1 to LCD_FPGA_E
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               8   0.396   0.694  lcd/count_1 (lcd/count_1)
+     LUT4:I0->O            1   0.086   0.412  lcd/state_cmp_eq00001_SW0 (N811)
+     LUT6:I5->O            4   0.086   0.832  lcd/state_cmp_eq00001 (lcd/N6)
+     LUT6:I1->O            7   0.086   0.314  lcd/state_cmp_eq0001110 (lcd/N5)
+     MUXF7:S->O            2   0.281   0.905  lcd/state_cmp_eq00021_f7 (lcd/N7)
+     LUT6:I0->O           20   0.086   0.688  lcd/state_cmp_eq00022 (lcd/state_cmp_eq0002)
+     LUT6:I3->O            1   0.086   0.662  lcd/control<0>50_SW0 (N728)
+     LUT6:I2->O            1   0.086   0.286  lcd/control<0>50 (LCD_FPGA_E_OBUF)
+     OBUF:I->O                 2.144          LCD_FPGA_E_OBUF (LCD_FPGA_E)
+    ----------------------------------------
+    Total                      8.128ns (3.337ns logic, 4.791ns route)
+                                       (41.1% logic, 58.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'cdiv/counter_11'
+  Total number of paths / destination ports: 5840 / 17
+-------------------------------------------------------------------------
+Offset:              8.073ns (Levels of Logic = 8)
+  Source:            gb80_cpu/inst_reg/q_3 (FF)
+  Destination:       flash_a<15> (PAD)
+  Source Clock:      cdiv/counter_11 rising
+
+  Data Path: gb80_cpu/inst_reg/q_3 to flash_a<15>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q            75   0.396   0.602  gb80_cpu/inst_reg/q_3 (gb80_cpu/inst_reg/q_3)
+     LUT2:I0->O            3   0.086   0.496  gb80_cpu/gb80_decode/old_m_cycles_26_mux0000<3>1341 (gb80_cpu/gb80_decode/alu_op_cmp_eq0009)
+     LUT6:I4->O           21   0.086   0.503  gb80_cpu/gb80_decode/old_m_cycles_26_or00101 (gb80_cpu/gb80_decode/old_m_cycles_26_or0010)
+     LUT6:I5->O            6   0.086   0.842  gb80_cpu/gb80_decode/regfile_we_l_mux0000181 (gb80_cpu/gb80_decode/N177)
+     LUT6:I1->O            1   0.086   0.901  gb80_cpu/gb80_decode/addr_buf_write_ext180 (gb80_cpu/gb80_decode/addr_buf_write_ext180)
+     LUT6:I0->O            1   0.086   0.487  gb80_cpu/gb80_decode/addr_buf_write_ext279_SW0 (N708)
+     LUT6:I4->O           19   0.086   0.746  gb80_cpu/gb80_decode/addr_buf_write_ext279 (gb80_cpu/gb80_decode/addr_buf_write_ext279)
+     LUT5:I1->O           16   0.086   0.355  gb80_cpu/addr_buf/bus_ext_write_inv1 (gb80_cpu/addr_buf/bus_ext_write_inv)
+     OBUFT:T->O                2.144          flash_a_15_OBUFT (flash_a<15>)
+    ----------------------------------------
+    Total                      8.073ns (3.142ns logic, 4.931ns route)
+                                       (38.9% logic, 61.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 52.00 secs
+Total CPU time to Xst completion: 52.04 secs
+ 
+--> 
+
+Total memory usage is 440936 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   66 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
+

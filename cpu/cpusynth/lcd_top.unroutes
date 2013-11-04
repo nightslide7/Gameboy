@@ -1,0 +1,23 @@
+Release 14.3 - par P.40xd (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Sun Nov 03 20:32:47 2013
+
+All signals are completely routed.
+
+WARNING:ParHelpers:361 - There are 11 loadless signals in this design. This design will cause Bitgen to issue DRC
+   warnings.
+
+   GPIO_SW_E_IBUF
+   GPIO_SW_W_IBUF
+   flash_d<10>_IBUF
+   flash_d<11>_IBUF
+   flash_d<12>_IBUF
+   flash_d<13>_IBUF
+   flash_d<14>_IBUF
+   flash_d<15>_IBUF
+   flash_d<8>_IBUF
+   flash_d<9>_IBUF
+   flash_wait_IBUF
+
+

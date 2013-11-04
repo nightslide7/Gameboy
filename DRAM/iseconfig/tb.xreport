@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2013-10-28T11:40:59</DateModified>
+  <DateModified>2013-11-03T18:23:06</DateModified>
   <ModuleName>tb</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>/Gameboy/DRAM/iseconfig/tb.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/Gameboy/DRAM</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/Joseph/Documents/GitHub/Gameboy/DRAM/iseconfig/tb.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Joseph/Documents/GitHub/Gameboy/DRAM\</ImplementationReportsDirectory>
   <DateInitialized>2013-10-28T11:40:58</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

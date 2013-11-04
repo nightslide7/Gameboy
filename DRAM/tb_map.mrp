@@ -1,4 +1,4 @@
-Release 14.3 Map P.40xd (lin64)
+Release 14.3 Map P.40xd (nt64)
 Xilinx Mapping Report File for Design 'tb'
 
 Design Information
@@ -10,7 +10,7 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Mon Oct 28 11:55:15 2013
+Mapped Date    : Sun Nov 03 18:27:48 2013
 
 Design Summary
 --------------
@@ -56,9 +56,9 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                4.41
 
-Peak Memory Usage:  1032 MB
-Total REAL time to MAP completion:  10 secs 
-Total CPU time to MAP completion:   10 secs 
+Peak Memory Usage:  570 MB
+Total REAL time to MAP completion:  11 secs 
+Total CPU time to MAP completion:   11 secs 
 
 Table of Contents
 -----------------
@@ -81,6 +81,12 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - Since no license file was found,
+WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
+27 days after which you will not qualify for Xilinx software updates or new
+releases.
 WARNING:Place:837 - Partially locked IO Bus is found. 
     Following components of the bus are not locked: 
    	 Comp: addra<14>
@@ -106,6 +112,10 @@ WARNING:Place:837 - Partially locked IO Bus is found.
 
 Section 3 - Informational
 -------------------------
+INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2101@xilinx-lic.ece.cmu.edu'.
+INFO:Security:56 - Part 'xc5vlx110t' is not a WebPack part.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs

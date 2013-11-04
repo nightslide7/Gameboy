@@ -29,6 +29,7 @@ module cpu_auto_testbench();
            .instruction                 (instruction[7:0]),
            .IF_data                     (IF_data[4:0]),
            .IE_data                     (IE_data[4:0]),
+           .regs_data                   (regs_data[79:0]),
            .mem_we                      (mem_we),
            .mem_re                      (mem_re),
            .halt                        (halt),
@@ -45,13 +46,13 @@ module cpu_auto_testbench();
 
    mem #(65536) mmod(/*AUTOINST*/
                      // Inouts
-                     .data_ext            (data_ext[7:0]),
+                     .data_ext          (data_ext[7:0]),
                      // Inputs
-                     .addr_ext            (addr_ext[15:0]),
-                     .mem_we              (mem_we),
-                     .mem_re              (mem_re),
-                     .reset               (reset),
-                     .clock               (clock));
+                     .addr_ext          (addr_ext[15:0]),
+                     .mem_we            (mem_we),
+                     .mem_re            (mem_re),
+                     .reset             (reset),
+                     .clock             (clock));
    
    initial ce = 0;
    initial clock = 0;

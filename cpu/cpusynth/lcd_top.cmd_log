@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/lcd_top.xst" -ofn "C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/lcd_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc lcd_top.ucf -p xc5vlx110t-ff1136-2 lcd_top.ngc lcd_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-2 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_map.ncd lcd_top.ngd lcd_top.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_map.ncd lcd_top.ncd lcd_top.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml lcd_top.twx lcd_top.ncd -o lcd_top.twr lcd_top.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top.ut lcd_top.ncd 

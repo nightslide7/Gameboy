@@ -11,6 +11,7 @@ module cpu_auto_testbench();
    wire       mem_we, mem_re;
    wire [7:0] A_data, instruction;
    wire [4:0] IF_data, IE_data;
+   wire [79:0] regs_data;
    
    // Inputs
    reg       clock, reset;
@@ -29,6 +30,7 @@ module cpu_auto_testbench();
            .instruction                 (instruction[7:0]),
            .IF_data                     (IF_data[4:0]),
            .IE_data                     (IE_data[4:0]),
+           .regs_data                   (regs_data[79:0]),
            .mem_we                      (mem_we),
            .mem_re                      (mem_re),
            .halt                        (halt),
@@ -45,13 +47,13 @@ module cpu_auto_testbench();
 
    mem #(65536) mmod(/*AUTOINST*/
                      // Inouts
-                     .data_ext            (data_ext[7:0]),
+                     .data_ext          (data_ext[7:0]),
                      // Inputs
-                     .addr_ext            (addr_ext[15:0]),
-                     .mem_we              (mem_we),
-                     .mem_re              (mem_re),
-                     .reset               (reset),
-                     .clock               (clock));
+                     .addr_ext          (addr_ext[15:0]),
+                     .mem_we            (mem_we),
+                     .mem_re            (mem_re),
+                     .reset             (reset),
+                     .clock             (clock));
    
    initial ce = 0;
    initial clock = 0;
@@ -65,6 +67,27 @@ module cpu_auto_testbench();
    
    reg [1:0]  mode;
    integer    mode_count;
+
+   wire [7:0]  NR10, NR11, NR12, NR14, NR21, NR22, NR24, NR30, NR31, NR32, NR33;
+   wire [7:0]  NR41, NR42, NR43, NR302, NR50, NR51;
+
+   assign NR10 = mmod.data[16'hff10];
+   assign NR11 = mmod.data[16'hff11];
+   assign NR12 = mmod.data[16'hff12];
+   assign NR14 = mmod.data[16'hff14];
+   assign NR21 = mmod.data[16'hff16];
+   assign NR22 = mmod.data[16'hff17];
+   assign NR24 = mmod.data[16'hff19];
+   assign NR30 = mmod.data[16'hff1a];
+   assign NR31 = mmod.data[16'hff1b];
+   assign NR32 = mmod.data[16'hff1c];
+   assign NR33 = mmod.data[16'hff1e];
+   assign NR41 = mmod.data[16'hff20];
+   assign NR42 = mmod.data[16'hff21];
+   assign NR43 = mmod.data[16'hff22];
+   assign NR302 = mmod.data[16'hff23];
+   assign NR50 = mmod.data[16'hff24];
+   assign NR51 = mmod.data[16'hff25];
    
    initial begin
       count = 0;
@@ -79,7 +102,7 @@ module cpu_auto_testbench();
       @(posedge clock);
 
       reset <= 1'b0;
-
+      
       while (~halt && count < 2000000) begin
          mode_count = mode_count + 1;
          count = count + 1;
@@ -88,7 +111,7 @@ module cpu_auto_testbench();
              ~mem_we && ~mem_re) begin
             if (mmod.data[16'hff44] >= 8'd153) begin
                // Speed up the damn process
-               mmod.data[16'hff44] = 8'd140; // 8'd0;
+               mmod.data[16'hff44] = 8'd140;
             end else begin
                mmod.data[16'hff44] = mmod.data[16'hff44] + 8'd1;
             end
