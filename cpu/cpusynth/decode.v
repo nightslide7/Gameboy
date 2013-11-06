@@ -1305,7 +1305,6 @@ module decode(/*AUTOARG*/
                      3'b101: alu_op = `ALU_XOR;
                      3'b111: alu_op = `ALU_SUB;
                    endcase // case (instruction[5:3])
-                   A_load = 1'b1;
                 end
               endcase // case (cycle)
            end
