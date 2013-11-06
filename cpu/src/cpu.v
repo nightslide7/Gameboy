@@ -256,7 +256,7 @@ module cpu(/*AUTOARG*/
                            .clock(clock),
                            .reset(reset));
 
-   register #(1, 0) IME_reg(.q(IME_data),
+   register #(1, 1) IME_reg(.q(IME_data),
                             .d(IME_set),
                             .load(IME_set | IME_reset),
                             .clock(clock),

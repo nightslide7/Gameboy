@@ -223,32 +223,34 @@ module decode(/*AUTOARG*/
               data_buf_load = 1'b1;
            end
            5'd2: begin
-              // (SP-1) = PCH, ABUF = SP - 1, SP --
-              addr_buf_write_ext = 1'b1;
-              data_buf_write_ext = 1'b1;
-              
+              // ABUF = SP - 1
               rn_out = `RGF_SP;
               regfile_addr_gate = 1'b1;
               addr_buf_load = 1'b1;
+           end
+           5'd3: begin
+              // (SP-1) = PCH, SP --
+              addr_buf_write_ext = 1'b1;
+              data_buf_write_ext = 1'b1;
 
               rn_in = `RGF_SP;
               regfile_we_l = 1'b1;
               regfile_change16_l = 1'b1;
               regfile_inc_l = 1'b0;
            end
-           5'd3: begin
+           5'd4: begin
               // DBUF = PCL
               rn_out = `RGF_PCL;
               regfile_data_gate = 1'b1;
               data_buf_load = 1'b1;
            end
-           5'd4: begin
+           5'd5: begin
               // ABUF = SP - 2
               rn_out = `RGF_SP;
               regfile_addr_gate = 1'b1;
               addr_buf_load = 1'b1;
            end
-           5'd5: begin
+           5'd6: begin
               // (SP-2) = PCL, DBUF = IntAddr, TEMP0 = IntAddr
               addr_buf_write_ext = 1'b1;
               data_buf_write_ext = 1'b1;
@@ -260,7 +262,7 @@ module decode(/*AUTOARG*/
 
               temp0_load = 1'b1;
            end
-           5'd6: begin
+           5'd7: begin
               // TEMP1 = 0
               alu_data1_in_sel = `ALU_1_SEL_TEMP1;
               alu_data0_in_sel = `ALU_0_SEL_TEMP0;
@@ -268,7 +270,7 @@ module decode(/*AUTOARG*/
               alu_data_gate = 1'b1;
               temp1_load = 1'b1;
            end
-           5'd7: begin
+           5'd8: begin
               // PCH = 0
               alu_data1_in_sel = `ALU_1_SEL_TEMP1;
               alu_op = `ALU_PASS1;
@@ -276,7 +278,7 @@ module decode(/*AUTOARG*/
               regfile_we_l = 1'b1;
               rn_in = `RGF_PCH;
            end
-           5'd8: begin
+           5'd9: begin
               // PCL = IntAddr, clear IF
               data_buf_write = 1'b1;
               regfile_we_l = 1'b1;
@@ -1305,7 +1307,6 @@ module decode(/*AUTOARG*/
                      3'b101: alu_op = `ALU_XOR;
                      3'b111: alu_op = `ALU_SUB;
                    endcase // case (instruction[5:3])
-                   A_load = 1'b1;
                 end
               endcase // case (cycle)
            end

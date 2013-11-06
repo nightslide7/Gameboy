@@ -125,18 +125,15 @@ module alu
         end // case: `ALU_DEC
         `ALU_DAA: begin
            // This is a stupid instruction.
-           // I have a feeling that this is going to make the design very large
-           // and slow for some reason. It might be a good idea to optimize this
-           // in the future.
-           if (alu_flags_in[F_N]) begin
+           if (~alu_flags_in[F_N]) begin
               if (alu_flags_in[F_H] | (alu_data1_in[3:0] > 4'h9)) begin
-                 intermediate_result1 = alu_data1_in + 4'h6;
+                 intermediate_result1 = alu_data1_in + 8'h6;
               end
               else begin
                  intermediate_result1 = alu_data1_in;
               end
-              if (alu_flags_in[F_C] | (alu_data1_in > 8'h9f)) begin
-                 intermediate_result2 = intermediate_result1 + 8'h60;
+              if (alu_flags_in[F_C] | (intermediate_result1 > 8'h9f)) begin
+                 intermediate_result2 = intermediate_result1 + 9'h60;
               end
               else begin
                  intermediate_result2 = intermediate_result1;
@@ -157,7 +154,10 @@ module alu
               end
            end // else: !if(alu_flags_in[F_N])
            alu_data_out = intermediate_result2;
-           alu_flags_out[F_C] = intermediate_result2[8];
+           alu_flags_out[F_N] = alu_flags_in[F_N];
+           alu_flags_out[F_H] = 1'b0;
+           alu_flags_out[F_C] = intermediate_result2[8] ? 1'b1 : 
+                                alu_flags_in[F_C];
            alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
         end
         `ALU_NOT: begin
