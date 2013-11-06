@@ -237,6 +237,7 @@ module alu
            alu_flags_out[F_H] = 1'b1;
            alu_flags_out[F_N] = 1'b0;
            alu_flags_out[F_Z] = ~alu_data1_in[bit_index];
+           alu_data_out = alu_data0_in;
         end
         `ALU_SET: begin
            alu_flags_out = alu_flags_in;
