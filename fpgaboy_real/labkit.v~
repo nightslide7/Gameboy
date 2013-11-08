@@ -1,0 +1,65 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// 6.111 FPGA Labkit -- Template Toplevel Module for Lab 4 (Spring 2007)
+//
+//
+// Created: March 15, 2007
+// Author: Nathan Ickes
+//
+///////////////////////////////////////////////////////////////////////////////
+module labkit (
+	       vga_out_red, vga_out_green, vga_out_blue, vga_out_sync_b,
+	       vga_out_blank_b, vga_out_pixel_clock, vga_out_hsync,
+	       vga_out_vsync,
+
+	       clock_27mhz, //clock1, clock2,
+
+	       disp_blank, disp_data_out, disp_clock, disp_rs, disp_ce_b,
+	       disp_reset_b, disp_data_in,
+
+	       button0, button1, button2, button3, button_enter, button_right,
+	       button_left, button_down, button_up,
+
+	       switch,
+
+	       led, user1, user2);
+   
+   output [7:0] vga_out_red, vga_out_green, vga_out_blue;
+   output 	vga_out_sync_b, vga_out_blank_b, vga_out_pixel_clock,
+		vga_out_hsync, vga_out_vsync;
+   
+   input 	clock_27mhz;
+   
+   output 	disp_blank, disp_clock, disp_rs, disp_ce_b, disp_reset_b;
+   input 	disp_data_in;
+   output 	disp_data_out;
+   
+   input 	button0, button1, button2, button3, button_enter, button_right,
+		button_left, button_down, button_up;
+   input [7:0] 	switch;
+   output [7:0] led;
+   
+   inout wire [31:0] user1;
+   inout wire [31:0] user2;
+   
+   ////////////////////////////////////////////////////////////////////////////
+		     //
+   // Final Project Components
+   //
+   ////////////////////////////////////////////////////////////////////////////
+   
+   //
+   // Core Clock: ~4.194304 MHz
+   //
+   
+   wire 	     coreclk, core_clock;
+   DCM core_clock_dcm (.CLKIN(clock_27mhz), .CLKFX(coreclk));
+   defparam core_clock_dcm.CLKFX_DIVIDE = 9;
+   defparam core_clock_dcm.CLKFX_MULTIPLY = 11;
+   defparam core_clock_dcm.CLK_FEEDBACK = "NONE";
+   //defparam core_clock_dcm.CLKIN_PERIOD = 37.037;
+   BUFG core_clock_buf (.I(coreclk), .O(core_clock));
+   
+   wire 	     pixelclk, pixel_clock;
+   DCM pixel_clock_dcm (.CLKIN(clock_27mhz), .CLKFX(pixelclk));
+   defparam pixel_clock_dcm.CLKFX_DIVIDE = 6;

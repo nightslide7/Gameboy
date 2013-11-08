@@ -8,59 +8,7 @@
 <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/alu.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/alu.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.vh&apos; in file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/alu.v&quot; line 1
-</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/button.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/clock_divider.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.vh&apos; in file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.v&quot; line 1
-</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/decode.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/decode.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.vh&apos; in file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/decode.v&quot; line 1
-</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/display_hex.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/display_signal.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/lcd_control.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/lcd_top.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/mmio.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/mux.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/regfile.v&quot; into library work</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1065" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/regfile.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Include file found: &apos;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/cpu.vh&apos; in file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/regfile.v&quot; line 1
-</arg>
-</msg>
-
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/cpu/cpusynth/sound_registers.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/Gameboy/sound_functions/sound_functions.v&quot; into library work</arg>
 </msg>
 
 </messages>

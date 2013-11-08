@@ -21,7 +21,7 @@ module WaveformPlayer (input clk,
 		       input ch3_enable,
 		       input [7:0] ch3_length_data,
 		       input [1:0] ch3_output_level,
-		       input ch3_reset,
+		       input ch3_reset, //initializer
 		       input ch3_dont_loop,
 		       input [10:0] ch3_frequency_data,
 		       input [127:0] ch3_samples,
@@ -29,7 +29,8 @@ module WaveformPlayer (input clk,
 		       input ch3_freq_cntrl_clk,
 		       output reg [3:0] level
 		       );
-   reg [7:0] 	       index_hi = 3; //MSB of current sample
+   reg [7:0] 	       index_hi = 8'd7; //MSB of current sample pair
+   reg                 upper_half; //whether to play MSBs of sample pair
    wire [8:0] 	       true_len; //# of length_cntrl_clk edges before reset
    reg [8:0] 	       len_counter = 0;
    wire [11:0] 	       true_freq; //# of freq clks before next sample
@@ -41,7 +42,7 @@ module WaveformPlayer (input clk,
    assign true_freq = 12'd2048 - ch3_frequency_data;
 
    always@(posedge length_cntrl_clk) begin //play for specified length
-      if (ch3_reset) begin
+      if (~ch3_reset) begin
 	 len_counter <= 0;
       end
       //even if ch3_enable not asserted, still count up
@@ -51,15 +52,19 @@ module WaveformPlayer (input clk,
    end
 
    always@(posedge ch3_freq_cntrl_clk) begin
-      if (ch3_reset || ~ch3_enable) begin
+      if (~ch3_reset || ~ch3_enable) begin
 	 reg_level <= 0;
-	 index_hi <= 3;
+	 index_hi <= 8'd7;
+	 upper_half <= 1;
 	 freq_counter <= 0;
       end
       else begin
 	 // Change samples at specified frequency
 	 if (freq_counter == true_freq) begin
-	    index_hi <= index_hi + 8'd4; //play next sample
+	    if (~upper_half) begin
+	       index_hi <= index_hi + 8'd8; //play next sample pair
+	    end
+	    upper_half <= ~upper_half;
 	    freq_counter <= 12'b1; //true_freq always >= 1
 	 end
 	 else begin
@@ -69,10 +74,15 @@ module WaveformPlayer (input clk,
 	 if ((ch3_dont_loop && (len_counter <= true_len)) ||
 	     ~ch3_dont_loop) begin
 	       if (index_hi <= 8'd127) begin
-		  reg_level <= ch3_samples[index_hi -: 3]; //4 bits at a time
+		  if (upper_half) begin
+		     reg_level <= ch3_samples[index_hi -: 3]; //4 bits at a time
+		  end
+		  else begin
+		     reg_level <= ch3_samples[index_hi-4 -: 3];
+		  end
 	       end
 	    else begin
-	       index_hi <= 3; //back to first sample
+	       index_hi <= 8'd7; //back to first sample
 	    end
 	 end
 	 else if (len_counter > true_len) begin //stop output
@@ -114,7 +124,7 @@ module SquareWave(
                   input [3:0]  initial_volume,
                   input        envelope_increasing,
                   input [2:0]  num_envelope_sweeps,
-                  input        reset,
+                  input        initialize,
                   input        dont_loop,
                   input [10:0] frequency_data,
 		  output wire [3:0] level
@@ -132,13 +142,13 @@ module SquareWave(
    reg [3:0] 	       reg_level; //controlled by freq controller
    reg [4:0] 	       env_counter = 1;
    reg [3:0] 	       reg_vol; // controlled by volume envelope	       
-   reg [3:0] 	       sweep_counter, num_sweeps_done, num_env_done;
+   reg [3:0] 	       sweep_counter, num_sweeps_done;
    
    assign true_len = 7'd64 - length_data;
-   assign level = reset? 4'b0 : reg_level;
+   assign level = ~initialize? 4'b0 : reg_level;
       
    always@(posedge length_cntrl_clk) begin //play for specified length
-      if (reset) begin
+      if (~initialize) begin
 	 len_counter <= 0;
       end
       else if (len_counter <= true_len+1) begin //just past true_len
@@ -147,7 +157,7 @@ module SquareWave(
    end
 
    always@(posedge freq_cntrl_clk) begin
-      if (reset) begin
+      if (~initialize) begin
 	 reg_level <= initial_volume;
 	 freq_counter <= 0;
       end
@@ -220,7 +230,7 @@ module SquareWave(
    end // always@ (posedge freq_cntrl_clk)
 
    always@ (posedge sweep_cntrl_clk) begin
-      if (reset) begin
+      if (~initialize) begin
 	 true_freq <= 12'd2048 - frequency_data;//Gameboy specific
 	 sweep_counter <= 4'b1;
 	 num_sweeps_done <= 4'b0;
@@ -258,23 +268,22 @@ module SquareWave(
 	       sweep_counter <= sweep_counter + 4'b1;
 	    end
 	 end // else: !if(sweep_time==0)
-      end // else: !if(reset)
+      end // else: !if(initialize)
    end // always@ (posedge sweep_cntrl_clk)
    
    always @(posedge env_cntrl_clk) begin
-      if (reset) begin
+      if (~initialize) begin
 	 reg_vol <= initial_volume;
 	 env_counter <= 1;
-	 num_env_done <= 0;
       end
       else begin
-	 /** NOTE: this doesn't make a lot of sense but according to the PAN
-	  *  docs, num_envelope_sweeps determines the length of each sweep
-	  *  as well as the number to perform. So I change the sound only
-	  *  if we've reached this length, and leave it the same otherwise.
+	 /** NOTE: num_envelope_sweeps is the name given to this signal in
+	  *  the PAN Docs, but it is not the number of envelope sweeps.
+	  *  Instead it is the number of clocks before we perform another
+	  *  sweep. Basically the frequency. Except if it's zero we stop
+	  *  the envelope operation, so we only check if it's 1 or greater.
 	  */
-	 if (env_counter == num_envelope_sweeps &&
-	     num_env_done < num_envelope_sweeps) begin
+	 if (env_counter == num_envelope_sweeps) begin
 	    if (envelope_increasing && reg_vol < 4'hF) begin
 	       reg_vol <= reg_vol + 4'b1;
 	    end
@@ -282,12 +291,11 @@ module SquareWave(
 	       reg_vol <= reg_vol - 4'b1;
 	    end
 	    env_counter <= 1;
-	    num_env_done <= num_env_done + 4'b1;
 	 end // if (env_counter == num_envelope_sweeps)
 	 else begin
 	    env_counter <= env_counter + 5'b1;
 	 end
-      end // else: !if(reset)
+      end // else: !if(initialize)
    end // always @ (posedge env_cntrl_clk)
 	 
 /*   reg [19:0] 			   strobe_counter = 20'b0;
@@ -317,7 +325,7 @@ endmodule // SquareWave
  * Generates white noise using a random number generator
  * 
  */
-module WhiteNoise(
+/*module WhiteNoise(
 //                  input        ac97_bitclk,
 //                  input        ac97_strobe,
 		  input [5:0]   ch4_length_data,
@@ -369,3 +377,4 @@ module WhiteNoise(
 	 reg_level <= 4'h0;
       end
    end // always@ (posedge freq_cntrl_clk)
+*/
