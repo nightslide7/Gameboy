@@ -6,30 +6,28 @@ module audio_top (input              square_wave_enable,
 		  input              ac97_sdata_in,
 		  input              rotary_inc_a,
 		  input              rotary_inc_b,
+		  input [15:0]       reg_addr,
+		  input [7:0]        reg_data,
+		  input              reg_w_enable,
+		  input              reset,
 		  output wire        ac97_sdata_out,
 		  output wire        ac97_sync,
 		  output wire        ac97_reset_b,
-		  input wire         flash_wait,
+/*		  input wire         flash_wait,
 		  input wire [15:0]  flash_d,
 		  output wire [23:0] flash_a,
 		  output wire        flash_adv_n,
 		  output wire        flash_ce_n,
 		  output wire        flash_clk,
 		  output wire        flash_oe_n,
-		  output wire        flash_we_n,
-		  output wire        strobe,
-		  input wire ch1_reset_test,
-		  input wire ch2_reset_test,
-		  input wire ch3_reset_test
+		  output wire        flash_we_n,*/
+		  output wire        strobe
 		  );
    wire [3:0] 		     ch1_level;
    wire [3:0] 		     ch2_level;
    wire [3:0] 		     ch3_level;
    
    
-   reg [15:0] 			     reg_addr=16'hffff;
-   reg [7:0] 			     reg_data=8'hff;
-   reg 				     reg_w_enable=0;
    wire [2:0] 			     ch1_sweep_time;
    wire 			     ch1_sweep_decreasing;
    wire [2:0] 			     ch1_num_sweep_shifts;
@@ -77,7 +75,7 @@ module audio_top (input              square_wave_enable,
    wire 			     SO1_ch3_enable;
    wire 			     SO1_ch2_enable;
    wire 			     SO1_ch1_enable;
-   wire 			     sound_master_enable;
+   wire 			     master_sound_enable;
    wire 			     ch4_on_flag;
    wire 			     ch3_on_flag;
    wire 			     ch2_on_flag;
@@ -88,12 +86,6 @@ module audio_top (input              square_wave_enable,
 	    .ac97_sdata_out		(ac97_sdata_out),
 	    .ac97_sync			(ac97_sync),
 	    .ac97_reset_b		(ac97_reset_b),
-	    .flash_a			(flash_a[23:0]),
-	    .flash_adv_n		(flash_adv_n),
-	    .flash_ce_n			(flash_ce_n),
-	    .flash_clk			(flash_clk),
-	    .flash_oe_n			(flash_oe_n),
-	    .flash_we_n			(flash_we_n),
 	    .strobe			(strobe),
 	    // Inputs
 	    .square_wave_enable		(square_wave_enable),
@@ -102,8 +94,15 @@ module audio_top (input              square_wave_enable,
 	    .ac97_sdata_in		(ac97_sdata_in),
 	    .rotary_inc_a		(rotary_inc_a),
 	    .rotary_inc_b		(rotary_inc_b),
-	    .flash_wait			(flash_wait),
-	    .flash_d			(flash_d[15:0]),
+	    .SO1_ch1_enable		(SO1_ch1_enable),
+	    .SO1_ch2_enable		(SO1_ch2_enable),
+	    .SO1_ch3_enable		(SO1_ch3_enable),
+	    .SO1_ch4_enable		(SO1_ch4_enable),
+	    .SO2_ch1_enable		(SO2_ch1_enable),
+	    .SO2_ch2_enable		(SO2_ch2_enable),
+	    .SO2_ch3_enable		(SO2_ch3_enable),
+	    .SO2_ch4_enable		(SO2_ch4_enable),
+	    .master_sound_enable        (master_sound_enable),
 	    .ch1_level			(ch1_level[3:0]),
 	    .ch2_level			(ch2_level[3:0]),
 	    .ch3_level			(ch3_level[3:0]));
@@ -213,12 +212,14 @@ module audio_top (input              square_wave_enable,
 			.SO1_ch3_enable	(SO1_ch3_enable),
 			.SO1_ch2_enable	(SO1_ch2_enable),
 			.SO1_ch1_enable	(SO1_ch1_enable),
-			.sound_master_enable(sound_master_enable),
+			.master_sound_enable(master_sound_enable),
 			.ch4_on_flag	(ch4_on_flag),
 			.ch3_on_flag	(ch3_on_flag),
 			.ch2_on_flag	(ch2_on_flag),
 			.ch1_on_flag	(ch1_on_flag),
 			// Inputs
+			.ac97_bitclk	(ac97_bitclk),
+			.reset		(reset),
 			.reg_addr	(reg_addr[15:0]),
 			.reg_data	(reg_data[7:0]),
 			.reg_w_enable	(reg_w_enable));
@@ -238,7 +239,7 @@ module audio_top (input              square_wave_enable,
 		  .initial_volume	(ch1_initial_volume[3:0]),
 		  .envelope_increasing	(ch1_envelope_increasing),
 		  .num_envelope_sweeps	(ch1_num_envelope_sweeps[2:0]),
-		  .reset		(ch1_reset_test),//***TESTING***
+		  .initialize		(ch1_reset),
 		  .dont_loop		(ch1_dont_loop),
 		  .frequency_data	(ch1_frequency_data[10:0]));
    
@@ -257,7 +258,7 @@ module audio_top (input              square_wave_enable,
 		  .initial_volume	(ch2_initial_volume[3:0]),
 		  .envelope_increasing	(ch2_envelope_increasing),
 		  .num_envelope_sweeps	(ch2_num_envelope_sweeps[2:0]),
-		  .reset		(ch2_reset_test),//***TESTING***
+		  .initialize		(ch2_reset),
 		  .dont_loop		(ch2_dont_loop),
 		  .frequency_data	(ch2_frequency_data[10:0]));
    
@@ -266,7 +267,7 @@ module audio_top (input              square_wave_enable,
 		     .ch3_enable	(ch3_enable),
 		     .ch3_length_data(ch3_length_data[7:0]),
 		     .ch3_output_level(ch3_output_level[1:0]),
-		     .ch3_reset	(ch3_reset_test),//***TESTING***
+		     .ch3_reset	(ch3_reset),
 		     .ch3_dont_loop	(ch3_dont_loop),
 		     .ch3_frequency_data(ch3_frequency_data[10:0]),
 		     .ch3_samples	(ch3_samples[127:0]),

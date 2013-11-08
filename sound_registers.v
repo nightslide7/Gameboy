@@ -8,7 +8,9 @@
  */
 
 module sound_registers
-  (input       [15:0]  reg_addr,
+  (input               ac97_bitclk,
+   input               reset,
+   input       [15:0]  reg_addr,
    input       [7:0]   reg_data,
    input               reg_w_enable,
    output wire [2:0]   ch1_sweep_time,
@@ -58,7 +60,7 @@ module sound_registers
    output wire         SO1_ch3_enable,
    output wire         SO1_ch2_enable,
    output wire         SO1_ch1_enable,
-   output wire         sound_master_enable,
+   output wire         master_sound_enable,
    output wire         ch4_on_flag,
    output wire         ch3_on_flag,
    output wire         ch2_on_flag,
@@ -84,9 +86,9 @@ module sound_registers
     *         Frequency at each shift is X(t) = X(t-1) +/- X(t-1)/2^n
     */
    reg [7:0] NR10;
-   assign ch1_sweep_time = 3'd0; //***TESTING***NR10[6:4];
-   assign ch1_sweep_decreasing = 1'd1;//***TESTING***NR10[3];
-   assign ch1_num_sweep_shifts = 3'd7;//***TESTING***NR10[2:0];
+   assign ch1_sweep_time = NR10[6:4];
+   assign ch1_sweep_decreasing = NR10[3];
+   assign ch1_num_sweep_shifts = NR10[2:0];
 
    /** NR11 - Sound Length/Wave Pattern Duty register (R/W)
     *         bit 7-6: Wave Pattern Duty (Read/Write)
@@ -101,8 +103,8 @@ module sound_registers
     *         The Length value is only used if Bit 6 in NR14 is set.
     */
    reg [7:0]   NR11;
-   assign ch1_wave_duty = 2'd1;//***TESTING***NR11[7:6];
-   assign ch1_length_data = 0;//***TESTING***NR11[5:0];
+   assign ch1_wave_duty = NR11[7:6];
+   assign ch1_length_data = NR11[5:0];
 
    /** NR12 - Volume Envelope register (R/W)
     *         bit 7-4: Initial Volume of Envelope (0-0Fh) (0=No Sound)
@@ -113,9 +115,9 @@ module sound_registers
     *         Length of 1 Step = n*(1/64) seconds
     */
    reg [7:0]   NR12;
-   assign ch1_initial_volume = 4'hF;//***TESTING***NR12[7:4];
-   assign ch1_envelope_increasing = 1'd0;//***TESTING***NR12[3];
-   assign ch1_num_envelope_sweeps = 3'd7;//***TESTING***NR12[2:0];
+   assign ch1_initial_volume = NR12[7:4];
+   assign ch1_envelope_increasing = NR12[3];
+   assign ch1_num_envelope_sweeps = NR12[2:0];
 
    /** NR13 - Frequency lo (Write Only)
     *         Lower 8 Bits of 11-bit Frequency (x)
@@ -133,8 +135,8 @@ module sound_registers
     */
    reg [7:0]  NR14;
    assign ch1_reset = NR14[7];
-   assign ch1_dont_loop = 1'b0;//***TESTING***NR14[6];
-   assign ch1_frequency_data = 11'd1024;//***TESTING***(NR14[2:0]<<8)|(NR13[7:0]);
+   assign ch1_dont_loop = NR14[6];
+   assign ch1_frequency_data = (NR14[2:0]<<8)|(NR13[7:0]);
 
 
    /* Channel 2 - Tone */
@@ -151,8 +153,8 @@ module sound_registers
     *         The Length value is only used if Bit 6 in NR24 is set.
     */
    reg [7:0]  NR21;
-   assign ch2_wave_duty = 0;//***TESTING***NR21[7:6];
-   assign ch2_length_data = 0;//**TESTING***NR21[5:0];
+   assign ch2_wave_duty = NR21[7:6];
+   assign ch2_length_data = NR21[5:0];
 
    /** NR22 - Volume Envelope register (R/W)
     *         bit 7-4: Initial Volume of Envelope (0-0Fh) (0=No Sound)
@@ -163,9 +165,9 @@ module sound_registers
     *         Length of 1 Step = n*(1/64) seconds
     */
    reg [7:0]  NR22;
-   assign ch2_initial_volume = 4'h0;//***TESTING***NR22[7:4];
-   assign ch2_envelope_increasing = 1'd1;//***TESTING***NR22[3];
-   assign ch2_num_envelope_sweeps = 3'd7;//***TESTING***NR22[2:0];
+   assign ch2_initial_volume = NR22[7:4];
+   assign ch2_envelope_increasing = NR22[3];
+   assign ch2_num_envelope_sweeps = NR22[2:0];
 
    /** NR23 - Frequency lo (Write Only)
     *         Lower 8 Bits of 11-bit Frequency (x)
@@ -183,8 +185,8 @@ module sound_registers
     */
    reg [7:0]  NR24;
    assign ch2_reset = NR24[7];
-   assign ch2_dont_loop = 1'b0;//***TESTING***NR24[6];
-   assign ch2_frequency_data = 11'd1536;//***TESTING***(NR24[2:0]<<8)|(NR23[7:0]);
+   assign ch2_dont_loop = NR24[6];
+   assign ch2_frequency_data = (NR24[2:0]<<8)|(NR23[7:0]);
 
 
    /* Channel 3 - Wave Output */
@@ -193,7 +195,7 @@ module sound_registers
     *         bit 6-0: Not Used
     */
    reg [7:0]  NR30;
-   assign ch3_enable = 1'b1;//***TESTING***NR30[7];
+   assign ch3_enable = NR30[7];
 
    /** NR31 - Sound Length (Write Only (presumably))
     *         bit 7-0: Sound Length (t1: 0-255)
@@ -202,7 +204,7 @@ module sound_registers
     *         This value is used only if Bit 6 in NR34 is set.
     */
    reg [7:0]  NR31;
-   assign ch3_length_data = 0;//***TESTING***NR31[7:0];
+   assign ch3_length_data = NR31[7:0];
 
    /** NR32 - Select Output Level (R/W)
     *         bit 7: Not Used
@@ -218,7 +220,7 @@ module sound_registers
     *                               twice to the right)
     */
    reg [7:0]  NR32;
-   assign ch3_output_level = 2'd1;//***TESTING***NR32[6:5];
+   assign ch3_output_level = NR32[6:5];
 
    /** NR33 - Frequency's Lower Data (Write Only)
     *         Lower 8 bits of an 11 bit frequency (x).
@@ -236,8 +238,8 @@ module sound_registers
     */
    reg [7:0]  NR34;
    assign ch3_reset = NR34[7];
-   assign ch3_dont_loop = 1;//***TESTING***NR34[6];
-   assign ch3_frequency_data = 11'b10000000000;//***TESTING***(NR34[2:0]<<8)|(NR33[7:0]);
+   assign ch3_dont_loop = NR34[6];
+   assign ch3_frequency_data = (NR34[2:0]<<8)|(NR33[7:0]);
 
    /* Wave Pattern RAM (FF30-FF3F)
     *
@@ -247,9 +249,9 @@ module sound_registers
    reg [7:0]  WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38, WR37, WR36;
    reg [7:0]  WR35, WR34, WR33, WR32, WR31, WR30;
    // Samples are played zero index first
-   assign ch3_samples = 128'h123456789ABCDEFFEDCBA987654321;//***TESTING***{WR30, WR31, WR32, WR33, WR34, WR35, WR36,
-//			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
-//			 WR3E, WR3F};
+   assign ch3_samples = {WR30, WR31, WR32, WR33, WR34, WR35, WR36,
+			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
+			 WR3E, WR3F};
    /* DEPRECATED
    reg [3:0]  ch3_sample0 = MEMORY[FF3F][7:4];
    reg [3:0]  ch3_sample1 = MEMORY[FF3F][4:0];
@@ -402,7 +404,7 @@ module sound_registers
     *         NOT cause the sound flag to go off.
     */
    reg [7:0]  NR52;
-   assign sound_master_enable = NR52[7];
+   assign master_sound_enable = NR52[7];
    assign ch4_on_flag = NR52[3];
    assign ch3_on_flag = NR52[2];
    assign ch2_on_flag = NR52[1];
@@ -412,47 +414,90 @@ module sound_registers
 /**
  * Combinational Register Assignment Logic
  */
-always@( * ) begin
-   if (reg_w_enable) begin
-      case (reg_addr)
-           16'hFF10: NR10 = reg_data;
-           16'hFF11: NR11 = reg_data;
-           16'hFF12: NR12 = reg_data;
-           16'hFF13: NR13 = reg_data;
-           16'hFF14: NR14 = reg_data;      
-           16'hFF16: NR21 = reg_data;
-           16'hFF17: NR22 = reg_data;
-           16'hFF18: NR23 = reg_data;
-           16'hFF19: NR24 = reg_data;
-           16'hFF1A: NR30 = reg_data;
-           16'hFF1B: NR31 = reg_data;
-           16'hFF1C: NR32 = reg_data;
-           16'hFF1D: NR33 = reg_data;
-           16'hFF1E: NR34 = reg_data;
-           16'hFF30: WR30 = reg_data;
-           16'hFF31: WR31 = reg_data;
-           16'hFF32: WR32 = reg_data;
-           16'hFF33: WR33 = reg_data;
-           16'hFF34: WR34 = reg_data;
-           16'hFF35: WR35 = reg_data;
-           16'hFF36: WR36 = reg_data;
-           16'hFF37: WR37 = reg_data;
-           16'hFF38: WR38 = reg_data;
-           16'hFF39: WR39 = reg_data;
-           16'hFF3A: WR3A = reg_data;
-           16'hFF3B: WR3B = reg_data;
-           16'hFF3C: WR3C = reg_data;
-           16'hFF3D: WR3D = reg_data;
-           16'hFF3E: WR3E = reg_data;
-           16'hFF3F: WR3F = reg_data;
-           16'hFF20: NR41 = reg_data;
-           16'hFF21: NR42 = reg_data;
-           16'hFF22: NR43 = reg_data;
-           16'hFF23: NR44 = reg_data;
-           16'hFF24: NR50 = reg_data;
-           16'hFF25: NR51 = reg_data;
-           16'hFF26: NR52 = reg_data;
-      endcase
-   end
-end
+always@(posedge ac97_bitclk or posedge reset) begin
+   if (reset) begin
+      // initial values taken from devrs.com/gb/files/hosted/GBSOUND.txt
+      NR10 <= 0;//8'h80;
+      NR11 <= 0;//8'hBF;
+      NR12 <= 0;//8'hF3;
+      NR13 <= 0;//8'hFF;
+      NR14 <= 0;//8'hB0;
+      NR21 <= 0;//8'h3F;
+      NR22 <= 0;//8'h00;
+      NR23 <= 0;//8'hFF;
+      NR24 <= 0;//8'hBF;
+      NR30 <= 0;//8'h7F;
+      NR31 <= 0;//8'hFF;
+      NR32 <= 0;//8'h9F;
+      NR33 <= 0;//8'hFF;
+      NR34 <= 0;//8'hBF;
+      // The waveform ram values are basically arbitrary
+      WR30 <= 0;//8'hAC;
+      WR31 <= 0;//8'hDD;
+      WR32 <= 0;
+      WR33 <= 0;
+      WR34 <= 0;
+      WR35 <= 0;
+      WR36 <= 0;
+      WR37 <= 0;
+      WR38 <= 0;
+      WR39 <= 0;
+      WR3A <= 0;
+      WR3B <= 0;
+      WR3C <= 0;
+      WR3D <= 0;
+      WR3E <= 0;
+      WR3F <= 0;
+      NR41 <= 0;//8'hFF;
+      NR42 <= 0;//8'h00;
+      NR43 <= 0;//8'h00;
+      NR44 <= 0;//8'hBF;
+      NR50 <= 0;//8'h77;
+      NR51 <= 0;//8'hF3;
+      NR52 <= 0;//8'hF1;
+   end // if (~ac97_reset_b)
+   else begin
+      if (reg_w_enable) begin
+	 case (reg_addr)
+           16'hFF10: NR10 <= reg_data;
+           16'hFF11: NR11 <= reg_data;
+           16'hFF12: NR12 <= reg_data;
+           16'hFF13: NR13 <= reg_data;
+           16'hFF14: NR14 <= reg_data;      
+           16'hFF16: NR21 <= reg_data;
+           16'hFF17: NR22 <= reg_data;
+           16'hFF18: NR23 <= reg_data;
+           16'hFF19: NR24 <= reg_data;
+           16'hFF1A: NR30 <= reg_data;
+           16'hFF1B: NR31 <= reg_data;
+           16'hFF1C: NR32 <= reg_data;
+           16'hFF1D: NR33 <= reg_data;
+           16'hFF1E: NR34 <= reg_data;
+           16'hFF30: WR30 <= reg_data;
+           16'hFF31: WR31 <= reg_data;
+           16'hFF32: WR32 <= reg_data;
+           16'hFF33: WR33 <= reg_data;
+           16'hFF34: WR34 <= reg_data;
+           16'hFF35: WR35 <= reg_data;
+           16'hFF36: WR36 <= reg_data;
+           16'hFF37: WR37 <= reg_data;
+           16'hFF38: WR38 <= reg_data;
+           16'hFF39: WR39 <= reg_data;
+           16'hFF3A: WR3A <= reg_data;
+           16'hFF3B: WR3B <= reg_data;
+           16'hFF3C: WR3C <= reg_data;
+           16'hFF3D: WR3D <= reg_data;
+           16'hFF3E: WR3E <= reg_data;
+           16'hFF3F: WR3F <= reg_data;
+           16'hFF20: NR41 <= reg_data;
+           16'hFF21: NR42 <= reg_data;
+           16'hFF22: NR43 <= reg_data;
+           16'hFF23: NR44 <= reg_data;
+           16'hFF24: NR50 <= reg_data;
+           16'hFF25: NR51 <= reg_data;
+           16'hFF26: NR52 <= reg_data;
+	 endcase
+      end
+   end // else: !if(~ac97_reset_b)
+end // always@ (posedge ac97_bitclk or negedge ac97_reset_b)
 endmodule

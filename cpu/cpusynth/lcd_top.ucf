@@ -1,4 +1,3 @@
-#NET  AUDIO_BIT_CLK        LOC="AF18";  # Bank 4, Vcco=3.3V, No DCI    
 #NET  AUDIO_SDATA_IN       LOC="AE18";  # Bank 4, Vcco=3.3V, No DCI    
 #NET  AUDIO_SDATA_OUT      LOC="AG16";  # Bank 4, Vcco=3.3V, No DCI    
 #NET  AUDIO_SYNC           LOC="AF19";  # Bank 4, Vcco=3.3V, No DCI    
@@ -539,9 +538,7 @@ NET  LCD_FPGA_RW          LOC="AC10";  # Bank 22, Vcco=3.3V, DCI using 49.9 ohm 
 #NET  VGA_IN_SOGOUT        LOC="AF6";   # Bank 18, Vcco=3.3V, No DCI
 #NET  VGA_IN_VSOUT         LOC="Y6";    # Bank 18, Vcco=3.3V, No DCI
 
-# TEAM DRAGONFORCE
-NET "ac97_bitclk" LOC="AF18" | TNM_NET = ac97_bitclk;
-TIMESPEC TS_ac97_bitclk = PERIOD "ac97_bitclk" 12.288MHz HIGH 50%;
+NET  CLK_33MHZ_FPGA       LOC="AH17";  # Bank 4, Vcco=3.3V, No DCI
 
 NET "flash_a<23>" LOC="AE13";
 NET "flash_a<22>" LOC="AE12";

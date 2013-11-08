@@ -15,23 +15,14 @@ module AC97(
 	    output wire        ac97_sdata_out,
 	    output wire        ac97_sync,
 	    output wire        ac97_reset_b,
-	    input              SO1_ch1_enable,
-	    input              SO1_ch2_enable,
-	    input              SO1_ch3_enable,
-	    input              SO1_ch4_enable,
-	    input              SO2_ch1_enable,
-	    input              SO2_ch2_enable,
-	    input              SO2_ch3_enable,
-	    input              SO2_ch4_enable,
-	    input              master_sound_enable,
-/*	    input wire         flash_wait,
+	    input wire         flash_wait,
 	    input wire [15:0]  flash_d,
 	    output wire [23:0] flash_a,
 	    output wire        flash_adv_n,
 	    output wire        flash_ce_n,
 	    output wire        flash_clk,
 	    output wire        flash_oe_n,
-	    output wire        flash_we_n,*/
+	    output wire        flash_we_n,
             output wire        strobe,
 	    input wire [3:0]   ch1_level,
 	    input wire [3:0]   ch2_level,
@@ -82,26 +73,25 @@ module AC97(
 	AudioGen source(
 		/*AUTOINST*/
 			// Outputs
-			.ac97_out_slot3	(ac97_out_slot3[19:0]),
+			.ac97_out_slot3	(ac97_out_slot3[19:0] ),
 			.ac97_out_slot4	(ac97_out_slot4[19:0]),
+			.flash_a	(flash_a[23:0]),
+			.flash_adv_n	(flash_adv_n),
+			.flash_ce_n	(flash_ce_n),
+			.flash_clk	(flash_clk),
+			.flash_oe_n	(flash_oe_n),
+			.flash_we_n	(flash_we_n),
 			// Inputs
 			.ac97_bitclk	(ac97_bitclk),
 			.ac97_strobe	(ac97_strobe),
-			.sample_no	(sample_no),
-			.square_wave_enable(square_wave_enable),
-			.level		(4'hE),//***TESTING***level[3:0]),
-			.ch1_level	(ch1_level[3:0]),
-			.ch2_level	(ch2_level[3:0]),
-			.ch3_level	(ch3_level[3:0]),
-			.SO1_ch1_enable	(SO1_ch1_enable),
-			.SO1_ch2_enable	(SO1_ch2_enable),
-			.SO1_ch3_enable	(SO1_ch3_enable),
-			.SO1_ch4_enable	(SO1_ch4_enable),
-			.SO2_ch1_enable	(SO2_ch1_enable),
-			.SO2_ch2_enable	(SO2_ch2_enable),
-			.SO2_ch3_enable	(SO2_ch3_enable),
-			.SO2_ch4_enable	(SO2_ch4_enable),
-                        .master_sound_enable (master_sound_enable));
+			.flash_wait	(flash_wait),
+			.flash_d	(flash_d[15:0]),
+			.sample_no      (sample_no),
+                        .square_wave_enable (square_wave_enable),
+                        .level (level[3:0]),
+			.ch1_level(ch1_level[3:0]),
+			.ch2_level(ch2_level[3:0]),
+			.ch3_level(ch3_level[3:0]));
         
 	ACLink link(
 		/*AUTOINST*/
@@ -158,27 +148,18 @@ module AudioGen(
 		input [3:0]       ch1_level,
 		input [3:0]       ch2_level,
 		input [3:0]       ch3_level,
-		output reg [19:0]     ac97_out_slot3,
-		output reg [19:0]     ac97_out_slot4,
-		input             SO1_ch1_enable,
-		input             SO1_ch2_enable,
-		input             SO1_ch3_enable,
-		input             SO1_ch4_enable,
-		input             SO2_ch1_enable,
-		input             SO2_ch2_enable,
-		input             SO2_ch3_enable,
-		input             SO2_ch4_enable,
-		input             master_sound_enable
-/*		input wire        flash_wait,
+		output [19:0]     ac97_out_slot3,
+		output [19:0]     ac97_out_slot4,
+		input wire        flash_wait,
 		input wire [15:0] flash_d,
 		output reg [23:0] flash_a,
 		output reg        flash_adv_n,
 		output wire       flash_ce_n,
 		output wire       flash_clk,
 		output wire       flash_oe_n,
-		output wire       flash_we_n*/
+		output wire       flash_we_n
 		);
-/*
+
    assign flash_ce_n = 'h0;
    assign flash_oe_n = 'h0;
    assign flash_we_n = 'h1;
@@ -213,170 +194,13 @@ module AudioGen(
 	 next_sample <= flash_d;
       end
    end // always @ (posedge ac97_bitclk)
-  */ 
+   
    // Left Audio Channel
-   always @(*) begin
-      if (master_sound_enable) begin
-	 if (SO1_ch1_enable && SO1_ch2_enable && SO1_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch2_level !=4'b0) &&
-		(ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch1_level>>1+ch2_level>>1+
-				ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot3 = (ch1_level>>1+ch2_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch1_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot3 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch2_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot3 = (ch2_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end // if (SO1_ch1_enable && SO1_ch2_enable && SO1_ch3_enable)
-	 else if (SO1_ch1_enable && SO1_ch2_enable && ~SO1_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch2_level != 4'b0))
-	      ac97_out_slot3 = (ch1_level>>1+ch2_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0))
-	      ac97_out_slot3 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0))
-	      ac97_out_slot3 = (ch2_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end
-	 else if (SO1_ch1_enable && ~SO1_ch2_enable && SO1_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch1_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch3_level == 4'b0))
-	      ac97_out_slot3 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end
-	 else if (~SO1_ch1_enable && SO1_ch2_enable && SO1_ch3_enable) begin
-	    if ((ch2_level != 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch2_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch2_level != 4'b0) && (ch3_level == 4'b0))
-	      ac97_out_slot3 = (ch2_level)<<(level);
-	    else if ((ch2_level == 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end
-	 else if (~SO1_ch1_enable && SO1_ch2_enable && ~SO1_ch3_enable) begin
-	    if ((ch2_level != 4'b0))
-	      ac97_out_slot3 = (ch2_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end
-	 else if (~SO1_ch1_enable && ~SO1_ch2_enable && SO1_ch3_enable) begin
-	    if ((ch3_level != 4'b0))
-	      ac97_out_slot3 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot3 = 0;
-	 end
-	 else begin
-	    ac97_out_slot3 = 0;
-	 end
-      end // if (master_sound_enable)
-      else begin
-	 ac97_out_slot3 = 0;
-      end // else: !if(master_sound_enable)
-   end // always @ (*)
-/*   assign ac97_out_slot3 = square_wave_enable ? ((ch1_level+ch2_level+ch3_level)<<(level)) : 
-			   0;
+   assign ac97_out_slot3 = square_wave_enable ? ((ch1_level+ch2_level+ch3_level)<<(level)) : 
+                           {curr_sample[15:8],curr_sample[7:0],4'h0};
    // Right Audio Channel
-   assign ac97_out_slot4 = ac97_out_slot3;*/
-      
-   // Right Audio Channel
-   always @(*) begin
-      if (master_sound_enable) begin
-	 if (SO2_ch1_enable && SO2_ch2_enable && SO2_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch2_level !=4'b0) &&
-		(ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch1_level>>1+ch2_level>>1+
-				ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot4 = (ch1_level>>1+ch2_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch1_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot4 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch2_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0) &&
-		     (ch3_level == 4'b0))
-	      ac97_out_slot4 = (ch2_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level == 4'b0) &&
-		     (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end // if (SO2_ch1_enable && SO2_ch2_enable && SO2_ch3_enable)
-	 else if (SO2_ch1_enable && SO2_ch2_enable && ~SO2_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch2_level != 4'b0))
-	      ac97_out_slot4 = (ch1_level>>1+ch2_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch2_level == 4'b0))
-	      ac97_out_slot4 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch2_level != 4'b0))
-	      ac97_out_slot4 = (ch2_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end
-	 else if (SO2_ch1_enable && ~SO2_ch2_enable && SO2_ch3_enable) begin
-	    if ((ch1_level != 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch1_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch1_level != 4'b0) && (ch3_level == 4'b0))
-	      ac97_out_slot4 = (ch1_level)<<(level);
-	    else if ((ch1_level == 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end
-	 else if (~SO2_ch1_enable && SO2_ch2_enable && SO2_ch3_enable) begin
-	    if ((ch2_level != 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch2_level>>1+ch3_level>>1)<<(level);
-	    else if ((ch2_level != 4'b0) && (ch3_level == 4'b0))
-	      ac97_out_slot4 = (ch2_level)<<(level);
-	    else if ((ch2_level == 4'b0) && (ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end
-	 else if (~SO2_ch1_enable && SO2_ch2_enable && ~SO2_ch3_enable) begin
-	    if ((ch2_level != 4'b0))
-	      ac97_out_slot4 = (ch2_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end
-	 else if (~SO2_ch1_enable && ~SO2_ch2_enable && SO2_ch3_enable) begin
-	    if ((ch3_level != 4'b0))
-	      ac97_out_slot4 = (ch3_level)<<(level);
-	    else
-	      ac97_out_slot4 = 0;
-	 end
-	 else begin
-	    ac97_out_slot4 = 0;
-	 end
-      end // if (master_sound_enable)
-      else begin
-	 ac97_out_slot4 = 0;
-      end // else: !if(master_sound_enable)
-   end // always @ (*)
+   assign ac97_out_slot4 = ac97_out_slot3;
+   
 endmodule
 
 

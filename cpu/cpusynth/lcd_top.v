@@ -6,8 +6,7 @@
 
 // The CPU's clock is 4194304 Hz, or 2^22 Hz.
 
-module lcd_top(//USER_CLK,
-               ac97_bitclk,
+module lcd_top(CLK_33MHZ_FPGA,
 	       GPIO_SW_C,
 	       GPIO_SW_E,
 	       GPIO_SW_S,
@@ -19,9 +18,13 @@ module lcd_top(//USER_CLK,
 	       LCD_FPGA_RS, LCD_FPGA_RW, LCD_FPGA_E,
 	       LCD_FPGA_DB7, LCD_FPGA_DB6, LCD_FPGA_DB5, LCD_FPGA_DB4,
                flash_wait, flash_d, flash_a, flash_adv_n, flash_ce_n, 
-               flash_oe_n, flash_we_n, flash_clk);
+               flash_oe_n, flash_we_n, flash_clk,
+	       strobe, ac97_sync, ac97_reset_b,
+	       ac97_bitclk, ac97_sdata_in, ac97_sdata_out,
+	       rotary_inc_a, rotary_inc_b
+);
   
-   input ac97_bitclk;
+   input CLK_33MHZ_FPGA;
 //   input USER_CLK;
    /* switch C is reset, E is clear, S is resetFSM, W is nextString */
    input GPIO_SW_C, GPIO_SW_E, GPIO_SW_S, GPIO_SW_W;	
@@ -34,10 +37,13 @@ module lcd_top(//USER_CLK,
    output wire        flash_adv_n;
    output wire        flash_ce_n, flash_oe_n, flash_we_n, flash_clk;
    
-   wire   USER_CLK;
+   output wire 	      strobe, ac97_sync, ac97_reset_b, ac97_sdata_out;
+   input wire 	      ac97_bitclk, ac97_sdata_in;
+   input wire 	      rotary_inc_a, rotary_inc_b;
+   
    wire   clock;
 
-   assign USER_CLK = ac97_bitclk;
+   assign clock = CLK_33MHZ_FPGA;
    assign flash_clk = 1'h1;
    
    wire [2:0] control_out; //rs, rw, en
@@ -65,7 +71,6 @@ module lcd_top(//USER_CLK,
    assign LCD_FPGA_RW = control_out[1];
    assign LCD_FPGA_E  = control_out[0];
 
-   assign clock = USER_CLK;
 
    assign flash_ce_n = 1'h0;
    assign flash_oe_n = 1'h0;
@@ -78,10 +83,10 @@ module lcd_top(//USER_CLK,
    input wire GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1;*/
 
    wire       bram_we;
-   wire [16:0] bram_addr;
+   wire [15:0] bram_addr;
    wire [7:0]  bram_data_in;
    wire [7:0]  bram_data_out;
-
+   
 /*   assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3,
            GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = bram_data_out;
 
@@ -307,11 +312,8 @@ module lcd_top(//USER_CLK,
 //   assign data_ext = (mem_we) ? 8'bzzzzzzzz : (addr_in_flash ? 
 //                                               flash_d[7:0] :
 //                                               bram_data_out[7:0]);
+   
 
-   assign data_ext = (mem_we) ? 8'bzzzzzzzz : (FF44_read ? FF44_data :
-                                               (addr_in_flash ?
-                                                flash_d[7:0] :
-                                                bram_data_out[7:0]));
    
    assign bram_data_in = data_ext;
    assign bram_we = ~addr_in_flash & mem_we;
@@ -342,9 +344,60 @@ module lcd_top(//USER_CLK,
                 .IF_load(IF_load),
                 .IE_load(IE_load));
 
-   clock_divider #(.BITS(2))//#(.BITS(24)) // ~3 MHz
+   my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(4)) //~4.125MHz
    cdiv(.clock_out(cpu_clock),
-        .clock_in(clock), 
-        .reset(reset));
+        .clock_in(clock));
    
+
+   wire        reg_w_enable;
+   wire [7:0]  reg_data;
+   wire [15:0] reg_addr;
+
+   assign reg_w_enable = ((addr_ext >= 16'hFF10 && addr_ext <= 16'hFF1E) ||
+			  (addr_ext >= 16'hFF30 && addr_ext <= 16'hFF3F) ||
+			  (addr_ext >= 16'hFF20 && addr_ext <= 16'hFF26));
+   assign reg_data = bram_data_in;
+   assign reg_addr = bram_addr;
+
+   audio_top audio(.square_wave_enable(1'b1), 
+		   .sample_no(1'b1),
+		   .ac97_bitclk(ac97_bitclk),
+		   .ac97_sdata_in(ac97_sdata_in),
+		   .rotary_inc_a(rotary_inc_a),
+		   .rotary_inc_b(rotary_inc_b),
+		   .ac97_sdata_out(ac97_sdata_out),
+		   .ac97_sync(ac97_sync),
+		   .ac97_reset_b(ac97_reset_b),
+		   .reset(reset),
+/*		   .flash_wait(flash_wait),
+		   .flash_d(flash_d),
+		   .flash_a(flash_a),
+		   .flash_adv_n(flash_adv_n),
+		   .flash_ce_n(flash_ce_n),
+		   .flash_clk(flash_clk),
+		   .flash_oe_n(flash_oe_n),
+		   .flash_we_n(flash_we_n),*/
+		   .strobe(strobe),
+		   .reg_addr(reg_addr),
+		   .reg_data(reg_data),
+		   .reg_w_enable(reg_w_enable)
+		  );
+
+   tristate #(8) gating_ff44(.out(data_ext),
+			     .in(FF44_data),
+			     .en(FF44_read&~mem_we));
+   tristate #(8) gating_flash(.out(data_ext),
+			      .in(flash_d),
+			      .en(addr_in_flash&~mem_we));
+   tristate #(8) gating_bram(.out(data_ext),
+			     .in(bram_data_out),
+			     .en(~addr_in_flash&~FF44_read&~reg_w_enable&~mem_we));
+   tristate #(8) gating_mem_regs(.out(data_ext),
+				 .in(reg_data),
+				 .en(reg_w_enable&~mem_we));
+
 endmodule
+// Local Variables:
+// verilog-library-directories:(".")
+// verilog-library-files:("./cpu.v")
+// End:
