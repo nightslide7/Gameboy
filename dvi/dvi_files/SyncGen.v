@@ -2,6 +2,8 @@
 module SyncGen(/*AUTOARG*/
    // Outputs
    vs, hs, border,
+	x, y, //TEST
+	
    // Inputs
    fbclk, rst_b
    );
@@ -11,6 +13,7 @@ input rst_b;
 output reg vs, hs;
 
 output reg border;
+output reg [11:0] x, y; //TEST
 
 parameter XRES = 640;
 parameter XFPORCH = 24;
@@ -22,7 +25,7 @@ parameter YFPORCH = 11;//9;
 parameter YSYNC = 2;//3;
 parameter YBPORCH = 31;//28;
 
-reg [11:0] x, y;
+//reg [11:0] x, y;
 
 /*
 parameter XRES = 1600;
