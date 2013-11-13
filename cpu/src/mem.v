@@ -5,7 +5,8 @@ module mem(/*AUTOARG*/
    addr_ext, mem_we, mem_re, reset, clock
    );
    parameter
-     size = 512; // in bytes
+     size = 512, // in bytes
+     use_memfile = 1;
 
    inout [7:0]  data_ext;   
 
@@ -24,7 +25,11 @@ module mem(/*AUTOARG*/
          for (i = 0; i < size; i = i + 1) begin
             data[i] = 8'hee;
          end
-         $readmemh("mem.dat", data);
+         // synthesis translate_off
+         if (use_memfile) begin
+            $readmemh("mem.dat", data);
+         end
+         // synthesis translate_on
       end else if(mem_we) begin
          data[addr_ext] <= data_ext;
       end

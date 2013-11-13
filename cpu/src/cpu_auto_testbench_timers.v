@@ -12,25 +12,21 @@ module cpu_auto_testbench();
    wire [7:0] A_data, instruction;
    wire [4:0] IF_data, IE_data;
    wire [79:0] regs_data;
-
-   wire        dma_mem_re, dma_mem_we;
-   wire        cpu_mem_disable;
    
    // Inputs
    reg       clock, reset;
+   wire [4:0] IF_in;
    reg [4:0] IE_in;
    reg       IE_load;
-   wire [4:0] IF_in;
-   wire       IF_load;
+   wire      IF_load;
 
    parameter
      I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
    
+   
    // Testbench variables
    reg        ce;
 
-   wire       timer_reg_addr; // addr_ext == timer MMIO address
-   
    integer    count;
 
    cpu dut(/*AUTOINST*/
@@ -51,34 +47,24 @@ module cpu_auto_testbench();
            .IE_in                       (IE_in[4:0]),
            .IF_load                     (IF_load),
            .IE_load                     (IE_load),
-           .cpu_mem_disable             (cpu_mem_disable),
            .clock                       (clock),
            .reset                       (reset));
 
+   wire timer_reg_addr = 
+        (addr_ext == `MMIO_DIV) |
+        (addr_ext == `MMIO_TMA) |
+        (addr_ext == `MMIO_TIMA) |
+        (addr_ext == `MMIO_TAC);
+   
    mem #(65536) mmod(
                      // Inouts
-                     .data_ext(data_ext[7:0]),
+                     .data_ext          (data_ext[7:0]),
                      // Inputs
-                     .addr_ext(addr_ext[15:0]),
-                     .mem_we((mem_we | dma_mem_we)),
-                     .mem_re((mem_re | dma_mem_re) & ~timer_reg_addr),
+                     .addr_ext          (addr_ext[15:0]),
+                     .mem_we            (mem_we),
+                     .mem_re            ((mem_re) ? ~timer_reg_addr : 1'b0),
                      .reset             (reset),
                      .clock             (clock));
-
-   dma gb80_dma(.dma_mem_re(dma_mem_re),
-                .dma_mem_we(dma_mem_we),
-                .addr_ext(addr_ext),
-                .data_ext(data_ext),
-                .mem_we(mem_we),
-                .mem_re(mem_re),
-                .cpu_mem_disable(cpu_mem_disable),
-                .clock(clock),
-                .reset(reset));
-
-   assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
-                           (addr_ext == `MMIO_TMA) |
-                           (addr_ext == `MMIO_TIMA) |
-                           (addr_ext == `MMIO_TAC);
 
    wire       timer_interrupt;
 
@@ -116,7 +102,9 @@ module cpu_auto_testbench();
       @(posedge clock);
 
       reset <= 1'b0;
-      
+
+      @(posedge clock);
+
       while (~halt && count < 1000000) begin
          count = count + 1;
          @(posedge clock);

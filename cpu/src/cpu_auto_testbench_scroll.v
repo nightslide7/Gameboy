@@ -12,18 +12,28 @@ module cpu_auto_testbench();
    wire [7:0] A_data, instruction;
    wire [4:0] IF_data, IE_data;
    wire [79:0] regs_data;
-   
+
+   wire        dma_mem_re, dma_mem_we;
+   wire        cpu_mem_disable;   
+
    // Inputs
    reg       clock, reset;
-   reg [4:0] IF_in, IE_in;
-   reg       IF_load, IE_load;
+   reg [4:0] IE_in;
+   reg       IE_load;
+   wire [4:0] IF_in;
+   wire       IF_load;
 
+   parameter
+     I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
+   
    
    // Testbench variables
    reg        ce;
 
    integer    count;
 
+   wire       timer_reg_addr; // addr_ext == timer MMIO address
+   
    cpu dut(/*AUTOINST*/
            // Outputs
            .A_data                      (A_data[7:0]),
@@ -42,19 +52,57 @@ module cpu_auto_testbench();
            .IE_in                       (IE_in[4:0]),
            .IF_load                     (IF_load),
            .IE_load                     (IE_load),
+           .cpu_mem_disable             (cpu_mem_disable),
            .clock                       (clock),
            .reset                       (reset));
 
-   mem #(65536) mmod(/*AUTOINST*/
+   mem #(65536) mmod(
                      // Inouts
                      .data_ext          (data_ext[7:0]),
                      // Inputs
                      .addr_ext          (addr_ext[15:0]),
-                     .mem_we            (mem_we),
-                     .mem_re            (mem_re),
+                     .mem_we((mem_we | dma_mem_we)),
+                     .mem_re((mem_re | dma_mem_re) & ~timer_reg_addr),
                      .reset             (reset),
                      .clock             (clock));
+
+   dma gb80_dma(.dma_mem_re(dma_mem_re),
+                .dma_mem_we(dma_mem_we),
+                .addr_ext(addr_ext),
+                .data_ext(data_ext),
+                .mem_we(mem_we),
+                .mem_re(mem_re),
+                .cpu_mem_disable(cpu_mem_disable),
+                .clock(clock),
+                .reset(reset));
+
+   assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
+                           (addr_ext == `MMIO_TMA) |
+                           (addr_ext == `MMIO_TIMA) |
+                           (addr_ext == `MMIO_TAC);
+
+   wire       timer_interrupt;
+
+   assign IF_in[I_TIMA] = timer_interrupt;
+   assign IF_in[I_VBLANK] = 1'b0;
+   assign IF_in[I_LCDC] = 1'b0;
+   assign IF_in[I_HILO] = 1'b0;
+   assign IF_in[I_SERIAL] = 1'b0;
+
+   assign IF_load = timer_interrupt;
    
+   timers tima_module(/*AUTOINST*/
+                      // Outputs
+                      .timer_interrupt  (timer_interrupt),
+                      // Inouts
+                      .addr_ext         (addr_ext[15:0]),
+                      .data_ext         (data_ext[7:0]),
+                      // Inputs
+                      .mem_re           (mem_re),
+                      .mem_we           (mem_we),
+                      .clock            (clock),
+                      .reset            (reset));
+
    initial ce = 0;
    initial clock = 0;
    always #5 clock = ~clock;
@@ -69,11 +117,12 @@ module cpu_auto_testbench();
    integer    mode_count;
 
    wire [7:0]  NR10, NR11, NR12, NR14, NR21, NR22, NR24, NR30, NR31, NR32, NR33;
-   wire [7:0]  NR41, NR42, NR43, NR302, NR50, NR51;
+   wire [7:0]  NR41, NR42, NR43, NR302, NR50, NR51, NR13;
 
    assign NR10 = mmod.data[16'hff10];
    assign NR11 = mmod.data[16'hff11];
    assign NR12 = mmod.data[16'hff12];
+   assign NR13 = mmod.data[16'hff13];
    assign NR14 = mmod.data[16'hff14];
    assign NR21 = mmod.data[16'hff16];
    assign NR22 = mmod.data[16'hff17];
@@ -94,9 +143,7 @@ module cpu_auto_testbench();
       mode_count = 0;
       mode = `MODE_WAIT;
       reset <= 1'b1;
-      IF_load <= 1'b0;
       IE_load <= 1'b0;
-      IF_in <= 5'd0;
       IE_in <= 5'd0;
       
       @(posedge clock);

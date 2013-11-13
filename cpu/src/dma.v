@@ -18,7 +18,7 @@
 
 module dma(/*AUTOARG*/
    // Outputs
-   dma_mem_re, dma_mem_we,
+   dma_mem_re, dma_mem_we, cpu_mem_disable,
    // Inouts
    addr_ext, data_ext,
    // Inputs
@@ -31,6 +31,7 @@ module dma(/*AUTOARG*/
    inout [7:0]  data_ext;
 
    output reg   dma_mem_re, dma_mem_we;
+   output reg   cpu_mem_disable;
    
    input        mem_re, mem_we;
    input        clock, reset;
@@ -82,7 +83,7 @@ module dma(/*AUTOARG*/
 
    always @(*) begin
       next_count = count;
-      {dma_mem_we, dma_mem_re} = 2'd0;
+      {dma_mem_we, dma_mem_re, cpu_mem_disable} = 3'd0;
       {temp_addr_rw, temp_data_gate, temp_load, temp_addr_gate} = 4'd0;
       case (cs)
         `DMA_WAIT: begin
@@ -94,6 +95,7 @@ module dma(/*AUTOARG*/
            end
         end
         `DMA_TRANSFER_READ: begin
+           cpu_mem_disable = 1'b1;
            if (count == 8'ha0) begin
               // Finished
               next_count = 8'h0;
@@ -108,6 +110,7 @@ module dma(/*AUTOARG*/
            end
         end
         `DMA_TRANSFER_WRITE: begin
+           cpu_mem_disable = 1'b1;
            // Write the temp register to memory
            temp_addr_rw = 1'b0; // Output write address
            temp_addr_gate = 1'b1;
