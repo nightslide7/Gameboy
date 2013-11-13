@@ -1,3 +1,4 @@
+`default_nettype none
 module Framebuffer(/*AUTOARG*/
    // Outputs
    dvi_vs, dvi_hs, dvi_d, dvi_xclk_p, dvi_xclk_n, dvi_de, dvi_reset_b, 
@@ -12,7 +13,11 @@ module Framebuffer(/*AUTOARG*/
    // Inouts
    dvi_sda, dvi_scl, //control_vio,
    // Inputs
-	fbclk, fbclk_rst_b, fbclk_ready //, cclk, cclk_rst_b
+	fbclk, fbclk_rst_b, fbclk_ready, //cclk, cclk_rst_b
+	
+	//TEST
+	switches78
+	//TEST
 
 /*
    fbclk, fbclk_rst_b, cclk, cclk_rst_b, fsabi_clk, fsabi_rst_b,
@@ -28,6 +33,10 @@ input fbclk;
 input fbclk_rst_b;
 input fbclk_ready;
 
+//TEST
+input [1:0] switches78;
+//TEST
+
 output wire dvi_vs, dvi_hs;
 output wire [11:0] dvi_d;
 output wire dvi_xclk_p, dvi_xclk_n;
@@ -40,7 +49,68 @@ inout wire dvi_sda;
 inout wire dvi_scl;
 
 //TEST
+wire [11:0] x, y;
 assign led_out = fbclk_rst_b;
+
+//TEST COLORS WITH SWITCHES 7 & 8
+//00 = 0xFFFFFF
+//01 = 0xAAAAAA
+//10 = 0x555555
+//11 = 0x000000
+reg [7:0] red_p;
+reg [7:0] green_p;
+reg [7:0] blue_p;
+
+always @ (posedge fbclk or negedge fbclk_rst_b) begin
+	if (!fbclk_rst_b) begin
+		red_p <= 8'hFF;
+		green_p <= 8'hFF;
+		blue_p <= 8'hFF;	
+	end
+	else begin
+		case(switches78)
+			0: begin
+				red_p <= 8'hFF;
+				green_p <= 8'hFF;
+				blue_p <= 8'hFF;
+			end
+			1: begin
+				red_p <= 8'hAA;
+				green_p <= 8'hAA;
+				blue_p <= 8'hAA;
+			end
+			2: begin
+				red_p <= 8'h55;
+				green_p <= 8'h55;
+				blue_p <= 8'h55;
+			end
+			3: begin
+				red_p <= 8'h00;
+				green_p <= 8'h00;
+				blue_p <= 8'h00;
+			end
+		endcase
+		if(x > 12'd320 && y > 12'd240) begin
+			red_p <= 8'hFF;
+			green_p <= 8'h00;
+			blue_p <= 8'h00;
+		end
+	end
+end
+/*
+always @ (posedge fbclk or negedge fbclk_rst_b) begin
+	if (!fbclk_rst_b) begin
+		red_n <= 8'hFF;
+		green_n <= 8'hFF;
+		blue_n <= 8'hFF;
+	end
+	else begin
+		red_p <= red_n;
+		green_p <= green_n;
+		blue_p <= blue_n;
+	end
+end
+*/
 /*
 input cclk;
 input cclk_rst_b;
@@ -86,8 +156,8 @@ wire	fifo_empty_0a = 0;	// From frame_dma of SimpleDMAReadController.v
 // End of automatics
 
 //wire [11:0] x, y;
-wire border;
 
+wire border;
 wire vs, hs;
 
 reg fifo_empty_1a = 1;
@@ -101,6 +171,9 @@ SyncGen sync(/*AUTOINST*/
 .vs	(vs),
 .hs	(hs),
 .border	(border),
+.x (x), //TEST
+.y (y), //TEST
+
 // Inputs
 .fbclk	(fbclk),
 .rst_b	(~fifo_empty_1a));	// Templated
@@ -112,9 +185,9 @@ reg next_offset = 0;
 reg request = 0;
 
 
-wire [7:0] red_p = 0;//8'hDC;
-wire [7:0] green_p = 8'hFF;//0;//8'hD0; 
-wire [7:0] blue_p = 0;//8'hFF;
+//wire [7:0] red_p = 0;//8'hFF;//8'hDC;
+//wire [7:0] green_p = 0;//8'hD0; 
+//wire [7:0] blue_p = 8'hFF;
 //wire first_pixel = (offset == 0);
 //wire second_pixel = (offset == 1);	
 
@@ -153,8 +226,9 @@ assign dvi_vs = 0;
 assign dvi_hs = 0;
 assign dvi_d = 0;
 `else
-wire dvi_xclk_p_nodly, dvi_xclk_n_nodly;
 */
+wire dvi_xclk_p_nodly, dvi_xclk_n_nodly;
+
 
 `define MAKE_DDR(n,q,d1,d2) ODDR n (.C(fbclk), .Q(q), .D1(d1), .D2(d2), .R(0), .S(0), .CE(1))
 //`define MAKE_DDR(n,q,d0,d1) myDDR n (.C(fbclk), .Q(q), .D0(d0), .D1(d1))
@@ -170,10 +244,10 @@ always @(posedge fbclk) begin
 end
 */
 
-`MAKE_DDR(ODDR_dvi_xclk_p, dvi_xclk_p, 1'b1, 1'b0);
-`MAKE_DDR(ODDR_dvi_xclk_n, dvi_xclk_n, 1'b0, 1'b1);
-//`MAKE_DDR(ODDR_dvi_xclk_p, dvi_xclk_p_nodly, 1'b1, 1'b0);
-//`MAKE_DDR(ODDR_dvi_xclk_n, dvi_xclk_n_nodly, 1'b0, 1'b1);
+//`MAKE_DDR(ODDR_dvi_xclk_p, dvi_xclk_p, 1'b1, 1'b0);
+//`MAKE_DDR(ODDR_dvi_xclk_n, dvi_xclk_n, 1'b0, 1'b1);
+`MAKE_DDR(ODDR_dvi_xclk_p, dvi_xclk_p_nodly, 1'b1, 1'b0);
+`MAKE_DDR(ODDR_dvi_xclk_n, dvi_xclk_n_nodly, 1'b0, 1'b1);
 `MAKE_DDR(ODDR_dvi_de, dvi_de, ~border, ~border);
 `MAKE_DDR(ODDR_dvi_vs, dvi_vs, vs, vs);
 `MAKE_DDR(ODDR_dvi_hs, dvi_hs, hs, hs);
@@ -192,23 +266,6 @@ end
 `MAKE_DDR(ODDR_dvi_d_10, dvi_d[10], green_p[2], red_p[6]);
 `MAKE_DDR(ODDR_dvi_d_11, dvi_d[11], green_p[3], red_p[7]);
 
-
-/*
-`MAKE_DDR(ODDR_dvi_d_0, dvi_d[0], blue[0], green[4]);
-`MAKE_DDR(ODDR_dvi_d_1, dvi_d[1], blue[1], green[5]);
-`MAKE_DDR(ODDR_dvi_d_2, dvi_d[2], blue[2], green[6]);
-`MAKE_DDR(ODDR_dvi_d_3, dvi_d[3], blue[3], green[7]);
-`MAKE_DDR(ODDR_dvi_d_4, dvi_d[4], blue[4], red[0]);
-`MAKE_DDR(ODDR_dvi_d_5, dvi_d[5], blue[5], red[1]);
-`MAKE_DDR(ODDR_dvi_d_6, dvi_d[6], blue[6], red[2]);
-`MAKE_DDR(ODDR_dvi_d_7, dvi_d[7], blue[7], red[3]);
-`MAKE_DDR(ODDR_dvi_d_8, dvi_d[8], green[0], red[4]);
-`MAKE_DDR(ODDR_dvi_d_9, dvi_d[9], green[1], red[5]);
-`MAKE_DDR(ODDR_dvi_d_10, dvi_d[10], green[2], red[6]);
-`MAKE_DDR(ODDR_dvi_d_11, dvi_d[11], green[3], red[7]);
-*/
-//`endif
-/*
 (* IODELAY_GROUP = "IODELAY_MIG" *)IODELAY delay_p (
 .ODATAIN(dvi_xclk_p_nodly),
 .DATAOUT(dvi_xclk_p),
@@ -230,7 +287,8 @@ defparam delay_n.IDELAY_TYPE = "FIXED";
 defparam delay_n.IDELAY_VALUE = 0;
 defparam delay_n.ODELAY_VALUE = 8;
 defparam delay_n.DELAY_SRC = "O";
-`endif
+/*`endif
+
 
 SimpleDMAReadController AUTO_TEMPLATE(
 .target_clk(fbclk),

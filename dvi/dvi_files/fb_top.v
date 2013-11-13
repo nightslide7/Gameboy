@@ -24,6 +24,8 @@ module fb_top(dvi_vs, dvi_hs, dvi_d, dvi_xclk_p,
 	
 	led_out, iic_done, fbclk_ready, //TEST
 	
+	switches78, clk,//TEST
+	
 	dvi_sda, dvi_scl, 
 	fclk, fclk_rst_b);
 
@@ -32,13 +34,22 @@ module fb_top(dvi_vs, dvi_hs, dvi_d, dvi_xclk_p,
 	output dvi_xclk_p, dvi_xclk_n, dvi_de, dvi_reset_b;
 	
 	output led_out, iic_done, fbclk_ready; //TEST
+	input [1:0] switches78; //TEST
+	input clk; //TEST
+	wire fake_clk; //TEST
 	
 	inout dvi_sda, dvi_scl;
 	
 	input fclk, fclk_rst_b;
 	
+	localparam IODELAY_GRP = "IODELAY_MIG";
+	localparam RST_SYNC_NUM = 25;
+	
 	//wire usrclk;
 	wire fbclk;
+	assign fbclk = clk; //TEST
+	reg [RST_SYNC_NUM-1:0]     rst200_sync_r;
+	wire rst200, clk200, clk200_ready, idelay_ctrl_rdy;
 	//wire fclk_rst_b;//, fbclk_ready;
 	//wire fclk, fclk_rst_b, fbclk_ready;
 	
@@ -72,17 +83,43 @@ module fb_top(dvi_vs, dvi_hs, dvi_d, dvi_xclk_p,
 		// Inouts
 		.dvi_sda (dvi_sda), 
 		.dvi_scl (dvi_scl),
+		
 		// Inputs
+		.switches78 (switches78), //TEST
 		.fbclk (fbclk),
 		.fbclk_rst_b (fbclk_rst_b),
 		.fbclk_ready (fbclk_ready)
 );
 
-	FBDCM fbdcm(.fclk(fclk),
-		.fbclk(fbclk),
+	FBDCM fbdcm(.fclk(fclk),//clk),//fclk),
+		.fbclk(fake_clk),//fbclk),
 		.rst(~fclk_rst_b),		
 		.ready(fbclk_ready));		
 		
+	CLK200DCM clk200dcm(.fclk(fclk),
+		.clk200(clk200),
+		.rst(~fclk_rst_b),		
+		.ready(clk200_ready));
+		
+	ddr2_idelay_ctrl #
+   (
+    .IODELAY_GRP (IODELAY_GRP)
+   )
+   u_ddr2_idelay_ctrl
+   (
+   .rst200 (rst200),
+   .clk200 (clk200),
+   .idelay_ctrl_rdy (idelay_ctrl_rdy)
+   );
+	
+	always @(posedge clk200 or negedge fclk_rst_b)//locked)
+    if (!fclk_rst_b)//locked)
+      rst200_sync_r <= {RST_SYNC_NUM{1'b1}};
+    else
+      rst200_sync_r <= rst200_sync_r << 1;
+		
+	assign rst200  = rst200_sync_r[RST_SYNC_NUM-1];
+	
 endmodule
 /*
 module FBDCM(input fclk, output fbclk, input rst, output ready);
