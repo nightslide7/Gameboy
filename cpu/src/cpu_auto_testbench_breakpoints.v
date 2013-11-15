@@ -25,10 +25,10 @@ module cpu_auto_testbench();
    reg         IE_load;
    wire [4:0]  IF_in;
    wire        IF_load;
-   wire        bp_step, bp_continue;
 
-   /*wire [7:0]  bp_addr_part_in;
-   wire        bp_hi_lo_sel_in, bp_hi_lo_disp_in;*/
+   reg         bp_step, bp_continue;
+   reg [7:0]   bp_addr_part_in;
+   reg         bp_hi_lo_sel_in, bp_hi_lo_disp_in;
    
    parameter
      I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
@@ -40,14 +40,6 @@ module cpu_auto_testbench();
    
    integer    count;
 
-   /*assign bp_addr_part_in = 8'hff;
-   assign bp_hi_lo_sel_in = 1'b1;
-   assign bp_hi_lo_disp_in = 1'b1;*/
-
-   assign bp_addr = 16'hffff;
-   assign bp_step = 1'b0;
-   assign bp_continue = 1'b0;
-   
    cpu dut(/*AUTOINST*/
            // Outputs
            .A_data                      (A_data[7:0]),
@@ -121,8 +113,8 @@ module cpu_auto_testbench();
                  .clock            (clock),
                  .reset            (reset));
 
-/*   breakpoints #(16'hffff)
-   bp_module(/AUTOINST/
+   breakpoints #(16'hffff)
+   bp_module(/*AUTOINST*/
              // Outputs
              .bp_addr               (bp_addr[15:0]),
              .bp_addr_disp          (bp_addr_disp[7:0]),
@@ -131,22 +123,74 @@ module cpu_auto_testbench();
              .bp_hi_lo_sel_in       (bp_hi_lo_sel_in),
              .bp_hi_lo_disp_in      (bp_hi_lo_disp_in),
              .reset                 (reset),
-             .clock                 (clock));*/
+             .clock                 (clock));
    
    initial ce = 0;
    initial clock = 0;
    always #5 clock = ~clock;
    always @(posedge clock) ce = ~ce;
-   
+
    initial begin
       count = 0;
       reset <= 1'b1;
       IE_load <= 1'b0;
       IE_in <= 5'd0;
+
+      bp_step <= 1'b0;
+      bp_continue <= 1'b0;
+      bp_addr_part_in <= 8'hff;
+      bp_hi_lo_sel_in <= 1'b0;
+      bp_hi_lo_disp_in <= 1'b0;
       
       @(posedge clock);
 
       reset <= 1'b0;
+
+      repeat (2) @(posedge clock);
+
+      // Set the breakpoint to something we'll get to soon
+      bp_addr_part_in <= 8'h03;
+      bp_hi_lo_sel_in <= 1'b1;      
+      
+      @(posedge clock);
+
+      bp_hi_lo_sel_in <= 1'b0;
+      bp_hi_lo_disp_in <= 1'b1;
+
+      @(posedge clock);
+
+      bp_addr_part_in <= 8'h00;
+      bp_hi_lo_sel_in <= 1'b1;
+      bp_hi_lo_disp_in <= 1'b0;
+
+      @(posedge clock);
+      bp_hi_lo_sel_in <= 1'b0;
+      
+      // Sit for a while
+      repeat (15) @(posedge clock);
+
+      // Step through a few instructions
+      bp_step <= 1'b1;
+      @(posedge clock);
+
+      bp_step <= 1'b0;
+
+      repeat (20) @(posedge clock);
+
+      bp_step <= 1'b1;
+
+      @(posedge clock);
+
+      bp_step <= 1'b0;
+      
+      repeat (20) @(posedge clock);
+
+      // Continue through to the end of our regularly scheduled program
+      bp_continue <= 1'b1;
+
+      @(posedge clock);
+
+      bp_continue <= 1'b0;
       
       while (~halt && count < 1000000) begin
          count = count + 1;

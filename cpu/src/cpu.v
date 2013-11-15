@@ -20,7 +20,8 @@ module cpu(/*AUTOARG*/
    // Inouts
    addr_ext, data_ext,
    // Inputs
-   IF_in, IE_in, IF_load, IE_load, cpu_mem_disable, clock, reset
+   IF_in, IE_in, IF_load, IE_load, cpu_mem_disable, clock, reset,
+   bp_addr, bp_step, bp_continue
    );
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
@@ -38,6 +39,9 @@ module cpu(/*AUTOARG*/
    input        cpu_mem_disable;
    input        clock, reset;
 
+   input [15:0] bp_addr;
+   input        bp_step, bp_continue;
+   
    // Constant Parameters //////////////////////////////////////////////////////
    parameter
      F_Z = 3, F_N = 2, F_H = 1, F_C = 0,
@@ -51,6 +55,14 @@ module cpu(/*AUTOARG*/
 
    // Intermediate data signals ////////////////////////////////////////////////
 
+   // Debugging
+   wire         bp_pc;
+   assign bp_pc = regs_data[15:0] == bp_addr;
+
+   // To/from external bus
+   wire        addr_buf_load_ext, addr_buf_write_ext;
+   wire        data_buf_load_ext, data_buf_write_ext;
+   
    // Buffers/High memory
    wire [7:0]   data_ext_out, data_ext_in;
    wire [15:0]  addr_ext_out, addr_ext_in;
@@ -72,7 +84,7 @@ module cpu(/*AUTOARG*/
                                .in(addr_ext_out),
                                .en(addr_buf_write_ext & ~cpu_mem_disable &
                                    ~high_mem));
-
+   
    wire [15:0]  high_mem_addr;
    assign high_mem_addr = addr_ext_out - `MEM_HIGH_START;
 
@@ -166,9 +178,7 @@ module cpu(/*AUTOARG*/
    // To/from internal bus
    wire        addr_buf_load, addr_buf_write;
    wire        data_buf_load, data_buf_write;
-   // To/from external bus
-   wire        addr_buf_load_ext, addr_buf_write_ext;
-   wire        data_buf_load_ext, data_buf_write_ext;
+
 
    // Outputs
    assign mem_we = data_buf_write_ext & ~high_mem & ~cpu_mem_disable;
@@ -325,7 +335,7 @@ module cpu(/*AUTOARG*/
                             .reset(reset));
    
    // Tristate buffers /////////////////////////////////////////////////////////
-   
+
    tristate #(.width(8)) regfile_data_tri(.out(data_bus),
                                           .in(regfile_data_out[7:0]),
                                           .en(regfile_data_gate));
@@ -417,6 +427,9 @@ module cpu(/*AUTOARG*/
                       .alu_size         (alu_size),
                       .halt             (halt),
                       // Inputs
+                      .bp_step          (bp_step),
+                      .bp_continue      (bp_continue),
+                      .bp_pc            (bp_pc),
                       .instruction      (instruction[7:0]),
                       .taken            (taken),
                       .interrupt        (interrupt),

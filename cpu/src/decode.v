@@ -20,7 +20,8 @@ module decode(/*AUTOARG*/
    alu_data1_in_sel, alu_data0_in_sel, addr_ff00_sel, alu_op,
    alu_size, halt,
    // Inputs
-   instruction, taken, interrupt, IME_data, clock, reset
+   bp_step, bp_continue, bp_pc, instruction, taken, interrupt,
+   IME_data, clock, reset
    );
    // Constant Parameters //////////////////////////////////////////////////////
    parameter
@@ -63,6 +64,8 @@ module decode(/*AUTOARG*/
    output reg         halt;
    
    // Inputs ///////////////////////////////////////////////////////////////////
+
+   input              bp_step, bp_continue, bp_pc;
    
    input [7:0]        instruction;
    input              taken, interrupt, IME_data;
@@ -71,6 +74,12 @@ module decode(/*AUTOARG*/
 
    // Internal Signals /////////////////////////////////////////////////////////
 
+   // Debugging
+   reg                debug_halt, next_debug_halt;
+   reg                step_inst, next_step_inst;
+   reg                step_pressed, next_step_pressed;
+   reg                continue_pressed, next_continue_pressed;
+   
    // Multibyte instructions
    reg                cb, next_cb;
 
@@ -133,18 +142,26 @@ module decode(/*AUTOARG*/
          cb <= 1'b0;
          halted <= 1'd0;
          interrupt_handle <= 1'b0;
+         debug_halt <= 1'b0;
+         step_inst <= 1'b0;
+         step_pressed <= 1'b0;
+         continue_pressed <= 1'b0;
       end else begin
          cycle <= next_cycle;
          cb <= next_cb;
          interrupt_handle <= next_interrupt_handle;
          halted <= halt;
+         debug_halt <= next_debug_halt;
+         step_inst <= next_step_inst;
+         step_pressed <= next_step_pressed;
+         continue_pressed <= next_continue_pressed;
       end
    end
 
    always @(*) begin
       
       // Defaults //////////////////////////////////////////////////////////////
-      
+
       // Regfile
       //{regfile_we, regfile_change16, regfile_inc} = 3'd0;
       {regfile_we_l, regfile_change16_l, regfile_inc_l, regfile_inc_pc} = 4'd0;
@@ -191,10 +208,23 @@ module decode(/*AUTOARG*/
       
       // Special
       halt = halted;
+
+      next_step_pressed = step_pressed | bp_step;
+      next_continue_pressed = continue_pressed | bp_continue;
+      next_debug_halt = debug_halt;
+      next_step_inst = step_inst;
       
       // Fetch/Decode //////////////////////////////////////////////////////////
 
-      if (interrupt & IME_data & cycle == 5'd0) begin
+      if (cycle == 5'd0 & bp_pc & ~debug_halt) begin
+         // Only break on Fetch 0
+         // Do nothing for 1 cycle, set the state for the next 3
+         m_cycles = 4'd1;
+         next_debug_halt = 1'b1;
+      end else if (debug_halt & ~step_inst) begin
+         // Do nothing
+         m_cycles = 4'd1;
+      end else if (interrupt & IME_data & cycle == 5'd0) begin
          // Go into interrupt mode, disable interrupts, SP --, TEMP1 = IntAddr
          m_cycles = 4'd5;
          
@@ -2205,6 +2235,19 @@ module decode(/*AUTOARG*/
          next_cycle = 5'b0;
          next_cb = 1'b0;
          next_interrupt_handle = 1'b0;
+         
+         if (step_pressed | bp_step) begin
+            next_step_inst = 1'b1;
+         end else begin
+            next_step_inst = 1'b0;
+         end
+         if (continue_pressed | bp_continue) begin
+            next_debug_halt = 1'b0;
+         end else begin
+            next_debug_halt = debug_halt;
+         end
+         next_step_pressed = 1'b0;
+         next_continue_pressed = 1'b0;
       end else begin
          next_cycle = next_cycle_high[4:0];
       end
