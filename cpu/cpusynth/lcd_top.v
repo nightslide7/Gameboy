@@ -307,7 +307,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        addr_in_flash;
 
    assign addr_in_flash = addr_ext <= 16'h140;
-
+   
 //   assign data_ext = (mem_we) ? 8'bzzzzzzzz : flash_d[7:0];
 //   assign data_ext = (mem_we) ? 8'bzzzzzzzz : (addr_in_flash ? 
 //                                               flash_d[7:0] :
@@ -347,16 +347,44 @@ module lcd_top(CLK_33MHZ_FPGA,
    my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(4)) //~4.125MHz
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
-   
 
+   wire        video_reg_w_enable;
+   wire [7:0]  video_reg_data_in;
+   wire [7:0]  video_reg_data_out;
+   wire [15:0] video_reg_addr;
+
+   assign video_reg_data_in = data_ext;
+   assign video_reg_addr = addr_ext;
+   /* NOTE: FF46 is DMA register */
+   assign video_reg_w_enable = (addr_ext >= 16'hFF40 && addr_ext <= 16'hFF4B);
+   
+   wire        video_vram_w_enable;
+   wire [7:0]  video_vram_data_in;
+   wire [7:0]  video_vram_data_out;
+   wire [15:0] video_vram_addr;
+
+   assign video_vram_data_in = data_ext;
+   assign video_vram_addr = addr_ext;
+   assign video_vram_w_enable = (addr_ext >= 16'h8000 && addr_ext <= 16'h9FFF);
+   
+   wire        video_oam_w_enable;
+   wire [7:0]  video_oam_data_in;
+   wire [7:0]  video_oam_data_out;
+   wire [15:0] video_oam_addr;
+
+   assign video_oam_data_in = data_ext;
+   assign video_oam_addr = addr_ext;
+   assign video_oam_w_enable = (addr_ext >= 16'hFE00 && addr_ext <= 16'hFE9F);
+   
    wire        reg_w_enable;
-   wire [7:0]  reg_data;
+   wire [7:0]  reg_data_in;
+   wire [7:0]  reg_data_out;
    wire [15:0] reg_addr;
 
    assign reg_w_enable = ((addr_ext >= 16'hFF10 && addr_ext <= 16'hFF1E) ||
 			  (addr_ext >= 16'hFF30 && addr_ext <= 16'hFF3F) ||
 			  (addr_ext >= 16'hFF20 && addr_ext <= 16'hFF26));
-   assign reg_data = bram_data_in;
+   assign reg_data_in = bram_data_in;
    assign reg_addr = bram_addr;
 
    audio_top audio(.square_wave_enable(1'b1), 
@@ -392,9 +420,18 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_bram(.out(data_ext),
 			     .in(bram_data_out),
 			     .en(~addr_in_flash&~FF44_read&~reg_w_enable&~mem_we));
-   tristate #(8) gating_mem_regs(.out(data_ext),
-				 .in(reg_data),
-				 .en(reg_w_enable&~mem_we));
+   tristate #(8) gating_sound_regs(.out(data_ext),
+				   .in(reg_data), //FIX THIS: regs need output
+				   .en(reg_w_enable&~mem_we));
+   tristate #(8) gating_video_regs(.out(data_ext),
+				   .in(video_reg_data_out),
+				   .en(video_reg_w_enable&~mem_we));
+   tristate #(8) gating_video_vram(.out(data_ext),
+				   .in(video_vram_data_out),
+				   .en(video_vram_w_enable&~mem_we));
+   tristate #(8) gating_video_oam(.out(data_ext),
+				  .in(video_oam_data_out),
+				  .en(video_oam_w_enable&~mem_we));
 
 endmodule
 // Local Variables:

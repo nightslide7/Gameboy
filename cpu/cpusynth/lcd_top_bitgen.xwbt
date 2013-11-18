@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\cpu\cpusynth\lcd_top.ncd
-OUTFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\cpu\cpusynth\lcd_top.bit
+INFILE=/Gameboy/Gameboy_git/cpu/cpusynth/lcd_top.ncd
+OUTFILE=/Gameboy/Gameboy_git/cpu/cpusynth/lcd_top.bit
 FAMILY=Virtex5
 PART=xc5vlx110t-2ff1136
-WORKINGDIR=C:\Users\Joseph\Documents\GitHub\Gameboy\cpu\cpusynth
+WORKINGDIR=/Gameboy/Gameboy_git/cpu/cpusynth
 LICENSE=ISE
 USER_INFO=174679548_176449548_210550170_728

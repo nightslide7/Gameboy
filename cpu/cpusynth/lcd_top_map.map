@@ -1,4 +1,4 @@
-Release 14.3 Map P.40xd (nt64)
+Release 14.3 Map P.40xd (lin64)
 Xilinx Map Application Log File for Design 'lcd_top'
 
 Design Information
@@ -10,9 +10,11 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -2
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Sun Nov 03 20:32:03 2013
+Mapped Date    : Thu Nov  7 21:46:42 2013
 
 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+INFO:Security:67 - XILINXD_LICENSE_FILE is set to '2101@xilinx-lic.ece.cmu.edu'
+in /root/.flexlmrc.
 INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
 INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
 '2101@xilinx-lic.ece.cmu.edu'.
@@ -24,202 +26,10 @@ WARNING:Security:44 - Since no license file was found,
        (xlcm or "Manage Xilinx Licenses")
        to assist in obtaining a license.
 WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
-27 days after which you will not qualify for Xilinx software updates or new
+23 days after which you will not qualify for Xilinx software updates or new
 releases.
 ----------------------------------------------------------------------
 Mapping design into LUTs...
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   0].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   1].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   2].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   3].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   4].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   5].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   6].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_B_REGCLKAL_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAU connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAU_tiesig
-WARNING:Pack:2874 - Trimming timing constraints from pin
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T
-   of frag REGCLKAL connected to power/ground net
-   br/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[
-   7].ram.r/v5_noinit.ram/SP.CASCADED_PRIM36.TDP_T_REGCLKAL_tiesig
 Running directed packing...
 Running delay-based LUT packing...
 Updating timing models...
@@ -230,60 +40,64 @@ Total REAL time at the beginning of Placer: 10 secs
 Total CPU  time at the beginning of Placer: 10 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:c71786f9) REAL time: 11 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:80a405a4) REAL time: 11 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:c71786f9) REAL time: 11 secs 
+INFO:Place:834 - Only a subset of IOs are locked. Out of 66 IOs, 65 are locked
+   and 1 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
+Phase 2.7  Design Feasibility Check (Checksum:80a405a4) REAL time: 11 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:c71786f9) REAL time: 11 secs 
+Phase 3.31  Local Placement Optimization (Checksum:80a405a4) REAL time: 11 secs 
 
 Phase 4.37  Local Placement Optimization
-Phase 4.37  Local Placement Optimization (Checksum:c71786f9) REAL time: 11 secs 
+Phase 4.37  Local Placement Optimization (Checksum:80a405a4) REAL time: 11 secs 
 
 Phase 5.33  Local Placement Optimization
-Phase 5.33  Local Placement Optimization (Checksum:c71786f9) REAL time: 13 secs 
+Phase 5.33  Local Placement Optimization (Checksum:80a405a4) REAL time: 12 secs 
 
 Phase 6.32  Local Placement Optimization
-Phase 6.32  Local Placement Optimization (Checksum:c71786f9) REAL time: 13 secs 
+Phase 6.32  Local Placement Optimization (Checksum:80a405a4) REAL time: 12 secs 
 
 Phase 7.2  Initial Clock and IO Placement
-
-Phase 7.2  Initial Clock and IO Placement (Checksum:ffc14932) REAL time: 13 secs 
+......
+Phase 7.2  Initial Clock and IO Placement (Checksum:44e0c490) REAL time: 13 secs 
 
 Phase 8.36  Local Placement Optimization
-Phase 8.36  Local Placement Optimization (Checksum:ffc14932) REAL time: 13 secs 
+Phase 8.36  Local Placement Optimization (Checksum:44e0c490) REAL time: 13 secs 
 
 Phase 9.30  Global Clock Region Assignment
-Phase 9.30  Global Clock Region Assignment (Checksum:ffc14932) REAL time: 13 secs 
+Phase 9.30  Global Clock Region Assignment (Checksum:44e0c490) REAL time: 13 secs 
 
 Phase 10.3  Local Placement Optimization
-Phase 10.3  Local Placement Optimization (Checksum:ffc14932) REAL time: 13 secs 
+...
+Phase 10.3  Local Placement Optimization (Checksum:701b3408) REAL time: 13 secs 
 
 Phase 11.5  Local Placement Optimization
-Phase 11.5  Local Placement Optimization (Checksum:ffc14932) REAL time: 13 secs 
+Phase 11.5  Local Placement Optimization (Checksum:701b3408) REAL time: 13 secs 
 
 Phase 12.8  Global Placement
-.......................................................................................................................
-.....................
-Phase 12.8  Global Placement (Checksum:d9624079) REAL time: 14 secs 
+..........................................
+............
+Phase 12.8  Global Placement (Checksum:5093a0da) REAL time: 13 secs 
 
 Phase 13.29  Local Placement Optimization
-Phase 13.29  Local Placement Optimization (Checksum:d9624079) REAL time: 14 secs 
+Phase 13.29  Local Placement Optimization (Checksum:5093a0da) REAL time: 13 secs 
 
 Phase 14.5  Local Placement Optimization
-Phase 14.5  Local Placement Optimization (Checksum:d9624079) REAL time: 14 secs 
+Phase 14.5  Local Placement Optimization (Checksum:5093a0da) REAL time: 13 secs 
 
 Phase 15.18  Placement Optimization
-Phase 15.18  Placement Optimization (Checksum:6260da4) REAL time: 18 secs 
+Phase 15.18  Placement Optimization (Checksum:d65fda62) REAL time: 18 secs 
 
 Phase 16.5  Local Placement Optimization
-Phase 16.5  Local Placement Optimization (Checksum:6260da4) REAL time: 18 secs 
+Phase 16.5  Local Placement Optimization (Checksum:d65fda62) REAL time: 18 secs 
 
 Phase 17.34  Placement Validation
-Phase 17.34  Placement Validation (Checksum:6260da4) REAL time: 18 secs 
+Phase 17.34  Placement Validation (Checksum:d65fda62) REAL time: 18 secs 
 
-Total REAL time to Placer completion: 19 secs 
+Total REAL time to Placer completion: 18 secs 
 Total CPU  time to Placer completion: 18 secs 
 Running post-placement packing...
 Writing output files...
@@ -297,29 +111,29 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:   33
+Number of warnings:    1
 Slice Logic Utilization:
-  Number of Slice Registers:                   282 out of  69,120    1%
-    Number used as Flip Flops:                 274
+  Number of Slice Registers:                   660 out of  69,120    1%
+    Number used as Flip Flops:                 652
     Number used as Latches:                      8
-  Number of Slice LUTs:                      1,450 out of  69,120    2%
-    Number used as logic:                    1,446 out of  69,120    2%
-      Number using O6 output only:           1,360
-      Number using O5 output only:              52
-      Number using O5 and O6:                   34
-    Number used as exclusive route-thru:         4
-  Number of route-thrus:                        56
-    Number using O6 output only:                56
+  Number of Slice LUTs:                      2,018 out of  69,120    2%
+    Number used as logic:                    2,006 out of  69,120    2%
+      Number using O6 output only:           1,712
+      Number using O5 output only:             122
+      Number using O5 and O6:                  172
+    Number used as exclusive route-thru:        12
+  Number of route-thrus:                       134
+    Number using O6 output only:               134
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   568 out of  17,280    3%
-  Number of LUT Flip Flop pairs used:        1,490
-    Number with an unused Flip Flop:         1,208 out of   1,490   81%
-    Number with an unused LUT:                  40 out of   1,490    2%
-    Number of fully used LUT-FF pairs:         242 out of   1,490   16%
-    Number of unique control sets:              20
+  Number of occupied Slices:                   799 out of  17,280    4%
+  Number of LUT Flip Flop pairs used:        2,215
+    Number with an unused Flip Flop:         1,555 out of   2,215   70%
+    Number with an unused LUT:                 197 out of   2,215    8%
+    Number of fully used LUT-FF pairs:         463 out of   2,215   20%
+    Number of unique control sets:              87
     Number of slice register sites lost
-      to control set restrictions:              26 out of  69,120    1%
+      to control set restrictions:             132 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -330,8 +144,8 @@ Slice Logic Distribution:
   over-mapped for a non-BRAM resource or if placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        58 out of     640    9%
-    Number of LOCed IOBs:                       58 out of      58  100%
+  Number of bonded IOBs:                        66 out of     640   10%
+    Number of LOCed IOBs:                       65 out of      66   98%
 
 Specific Feature Utilization:
   Number of BlockRAM/FIFO:                      16 out of     148   10%
@@ -339,12 +153,12 @@ Specific Feature Utilization:
     Total primitives used:
       Number of 36k BlockRAM used:              16
     Total Memory used (KB):                    576 out of   5,328   10%
-  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
-    Number used as BUFGs:                        2
+  Number of BUFG/BUFGCTRLs:                      7 out of      32   21%
+    Number used as BUFGs:                        7
 
-Average Fanout of Non-Clock Nets:                5.46
+Average Fanout of Non-Clock Nets:                4.90
 
-Peak Memory Usage:  597 MB
+Peak Memory Usage:  1060 MB
 Total REAL time to MAP completion:  20 secs 
 Total CPU time to MAP completion:   19 secs 
 
