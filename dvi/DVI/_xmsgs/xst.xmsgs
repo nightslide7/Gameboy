@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 173 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 173 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 173 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 174 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 174 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 174 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 177 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 177 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 177 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 178 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 178 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 178 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 179 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 179 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 179 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 182 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 182 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 182 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 183 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 183 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 183 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 184 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 184 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 184 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 185 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 185 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 185 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 186 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 186 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 186 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 187 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 187 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 187 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 188 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 188 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 188 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 189 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 189 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 189 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 190 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 190 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 190 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 191 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 191 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 191 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 192 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 192 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 192 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 193 </arg>Connection to input port &apos;<arg fmt="%s" index="2">CE</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 193 </arg>Connection to input port &apos;<arg fmt="%s" index="2">R</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Framebuffer.v&quot; line 193 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">fbclk_ready</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">request</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SDA_BUFFER_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">init</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">SDA_BUFFER_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">iic_init</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">fbdcm/DCM_SP_INST</arg> in unit <arg fmt="%s" index="2">fb_top</arg> of type <arg fmt="%s" index="3">DCM_BASE</arg> has been replaced by <arg fmt="%s" index="4">DCM_ADV</arg>
+</msg>
+
+<msg type="info" file="Xst" num="741" delta="new" >HDL ADVISOR - A <arg fmt="%d" index="1">16</arg>-bit shift register was found for signal &lt;<arg fmt="%s" index="2">fbclk_rst_b_seq_15</arg>&gt; and currently occupies <arg fmt="%d" index="3">16</arg> logic cells (<arg fmt="%d" index="4">8</arg> slices). Removing the set/reset logic would take advantage of SRL<arg fmt="%d" index="5">32</arg> (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.
+</msg>
+
+</messages>
+

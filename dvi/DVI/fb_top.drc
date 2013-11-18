@@ -1,0 +1,13 @@
+Release 14.3 Drc P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Wed Oct 23 12:42:44 2013
+
+drc -z fb_top.ncd fb_top.pcf
+
+WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp
+   ProtoComp49.PULL is set but the tri state is not configured. 
+WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp
+   ProtoComp49.PULL.1 is set but the tri state is not configured. 
+DRC detected 0 errors and 2 warnings.  Please see the previously displayed
+individual error or warning messages for more details.
