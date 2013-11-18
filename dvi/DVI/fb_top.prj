@@ -1,0 +1,5 @@
+verilog work "SyncGen.v"
+verilog work "iic_init.v"
+verilog work "Framebuffer.v"
+verilog work "FBDCM.v"
+verilog work "fb_top.v"

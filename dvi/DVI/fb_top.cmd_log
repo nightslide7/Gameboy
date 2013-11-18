@@ -1,0 +1,14 @@
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.xst" -ofn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.xst" -ofn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc fb_top.ucf -p xc5vlx110t-ff1136-1 fb_top.ngc fb_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o fb_top_map.ncd fb_top.ngd fb_top.pcf 
+par -w -intstyle ise -ol high -mt off fb_top_map.ncd fb_top.ncd fb_top.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml fb_top.twx fb_top.ncd -o fb_top.twr fb_top.pcf -ucf fb_top.ucf 
+bitgen -intstyle ise -f fb_top.ut fb_top.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.xst" -ofn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.xst" -ofn "/Gameboy/Gameboy_git/dvi/DVI/fb_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc fb_top.ucf -p xc5vlx110t-ff1136-1 fb_top.ngc fb_top.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o fb_top_map.ncd fb_top.ngd fb_top.pcf 
+par -w -intstyle ise -ol high -mt off fb_top_map.ncd fb_top.ncd fb_top.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml fb_top.twx fb_top.ncd -o fb_top.twr fb_top.pcf -ucf fb_top.ucf 
+bitgen -intstyle ise -f fb_top.ut fb_top.ncd 

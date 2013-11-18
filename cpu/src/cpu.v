@@ -20,7 +20,8 @@ module cpu(/*AUTOARG*/
    // Inouts
    addr_ext, data_ext,
    // Inputs
-   IF_in, IE_in, IF_load, IE_load, clock, reset
+   IF_in, IE_in, IF_load, IE_load, cpu_mem_disable, clock, reset,
+   bp_addr, bp_step, bp_continue
    );
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
@@ -29,17 +30,22 @@ module cpu(/*AUTOARG*/
    output wire [4:0] IF_data, IE_data;
 
    output wire [79:0] regs_data;
-   
+
    output wire  mem_we, mem_re;
    output wire  halt;
 
    input [4:0]  IF_in, IE_in;
-   input wire   IF_load, IE_load;
+   input        IF_load, IE_load;
+   input        cpu_mem_disable;
    input        clock, reset;
 
+   input [15:0] bp_addr;
+   input        bp_step, bp_continue;
+   
    // Constant Parameters //////////////////////////////////////////////////////
    parameter
-     F_Z = 3, F_N = 2, F_H = 1, F_C = 0;
+     F_Z = 3, F_N = 2, F_H = 1, F_C = 0,
+     I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
    
    // Global wires /////////////////////////////////////////////////////////////
 
@@ -47,13 +53,57 @@ module cpu(/*AUTOARG*/
    wire [15:0]  addr_bus;
    wire [7:0]   data_bus;
 
-
    // Intermediate data signals ////////////////////////////////////////////////
 
+   // Debugging
+   wire         bp_pc;
+   assign bp_pc = regs_data[15:0] == bp_addr;
+
+   // To/from external bus
+   wire        addr_buf_load_ext, addr_buf_write_ext;
+   wire        data_buf_load_ext, data_buf_write_ext;
+   
+   // Buffers/High memory
+   wire [7:0]   data_ext_out, data_ext_in;
+   wire [15:0]  addr_ext_out, addr_ext_in;
+   wire [7:0]   high_mem_data;
+   
+   wire         high_mem = (`MEM_HIGH_START <= addr_ext_out) & 
+                (addr_ext_out <= `MEM_HIGH_END); 
+   
+   assign data_ext_in = (high_mem) ? high_mem_data :
+                        (cpu_mem_disable) ? 8'h0 : data_ext;
+   assign addr_ext_in = (high_mem) ? 16'hzz :
+                        (cpu_mem_disable) ? 16'hzz : addr_ext;
+
+   tristate #(8) data_ext_tri(.out(data_ext),
+                              .in(data_ext_out),
+                              .en(data_buf_write_ext & ~cpu_mem_disable
+                                  & ~high_mem));
+   tristate #(16) addr_ext_tri(.out(addr_ext),
+                               .in(addr_ext_out),
+                               .en(addr_buf_write_ext & ~cpu_mem_disable &
+                                   ~high_mem));
+   
+   wire [15:0]  high_mem_addr;
+   assign high_mem_addr = addr_ext_out - `MEM_HIGH_START;
+
+   tristate #(8) high_mem_data_tri(.out(high_mem_data[7:0]),
+                                   .in(data_ext_out),
+                                   .en(data_buf_write_ext & high_mem));
+   
+   mem #(127, 0) high_mmmod(.data_ext(high_mem_data[7:0]),
+                            .addr_ext(high_mem_addr[15:0]),
+                            .mem_we(addr_buf_write_ext & high_mem),
+                            .mem_re(data_buf_load_ext & high_mem),
+                            .reset(reset),
+                            .clock(clock));
+   
    // Registers
    wire [7:0]   F_data, temp1_data, temp0_data;
-   wire [4:0]   IF_in_l;
+   wire [4:0]   IF_in_l, IE_in_l;
    wire         IME_data;
+   wire         IE_load_l;
 //   wire [7:0]   A_data, instruction;  
 
    reg [4:0]   interrupt_mask; // IF mask
@@ -65,7 +115,10 @@ module cpu(/*AUTOARG*/
    wire         interrupt; // Decode input: is there an interrupt?
    
    assign interrupt = ~((IF_data & IE_data) == 5'd0);
-   assign IF_in_l = (IF_load_l) ? IF_data & interrupt_mask : IF_in;
+   assign IF_in_l = (IF_load_l) ? IF_in | (IF_data & interrupt_mask) : IF_in;
+
+   assign IE_load_l = (mem_we) ? addr_ext == `MMIO_IE : 1'b0;
+   assign IE_in_l = (IE_load_l) ? data_ext[4:0] : IE_in;
    
    always @(*) begin
       // interrupt select and mask priority decoder/encoder
@@ -125,13 +178,11 @@ module cpu(/*AUTOARG*/
    // To/from internal bus
    wire        addr_buf_load, addr_buf_write;
    wire        data_buf_load, data_buf_write;
-   // To/from external bus
-   wire        addr_buf_load_ext, addr_buf_write_ext;
-   wire        data_buf_load_ext, data_buf_write_ext;
+
 
    // Outputs
-   assign mem_we = data_buf_write_ext;
-   assign mem_re = data_buf_load_ext;
+   assign mem_we = data_buf_write_ext & ~high_mem & ~cpu_mem_disable;
+   assign mem_re = data_buf_load_ext & ~high_mem & ~cpu_mem_disable;
    
    // Registers
    wire        inst_reg_load, A_load, F_load, temp1_load, temp0_load;
@@ -193,7 +244,7 @@ module cpu(/*AUTOARG*/
    
    // Input/Output buffers /////////////////////////////////////////////////////
    
-   buffer #(16, 0) addr_buf(.bus_in(addr_bus),
+/*   buffer #(16, 0) addr_buf(.bus_in(addr_bus),
                             .bus_ext(addr_ext),
                             .bus_in_read(addr_buf_load),
                             .bus_in_write(addr_buf_write),
@@ -208,8 +259,29 @@ module cpu(/*AUTOARG*/
                            .bus_ext_read(data_buf_load_ext),
                            .bus_ext_write(data_buf_write_ext),
                            .clock(clock),
-                           .reset(reset));
+                           .reset(reset));*/
 
+
+   
+   nobus_buffer #(8, 0) data_buf(.bus(data_bus),
+                                 .bus_ext_out(data_ext_out),
+                                 .bus_ext_in(data_ext_in),
+                                 .bus_read(data_buf_load),
+                                 .bus_write(data_buf_write),
+                                 .bus_ext_read(data_buf_load_ext),
+                                 .clock(clock),
+                                 .reset(reset));
+
+   nobus_buffer #(16, 0) addr_buf(.bus(addr_bus),
+                                  .bus_ext_out(addr_ext_out),
+                                  .bus_ext_in(addr_ext_in),
+                                  .bus_read(addr_buf_load),
+                                  .bus_write(addr_buf_write),
+                                  .bus_ext_read(addr_buf_load_ext),
+                                  .clock(clock),
+                                  .reset(reset));
+
+   
    // Registers ////////////////////////////////////////////////////////////////
 
    // TODO: make into a single always block
@@ -251,8 +323,8 @@ module cpu(/*AUTOARG*/
                            .reset(reset));
 
    register #(5, 0) IE_reg(.q(IE_data),
-                           .d(IE_in),
-                           .load(IE_load),
+                           .d(IE_in_l),
+                           .load(IE_load_l | IE_load),
                            .clock(clock),
                            .reset(reset));
 
@@ -263,7 +335,7 @@ module cpu(/*AUTOARG*/
                             .reset(reset));
    
    // Tristate buffers /////////////////////////////////////////////////////////
-   
+
    tristate #(.width(8)) regfile_data_tri(.out(data_bus),
                                           .in(regfile_data_out[7:0]),
                                           .en(regfile_data_gate));
@@ -355,6 +427,9 @@ module cpu(/*AUTOARG*/
                       .alu_size         (alu_size),
                       .halt             (halt),
                       // Inputs
+                      .bp_step          (bp_step),
+                      .bp_continue      (bp_continue),
+                      .bp_pc            (bp_pc),
                       .instruction      (instruction[7:0]),
                       .taken            (taken),
                       .interrupt        (interrupt),
@@ -553,6 +628,44 @@ module buffer(/*AUTOARG*/
    
 endmodule // buffer
 
+module nobus_buffer(/*AUTOARG*/
+   // Outputs
+   bus_ext_out,
+   // Inouts
+   bus,
+   // Inputs
+   bus_ext_in, bus_read, bus_write, bus_ext_read, clock, reset
+   );
+   parameter
+     width = 8,
+     reset_value = 0;
+
+   inout [width-1:0] bus;
+   
+   output wire [(width-1):0] bus_ext_out;
+   input [(width-1):0]       bus_ext_in;
+
+   input                     bus_read, bus_write, bus_ext_read;
+   input                     clock, reset;
+   
+   reg [(width - 1):0] q;
+
+   assign bus = (bus_write) ? q : {width{1'bz}};
+   assign bus_ext_out = q;
+   
+   always @(posedge clock or posedge reset) begin
+      if (reset) begin
+         q <= reset_value;
+      end
+      else if (bus_read) begin
+         q <= bus;
+      end
+      else if (bus_ext_read) begin
+         q <= bus_ext_in;
+      end
+   end
+   
+endmodule
 
 // Local Variables:
 // verilog-library-directories:(".")
