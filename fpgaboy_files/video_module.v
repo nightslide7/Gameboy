@@ -242,32 +242,28 @@ module video_module(//Outputs
 	
 	divider #(8) clock_divider(reset, clock, clock_enable);
 	
-	sprite_ram oam(//Outputs
-					.rd_dataA(oam_outA), 
-					.rd_dataB(oam_outB),
-					//Inputs
-					.clk(clock),
-					.wr_enA(~oam_we_n), 
-					.wr_enB(),
-					.addrA(oam_addrA), 
-					.addrB(oam_addrB),					
-					.wr_dataA(di), 
-					.wr_dataB()
-					);
+	OAM oam(.clka(clock), // input clka
+		.wea(~oam_we_n), // input [0 : 0] wea
+		.addra(oam_addrA), // input [7 : 0] addra
+		.dina(di), // input [7 : 0] dina
+		.douta(oam_outA), // output [7 : 0] douta
+		.clkb(clock), // input clkb
+		.web(), // input [0 : 0] web
+		.addrb(oam_addrB), // input [7 : 0] addrb
+		.dinb(), // input [7 : 0] dinb
+		.doutb(oam_outB));
 					
 	//vram_rom vram(vram_addr, vram_addrB, clock, clock, vram_outA, vram_outB);
-	video_ram vram(//Outputs
-					.rd_dataA(vram_outA), 
-					.rd_dataB(vram_outB),
-					//Inputs
-					.clk(clock),
-					.wr_enA(~vram_we_n), 
-					.wr_enB(),
-					.addrA(vram_addrA), 
-					.addrB(vram_addrB),					
-					.wr_dataA(di), 
-					.wr_dataB()	
-					);
+	VRAM vram(.clka(clock), // input clka
+		.wea(~vram_we_n), // input [0 : 0] wea
+		.addra(vram_addrA), // input [12 : 0] addra
+		.dina(di), // input [7 : 0] dina
+		.douta(vram_outA), // output [7 : 0] douta
+		.clkb(clock), // input clkb
+		.web(), // input [0 : 0] web
+		.addrb(vram_addrB), // input [12 : 0] addrb
+		.dinb(), // input [7 : 0] dinb
+		.doutb(vram_outB));
 	
 	scanline_ram scanline1 (//Outputs
 					.rd_dataA(scanline1_outA), 
