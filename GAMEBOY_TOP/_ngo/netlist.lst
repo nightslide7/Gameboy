@@ -1,0 +1,5 @@
+/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.ngc 1384973902
+ipcore_dir/blockram8192.ngc 1384973001
+../GPU/ipcore_dir/OAM.ngc 1384808859
+../GPU/ipcore_dir/VRAM.ngc 1384808859
+OK

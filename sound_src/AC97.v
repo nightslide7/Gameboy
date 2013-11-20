@@ -89,7 +89,7 @@ module AC97(
 			.ac97_strobe	(ac97_strobe),
 			.sample_no	(sample_no),
 			.square_wave_enable(square_wave_enable),
-			.level		(4'hE),//***TESTING***level[3:0]),
+			.level		(level[3:0]),
 			.ch1_level	(ch1_level[3:0]),
 			.ch2_level	(ch2_level[3:0]),
 			.ch3_level	(ch3_level[3:0]),

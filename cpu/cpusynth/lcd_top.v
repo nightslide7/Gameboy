@@ -13,10 +13,12 @@ module lcd_top(CLK_33MHZ_FPGA,
 	       GPIO_SW_E,
 	       GPIO_SW_S,
 	       GPIO_SW_W,
-/*               GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3,
-               GPIO_LED_2, GPIO_LED_1, GPIO_LED_0,
+	       GPIO_SW_N,
+               GPIO_LED_S, GPIO_LED_N, GPIO_LED_E, GPIO_LED_W, GPIO_LED_C,
+               GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3,
+	       GPIO_LED_2, GPIO_LED_1, GPIO_LED_0,
                GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
-               GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1,*/
+               GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1,
 	       LCD_FPGA_RS, LCD_FPGA_RW, LCD_FPGA_E,
 	       LCD_FPGA_DB7, LCD_FPGA_DB6, LCD_FPGA_DB5, LCD_FPGA_DB4,
                flash_wait, flash_d, flash_a, flash_adv_n, flash_ce_n, 
@@ -28,11 +30,14 @@ module lcd_top(CLK_33MHZ_FPGA,
 	       dvi_de,
 	       dvi_sda, dvi_scl
 );
+   parameter
+     I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
   
    input CLK_33MHZ_FPGA, CLK_27MHZ_FPGA, USER_CLK;
 //   input USER_CLK;
    /* switch C is reset, E is clear, S is resetFSM, W is nextString */
-   input GPIO_SW_C, GPIO_SW_E, GPIO_SW_S, GPIO_SW_W;	
+   input GPIO_SW_C, GPIO_SW_E, GPIO_SW_S, GPIO_SW_W, GPIO_SW_N;	
+   output GPIO_LED_C, GPIO_LED_E, GPIO_LED_S, GPIO_LED_W, GPIO_LED_N;
    output LCD_FPGA_RW, LCD_FPGA_RS, LCD_FPGA_E, LCD_FPGA_DB7, LCD_FPGA_DB6,
           LCD_FPGA_DB5, LCD_FPGA_DB4;
 
@@ -70,6 +75,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire       nextString;
    
    assign reset = GPIO_SW_C;
+   assign GPIO_LED_C = reset;
    //assign resetFSM = GPIO_SW_S;
    //assign clearAll = GPIO_SW_E;
    //assign nextString = GPIO_SW_W;
@@ -88,32 +94,35 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign flash_oe_n = 1'h0;
    assign flash_we_n = 1'h1;
 
-/*   output wire GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3;
-   output wire GPIO_LED_2, GPIO_LED_1, GPIO_LED_0;
+   output wire GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3;
+   output wire 	  GPIO_LED_2, GPIO_LED_1, GPIO_LED_0;
 
-   input wire GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5;
-   input wire GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1;*/
+   input wire 	  GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5;
+   input wire 	  GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1;
 
-   wire       bram_we;
+/*   wire       bram_we;
    wire [15:0] bram_addr;
    wire [7:0]  bram_data_in;
    wire [7:0]  bram_data_out;
-   
-/*   assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3,
-           GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = bram_data_out;
-
-   assign bram_addr = {12'hff0, GPIO_DIP_SW5, GPIO_DIP_SW6, 
-                       GPIO_DIP_SW7, GPIO_DIP_SW8};
-
-   assign bram_data_in = {5'd0, GPIO_DIP_SW2, GPIO_DIP_SW3, GPIO_DIP_SW4};
-   assign bram_we = GPIO_DIP_SW1;*/
    
    blockram br(.clka(clock),
                .wea(bram_we),
                .addra(bram_addr),
                .dina(bram_data_in),
-               .douta(bram_data_out));
+               .douta(bram_data_out));*/
+   wire [7:0] 	  bp_addr_disp, bp_addr_part_in;
+   wire 	  bp_hi_lo_sel_in, bp_hi_lo_disp_in;
+   wire [15:0] 	  bp_addr;
+   wire 	  bp_step, bp_continue;
    
+   // Breakpoint module controls
+   //   assign bp_hi_lo_sel_in = GPIO_SW_E;
+   //   assign bp_hi_lo_disp_in = GPIO_SW_W;
+   assign {GPIO_LED_0, GPIO_LED_1, GPIO_LED_2, GPIO_LED_3, GPIO_LED_4,
+           GPIO_LED_5, GPIO_LED_6, GPIO_LED_7} = bp_addr_disp;
+   assign bp_addr_part_in = {GPIO_DIP_SW1, GPIO_DIP_SW2, GPIO_DIP_SW3,
+                             GPIO_DIP_SW4, GPIO_DIP_SW5, GPIO_DIP_SW6,
+                             GPIO_DIP_SW7, GPIO_DIP_SW8};
    
 `define cdisp0 3'd0
 `define cdisp1 3'd1
@@ -197,77 +206,50 @@ module lcd_top(CLK_33MHZ_FPGA,
         end
       endcase
    end
-   
-/*   
-   always @(*) begin
-//      next_count = count;
-      display_hex_start = 1'b0;
-      next_cstate = `cdisp0;
-      clearAll = 1'b0;
-      display_hex_data_in = print_data[15:12];
-      case (cstate)
-        `cdisp0: begin
-           if (~display_hex_done) begin
-              display_hex_start = 1'b1;
-              display_hex_data_in = print_data[15:12];
-              next_cstate = `cdisp0;
-           end else begin
-              next_cstate = `cdisp1;
-           end
-        end
-        `cdisp1: begin
-           if (~display_hex_done) begin
-              display_hex_start = 1'b1;
-              display_hex_data_in = print_data[11:8];
-              next_cstate = `cdisp1;
-           end else begin
-              next_cstate = `cdisp2;
-           end
-        end
-        `cdisp2: begin
-           if (~display_hex_done) begin
-              display_hex_start = 1'b1;
-              display_hex_data_in = print_data[7:4];
-              next_cstate = `cdisp2;
-           end else begin
-              next_cstate = `cdisp3;
-           end
-        end
-        `cdisp3: begin
-           if (~display_hex_done) begin
-              display_hex_start = 1'b1;
-              display_hex_data_in = print_data[3:0];
-              next_cstate = `cdisp3;
-           end else begin
-              next_cstate = `cwait;
-           end
-        end
-        `cwait: begin
-           if (cpu_clock || button_down) begin //button_down) begin
-              next_cstate = `cdisp0;
-//              next_count = count + 16'h1;
-              clearAll = 1'b1;
-           end else begin
-              next_cstate = `cwait;
-           end
-        end
-      endcase
-   end
-  */ 
-   always @(posedge clock or posedge reset) begin
+  
+
+  always @(posedge clock or posedge reset) begin
       if (reset) begin
          cstate <= `cdisp0;
       end else begin
          cstate <= next_cstate;
       end
    end
-   
-//   assign display_hex_data_in = count;
 
-   button #(.delay_cycles(6000000)) inc_button(.pressed(button_down),
+   assign button_down = bp_hi_lo_disp_in;
+
+   button #(.delay_cycles(6000000)) 
+   addr_disp_button(.pressed(bp_hi_lo_disp_in),
+                    .pressed_disp(GPIO_LED_E),
+                    .button_input(GPIO_SW_E),
+                    .clock(clock),
+                    .reset(reset));
+
+   button #(.delay_cycles(6000000)) 
+   addr_sel_button(.pressed(bp_hi_lo_sel_in),
+                   .pressed_disp(GPIO_LED_W),
+                   .button_input(GPIO_SW_W),
+                   .clock(clock),
+                   .reset(reset));
+   
+   button #(.delay_cycles(6000000)) 
+   step_button(.pressed(bp_step),
+               .pressed_disp(GPIO_LED_N),
+               .button_input(GPIO_SW_N),
+               .clock(clock),
+               .reset(reset));
+
+   button #(.delay_cycles(6000000)) 
+   continue_button(.pressed(bp_continue),
+                   .pressed_disp(GPIO_LED_S),
+                   .button_input(GPIO_SW_S),
+                   .clock(clock),
+                   .reset(reset));
+
+/*   button #(.delay_cycles(6000000)) inc_button(.pressed(button_down),
                                                 .button_input(GPIO_SW_S),
                                                 .clock(clock),
-                                                .reset(reset));
+                                                .reset(reset));*/
    
    lcd_control lcd(.rst(reset), .clk(clock), .control(control_out), .sf_d(out),
 		   .writeStart(writeStart), .initDone(initDone),
@@ -290,6 +272,9 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire mem_we, mem_re;
    wire [15:0] addr_ext;
    wire [7:0]  data_ext;
+   
+   assign flash_a = {8'd0, addr_ext};
+   assign flash_adv_n = ~mem_re;
 /*
 `define MAX_VCOUNT 9'd440
    
@@ -315,28 +300,71 @@ module lcd_top(CLK_33MHZ_FPGA,
    
    wire        FF44_read;
    assign FF44_read = (addr_ext == 16'hff44) & mem_re;*/
-   
-   wire        addr_in_flash;
-
-   assign addr_in_flash = addr_ext <= 16'h140;
+ 
    
 //   assign data_ext = (mem_we) ? 8'bzzzzzzzz : flash_d[7:0];
 //   assign data_ext = (mem_we) ? 8'bzzzzzzzz : (addr_in_flash ? 
 //                                               flash_d[7:0] :
 //                                               bram_data_out[7:0]);
-   
+     
 
-   
-   assign bram_data_in = data_ext;
-   assign bram_we = ~addr_in_flash & mem_we;
-   assign bram_addr = addr_ext;
-   assign flash_a = {8'd0, addr_ext};
-   assign flash_adv_n = ~mem_re;
+   // Timers, DMA ////////////////////////////////////////////////////////////
 
-   wire [4:0]  IF_data, IE_data, IF_load, IE_load, IF_in, IE_in;
-   assign IF_in = 5'b0;
+   wire        timer_reg_addr; // addr_ext == timer MMIO address
+   
+   wire        dma_mem_re, dma_mem_we, cpu_mem_disable;
+   
+   dma gb80_dma(.dma_mem_re(dma_mem_re),
+                .dma_mem_we(dma_mem_we),
+                .addr_ext(addr_ext),
+                .data_ext(data_ext),
+                .mem_we(mem_we),
+                .mem_re(mem_re),
+                .cpu_mem_disable(cpu_mem_disable),
+                .clock(clock),
+                .reset(reset));
+
+`define MMIO_IF 16'hff0f
+`define MMIO_IE 16'hffff
+`define MMIO_DMA 16'hff46
+`define MMIO_DIV 16'hff04
+`define MMIO_TIMA 16'hff05
+`define MMIO_TMA 16'hff06
+`define MMIO_TAC 16'hff07
+   
+   assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
+                           (addr_ext == `MMIO_TMA) |
+                           (addr_ext == `MMIO_TIMA) |
+                           (addr_ext == `MMIO_TAC);
+
+   wire        timer_interrupt;
+   
+   wire [4:0]  IE_data, IF_in, IF_data, IE_in;
+   wire        IE_load, IF_load;
+   
+   assign IF_in[I_TIMA] = timer_interrupt;
+   assign IF_in[I_VBLANK] = 1'b0;
+   assign IF_in[I_LCDC] = 1'b0;
+   assign IF_in[I_HILO] = 1'b0;
+   assign IF_in[I_SERIAL] = 1'b0;
+   
+   assign IF_load = timer_interrupt;
+   
+   timers tima_module(/*AUTOINST*/
+                      // Outputs
+                      .timer_interrupt  (timer_interrupt),
+                      // Inouts
+                      .addr_ext         (addr_ext[15:0]),
+                      .data_ext         (data_ext[7:0]),
+                      // Inputs
+                      .mem_re           (mem_re),
+                      .mem_we           (mem_we),
+                      .clock            (clock),
+                      .reset            (reset));
+ 
+
+ 
    assign IE_in = 5'b0;
-   assign IF_load = 1'b0;
    assign IE_load = 1'b0;
    
    cpu gb80_cpu(.mem_we(mem_we),
@@ -354,11 +382,29 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .IF_in(IF_in),
                 .IE_in(IE_in),
                 .IF_load(IF_load),
-                .IE_load(IE_load));
+                .IE_load(IE_load),
+                .cpu_mem_disable(cpu_mem_disable),
+                .bp_addr(bp_addr),
+                .bp_step(bp_step),
+                .bp_continue(bp_continue));
 
    my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(4)) //~4.125MHz
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
+   
+   breakpoints #(.reset_addr(16'h0007))
+   bpmod(.bp_addr(bp_addr[15:0]),
+         .bp_addr_disp(bp_addr_disp[7:0]),
+         // Inputs
+         .bp_addr_part_in(bp_addr_part_in[7:0]),
+         .bp_hi_lo_sel_in(bp_hi_lo_sel_in),
+         .bp_hi_lo_disp_in(bp_hi_lo_disp_in),
+         .reset(reset),
+         .clock(cpu_clock));
+     
+   wire        addr_in_flash;
+   
+   assign addr_in_flash = addr_ext <= 16'h140;
 
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
@@ -423,7 +469,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		.di_video		(data_ext),
 		.int_ack		(int_ack[1:0]),
 		.switches78		());
-   
+
+   /* Sound registers */
    wire        reg_w_enable;
    wire [7:0]  reg_data_in;
    wire [7:0]  reg_data_out;
@@ -432,8 +479,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign reg_w_enable = ((addr_ext >= 16'hFF10 && addr_ext <= 16'hFF1E) ||
 			  (addr_ext >= 16'hFF30 && addr_ext <= 16'hFF3F) ||
 			  (addr_ext >= 16'hFF20 && addr_ext <= 16'hFF26));
-   assign reg_data_in = bram_data_in;
-   assign reg_addr = bram_addr;
+   assign reg_data_in = data_ext;
+   assign reg_addr = addr_ext;
 
    audio_top audio(.square_wave_enable(1'b1), 
 		   .sample_no(1'b1),
@@ -459,15 +506,65 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_w_enable(reg_w_enable)
 		  );
 
+
+`define MEM_HIGH_END 16'hfffe
+`define MEM_HIGH_START 16'hff80
+`define MEM_OAM_END 16'hfe9f
+`define MEM_OAM_START 16'hfe00
+`define MEM_CART_END 16'hbfff
+`define MEM_CART_START 16'ha000
+`define MEM_WRAM_END 16'hdfff
+`define MEM_WRAM_START 16'hc000
+`define MEM_VRAM_END 16'h9fff
+`define MEM_VRAM_START 16'h8000
+
+   wire        addr_in_wram, addr_in_junk;
+   wire        addr_in_dma, addr_in_tima;
+
+   assign addr_in_wram = (`MEM_WRAM_START <= addr_ext) & 
+                         (addr_ext <= `MEM_WRAM_END);
+   assign addr_in_dma = addr_ext == `MMIO_DMA;
+   assign addr_in_tima = timer_reg_addr;
+   assign addr_in_junk = ~addr_in_flash & ~reg_w_enable &
+                         ~timer_reg_addr & ~addr_in_wram &
+                         ~addr_in_dma & ~addr_in_tima & 
+			 ~video_reg_w_enable & ~video_vram_w_enable &
+			 ~video_oam_w_enable;
+
+   wire        wram_we;
+   wire [12:0] wram_addr;
+   wire [7:0]  wram_data_in;
+   wire [7:0]  wram_data_out;
+   
+   wire [15:0] wram_addr_long;
+   assign wram_data_in = data_ext;
+   assign wram_we = addr_in_wram & mem_we;
+   assign wram_addr_long = addr_ext - `MEM_WRAM_START;
+   assign wram_addr = wram_addr_long[12:0]; // 8192 elts
+
+   blockram8192
+     br_wram(.clka(clock),
+             .wea(wram_we),
+             .addra(wram_addr),
+             .dina(wram_data_in),
+             .douta(wram_data_out));
+   
 /*   tristate #(8) gating_ff44(.out(data_ext),
 			     .in(FF44_data),
 			     .en(FF44_read&~mem_we));*/
    tristate #(8) gating_flash(.out(data_ext),
 			      .in(flash_d),
 			      .en(addr_in_flash&~mem_we));
-   tristate #(8) gating_bram(.out(data_ext),
+/*   tristate #(8) gating_bram(.out(data_ext),
 			     .in(bram_data_out),
-			     .en(~video_reg_w_enable&~video_vram_w_enable&~video_oam_w_enable&~addr_in_flash&~reg_w_enable&~mem_we));
+			     .en(~video_reg_w_enable&~video_vram_w_enable&~video_oam_w_enable&~addr_in_flash&~reg_w_enable&~mem_we));*/
+   tristate #(8) gating_wram(.out(data_ext),
+			     .in(wram_data_out),
+			     .en(addr_in_wram & ~mem_we &
+				 (mem_re | dma_mem_re)));
+   tristate #(8) gating_junk(.out(data_ext),
+			     .in(8'h00),
+			     .en(addr_in_junk & ~mem_we));
    tristate #(8) gating_sound_regs(.out(data_ext),
 				   .in(reg_data_in), //FIX THIS: regs need output
 				   .en(reg_w_enable&~mem_we));

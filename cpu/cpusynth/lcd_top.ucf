@@ -212,30 +212,30 @@
 #NET  FPGA_VRP_B20         LOC="L11";   # Bank 20, Vcco=3.3V, DCI using 49.9 ohm resistors
 #NET  FPGA_VRP_B21         LOC="AH25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
 #NET  FPGA_VRP_B22         LOC="AE9";   # Bank 22, Vcco=3.3V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW1         LOC="U25";   # Bank 15, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW2         LOC="AG27";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW3         LOC="AF25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW4         LOC="AF26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW5         LOC="AE27";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW6         LOC="AE26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW7         LOC="AC25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_DIP_SW8         LOC="AC24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_LED_0           LOC="H18";   # Bank 3, Vcco=2.5V, No DCI
-#NET  GPIO_LED_1           LOC="L18";   # Bank 3, Vcco=2.5V, No DCI
-#NET  GPIO_LED_2           LOC="G15";   # Bank 3, Vcco=2.5V, No DCI
-#NET  GPIO_LED_3           LOC="AD26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_LED_4           LOC="G16";   # Bank 3, Vcco=2.5V, No DCI
-#NET  GPIO_LED_5           LOC="AD25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_LED_6           LOC="AD24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
-#NET  GPIO_LED_7           LOC="AE24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW1         LOC="U25";   # Bank 15, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW2         LOC="AG27";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW3         LOC="AF25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW4         LOC="AF26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW5         LOC="AE27";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW6         LOC="AE26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW7         LOC="AC25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_DIP_SW8         LOC="AC24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_0           LOC="H18";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_1           LOC="L18";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_2           LOC="G15";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_3           LOC="AD26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_4           LOC="G16";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_5           LOC="AD25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_6           LOC="AD24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_7           LOC="AE24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
 #NET  GPIO_LED_C           LOC="E8";    # Bank 20, Vcco=3.3V, DCI using 49.9 ohm resistors
-#NET  GPIO_LED_E           LOC="AG23";  # Bank 2, Vcco=3.3V
-#NET  GPIO_LED_N           LOC="AF13";  # Bank 2, Vcco=3.3V
-#NET  GPIO_LED_S           LOC="AG12";  # Bank 2, Vcco=3.3V
-#NET  GPIO_LED_W           LOC="AF23";  # Bank 2, Vcco=3.3V
+NET  GPIO_LED_E           LOC="AG23";  # Bank 2, Vcco=3.3V
+NET  GPIO_LED_N           LOC="AF13";  # Bank 2, Vcco=3.3V
+NET  GPIO_LED_S           LOC="AG12";  # Bank 2, Vcco=3.3V
+NET  GPIO_LED_W           LOC="AF23";  # Bank 2, Vcco=3.3V
 NET  GPIO_SW_C            LOC="AJ6";   # Bank 18, Vcco=3.3V, No DCI
 NET  GPIO_SW_E            LOC="AK7";   # Bank 18, Vcco=3.3V, No DCI
-#NET  GPIO_SW_N            LOC="U8";    # Bank 18, Vcco=3.3V, No DCI
+NET  GPIO_SW_N            LOC="U8";    # Bank 18, Vcco=3.3V, No DCI
 NET  GPIO_SW_S            LOC="V8";    # Bank 18, Vcco=3.3V, No DCI
 NET  GPIO_SW_W            LOC="AJ7";   # Bank 18, Vcco=3.3V, No DCI
 #NET  HDR1_2               LOC="H33";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20

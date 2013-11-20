@@ -16,7 +16,7 @@
  */
 module button(/*AUTOARG*/
    // Outputs
-   pressed,
+   pressed, pressed_disp,
    // Inputs
    button_input, clock, reset
    );
@@ -27,31 +27,35 @@ module button(/*AUTOARG*/
      // Calculated
      delay_cycles = 2000000,
      delay_cycles_width = log2(delay_cycles);
-   output reg pressed;
+   output reg pressed, pressed_disp;
    input      button_input;
    input      clock, reset;
 
    reg [delay_cycles_width-1:0] count, next_count;
    reg [1:0]                    state, next_state;
 
+   reg                          next_pressed;
+   
 `define button_idle 2'd0
 `define button_down 2'd1
 `define button_wait 2'd2
 
    always @(*) begin
-      pressed = 1'b0;
+      next_pressed = 1'b0;
+      pressed_disp = 1'b0;
       next_count = count;
       next_state = `button_idle;
       case(state)
         `button_idle: begin
            if (button_input) begin
               next_state = `button_down;
-              pressed = 1'b1;
+              next_pressed = 1'b1;
            end else begin
               next_state = `button_idle;
            end
         end
         `button_down: begin
+           pressed_disp = 1'b1;
            if (button_input) begin
               next_state = `button_down;
            end else begin
@@ -59,7 +63,8 @@ module button(/*AUTOARG*/
            end
         end
         `button_wait: begin
-           if (count == delay_cycles[delay_cycles_width-1:0]) begin
+           pressed_disp = 1'b1;
+           if (count >= delay_cycles[delay_cycles_width-1:0]) begin
               next_state = `button_idle;
               next_count = {delay_cycles_width{1'b0}};
            end else begin
@@ -74,9 +79,11 @@ module button(/*AUTOARG*/
       if (reset) begin
          state <= `button_idle;
          count <= {delay_cycles_width{1'b0}};
+         pressed <= 1'b0;
       end else begin
          state <= next_state;
          count <= next_count;
+         pressed <= next_pressed;
       end
       
    end
