@@ -8,7 +8,7 @@ module cartridge (output wire      HDR1_2, HDR1_6, HDR1_8, HDR1_10,
                   output wire      HDR1_60, HDR1_64,
 		  input [15:0]     cart_address,
 		  output [7:0]     cart_data,
-                  input            clock
+		  input            clock,
 		  input            cart_w_enable_l,
 		  input            cart_r_enable_l,
 		  input            cart_reset_l,

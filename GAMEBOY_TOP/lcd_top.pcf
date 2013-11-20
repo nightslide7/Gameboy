@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Wed Nov 20 13:59:20 2013
+// Written by: Map P.40xd on Wed Nov 20 17:44:58 2013
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -37,6 +37,9 @@ COMP "flash_clk" LOCATE = SITE "N9" LEVEL 1;
 COMP "dvi_sda" LOCATE = SITE "T29" LEVEL 1;
 COMP "dvi_scl" LOCATE = SITE "U27" LEVEL 1;
 COMP "ac97_bitclk" LOCATE = SITE "AF18" LEVEL 1;
+COMP "HDR1_2" LOCATE = SITE "H33" LEVEL 1;
+COMP "HDR1_6" LOCATE = SITE "H34" LEVEL 1;
+COMP "HDR1_8" LOCATE = SITE "G33" LEVEL 1;
 COMP "LCD_FPGA_E" LOCATE = SITE "AC9" LEVEL 1;
 COMP "flash_a<0>" LOCATE = SITE "K12" LEVEL 1;
 COMP "flash_a<1>" LOCATE = SITE "K13" LEVEL 1;
@@ -91,6 +94,7 @@ COMP "GPIO_LED_4" LOCATE = SITE "G16" LEVEL 1;
 COMP "GPIO_LED_5" LOCATE = SITE "AD25" LEVEL 1;
 COMP "GPIO_LED_6" LOCATE = SITE "AD24" LEVEL 1;
 COMP "GPIO_LED_7" LOCATE = SITE "AE24" LEVEL 1;
+COMP "GPIO_LED_C" LOCATE = SITE "E8" LEVEL 1;
 COMP "GPIO_LED_E" LOCATE = SITE "AG23" LEVEL 1;
 COMP "GPIO_LED_N" LOCATE = SITE "AF13" LEVEL 1;
 COMP "GPIO_LED_S" LOCATE = SITE "AG12" LEVEL 1;
@@ -106,6 +110,33 @@ COMP "GPIO_SW_E" LOCATE = SITE "AK7" LEVEL 1;
 COMP "GPIO_SW_N" LOCATE = SITE "U8" LEVEL 1;
 COMP "GPIO_SW_S" LOCATE = SITE "V8" LEVEL 1;
 COMP "GPIO_SW_W" LOCATE = SITE "AJ7" LEVEL 1;
+COMP "HDR1_10" LOCATE = SITE "G32" LEVEL 1;
+COMP "HDR1_20" LOCATE = SITE "M32" LEVEL 1;
+COMP "HDR1_12" LOCATE = SITE "H32" LEVEL 1;
+COMP "HDR1_30" LOCATE = SITE "Y34" LEVEL 1;
+COMP "HDR1_22" LOCATE = SITE "P34" LEVEL 1;
+COMP "HDR1_14" LOCATE = SITE "J32" LEVEL 1;
+COMP "HDR1_40" LOCATE = SITE "AG32" LEVEL 1;
+COMP "HDR1_32" LOCATE = SITE "Y32" LEVEL 1;
+COMP "HDR1_24" LOCATE = SITE "N34" LEVEL 1;
+COMP "HDR1_16" LOCATE = SITE "J34" LEVEL 1;
+COMP "HDR1_50" LOCATE = SITE "AK32" LEVEL 1;
+COMP "HDR1_42" LOCATE = SITE "AH32" LEVEL 1;
+COMP "HDR1_34" LOCATE = SITE "W32" LEVEL 1;
+COMP "HDR1_26" LOCATE = SITE "AA34" LEVEL 1;
+COMP "HDR1_18" LOCATE = SITE "L33" LEVEL 1;
+COMP "HDR1_60" LOCATE = SITE "AM32" LEVEL 1;
+COMP "HDR1_52" LOCATE = SITE "AL34" LEVEL 1;
+COMP "HDR1_44" LOCATE = SITE "AK34" LEVEL 1;
+COMP "HDR1_36" LOCATE = SITE "AH34" LEVEL 1;
+COMP "HDR1_28" LOCATE = SITE "AD32" LEVEL 1;
+COMP "HDR1_54" LOCATE = SITE "AL33" LEVEL 1;
+COMP "HDR1_46" LOCATE = SITE "AK33" LEVEL 1;
+COMP "HDR1_38" LOCATE = SITE "AE32" LEVEL 1;
+COMP "HDR1_64" LOCATE = SITE "AN33" LEVEL 1;
+COMP "HDR1_56" LOCATE = SITE "AM33" LEVEL 1;
+COMP "HDR1_48" LOCATE = SITE "AJ32" LEVEL 1;
+COMP "HDR1_58" LOCATE = SITE "AJ34" LEVEL 1;
 COMP "ac97_reset_b" LOCATE = SITE "AG17" LEVEL 1;
 COMP "CLK_33MHZ_FPGA" LOCATE = SITE "AH17" LEVEL 1;
 COMP "rotary_inc_a" LOCATE = SITE "AH30" LEVEL 1;
@@ -116,8 +147,8 @@ TIMEGRP ac97_bitclk = BEL "audio/gen/link/curbit_0" BEL
         "audio/gen/link/curbit_3" BEL "audio/gen/link/curbit_4" BEL
         "audio/gen/link/curbit_5" BEL "audio/gen/link/curbit_6" BEL
         "audio/gen/link/curbit_7" BEL "audio/gen/rot/level_0" BEL
-        "audio/gen/rot/level_1" BEL "audio/gen/rot/level_2" BEL
-        "audio/gen/rot/level_3" BEL "audio/gen/rot/state_FSM_FFd2" BEL
+        "audio/gen/rot/level_3" BEL "audio/gen/rot/level_1" BEL
+        "audio/gen/rot/level_2" BEL "audio/gen/rot/state_FSM_FFd2" BEL
         "audio/gen/rot/state_FSM_FFd3" BEL "audio/gen/rot/state_FSM_FFd1" BEL
         "audio/regs/NR12_0" BEL "audio/regs/NR12_1" BEL "audio/regs/NR12_2"
         BEL "audio/regs/NR12_3" BEL "audio/regs/NR12_4" BEL

@@ -416,13 +416,10 @@ module video_module(//Outputs
 	 end
 	 
 	 // clear interrupts
-//	 if (int_vblank_ack) int_vblank_req <= 0;
+	 if (int_vblank_ack) int_vblank_req <= 0;
 	 
-//	 if (int_lcdc_ack)	int_lcdc_req <= 0;
+	 if (int_lcdc_ack)	int_lcdc_req <= 0;
 
-         if (int_vblank_req) int_vblank_req <= 0;
-         if (int_lcdc_ack) int_lcdc_req <= 0;
-	 
 	 if (LCDC[7]) begin // grapics enabled
 	    
 	    //////////////////////////////
