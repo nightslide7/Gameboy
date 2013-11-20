@@ -40,7 +40,7 @@ module gpu_top(//Outputs
 					
 					
 					//TEST
-					led_out, iic_done, fbclk_ready, //TEST output
+					led_out, iic_done, //TEST output
 					switches78 //, clk,//TEST input
 					);
 		
@@ -66,7 +66,8 @@ module gpu_top(//Outputs
 	input  [7:0]	di_video;			//MMU Inputs
 	input  [1:0]	int_ack;				//INT Inputs
 	
-	output led_out, iic_done, fbclk_ready; //TEST
+	//TEST
+	output led_out, iic_done; //TEST
 	input [1:0] switches78; //TEST
 	
 	
@@ -89,8 +90,7 @@ module gpu_top(//Outputs
 	wire[7:0] oam_addrA;
 	wire gb_pixel_we;
 	
-	wire  [7:0]	pixel_r, pixel_g, pixel_b;
-	wire			blank_b;							
+	wire  [7:0]	pixel_r, pixel_g, pixel_b;						
 	wire			dvi_pixel_clk,				//31.5MHz
 					dvi_sync_b,						
 					dvi_blank_b,					
@@ -178,7 +178,7 @@ module gpu_top(//Outputs
 				.gpuclk_rst_b(gpuclk_rst_b), 							//Generated reset
 				.hsync(hsync), 								//VIDEO_CONV Inputs
 				.vsync(vsync), 								//VIDEO_CONV Inputs
-				.blank_b(blank_b),							//VIDEO_CONV Inputs
+				.blank_b(dvi_blank_b),							//VIDEO_CONV Inputs
 				.pixel_r(pixel_r), 							//VIDEO_CONV Inputs
 				.pixel_b(pixel_b), 							//VIDEO_CONV Inputs
 				.pixel_g(pixel_g )							//VIDEO_CONV Inputs

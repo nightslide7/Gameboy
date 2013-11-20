@@ -35,7 +35,7 @@ module scanline_ram(//Outputs
 	input [4:0] addrA, addrB;
 	input [7:0] wr_dataA, wr_dataB;
 	
-	reg [7:0] RAM [0:19];
+	reg [7:0] RAM [19:0];
 	
 	always @(posedge clk) begin
 		if (wr_enA) RAM[addrA] <= wr_dataA;

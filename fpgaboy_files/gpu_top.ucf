@@ -26,6 +26,7 @@ TIMESPEC "TS_dvi_hold" = FROM dvi_d TO dvi_c 500 ps;
 NET "fclk_rst_b" LOC = U25 | IOSTANDARD=SSTL18_II; //GPIO_DIP_SW1
 NET "clk100" LOC = AH15; //USER_CLK (100MHz)
 NET "clk33" LOC = AH17; //CLK_33MHZ_FPGA
+NET "clk27" LOC = AG18; //CLK_27MHZ_FPGA
 NET "led_out" LOC = H18; //LED0
 NET "iic_done" LOC = L18; //LED1
 NET "fbclk_ready" LOC = G15; //LED2

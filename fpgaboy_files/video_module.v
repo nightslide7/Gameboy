@@ -242,31 +242,33 @@ module video_module(//Outputs
 	
 	divider #(8) clock_divider(reset, clock, clock_enable);
 	
-	sprite_ram oam(//Outputs
-					.rd_dataA(oam_outA), 
-					.rd_dataB(oam_outB),
-					//Inputs
-					.clk(clock),
-					.wr_enA(~oam_we_n), 
-					.wr_enB(),
-					.addrA(oam_addrA), 
-					.addrB(oam_addrB),					
-					.wr_dataA(di), 
-					.wr_dataB()
-					);
+	OAM oam(	//Outputs
+				.douta(oam_outA), 
+				.doutb(oam_outB),
+				//Inputs
+				.clka(clock),
+				.clkb(clock),
+				.wea(~oam_we_n), 
+				.web(),
+				.addra(oam_addrA), 
+				.addrb(oam_addrB),					
+				.dina(di), 
+				.dinb()
+				);
 					
 	//vram_rom vram(vram_addr, vram_addrB, clock, clock, vram_outA, vram_outB);
-	video_ram vram(//Outputs
-					.rd_dataA(vram_outA), 
-					.rd_dataB(vram_outB),
+	VRAM vram(	//Outputs
+					.douta(vram_outA), 
+					.doutb(vram_outB),
 					//Inputs
-					.clk(clock),
-					.wr_enA(~vram_we_n), 
-					.wr_enB(),
-					.addrA(vram_addrA), 
-					.addrB(vram_addrB),					
-					.wr_dataA(di), 
-					.wr_dataB()	
+					.clka(clock),
+					.clkb(clock),
+					.wea(~vram_we_n), 
+					.web(),
+					.addra(vram_addrA), 
+					.addrb(vram_addrB),					
+					.dina(di), 
+					.dinb()	
 					);
 	
 	scanline_ram scanline1 (//Outputs
@@ -292,7 +294,8 @@ module video_module(//Outputs
 					.addrA(scanline2_addrA), 
 					.addrB(scanline2_addrB),					
 					.wr_dataA(scanline2_inA), 
-					.wr_dataB(scanline2_inB));
+					.wr_dataB(scanline2_inB)
+					);
 					
 	//reg[7:0] oam[159:0]; // oam is reg array to speed up memory accesses
 	//reg[7:0] scanline1[19:0];
