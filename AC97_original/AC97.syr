@@ -1,0 +1,837 @@
+Release 14.3 - xst P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "AC97.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "AC97"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-ff1136-1
+
+---- Source Options
+Top Module Name                    : AC97
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : AC97.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "AC97.v" in library work
+Module <AC97> compiled
+Module <AudioGen> compiled
+Module <SquareWave> compiled
+Module <ACLink> compiled
+Compiling verilog file "chipscope_icon.v" in library work
+Module <AC97Conf> compiled
+Compiling verilog file "chipscope_ila.v" in library work
+Module <chipscope_icon> compiled
+Module <chipscope_ila> compiled
+No errors in compilation
+Analysis of file <"AC97.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <AC97> in library <work>.
+
+Analyzing hierarchy for module <AudioGen> in library <work>.
+
+Analyzing hierarchy for module <ACLink> in library <work>.
+
+Analyzing hierarchy for module <AC97Conf> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <AC97>.
+Module <AC97> is correct for synthesis.
+ 
+Analyzing module <AudioGen> in library <work>.
+Module <AudioGen> is correct for synthesis.
+ 
+Analyzing module <ACLink> in library <work>.
+WARNING:Xst:2211 - "chipscope_icon.v" line 315: Instantiating black box module <chipscope_icon>.
+WARNING:Xst:2211 - "chipscope_ila.v" line 319: Instantiating black box module <chipscope_ila>.
+Module <ACLink> is correct for synthesis.
+ 
+    Set user-defined property "SYN_BLACK_BOX =  1" for instance <icon0> in unit <ACLink>.
+    Set user-defined property "SYN_NOPRUNE =  1" for instance <icon0> in unit <ACLink>.
+    Set user-defined property "SYN_BLACK_BOX =  1" for instance <ila0> in unit <ACLink>.
+    Set user-defined property "SYN_NOPRUNE =  1" for instance <ila0> in unit <ACLink>.
+    Set property "SYN_NOPRUNE = 1" for unit <chipscope_icon>.
+    Set property "SYN_NOPRUNE = 1" for unit <chipscope_ila>.
+Analyzing module <AC97Conf> in library <work>.
+Module <AC97Conf> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <AudioGen>.
+    Related source file is "AC97.v".
+WARNING:Xst:1305 - Output <flash_clk> is never assigned. Tied to value 0.
+    Found 24-bit register for signal <flash_a>.
+    Found 1-bit register for signal <flash_adv_n>.
+    Found 24-bit up counter for signal <count>.
+    Found 24-bit comparator greatequal for signal <count$cmp_ge0000> created at line 152.
+    Found 16-bit register for signal <curr_sample>.
+    Found 16-bit register for signal <next_sample>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  57 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <AudioGen> synthesized.
+
+
+Synthesizing Unit <AC97Conf>.
+    Related source file is "AC97.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 27                                             |
+    | Clock              | ac97_bitclk               (rising_edge)        |
+    | Clock enable       | ac97_strobe               (positive)           |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <AC97Conf> synthesized.
+
+
+Synthesizing Unit <ACLink>.
+    Related source file is "AC97.v".
+WARNING:Xst:646 - Signal <latched_inbits> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 256x1-bit single-port RAM <Mram_inbits> for signal <inbits>.
+    Found 1-bit 256-to-1 multiplexer for signal <ac97_sdata_out>.
+    Found 8-bit comparator less for signal <ac97_sync$cmp_lt0000> created at line 243.
+    Found 8-bit up counter for signal <curbit>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Counter(s).
+	inferred   1 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <ACLink> synthesized.
+
+
+Synthesizing Unit <AC97>.
+    Related source file is "AC97.v".
+Unit <AC97> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 256x1-bit single-port RAM                             : 1
+# Counters                                             : 2
+ 24-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 4
+ 1-bit register                                        : 1
+ 16-bit register                                       : 2
+ 24-bit register                                       : 1
+# Comparators                                          : 2
+ 24-bit comparator greatequal                          : 1
+ 8-bit comparator less                                 : 1
+# Multiplexers                                         : 1
+ 1-bit 256-to-1 multiplexer                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <conf/state/FSM> on signal <state[1:3]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 010
+ 0011  | 011
+ 0100  | 100
+ 0101  | 101
+-------------------
+Reading core <chipscope_icon.ngc>.
+Reading core <chipscope_ila.ngc>.
+Loading core <chipscope_icon> for timing and area information for instance <icon0>.
+Loading core <chipscope_ila> for timing and area information for instance <ila0>.
+
+Synthesizing (advanced) Unit <ACLink>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_inbits> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 256-word x 1-bit                    |          |
+    |     clkA           | connected to signal <ac97_bitclk>   | fall     |
+    |     weA            | connected to signal <VCC>           | high     |
+    |     addrA          | connected to signal <curbit>        |          |
+    |     diA            | connected to signal <ac97_sdata_in> |          |
+    |     doA            | connected to signal <_varindex0000> |          |
+    -----------------------------------------------------------------------
+Unit <ACLink> synthesized (advanced).
+
+Synthesizing (advanced) Unit <ila0>.
+INFO:Xst:2774 - HDL ADVISOR - KEEP property attached to signal TRIG0<9> may hinder XST clustering optimizations.
+Unit <ila0> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# RAMs                                                 : 1
+ 256x1-bit single-port distributed RAM                 : 1
+# Counters                                             : 2
+ 24-bit up counter                                     : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 57
+ Flip-Flops                                            : 57
+# Comparators                                          : 2
+ 24-bit comparator greatequal                          : 1
+ 8-bit comparator less                                 : 1
+# Multiplexers                                         : 1
+ 1-bit 256-to-1 multiplexer                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <AC97> ...
+
+Optimizing unit <AudioGen> ...
+
+Optimizing unit <ACLink> ...
+
+Mapping all equations...
+WARNING:Xst:1513 - No elements found for TNM 'D_CLK' on object 'link/ila0/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_LCMP/I_CS_GAND.U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/CLK_I'.
+WARNING:Xst:1513 - No elements found for TNM 'D_CLK' on object 'link/ila0/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_HCMP/I_CS_GAND.U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/CLK_I'.
+WARNING:Xst:1513 - No elements found for TNM 'D_CLK' on object 'link/ila0/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_SCNT_CMP/I_CS_GAND.U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/CLK_I'.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block AC97, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 92
+ Flip-Flops                                            : 92
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : AC97.ngr
+Top Level Output File Name         : AC97
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 52
+
+Cell Usage :
+# BELS                             : 741
+#      BUF                         : 1
+#      GND                         : 38
+#      INV                         : 9
+#      LUT1                        : 72
+#      LUT2                        : 27
+#      LUT3                        : 47
+#      LUT4                        : 91
+#      LUT5                        : 17
+#      LUT6                        : 76
+#      MUXCY                       : 35
+#      MUXCY_L                     : 201
+#      MUXF5                       : 2
+#      MUXF6                       : 1
+#      MUXF7                       : 15
+#      MUXF8                       : 2
+#      VCC                         : 11
+#      XORCY                       : 96
+# FlipFlops/Latches                : 1323
+#      FD                          : 264
+#      FDC                         : 1
+#      FDCE                        : 24
+#      FDE                         : 91
+#      FDP                         : 257
+#      FDPE                        : 514
+#      FDR                         : 44
+#      FDRE                        : 113
+#      FDRS                        : 4
+#      FDS                         : 10
+#      LDC                         : 1
+# RAMS                             : 9
+#      RAM256X1S                   : 1
+#      RAMB16                      : 1
+#      RAMB36_EXP                  : 7
+# Shift Registers                  : 418
+#      SRL16                       : 256
+#      SRL16E                      : 1
+#      SRLC16E                     : 39
+#      SRLC32E                     : 122
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 51
+#      IBUF                        : 19
+#      OBUF                        : 32
+# Others                           : 3
+#      BSCAN_VIRTEX5               : 1
+#      TIMESPEC                    : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1282  out of  69120     1%  
+ Number of Slice LUTs:                  761  out of  69120     1%  
+    Number used as Logic:               339  out of  69120     0%  
+    Number used as Memory:              422  out of  17920     2%  
+       Number used as RAM:                4
+       Number used as SRL:              418
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   1664
+   Number with an unused Flip Flop:     382  out of   1664    22%  
+   Number with an unused LUT:           903  out of   1664    54%  
+   Number of fully used LUT-FF pairs:   379  out of   1664    22%  
+   Number of unique control sets:        61
+
+IO Utilization: 
+ Number of IOs:                          52
+ Number of bonded IOBs:                  52  out of    640     8%  
+    IOB Flip Flops/Latches:              41
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                8  out of    148     5%  
+    Number using Block RAM only:          8
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+----------------------------------------------------------------------------------+------------------------------------------------------+-------+
+Clock Signal                                                                      | Clock buffer(FF name)                                | Load  |
+----------------------------------------------------------------------------------+------------------------------------------------------+-------+
+ac97_bitclk                                                                       | BUFGP                                                | 1488  |
+link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL                                 | BUFG                                                 | 268   |
+link/icon0/CONTROL0<13>(link/icon0/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_LCE:O)| NONE(*)(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_LDC)| 1     |
+link/icon0/U0/iUPDATE_OUT                                                         | NONE(link/icon0/U0/U_ICON/U_iDATA_CMD)               | 1     |
+----------------------------------------------------------------------------------+------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                                               | Buffer(FF name)                                                                                                                                                                               | Load  |
+-------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+link/icon0/CONTROL0<20>(link/icon0/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[0].U_HCE:O)                           | NONE(link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)  | 319   |
+link/ila0/N0(link/ila0/XST_GND:G)                                                                            | NONE(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_POR)                                                                                                                                                   | 257   |
+link/ila0/CONTROL<20>_1(link/ila0/CONTROL<20>_1:O)                                                           | NONE(link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[100].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 193   |
+link/ila0/N1(link/ila0/XST_VCC:P)                                                                            | NONE(link/ila0/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B18KGT0.u_ramb16/U_RAMB16)                              | 60    |
+link/icon0/U0/U_ICON/U_CMD/iSEL_n(link/icon0/U0/U_ICON/U_CMD/U_SEL_n:O)                                      | NONE(link/icon0/U0/U_ICON/U_CMD/G_TARGET[10].I_NE0.U_TARGET)                                                                                                                                  | 10    |
+link/ila0/U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/iCLR(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/U_CLEAR:O)        | NONE(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/U_DOUT0)                                                                                                                                      | 4     |
+link/ila0/U0/I_NO_D.U_ILA/U_RST/U_HALT_XFER/iCLR(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_HALT_XFER/U_CLEAR:O)      | NONE(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_HALT_XFER/U_DOUT0)                                                                                                                                     | 4     |
+link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DSL1/iCLR(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DSL1/U_CLEAR:O)              | NONE(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DSL1/U_DOUT0)                                                                                                                                         | 4     |
+link/ila0/U0/I_NO_D.U_ILA/iARM(link/ila0/U0/I_NO_D.U_ILA/U_RST/U_ARM_XFER/U_GEN_DELAY[3].U_FD:Q)             | NONE(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_FDCE)                                                                                                                                           | 2     |
+link/icon0/CONTROL0<13>(link/icon0/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_LCE:O)                           | NONE(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_FDPE)                                                                                                                                           | 1     |
+link/icon0/U0/U_ICON/iSEL_n(link/icon0/U0/U_ICON/U_iSEL_n:O)                                                 | NONE(link/icon0/U0/U_ICON/U_iDATA_CMD)                                                                                                                                                        | 1     |
+link/ila0/U0/I_NO_D.U_ILA/U_STAT/ACTRESET_pulse(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_RESET_EDGE/I_H2L.U_DOUT:Q)| NONE(link/ila0/U0/I_NO_D.U_ILA/U_STAT/U_RISING)                                                                                                                                               | 1     |
+link/ila0/U0/I_NO_D.U_ILA/iRESET<1>(link/ila0/U0/I_NO_D.U_ILA/U_RST/G_RST[1].U_RST:Q)                        | NONE(link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_OREG.I_YES_OREG.U_OREG)                                                                                                        | 1     |
+-------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 7.549ns (Maximum Frequency: 132.468MHz)
+   Minimum input arrival time before clock: 3.023ns
+   Maximum output required time after clock: 7.276ns
+   Maximum combinational path delay: No path found
+
+=========================================================================
+Timing constraint: TS_J_CLK = PERIOD TIMEGRP "J_CLK" 30 nS HIGH 15 nS
+  Clock period: 7.549ns (frequency: 132.468MHz)
+  Total number of paths / destination ports: 4903 / 709
+  Number of failed paths / ports: 0 (0.00%) / 0 (0.00%)
+-------------------------------------------------------------------------
+Slack:                  23.954ns
+  Source:               link/ila0/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_DLY/G_REG_BIT[0].U_FDRE (FF)
+  Destination:          link/icon0/U0/U_ICON/U_TDO_reg (FF)
+  Data Path Delay:      7.549ns (Levels of Logic = 8)
+  Source Clock:         link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 0.000ns
+  Destination Clock:    link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 30.000ns
+
+  Data Path: link/ila0/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_DLY/G_REG_BIT[0].U_FDRE (FF) to link/icon0/U0/U_ICON/U_TDO_reg (FF)
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            34   0.471   1.197  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_DLY/G_REG_BIT[0].U_FDRE (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_col_addr_dly<0>)
+     LUT6:I0->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_164 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_164)
+     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_111 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_111)
+     LUT6:I1->O            1   0.094   0.000  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6)
+     MUXF7:I1->O           1   0.254   0.480  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_5_f7 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_5_f7)
+     LUT3:I2->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_col_addr_dly<7>1 (U0/I_NO_D.U_ILA/iDATA_DOUT)
+     LUT3:I1->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_DOUT (CONTROL<3>)
+     end scope: 'link/ila0'
+     begin scope: 'link/icon0'
+     LUT6:I4->O            1   0.094   0.000  U0/U_ICON/U_TDO_MUX/U_CS_MUX/I4.U_MUX16/Mmux_O11 (U0/U_ICON/iTDO_next)
+     FDE:D                    -0.018          U0/U_ICON/U_TDO_reg
+    ----------------------------------------
+    Total                      7.549ns (2.774ns logic, 4.775ns route)
+                                       (36.8% logic, 63.2% route)
+
+=========================================================================
+Timing constraint: TS_U_TO_J = MAXDELAY FROM TIMEGRP "U_CLK" TO TIMEGRP "J_CLK" 15 nS
+  Clock period: 2.003ns (frequency: 499.251MHz)
+  Total number of paths / destination ports: 18 / 18
+  Number of failed paths / ports: 0 (0.00%) / 0 (0.00%)
+-------------------------------------------------------------------------
+Slack:                  12.997ns
+  Source:               link/icon0/U0/U_ICON/U_iDATA_CMD (FF)
+  Destination:          link/icon0/U0/U_ICON/U_SYNC/G_SYNC_WORD[6].I_EQ0.U_FDR (FF)
+  Data Path Delay:      2.003ns (Levels of Logic = 1)
+  Source Clock:         link/icon0/U0/iUPDATE_OUT rising at 0.000ns
+  Destination Clock:    link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 15.000ns
+
+  Data Path: link/icon0/U0/U_ICON/U_iDATA_CMD (FF) to link/icon0/U0/U_ICON/U_SYNC/G_SYNC_WORD[6].I_EQ0.U_FDR (FF)
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.471   0.347  U0/U_ICON/U_iDATA_CMD (U0/U_ICON/iDATA_CMD)
+     INV:I->O              8   0.238   0.374  U0/U_ICON/U_SYNC/U_iDATA_CMD_n (U0/U_ICON/U_SYNC/iDATA_CMD_n)
+     FDR:R                     0.573          U0/U_ICON/U_SYNC/G_SYNC_WORD[6].I_EQ0.U_FDR
+    ----------------------------------------
+    Total                      2.003ns (1.282ns logic, 0.721ns route)
+                                       (64.0% logic, 36.0% route)
+
+=========================================================================
+Timing constraint: TS_U_TO_U = MAXDELAY FROM TIMEGRP "U_CLK" TO TIMEGRP "U_CLK" 15 nS
+  Clock period: 1.392ns (frequency: 718.391MHz)
+  Total number of paths / destination ports: 1 / 1
+  Number of failed paths / ports: 0 (0.00%) / 0 (0.00%)
+-------------------------------------------------------------------------
+Slack:                  13.626ns
+  Source:               link/icon0/U0/U_ICON/U_iDATA_CMD (FF)
+  Destination:          link/icon0/U0/U_ICON/U_iDATA_CMD (FF)
+  Data Path Delay:      1.392ns (Levels of Logic = 1)
+  Source Clock:         link/icon0/U0/iUPDATE_OUT rising at 0.000ns
+  Destination Clock:    link/icon0/U0/iUPDATE_OUT rising at 15.000ns
+
+  Data Path: link/icon0/U0/U_ICON/U_iDATA_CMD (FF) to link/icon0/U0/U_ICON/U_iDATA_CMD (FF)
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.471   0.347  U0/U_ICON/U_iDATA_CMD (U0/U_ICON/iDATA_CMD)
+     INV:I->O              1   0.238   0.336  U0/U_ICON/U_iDATA_CMD_n (U0/U_ICON/iDATA_CMD_n)
+     FDC:D                    -0.018          U0/U_ICON/U_iDATA_CMD
+    ----------------------------------------
+    Total                      1.392ns (0.709ns logic, 0.683ns route)
+                                       (50.9% logic, 49.1% route)
+
+=========================================================================
+Timing constraint: TS_J_TO_D = FROM TIMEGRP "J_CLK" TO TIMEGRP "D_CLK" TIG;
+  Clock period: 5.969ns (frequency: 167.532MHz)
+  Total number of paths / destination ports: 545 / 239
+  Number of failed paths / ports: 0 (0.00%) / 0 (0.00%)
+-------------------------------------------------------------------------
+Delay:                  5.951ns
+  Source:               link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/U_SRLD (FF)
+  Destination:          link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[31].U_GAND_SRL_SLICE/I_IS_TERMINATION_SLICE_NE0.I_USE_OUTPUT_REG_NE0.U_OREG (FF)
+  Data Path Delay:      5.969ns (Levels of Logic = 157)
+  Source Clock:         link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 0.000ns
+  Destination Clock:    ac97_bitclk rising at 0.000ns
+
+  Data Path: link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/U_SRLD (FF) to link/ila0/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_NE0.U_GAND_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[31].U_GAND_SRL_SLICE/I_IS_TERMINATION_SLICE_NE0.I_USE_OUTPUT_REG_NE0.U_OREG (FF)
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     SRLC16E:CLK->Q        1   1.889   0.336  U_SRLD (muxcy_sel<3>)
+     MUXCY_L:S->LO         1   0.372   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[2].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[2].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[4].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[4].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[5].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[5].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[6].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[6].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[7].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[7].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[8].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[8].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[9].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[9].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[10].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[10].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[11].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[11].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[12].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[12].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[13].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[13].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[14].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[14].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[15].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[15].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[16].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[16].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[17].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[17].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[18].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[18].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[19].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[19].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[20].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[20].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[21].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[21].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[22].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[22].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[23].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[23].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[24].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[24].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[25].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[25].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[26].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[26].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[27].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[27].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[28].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[28].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[29].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[29].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[30].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (GAND_O)
+     end scope: 'I_WHOLE_SLICE.G_SLICE_IDX[30].U_GAND_SRL_SLICE'
+     begin scope: 'I_WHOLE_SLICE.G_SLICE_IDX[31].U_GAND_SRL_SLICE'
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXA (muxcy_lo<0>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXB (muxcy_lo<1>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXC (muxcy_lo<2>)
+     MUXCY_L:CI->LO        1   0.026   0.000  U_MUXD (muxcy_lo<3>)
+     MUXCY_L:CI->LO        1   0.148   0.000  I_IS_TERMINATION_SLICE_NE0.U_MUXF (muxcy_lo<4>)
+     FDS:D                    -0.018          I_IS_TERMINATION_SLICE_NE0.I_USE_OUTPUT_REG_NE0.U_OREG
+    ----------------------------------------
+    Total                      5.969ns (5.633ns logic, 0.336ns route)
+                                       (94.4% logic, 5.6% route)
+
+=========================================================================
+Timing constraint: TS_D_TO_J = FROM TIMEGRP "D_CLK" TO TIMEGRP "J_CLK" TIG;
+  Clock period: 7.549ns (frequency: 132.468MHz)
+  Total number of paths / destination ports: 1256 / 1106
+  Number of failed paths / ports: 0 (0.00%) / 0 (0.00%)
+-------------------------------------------------------------------------
+Delay:                  7.531ns
+  Source:               link/ila0/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[5].u_ramb36/U_RAMB36 (RAM)
+  Destination:          link/icon0/U0/U_ICON/U_TDO_reg (FF)
+  Data Path Delay:      7.549ns (Levels of Logic = 8)
+  Source Clock:         link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 0.000ns
+  Destination Clock:    link/icon0/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising at 0.000ns
+
+  Data Path: link/ila0/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[5].u_ramb36/U_RAMB36 (RAM) to link/icon0/U0/U_ICON/U_TDO_reg (FF)
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB36_EXP:REGCLKAU->DOA15    1   2.180   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[5].u_ramb36/U_RAMB36 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_data<106>)
+     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_164 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_164)
+     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_111 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_111)
+     LUT6:I1->O            1   0.094   0.000  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6)
+     MUXF7:I1->O           1   0.254   0.480  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_5_f7 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_5_f7)
+     LUT3:I2->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_col_addr_dly<7>1 (U0/I_NO_D.U_ILA/iDATA_DOUT)
+     LUT3:I1->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_DOUT (CONTROL<3>)
+     end scope: 'link/ila0'
+     begin scope: 'link/icon0'
+     LUT6:I4->O            1   0.094   0.000  U0/U_ICON/U_TDO_MUX/U_CS_MUX/I4.U_MUX16/Mmux_O11 (U0/U_ICON/iTDO_next)
+     FDE:D                    -0.018          U0/U_ICON/U_TDO_reg
+    ----------------------------------------
+    Total                      7.549ns (2.998ns logic, 4.551ns route)
+                                       (39.7% logic, 60.3% route)
+
+=========================================================================
+WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to link/ila0.
+WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to link/ila0.
+WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to link/icon0.
+WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to link/icon0.
+
+
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 15.34 secs
+ 
+--> 
+
+
+Total memory usage is 683324 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   12 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+

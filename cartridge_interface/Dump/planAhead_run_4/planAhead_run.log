@@ -1,0 +1,86 @@
+
+****** PlanAhead v14.3 (64-bit)
+  **** Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+    ** Copyright 1986-1999, 2001-2012 Xilinx, Inc. All Rights Reserved.
+
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source /Gameboy/cartridge_controller/Dump/pa.fromNetlist.tcl
+# create_project -name Dump -dir "/Gameboy/cartridge_controller/Dump/planAhead_run_4" -part xc5vlx110tff1136-1
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "/Gameboy/cartridge_controller/Dump/cartridge.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {/Gameboy/cartridge_controller/Dump} }
+# set_param project.pinAheadLayout  yes
+# set_property target_constrs_file "cartridge.ucf" [current_fileset -constrset]
+Adding file '/Gameboy/cartridge_controller/Dump/cartridge.ucf' to fileset 'constrs_1'
+# add_files [list {cartridge.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc5vlx110tff1136-1
+Release 14.3 - ngc2edif P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Release 14.3 - ngc2edif P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+Reading design cartridge.ngc ...
+WARNING:NetListWriters:298 - No output is written to cartridge.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file cartridge.edif ...
+ngc2edif: Total memory usage is 102908 kilobytes
+
+Parsing EDIF File [./planAhead_run_4/Dump.data/cache/cartridge_ngc_187678e.edif]
+Finished Parsing EDIF File [./planAhead_run_4/Dump.data/cache/cartridge_ngc_187678e.edif]
+INFO: [Designutils 20-910] Reading macro library /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn
+Parsing EDIF File [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+Finished Parsing EDIF File [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+INFO: [Device 21-21] Reading bus macro file /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/pr_bus_macros.xml
+Loading clock regions from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockBuffers.xml
+Loading package from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/Package.xml
+Loading io standards from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/SSORules.xml
+Loading list of drcs for the architecture : /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/drc.xml
+Parsing UCF File [/Gameboy/cartridge_controller/Dump/cartridge.ucf]
+Finished Parsing UCF File [/Gameboy/cartridge_controller/Dump/cartridge.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  BUFGP => BUFGP (IBUFG, BUFG): 1 instances
+
+Phase 0 | Netlist Checksum: af7636da
+link_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:09 . Memory (MB): peak = 2960.012 ; gain = 281.055
+startgroup
+set_property package_pin AC24 [get_ports {switches[7]}]
+endgroup
+startgroup
+set_property package_pin AC25 [get_ports {switches[6]}]
+endgroup
+startgroup
+set_property package_pin AE26 [get_ports {switches[5]}]
+endgroup
+startgroup
+set_property package_pin AE27 [get_ports {switches[4]}]
+endgroup
+startgroup
+set_property package_pin AF26 [get_ports {switches[3]}]
+endgroup
+startgroup
+set_property package_pin AF25 [get_ports {switches[2]}]
+endgroup
+startgroup
+set_property package_pin AG27 [get_ports {switches[1]}]
+endgroup
+startgroup
+set_property package_pin U25 [get_ports {switches[0]}]
+endgroup
+save_design
+exit
+INFO: [Common 17-206] Exiting PlanAhead at Sat Oct 12 14:28:03 2013...
+INFO: [Common 17-83] Releasing license: PlanAhead

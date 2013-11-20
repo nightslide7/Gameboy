@@ -363,7 +363,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                       .reset            (reset));
  
 
- 
+   /* The CPU */
    assign IE_in = 5'b0;
    assign IE_load = 1'b0;
    
@@ -406,6 +406,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    
    assign addr_in_flash = addr_ext <= 16'h140;
 
+   /* The GPU */
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
    wire [7:0]  video_reg_data_out;
@@ -506,7 +507,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_w_enable(reg_w_enable)
 		  );
 
-
+/* Dealing with memory */
 `define MEM_HIGH_END 16'hfffe
 `define MEM_HIGH_START 16'hff80
 `define MEM_OAM_END 16'hfe9f
@@ -580,6 +581,6 @@ module lcd_top(CLK_33MHZ_FPGA,
 
 endmodule
 // Local Variables:
-// verilog-library-directories:("." "../../fpgaboy_files/")
+// verilog-library-directories:("." "../../fpgaboy_files/" "../..")
 // verilog-library-files:("./cpu.v")
 // End:
