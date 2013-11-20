@@ -1,0 +1,712 @@
+Release 14.3 - xst P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Reading design: AC97.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "AC97.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "AC97"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : AC97
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../rotary_controller.v" in library work
+Compiling verilog file "../AC97.v" in library work
+Module <rotary_controller> compiled
+Module <AC97> compiled
+Module <AudioGen> compiled
+Module <SquareWave> compiled
+Module <ACLink> compiled
+Module <AC97Conf> compiled
+No errors in compilation
+Analysis of file <"AC97.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <AC97> in library <work>.
+
+Analyzing hierarchy for module <rotary_controller> in library <work>.
+
+Analyzing hierarchy for module <AudioGen> in library <work>.
+
+Analyzing hierarchy for module <ACLink> in library <work>.
+
+Analyzing hierarchy for module <AC97Conf> in library <work>.
+
+Analyzing hierarchy for module <SquareWave> in library <work> with parameters.
+	strobe_rate = "00001011101101000100"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <AC97>.
+Module <AC97> is correct for synthesis.
+ 
+Analyzing module <rotary_controller> in library <work>.
+Module <rotary_controller> is correct for synthesis.
+ 
+Analyzing module <AudioGen> in library <work>.
+Module <AudioGen> is correct for synthesis.
+ 
+Analyzing module <SquareWave> in library <work>.
+	strobe_rate = 20'b00001011101101000100
+Module <SquareWave> is correct for synthesis.
+ 
+Analyzing module <ACLink> in library <work>.
+Module <ACLink> is correct for synthesis.
+ 
+Analyzing module <AC97Conf> in library <work>.
+Module <AC97Conf> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <rotary_controller>.
+    Related source file is "../rotary_controller.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 23                                             |
+    | Inputs             | 2                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit updown counter for signal <level>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+Unit <rotary_controller> synthesized.
+
+
+Synthesizing Unit <ACLink>.
+    Related source file is "../AC97.v".
+WARNING:Xst:646 - Signal <latched_inbits> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit 256-to-1 multiplexer for signal <ac97_sdata_out>.
+    Found 8-bit comparator less for signal <ac97_sync$cmp_lt0000> created at line 282.
+    Found 8-bit up counter for signal <curbit>.
+    Found 256-bit register for signal <inbits>.
+INFO:Xst:738 - HDL ADVISOR - 256 flip-flops were inferred for signal <inbits>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+    Summary:
+	inferred   1 Counter(s).
+	inferred 256 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <ACLink> synthesized.
+
+
+Synthesizing Unit <AC97Conf>.
+    Related source file is "../AC97.v".
+    Found finite state machine <FSM_1> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 0                                              |
+    | Outputs            | 27                                             |
+    | Clock              | ac97_bitclk               (rising_edge)        |
+    | Clock enable       | ac97_strobe               (positive)           |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Summary:
+	inferred   1 Finite State Machine(s).
+Unit <AC97Conf> synthesized.
+
+
+Synthesizing Unit <SquareWave>.
+    Related source file is "../AC97.v".
+WARNING:Xst:647 - Input <ac97_bitclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 20-bit adder for signal <old_strobe_counter_1$add0000> created at line 216.
+    Found 20-bit comparator greatequal for signal <sample$cmp_ge0000> created at line 228.
+    Found 20-bit up accumulator for signal <strobe_counter>.
+    Found 20-bit comparator greatequal for signal <strobe_counter$cmp_ge0000> created at line 217.
+    Summary:
+	inferred   1 Accumulator(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <SquareWave> synthesized.
+
+
+Synthesizing Unit <AudioGen>.
+    Related source file is "../AC97.v".
+WARNING:Xst:1305 - Output <flash_clk> is never assigned. Tied to value 0.
+    Found 24-bit register for signal <flash_a>.
+    Found 1-bit register for signal <flash_adv_n>.
+    Found 24-bit up counter for signal <count>.
+    Found 24-bit comparator greatequal for signal <count$cmp_ge0000> created at line 177.
+    Found 16-bit register for signal <curr_sample>.
+    Found 16-bit register for signal <next_sample>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  57 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <AudioGen> synthesized.
+
+
+Synthesizing Unit <AC97>.
+    Related source file is "../AC97.v".
+WARNING:Xst:653 - Signal <ac97_out_slot6> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000.
+WARNING:Xst:653 - Signal <ac97_out_slot5> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000.
+Unit <AC97> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 20-bit adder                                          : 1
+# Counters                                             : 3
+ 24-bit up counter                                     : 1
+ 4-bit updown counter                                  : 1
+ 8-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 20-bit up accumulator                                 : 1
+# Registers                                            : 260
+ 1-bit register                                        : 257
+ 16-bit register                                       : 2
+ 24-bit register                                       : 1
+# Comparators                                          : 4
+ 20-bit comparator greatequal                          : 2
+ 24-bit comparator greatequal                          : 1
+ 8-bit comparator less                                 : 1
+# Multiplexers                                         : 1
+ 1-bit 256-to-1 multiplexer                            : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <conf/state/FSM> on signal <state[1:3]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 010
+ 0011  | 011
+ 0100  | 100
+ 0101  | 101
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <rot/state/FSM> on signal <state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 010
+ 0011  | 110
+ 0100  | 011
+ 0101  | 111
+ 0110  | 101
+-------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# Adders/Subtractors                                   : 1
+ 20-bit adder                                          : 1
+# Counters                                             : 3
+ 24-bit up counter                                     : 1
+ 4-bit updown counter                                  : 1
+ 8-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 20-bit up accumulator                                 : 1
+# Registers                                            : 57
+ Flip-Flops                                            : 57
+# Comparators                                          : 4
+ 20-bit comparator greatequal                          : 2
+ 24-bit comparator greatequal                          : 1
+ 8-bit comparator less                                 : 1
+# Multiplexers                                         : 1
+ 1-bit 256-to-1 multiplexer                            : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <AC97> ...
+
+Optimizing unit <rotary_controller> ...
+
+Optimizing unit <ACLink> ...
+
+Optimizing unit <SquareWave> ...
+
+Optimizing unit <AudioGen> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block AC97, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 119
+ Flip-Flops                                            : 119
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : AC97.ngr
+Top Level Output File Name         : AC97
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 62
+
+Cell Usage :
+# BELS                             : 310
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 35
+#      LUT2                        : 15
+#      LUT3                        : 31
+#      LUT4                        : 10
+#      LUT5                        : 18
+#      LUT6                        : 47
+#      MUXCY                       : 73
+#      MUXF7                       : 7
+#      VCC                         : 1
+#      XORCY                       : 70
+# FlipFlops/Latches                : 119
+#      FD                          : 32
+#      FDE                         : 63
+#      FDRE                        : 24
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 60
+#      IBUF                        : 27
+#      OBUF                        : 33
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             119  out of  69120     0%  
+ Number of Slice LUTs:                  158  out of  69120     0%  
+    Number used as Logic:               158  out of  69120     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    207
+   Number with an unused Flip Flop:      88  out of    207    42%  
+   Number with an unused LUT:            49  out of    207    23%  
+   Number of fully used LUT-FF pairs:    70  out of    207    33%  
+   Number of unique control sets:         7
+
+IO Utilization: 
+ Number of IOs:                          62
+ Number of bonded IOBs:                  61  out of    640     9%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)              | Load  |
+-----------------------------------+------------------------------------+-------+
+ac97_bitclk                        | BUFGP                              | 99    |
+strobe_OBUF1(link/ac97_strobe1:O)  | BUFG(*)(source/sw/strobe_counter_0)| 20    |
+-----------------------------------+------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 4.259ns (Maximum Frequency: 234.787MHz)
+   Minimum input arrival time before clock: 4.383ns
+   Maximum output required time after clock: 10.067ns
+   Maximum combinational path delay: 7.521ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ac97_bitclk'
+  Clock period: 4.259ns (frequency: 234.787MHz)
+  Total number of paths / destination ports: 17580 / 194
+-------------------------------------------------------------------------
+Delay:               4.259ns (Levels of Logic = 31)
+  Source:            source/count_1 (FF)
+  Destination:       source/count_23 (FF)
+  Source Clock:      ac97_bitclk rising
+  Destination Clock: ac97_bitclk rising
+
+  Data Path: source/count_1 to source/count_23
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             4   0.471   0.989  source/count_1 (source/count_1)
+     LUT5:I0->O            1   0.094   0.000  source/Mcompar_count_cmp_ge0000_lut<0> (source/Mcompar_count_cmp_ge0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  source/Mcompar_count_cmp_ge0000_cy<0> (source/Mcompar_count_cmp_ge0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcompar_count_cmp_ge0000_cy<1> (source/Mcompar_count_cmp_ge0000_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcompar_count_cmp_ge0000_cy<2> (source/Mcompar_count_cmp_ge0000_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcompar_count_cmp_ge0000_cy<3> (source/Mcompar_count_cmp_ge0000_cy<3>)
+     MUXCY:CI->O          26   0.254   0.606  source/Mcompar_count_cmp_ge0000_cy<4> (source/count_cmp_ge0000)
+     LUT3:I2->O            1   0.094   0.000  source/Mcount_count_lut<0> (source/Mcount_count_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  source/Mcount_count_cy<0> (source/Mcount_count_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<1> (source/Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<2> (source/Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<3> (source/Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<4> (source/Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<5> (source/Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<6> (source/Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<7> (source/Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<8> (source/Mcount_count_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<9> (source/Mcount_count_cy<9>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<10> (source/Mcount_count_cy<10>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<11> (source/Mcount_count_cy<11>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<12> (source/Mcount_count_cy<12>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<13> (source/Mcount_count_cy<13>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<14> (source/Mcount_count_cy<14>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<15> (source/Mcount_count_cy<15>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<16> (source/Mcount_count_cy<16>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<17> (source/Mcount_count_cy<17>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<18> (source/Mcount_count_cy<18>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<19> (source/Mcount_count_cy<19>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<20> (source/Mcount_count_cy<20>)
+     MUXCY:CI->O           1   0.026   0.000  source/Mcount_count_cy<21> (source/Mcount_count_cy<21>)
+     MUXCY:CI->O           0   0.026   0.000  source/Mcount_count_cy<22> (source/Mcount_count_cy<22>)
+     XORCY:CI->O           1   0.357   0.000  source/Mcount_count_xor<23> (source/Mcount_count23)
+     FDRE:D                   -0.018          source/count_23
+    ----------------------------------------
+    Total                      4.259ns (2.664ns logic, 1.595ns route)
+                                       (62.5% logic, 37.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'strobe_OBUF1'
+  Clock period: 3.940ns (frequency: 253.807MHz)
+  Total number of paths / destination ports: 6409 / 20
+-------------------------------------------------------------------------
+Delay:               3.940ns (Levels of Logic = 7)
+  Source:            source/sw/strobe_counter_0 (FF)
+  Destination:       source/sw/strobe_counter_0 (FF)
+  Source Clock:      strobe_OBUF1 rising
+  Destination Clock: strobe_OBUF1 rising
+
+  Data Path: source/sw/strobe_counter_0 to source/sw/strobe_counter_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.471   0.485  source/sw/strobe_counter_0 (source/sw/strobe_counter_0)
+     LUT2:I1->O            1   0.094   0.000  source/sw/Madd_old_strobe_counter_1_add0000_lut<0> (source/sw/Madd_old_strobe_counter_1_add0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  source/sw/Madd_old_strobe_counter_1_add0000_cy<0> (source/sw/Madd_old_strobe_counter_1_add0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  source/sw/Madd_old_strobe_counter_1_add0000_cy<1> (source/sw/Madd_old_strobe_counter_1_add0000_cy<1>)
+     XORCY:CI->O           1   0.357   0.789  source/sw/Madd_old_strobe_counter_1_add0000_xor<2> (source/sw/old_strobe_counter_1_add0000<2>)
+     LUT4:I0->O            1   0.094   0.480  source/sw/strobe_counter_cmp_ge000029 (source/sw/strobe_counter_cmp_ge000029)
+     LUT6:I5->O           20   0.094   0.584  source/sw/strobe_counter_cmp_ge0000231 (source/sw/strobe_counter_cmp_ge0000231)
+     LUT6:I5->O            1   0.094   0.000  source/sw/strobe_counter_0_rstpot (source/sw/strobe_counter_0_rstpot)
+     FD:D                     -0.018          source/sw/strobe_counter_0
+    ----------------------------------------
+    Total                      3.940ns (1.602ns logic, 2.338ns route)
+                                       (40.7% logic, 59.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bitclk'
+  Total number of paths / destination ports: 409 / 91
+-------------------------------------------------------------------------
+Offset:              3.452ns (Levels of Logic = 4)
+  Source:            rotary_inc_b (PAD)
+  Destination:       rot/level_3 (FF)
+  Destination Clock: ac97_bitclk rising
+
+  Data Path: rotary_inc_b to rot/level_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   0.818   0.811  rotary_inc_b_IBUF (rotary_inc_b_IBUF)
+     LUT4:I0->O            4   0.094   0.496  rot/level_and0000_SW0 (N8)
+     LUT6:I5->O            1   0.094   0.480  rot/level_and0000 (rot/level_and0000)
+     LUT6:I5->O            4   0.094   0.352  rot/level_not0001 (rot/level_not0001)
+     FDE:CE                    0.213          rot/level_0
+    ----------------------------------------
+    Total                      3.452ns (1.313ns logic, 2.139ns route)
+                                       (38.0% logic, 62.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'strobe_OBUF1'
+  Total number of paths / destination ports: 2145 / 20
+-------------------------------------------------------------------------
+Offset:              4.383ns (Levels of Logic = 8)
+  Source:            frequency<0> (PAD)
+  Destination:       source/sw/strobe_counter_0 (FF)
+  Destination Clock: strobe_OBUF1 rising
+
+  Data Path: frequency<0> to source/sw/strobe_counter_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.818   0.581  frequency_0_IBUF (frequency_0_IBUF)
+     LUT2:I0->O            1   0.094   0.000  source/sw/Madd_old_strobe_counter_1_add0000_lut<0> (source/sw/Madd_old_strobe_counter_1_add0000_lut<0>)
+     MUXCY:S->O            1   0.372   0.000  source/sw/Madd_old_strobe_counter_1_add0000_cy<0> (source/sw/Madd_old_strobe_counter_1_add0000_cy<0>)
+     MUXCY:CI->O           1   0.026   0.000  source/sw/Madd_old_strobe_counter_1_add0000_cy<1> (source/sw/Madd_old_strobe_counter_1_add0000_cy<1>)
+     XORCY:CI->O           1   0.357   0.789  source/sw/Madd_old_strobe_counter_1_add0000_xor<2> (source/sw/old_strobe_counter_1_add0000<2>)
+     LUT4:I0->O            1   0.094   0.480  source/sw/strobe_counter_cmp_ge000029 (source/sw/strobe_counter_cmp_ge000029)
+     LUT6:I5->O           20   0.094   0.584  source/sw/strobe_counter_cmp_ge0000231 (source/sw/strobe_counter_cmp_ge0000231)
+     LUT6:I5->O            1   0.094   0.000  source/sw/strobe_counter_0_rstpot (source/sw/strobe_counter_0_rstpot)
+     FD:D                     -0.018          source/sw/strobe_counter_0
+    ----------------------------------------
+    Total                      4.383ns (1.949ns logic, 2.434ns route)
+                                       (44.5% logic, 55.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bitclk'
+  Total number of paths / destination ports: 151 / 28
+-------------------------------------------------------------------------
+Offset:              7.533ns (Levels of Logic = 7)
+  Source:            link/curbit_0 (FF)
+  Destination:       ac97_sdata_out (PAD)
+  Source Clock:      ac97_bitclk rising
+
+  Data Path: link/curbit_0 to ac97_sdata_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              15   0.471   1.146  link/curbit_0 (link/curbit_0)
+     LUT6:I0->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_151 (link/Mmux_ac97_sdata_out_151)
+     MUXF7:I0->O           2   0.251   0.978  link/Mmux_ac97_sdata_out_15_f7 (link/Mmux_ac97_sdata_out_15)
+     LUT6:I1->O            1   0.094   0.789  link/Mmux_ac97_sdata_out_11 (link/Mmux_ac97_sdata_out_11)
+     LUT4:I0->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_6 (link/Mmux_ac97_sdata_out_6)
+     MUXF7:I1->O           1   0.254   0.480  link/Mmux_ac97_sdata_out_5_f7 (link/Mmux_ac97_sdata_out_5_f7)
+     LUT2:I1->O            1   0.094   0.336  link/curbit<7>1 (ac97_sdata_out_OBUF)
+     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
+    ----------------------------------------
+    Total                      7.533ns (3.804ns logic, 3.729ns route)
+                                       (50.5% logic, 49.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'strobe_OBUF1'
+  Total number of paths / destination ports: 152 / 1
+-------------------------------------------------------------------------
+Offset:              10.067ns (Levels of Logic = 11)
+  Source:            source/sw/strobe_counter_5 (FF)
+  Destination:       ac97_sdata_out (PAD)
+  Source Clock:      strobe_OBUF1 rising
+
+  Data Path: source/sw/strobe_counter_5 to ac97_sdata_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               3   0.471   1.080  source/sw/strobe_counter_5 (source/sw/strobe_counter_5)
+     LUT6:I0->O            1   0.094   0.789  source/sw/sample<14>221 (source/sw/sample<14>221)
+     LUT4:I0->O            1   0.094   0.576  source/sw/sample<14>267_SW0 (N20)
+     LUT6:I4->O            1   0.094   0.480  source/sw/sample<14>267 (source/sw/sample<14>267)
+     LUT6:I5->O            4   0.094   0.592  source/sw/sample<14>274 (source/sw/sample<14>_bdd0)
+     LUT6:I4->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_16_G (N25)
+     MUXF7:I1->O           2   0.254   0.978  link/Mmux_ac97_sdata_out_16 (link/Mmux_ac97_sdata_out_16)
+     LUT6:I1->O            1   0.094   0.576  link/Mmux_ac97_sdata_out_13 (link/Mmux_ac97_sdata_out_13)
+     LUT5:I3->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_7 (link/Mmux_ac97_sdata_out_7)
+     MUXF7:I0->O           1   0.251   0.480  link/Mmux_ac97_sdata_out_5_f7 (link/Mmux_ac97_sdata_out_5_f7)
+     LUT2:I1->O            1   0.094   0.336  link/curbit<7>1 (ac97_sdata_out_OBUF)
+     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
+    ----------------------------------------
+    Total                     10.067ns (4.180ns logic, 5.887ns route)
+                                       (41.5% logic, 58.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 12 / 1
+-------------------------------------------------------------------------
+Delay:               7.521ns (Levels of Logic = 8)
+  Source:            square_wave_enable (PAD)
+  Destination:       ac97_sdata_out (PAD)
+
+  Data Path: square_wave_enable to ac97_sdata_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.818   1.000  square_wave_enable_IBUF (square_wave_enable_IBUF)
+     LUT6:I1->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_16_G (N25)
+     MUXF7:I1->O           2   0.254   0.978  link/Mmux_ac97_sdata_out_16 (link/Mmux_ac97_sdata_out_16)
+     LUT6:I1->O            1   0.094   0.576  link/Mmux_ac97_sdata_out_13 (link/Mmux_ac97_sdata_out_13)
+     LUT5:I3->O            1   0.094   0.000  link/Mmux_ac97_sdata_out_7 (link/Mmux_ac97_sdata_out_7)
+     MUXF7:I0->O           1   0.251   0.480  link/Mmux_ac97_sdata_out_5_f7 (link/Mmux_ac97_sdata_out_5_f7)
+     LUT2:I1->O            1   0.094   0.336  link/curbit<7>1 (ac97_sdata_out_OBUF)
+     OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
+    ----------------------------------------
+    Total                      7.521ns (4.151ns logic, 3.370ns route)
+                                       (55.2% logic, 44.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.45 secs
+ 
+--> 
+
+
+Total memory usage is 669892 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

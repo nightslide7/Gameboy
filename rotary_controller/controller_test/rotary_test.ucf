@@ -1,0 +1,29 @@
+
+
+NET "rotary_inc_a" LOC = AH30;
+NET "rotary_inc_b" LOC = AG30;
+NET "rotary_push" LOC = AH29;
+
+
+NET "rotary_inc_a" IOSTANDARD = LVCMOS18;
+NET "rotary_inc_b" IOSTANDARD = LVCMOS18;
+NET "rotary_push" IOSTANDARD = LVCMOS18;
+
+
+NET "inca" LOC = H18;
+NET "incb" LOC = L18;
+NET "push" LOC = G15;
+
+
+NET "clk" LOC = AH17;
+
+
+NET "clk" IOSTANDARD = LVCMOS33;
+
+
+# PlanAhead Generated physical constraints 
+
+NET "level[0]" LOC = AE24;
+NET "level[1]" LOC = AD24;
+NET "level[2]" LOC = AD25;
+NET "level[3]" LOC = G16;

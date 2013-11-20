@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Interface Version="1" Minor="1">
+	<Ifc Id="ROOT" Top="1">
+		<Port Id="ctrl_up" Dir="OUT"/>
+		<Port Id="ctrl_start" Dir="OUT"/>
+		<Port Id="clk_out" Dir="OUT"/>
+		<Port Id="clk_in" Dir="IN"/>
+		<Port Id="strobe" Dir="OUT"/>
+		<Port Id="ctrl_dn" Dir="OUT"/>
+		<Port Id="ctrl_a" Dir="OUT"/>
+		<Port Id="ctrl_b" Dir="OUT"/>
+		<Port Id="ctrl_l" Dir="OUT"/>
+		<Port Id="ctrl_r" Dir="OUT"/>
+		<Port Id="ctrl_sel" Dir="OUT"/>
+		<Port Id="data" Dir="IN"/>
+	</Ifc>
+</Interface>
+
