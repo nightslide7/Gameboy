@@ -7,6 +7,8 @@
 // The CPU's clock is 4194304 Hz, or 2^22 Hz.
 
 module lcd_top(CLK_33MHZ_FPGA,
+	       CLK_27MHZ_FPGA,
+	       USER_CLK,
 	       GPIO_SW_C,
 	       GPIO_SW_E,
 	       GPIO_SW_S,
@@ -21,10 +23,13 @@ module lcd_top(CLK_33MHZ_FPGA,
                flash_oe_n, flash_we_n, flash_clk,
 	       strobe, ac97_sync, ac97_reset_b,
 	       ac97_bitclk, ac97_sdata_in, ac97_sdata_out,
-	       rotary_inc_a, rotary_inc_b
+	       rotary_inc_a, rotary_inc_b,
+	       dvi_d, dvi_vs, dvi_hs, dvi_xclk_p, dvi_xclk_n, dvi_reset_b,
+	       dvi_de,
+	       dvi_sda, dvi_scl
 );
   
-   input CLK_33MHZ_FPGA;
+   input CLK_33MHZ_FPGA, CLK_27MHZ_FPGA, USER_CLK;
 //   input USER_CLK;
    /* switch C is reset, E is clear, S is resetFSM, W is nextString */
    input GPIO_SW_C, GPIO_SW_E, GPIO_SW_S, GPIO_SW_W;	
@@ -40,6 +45,13 @@ module lcd_top(CLK_33MHZ_FPGA,
    output wire 	      strobe, ac97_sync, ac97_reset_b, ac97_sdata_out;
    input wire 	      ac97_bitclk, ac97_sdata_in;
    input wire 	      rotary_inc_a, rotary_inc_b;
+   output [11:0] 	dvi_d;			//DIV Outputs
+   output 		dvi_vs, dvi_hs, 	//DIV Outputs
+			dvi_xclk_p, 		//DIV Outputs
+			dvi_xclk_n, 		//DIV Outputs
+			dvi_de, 		//DIV Outputs
+			dvi_reset_b;		//DIV Outputs
+   inout 		dvi_sda, dvi_scl;
    
    wire   clock;
 
@@ -375,6 +387,43 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign video_oam_data_in = data_ext;
    assign video_oam_addr = addr_ext;
    assign video_oam_w_enable = (addr_ext >= 16'hFE00 && addr_ext <= 16'hFE9F);
+
+   wire [1:0]  int_req, int_ack;
+   wire [1:0]  mode_video;
+   wire [7:0]  do_video;
+   wire        mem_enable_video;
+   assign mem_enable_video = video_reg_w_enable || video_vram_w_enable ||
+			     video_oam_w_enable;
+   gpu_top gpu (/*AUTOINST*/
+		// Outputs
+		.do_video		(do_video[7:0] ),
+		.mode_video		(mode_video[1:0]),
+		.int_req		(int_req[1:0]),
+		.dvi_d			(dvi_d[11:0]),
+		.dvi_vs			(dvi_vs),
+		.dvi_hs			(dvi_hs),
+		.dvi_xclk_p		(dvi_xclk_p),
+		.dvi_xclk_n		(dvi_xclk_n),
+		.dvi_de			(dvi_de),
+		.dvi_reset_b		(dvi_reset_b),
+		.led_out		(),
+		.iic_done		(),
+		.fbclk_ready		(),
+		// Inouts
+		.dvi_sda		(dvi_sda),
+		.dvi_scl		(dvi_scl),
+		// Inputs
+		.clk27			(CLK_27MHZ_FPGA),
+		.clk33			(CLK_33MHZ_FPGA),
+		.clk100			(USER_CLK),
+		.top_rst_b		(~reset),
+		.mem_enable_video	(mem_enable_video),
+		.rd_n_video		(~mem_re),
+		.wr_n_video		(~mem_we),
+		.A_video		(addr_ext),
+		.di_video		(data_ext),
+		.int_ack		(int_ack[1:0]),
+		.switches78		());
    
    wire        reg_w_enable;
    wire [7:0]  reg_data_in;
@@ -407,7 +456,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .flash_we_n(flash_we_n),*/
 		   .strobe(strobe),
 		   .reg_addr(reg_addr),
-		   .reg_data(reg_data),
+		   .reg_data(reg_data_in),
 		   .reg_w_enable(reg_w_enable)
 		  );
 
@@ -421,20 +470,20 @@ module lcd_top(CLK_33MHZ_FPGA,
 			     .in(bram_data_out),
 			     .en(~addr_in_flash&~FF44_read&~reg_w_enable&~mem_we));
    tristate #(8) gating_sound_regs(.out(data_ext),
-				   .in(reg_data), //FIX THIS: regs need output
+				   .in(reg_data_in), //FIX THIS: regs need output
 				   .en(reg_w_enable&~mem_we));
    tristate #(8) gating_video_regs(.out(data_ext),
-				   .in(video_reg_data_out),
+				   .in(do_video),//video_reg_data_out),
 				   .en(video_reg_w_enable&~mem_we));
    tristate #(8) gating_video_vram(.out(data_ext),
-				   .in(video_vram_data_out),
+				   .in(do_video),//video_vram_data_out),
 				   .en(video_vram_w_enable&~mem_we));
    tristate #(8) gating_video_oam(.out(data_ext),
-				  .in(video_oam_data_out),
+				  .in(do_video),//video_oam_data_out),
 				  .en(video_oam_w_enable&~mem_we));
 
 endmodule
 // Local Variables:
-// verilog-library-directories:(".")
+// verilog-library-directories:("." "../../fpgaboy_files/")
 // verilog-library-files:("./cpu.v")
 // End:

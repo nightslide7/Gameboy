@@ -21,12 +21,93 @@
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="GPU.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="gpu_top.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="gpu_top.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="gpu_top.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="gpu_top.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="gpu_top.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="gpu_top.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="gpu_top.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="gpu_top.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="gpu_top.xst"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="gpu_top_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="gpu_top_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1384810272" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810272" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-2343984212013232573" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810272" xil_pn:in_ck="-5522023410782190655" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-3257431945119951638" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/OAM.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/OAM.v"/>
+      <outfile xil_pn:name="ipcore_dir/VRAM.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/VRAM.v"/>
+    </transform>
     <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810272" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="6254720772604084565" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810272" xil_pn:in_ck="8294463784377841343" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-8458126479482839362" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810272" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-1314213830043127308" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810318" xil_pn:in_ck="1039037407293437473" xil_pn:name="TRANEXT_xstsynthesize_virtex5" xil_pn:prop_ck="952635198081199240" xil_pn:start_ts="1384810272">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="gpu_top.lso"/>
+      <outfile xil_pn:name="gpu_top.ngc"/>
+      <outfile xil_pn:name="gpu_top.ngr"/>
+      <outfile xil_pn:name="gpu_top.prj"/>
+      <outfile xil_pn:name="gpu_top.stx"/>
+      <outfile xil_pn:name="gpu_top.syr"/>
+      <outfile xil_pn:name="gpu_top.xst"/>
+      <outfile xil_pn:name="gpu_top_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810318" xil_pn:in_ck="-3230823487438036994" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="1262981267491795072" xil_pn:start_ts="1384810318">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
+    </transform>
+    <transform xil_pn:end_ts="1384810324" xil_pn:in_ck="-3629278776644467553" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="1975966810657391891" xil_pn:start_ts="1384810318">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="gpu_top.bld"/>
+      <outfile xil_pn:name="gpu_top_ngdbuild.xrpt"/>
     </transform>
   </transforms>
 

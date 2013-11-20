@@ -3,41 +3,44 @@ Xilinx Mapping Report File for Design 'lcd_top'
 
 Design Information
 ------------------
-Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-2 -w -logic_opt off -ol
-high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr
-off -lc off -power off -o lcd_top_map.ncd lcd_top.ngd lcd_top.pcf 
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-2 -w -logic_opt off -ol high -t 1 -register_duplication off
+-global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_map.ncd lcd_top.ngd lcd_top.pcf 
 Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -2
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Thu Nov  7 21:46:42 2013
+Mapped Date    : Mon Nov 18 19:12:58 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    1
 Slice Logic Utilization:
-  Number of Slice Registers:                   660 out of  69,120    1%
-    Number used as Flip Flops:                 652
+  Number of Slice Registers:                 1,474 out of  69,120    2%
+    Number used as Flip Flops:               1,466
     Number used as Latches:                      8
-  Number of Slice LUTs:                      2,018 out of  69,120    2%
-    Number used as logic:                    2,006 out of  69,120    2%
-      Number using O6 output only:           1,712
-      Number using O5 output only:             122
-      Number using O5 and O6:                  172
-    Number used as exclusive route-thru:        12
-  Number of route-thrus:                       134
-    Number using O6 output only:               134
+  Number of Slice LUTs:                      6,552 out of  69,120    9%
+    Number used as logic:                    4,473 out of  69,120    6%
+      Number using O6 output only:           3,928
+      Number using O5 output only:             212
+      Number using O5 and O6:                  333
+    Number used as Memory:                   2,048 out of  17,920   11%
+      Number used as Single Port RAM:        2,048
+        Number using O6 output only:         2,048
+    Number used as exclusive route-thru:        31
+  Number of route-thrus:                       245
+    Number using O6 output only:               243
+    Number using O5 output only:                 2
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   799 out of  17,280    4%
-  Number of LUT Flip Flop pairs used:        2,215
-    Number with an unused Flip Flop:         1,555 out of   2,215   70%
-    Number with an unused LUT:                 197 out of   2,215    8%
-    Number of fully used LUT-FF pairs:         463 out of   2,215   20%
-    Number of unique control sets:              87
+  Number of occupied Slices:                 2,451 out of  17,280   14%
+  Number of LUT Flip Flop pairs used:        6,858
+    Number with an unused Flip Flop:         5,384 out of   6,858   78%
+    Number with an unused LUT:                 306 out of   6,858    4%
+    Number of fully used LUT-FF pairs:       1,168 out of   6,858   17%
+    Number of unique control sets:             405
     Number of slice register sites lost
-      to control set restrictions:             132 out of  69,120    1%
+      to control set restrictions:             178 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -48,23 +51,29 @@ Slice Logic Distribution:
   over-mapped for a non-BRAM resource or if placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        66 out of     640   10%
-    Number of LOCed IOBs:                       65 out of      66   98%
+  Number of bonded IOBs:                        88 out of     640   13%
+    Number of LOCed IOBs:                       87 out of      88   98%
+    IOB Flip Flops:                             14
 
 Specific Feature Utilization:
-  Number of BlockRAM/FIFO:                      16 out of     148   10%
-    Number using BlockRAM only:                 16
+  Number of BlockRAM/FIFO:                      19 out of     148   12%
+    Number using BlockRAM only:                 19
     Total primitives used:
-      Number of 36k BlockRAM used:              16
-    Total Memory used (KB):                    576 out of   5,328   10%
-  Number of BUFG/BUFGCTRLs:                      7 out of      32   21%
-    Number used as BUFGs:                        7
+      Number of 36k BlockRAM used:              18
+      Number of 18k BlockRAM used:               1
+    Total Memory used (KB):                    666 out of   5,328   12%
+  Number of BUFG/BUFGCTRLs:                     13 out of      32   40%
+    Number used as BUFGs:                       11
+    Number used as BUFGCTRLs:                    2
+  Number of IDELAYCTRLs:                         1 out of      22    4%
+  Number of DCM_ADVs:                            2 out of      12   16%
+  Number of DSP48Es:                             1 out of      64    1%
 
-Average Fanout of Non-Clock Nets:                4.90
+Average Fanout of Non-Clock Nets:                6.85
 
-Peak Memory Usage:  1060 MB
-Total REAL time to MAP completion:  20 secs 
-Total CPU time to MAP completion:   19 secs 
+Peak Memory Usage:  1113 MB
+Total REAL time to MAP completion:  34 secs 
+Total CPU time to MAP completion:   34 secs 
 
 Table of Contents
 -----------------
@@ -91,12 +100,11 @@ WARNING:Security:43 - No license file was found in the standard Xilinx license
 directory.
 WARNING:Security:44 - Since no license file was found,
 WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
-23 days after which you will not qualify for Xilinx software updates or new
+12 days after which you will not qualify for Xilinx software updates or new
 releases.
-WARNING:PhysDesignRules:372 - Gated clock. Clock net
-   gb80_cpu/gb80_alu/alu_data_out_7_not0001 is sourced by a combinatorial pin.
-   This is not good design practice. Use the CE pin to control the loading of
-   data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net gb80_cpu/gb80_alu/alu_data_out_7_not0001 is sourced by a
+   combinatorial pin. This is not good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
 
 Section 3 - Informational
 -------------------------
@@ -125,15 +133,18 @@ INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
    1.050 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
-INFO:Place:834 - Only a subset of IOs are locked. Out of 66 IOs, 65 are locked
+INFO:Place:834 - Only a subset of IOs are locked. Out of 88 IOs, 87 are locked
    and 1 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 INFO:Pack:1650 - Map created a placed design.
+INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of
+   the DCM_ADV comp gpu/setup/clk31p5_dcm_inst/DCM_31p5_INST, consult the device Data Sheet.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
   22 block(s) removed
-   4 block(s) optimized away
+   8 block(s) optimized away
+  18 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -170,6 +181,24 @@ Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi5" (ROM) removed.
 Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi6" (ROM) removed.
 Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi7" (ROM) removed.
 Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi9" (ROM) removed.
+The signal "gpu/video/oam/web<0>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<7>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<6>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<5>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<4>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<3>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<2>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<1>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<0>" is sourceless and has been removed.
+The signal "gpu/video/vram/web<0>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<7>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<6>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<5>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<4>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<3>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<2>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<1>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<0>" is sourceless and has been removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
@@ -177,6 +206,10 @@ GND 		XST_GND
 VCC 		XST_VCC
 GND 		br/XST_GND
 VCC 		br/XST_VCC
+GND 		gpu/video/oam/XST_GND
+VCC 		gpu/video/oam/XST_VCC
+GND 		gpu/video/vram/XST_GND
+VCC 		gpu/video/vram/XST_VCC
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
@@ -188,6 +221,7 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CLK_27MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | CLK_33MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | GPIO_SW_C                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | GPIO_SW_E                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -200,11 +234,32 @@ Section 6 - IOB Properties
 | LCD_FPGA_E                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | LCD_FPGA_RS                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | LCD_FPGA_RW                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| USER_CLK                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ac97_bitclk                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ac97_reset_b                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ac97_sdata_in                      | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ac97_sdata_out                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ac97_sync                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_d<0>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<1>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<2>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<3>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<4>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<5>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<6>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<7>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<8>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<9>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<10>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<11>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_de                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_hs                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_reset_b                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_scl                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_sda                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_vs                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_xclk_n                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          | FIXED    |
+| dvi_xclk_p                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          | FIXED    |
 | flash_a<0>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | flash_a<1>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | flash_a<2>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
