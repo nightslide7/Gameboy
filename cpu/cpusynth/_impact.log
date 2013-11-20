@@ -1,6 +1,6 @@
 iMPACT Version: 14.3
 
-iMPACT log file Started on Mon Nov 18 19:14:54 2013
+iMPACT log file Started on Wed Nov 20 11:39:03 2013
 
 Welcome to iMPACT
 iMPACT Version: 14.3
@@ -46,7 +46,7 @@ WARNING:iMPACT -  Module windrvr6 is not loaded. Please reinstall the cable   dr
 WARNING:iMPACT -  Module parport_pc is not loaded. Please reinstall the cable   drivers. See Answer Record 22648.
 Cable connection failed.
 PROGRESS_END - End Operation.
-Elapsed time =    296 sec.
+Elapsed time =     36 sec.
 Cable autodetection failed.
 WARNING:iMPACT:923 - Can not find cable, check cable setup !INFO:iMPACT - User_EnvOsname: 'RedHatEnterpriseServer'
 INFO:iMPACT - User_EnvOsrelease: 'Red Hat Enterprise Linux Server release 6.4   (Santiago)'

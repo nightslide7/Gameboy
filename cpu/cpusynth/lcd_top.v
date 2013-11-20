@@ -290,7 +290,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire mem_we, mem_re;
    wire [15:0] addr_ext;
    wire [7:0]  data_ext;
-
+/*
 `define MAX_VCOUNT 9'd440
    
    reg [7:0]   FF44_data;
@@ -314,7 +314,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    end
    
    wire        FF44_read;
-   assign FF44_read = (addr_ext == 16'hff44) & mem_re;
+   assign FF44_read = (addr_ext == 16'hff44) & mem_re;*/
    
    wire        addr_in_flash;
 
@@ -408,7 +408,6 @@ module lcd_top(CLK_33MHZ_FPGA,
 		.dvi_reset_b		(dvi_reset_b),
 		.led_out		(),
 		.iic_done		(),
-		.fbclk_ready		(),
 		// Inouts
 		.dvi_sda		(dvi_sda),
 		.dvi_scl		(dvi_scl),
@@ -460,15 +459,15 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_w_enable(reg_w_enable)
 		  );
 
-   tristate #(8) gating_ff44(.out(data_ext),
+/*   tristate #(8) gating_ff44(.out(data_ext),
 			     .in(FF44_data),
-			     .en(FF44_read&~mem_we));
+			     .en(FF44_read&~mem_we));*/
    tristate #(8) gating_flash(.out(data_ext),
 			      .in(flash_d),
 			      .en(addr_in_flash&~mem_we));
    tristate #(8) gating_bram(.out(data_ext),
 			     .in(bram_data_out),
-			     .en(~addr_in_flash&~FF44_read&~reg_w_enable&~mem_we));
+			     .en(~video_reg_w_enable&~video_vram_w_enable&~video_oam_w_enable&~addr_in_flash&~reg_w_enable&~mem_we));
    tristate #(8) gating_sound_regs(.out(data_ext),
 				   .in(reg_data_in), //FIX THIS: regs need output
 				   .en(reg_w_enable&~mem_we));

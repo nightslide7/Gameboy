@@ -9,38 +9,38 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -2
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Mon Nov 18 19:12:58 2013
+Mapped Date    : Wed Nov 20 11:37:08 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    1
 Slice Logic Utilization:
-  Number of Slice Registers:                 1,474 out of  69,120    2%
-    Number used as Flip Flops:               1,466
+  Number of Slice Registers:                 1,457 out of  69,120    2%
+    Number used as Flip Flops:               1,449
     Number used as Latches:                      8
-  Number of Slice LUTs:                      6,552 out of  69,120    9%
-    Number used as logic:                    4,473 out of  69,120    6%
-      Number using O6 output only:           3,928
-      Number using O5 output only:             212
-      Number using O5 and O6:                  333
+  Number of Slice LUTs:                      6,518 out of  69,120    9%
+    Number used as logic:                    4,440 out of  69,120    6%
+      Number using O6 output only:           3,931
+      Number using O5 output only:             204
+      Number using O5 and O6:                  305
     Number used as Memory:                   2,048 out of  17,920   11%
       Number used as Single Port RAM:        2,048
         Number using O6 output only:         2,048
-    Number used as exclusive route-thru:        31
-  Number of route-thrus:                       245
-    Number using O6 output only:               243
-    Number using O5 output only:                 2
+    Number used as exclusive route-thru:        30
+  Number of route-thrus:                       238
+    Number using O6 output only:               234
+    Number using O5 output only:                 4
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 2,451 out of  17,280   14%
-  Number of LUT Flip Flop pairs used:        6,858
-    Number with an unused Flip Flop:         5,384 out of   6,858   78%
-    Number with an unused LUT:                 306 out of   6,858    4%
-    Number of fully used LUT-FF pairs:       1,168 out of   6,858   17%
-    Number of unique control sets:             405
+  Number of occupied Slices:                 2,467 out of  17,280   14%
+  Number of LUT Flip Flop pairs used:        6,812
+    Number with an unused Flip Flop:         5,355 out of   6,812   78%
+    Number with an unused LUT:                 294 out of   6,812    4%
+    Number of fully used LUT-FF pairs:       1,163 out of   6,812   17%
+    Number of unique control sets:             404
     Number of slice register sites lost
-      to control set restrictions:             178 out of  69,120    1%
+      to control set restrictions:             179 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -69,10 +69,10 @@ Specific Feature Utilization:
   Number of DCM_ADVs:                            2 out of      12   16%
   Number of DSP48Es:                             1 out of      64    1%
 
-Average Fanout of Non-Clock Nets:                6.85
+Average Fanout of Non-Clock Nets:                6.90
 
-Peak Memory Usage:  1113 MB
-Total REAL time to MAP completion:  34 secs 
+Peak Memory Usage:  1115 MB
+Total REAL time to MAP completion:  35 secs 
 Total CPU time to MAP completion:   34 secs 
 
 Table of Contents
@@ -100,7 +100,7 @@ WARNING:Security:43 - No license file was found in the standard Xilinx license
 directory.
 WARNING:Security:44 - Since no license file was found,
 WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
-12 days after which you will not qualify for Xilinx software updates or new
+10 days after which you will not qualify for Xilinx software updates or new
 releases.
 WARNING:PhysDesignRules:372 - Gated clock. Clock net gb80_cpu/gb80_alu/alu_data_out_7_not0001 is sourced by a
    combinatorial pin. This is not good design practice. Use the CE pin to control the loading of data into the

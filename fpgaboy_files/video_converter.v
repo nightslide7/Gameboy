@@ -144,7 +144,8 @@ module video_converter( //Outputs
 	// detect vsync edge
 	// handle output to the vga module
 	wire my_hsync, my_vsync;
-	wire [9:0] pixel_count, line_count;
+	//wire [9:0] pixel_count, line_count;
+	wire [11:0] pixel_count, line_count;
 //	vga_controller vgac(clock, reset, my_hsync, my_vsync, pixel_count, line_count);
 
 	wire border;
