@@ -306,6 +306,9 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .clock(clock),
                 .reset(reset));
 
+`define MMIO_IF 16'hff0f
+`define MMIO_IE 16'hffff
+`define MMIO_DMA 16'hff46
 `define MMIO_DIV 16'hff04
 `define MMIO_TIMA 16'hff05
 `define MMIO_TMA 16'hff06
@@ -441,6 +444,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 `define MEM_VRAM_START 16'h8000
    
    wire        addr_in_wram, addr_in_vram, addr_in_oam, addr_in_junk;
+   wire        addr_in_dma, addr_in_tima;
    
    assign addr_in_wram = (`MEM_WRAM_START <= addr_ext) & 
                          (addr_ext <= `MEM_WRAM_END);
@@ -448,9 +452,11 @@ module lcd_top(CLK_33MHZ_FPGA,
                          (addr_ext <= `MEM_VRAM_END);
    assign addr_in_oam =  (`MEM_OAM_START <= addr_ext) & 
                          (addr_ext <= `MEM_OAM_END);
+   assign addr_in_dma = addr_ext == `MMIO_DMA;
+   assign addr_in_tima = timer_reg_addr;
    assign addr_in_junk = ~addr_in_flash & ~FF44_read & ~reg_w_enable &
                          ~timer_reg_addr & ~addr_in_wram & ~addr_in_vram &
-                         ~addr_in_oam;
+                         ~addr_in_oam & ~addr_in_dma & ~addr_in_tima;
 
    /*assign bram_data_in = data_ext;
    assign bram_we = ~addr_in_flash & (mem_we | dma_mem_we);
