@@ -1,6 +1,5 @@
 // The Flash memory stores bytes from the hex -> mcs file as follows:
 // Little Endian
-// Intellllll!!!!
 // Notice that the Flash clock should be 1 for asynchronous read mode, which is
 // the default mode.
 
@@ -28,7 +27,15 @@ module lcd_top(CLK_33MHZ_FPGA,
 	       rotary_inc_a, rotary_inc_b,
 	       dvi_d, dvi_vs, dvi_hs, dvi_xclk_p, dvi_xclk_n, dvi_reset_b,
 	       dvi_de,
-	       dvi_sda, dvi_scl
+	       dvi_sda, dvi_scl,
+	       HDR1_2, HDR1_6, HDR1_8, HDR1_10,
+               HDR1_12, HDR1_14, HDR1_16, HDR1_18,
+               HDR1_20, HDR1_22, HDR1_24, HDR1_26,
+               HDR1_28, HDR1_30, HDR1_32, HDR1_34,
+               HDR1_36, HDR1_38, HDR1_40, HDR1_42,
+               HDR1_44, HDR1_46, HDR1_48, HDR1_50,
+               HDR1_52, HDR1_54, HDR1_56, HDR1_58,
+               HDR1_60, HDR1_64
 );
    parameter
      I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
@@ -57,7 +64,14 @@ module lcd_top(CLK_33MHZ_FPGA,
 			dvi_de, 		//DIV Outputs
 			dvi_reset_b;		//DIV Outputs
    inout 		dvi_sda, dvi_scl;
-   
+   output wire 		HDR1_2, HDR1_6, HDR1_8, HDR1_10;
+   output wire 		HDR1_12, HDR1_14, HDR1_16, HDR1_18;
+   output wire 		HDR1_20, HDR1_22, HDR1_24, HDR1_26;
+   output wire 		HDR1_28, HDR1_30, HDR1_32, HDR1_34;
+   output wire 		HDR1_36, HDR1_38, HDR1_40, HDR1_42;
+   input 		HDR1_44, HDR1_46, HDR1_48, HDR1_50;
+   input 		HDR1_52, HDR1_54, HDR1_56, HDR1_58;
+   output wire 		HDR1_60, HDR1_64;
    wire   clock;
 
    assign clock = CLK_33MHZ_FPGA;
@@ -324,14 +338,6 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .clock(clock),
                 .reset(reset));
 
-`define MMIO_IF 16'hff0f
-`define MMIO_IE 16'hffff
-`define MMIO_DMA 16'hff46
-`define MMIO_DIV 16'hff04
-`define MMIO_TIMA 16'hff05
-`define MMIO_TMA 16'hff06
-`define MMIO_TAC 16'hff07
-   
    assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
                            (addr_ext == `MMIO_TMA) |
                            (addr_ext == `MMIO_TIMA) |
@@ -350,8 +356,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    
    assign IF_load = timer_interrupt;
    
-   timers tima_module(/*AUTOINST*/
-                      // Outputs
+   timers tima_module(// Outputs
                       .timer_interrupt  (timer_interrupt),
                       // Inouts
                       .addr_ext         (addr_ext[15:0]),
@@ -359,7 +364,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                       // Inputs
                       .mem_re           (mem_re),
                       .mem_we           (mem_we),
-                      .clock            (clock),
+                      .clock            (cpu_clock),
                       .reset            (reset));
  
 
@@ -392,7 +397,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
    
-   breakpoints #(.reset_addr(16'h0007))
+   breakpoints #(.reset_addr(16'hffff))
    bpmod(.bp_addr(bp_addr[15:0]),
          .bp_addr_disp(bp_addr_disp[7:0]),
          // Inputs
@@ -402,11 +407,24 @@ module lcd_top(CLK_33MHZ_FPGA,
          .reset(reset),
          .clock(cpu_clock));
      
-   wire        addr_in_flash;
+   wire        addr_in_bootstrap_reg;
+   addr_in_bootstrap_reg = addr_ext == `MMIO_BOOTSTRAP;
+   register #(8) bootstrap_reg(.in(data_ext),
+                               .out(bootstrap_reg_data),
+                               .load(addr_in_bootstrap_reg & mem_we),
+                               .reset(reset),
+                               .clock(clock));
    
-   assign addr_in_flash = addr_ext <= 16'h140;
+   wire        addr_in_flash;
+   assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext <= 16'h103;
 
    /* The GPU */
+   wire        addr_in_cart;
+   assign addr_in_cart = (bootstrap_reg_data[0]) ?
+                         (`MEM_CART_START <= addr_ext) && 
+                         (addr_ext <= `MEM_CART_END) :
+                         1'b0;
+   
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
    wire [7:0]  video_reg_data_out;
@@ -441,8 +459,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        mem_enable_video;
    assign mem_enable_video = video_reg_w_enable || video_vram_w_enable ||
 			     video_oam_w_enable;
-   gpu_top gpu (/*AUTOINST*/
-		// Outputs
+   gpu_top gpu (// Outputs
 		.do_video		(do_video[7:0] ),
 		.mode_video		(mode_video[1:0]),
 		.int_req		(int_req[1:0]),
@@ -507,18 +524,57 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_w_enable(reg_w_enable)
 		  );
 
-/* Dealing with memory */
-`define MEM_HIGH_END 16'hfffe
-`define MEM_HIGH_START 16'hff80
-`define MEM_OAM_END 16'hfe9f
-`define MEM_OAM_START 16'hfe00
-`define MEM_CART_END 16'hbfff
-`define MEM_CART_START 16'ha000
-`define MEM_WRAM_END 16'hdfff
-`define MEM_WRAM_START 16'hc000
-`define MEM_VRAM_END 16'h9fff
-`define MEM_VRAM_START 16'h8000
-
+   /* The cartridge */
+   wire [7:0]  cart_data;
+   wire [15:0] cart_address;
+   wire        cart_w_enable_l, cart_r_enable_l, cart_reset_l, cart_cs_sram_l;
+   assign cart_address = addr_ext;
+   assign cart_w_enable_l = 1;
+   assign cart_r_enable_l = 0;
+   assign cart_reset_l = 1;
+   assign cart_cs_sram_l = 1;
+   
+   cartridge cart (/*AUTOINST*/
+		   // Outputs
+		   .HDR1_2		(HDR1_2),
+		   .HDR1_6		(HDR1_6),
+		   .HDR1_8		(HDR1_8),
+		   .HDR1_10		(HDR1_10),
+		   .HDR1_12		(HDR1_12),
+		   .HDR1_14		(HDR1_14),
+		   .HDR1_16		(HDR1_16),
+		   .HDR1_18		(HDR1_18),
+		   .HDR1_20		(HDR1_20),
+		   .HDR1_22		(HDR1_22),
+		   .HDR1_24		(HDR1_24),
+		   .HDR1_26		(HDR1_26),
+		   .HDR1_28		(HDR1_28),
+		   .HDR1_30		(HDR1_30),
+		   .HDR1_32		(HDR1_32),
+		   .HDR1_34		(HDR1_34),
+		   .HDR1_36		(HDR1_36),
+		   .HDR1_38		(HDR1_38),
+		   .HDR1_40		(HDR1_40),
+		   .HDR1_42		(HDR1_42),
+		   .HDR1_60		(HDR1_60),
+		   .HDR1_64		(HDR1_64),
+		   .cart_data		(cart_data[7:0]),
+		   // Inputs
+		   .HDR1_44		(HDR1_44),
+		   .HDR1_46		(HDR1_46),
+		   .HDR1_48		(HDR1_48),
+		   .HDR1_50		(HDR1_50),
+		   .HDR1_52		(HDR1_52),
+		   .HDR1_54		(HDR1_54),
+		   .HDR1_56		(HDR1_56),
+		   .HDR1_58		(HDR1_58),
+		   .cart_address	(cart_address[15:0]),
+		   .clock		(clock),
+		   .cart_w_enable_l	(cart_w_enable_l),
+		   .cart_r_enable_l	(cart_r_enable_l),
+		   .cart_reset_l	(cart_reset_l),
+		   .cart_cs_sram_l	(cart_cs_sram_l));
+   
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
 
@@ -549,7 +605,7 @@ module lcd_top(CLK_33MHZ_FPGA,
              .addra(wram_addr),
              .dina(wram_data_in),
              .douta(wram_data_out));
-   
+
 /*   tristate #(8) gating_ff44(.out(data_ext),
 			     .in(FF44_data),
 			     .en(FF44_read&~mem_we));*/
@@ -578,9 +634,16 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_video_oam(.out(data_ext),
 				  .in(do_video),//video_oam_data_out),
 				  .en(video_oam_w_enable&~mem_we));
+   tristate #(8) gating_boostrap_reg(.out(data_ext),
+                                     .in(bootstrap_reg_data),
+                                     .en(addr_in_bootstrap_reg & ~mem_we));
+   tristate #(8) gating_boostrap_reg(.out(data_ext),
+                                     .in(cart_data),
+                                     .en(addr_in_cart & ~mem_we));
 
+   
 endmodule
 // Local Variables:
 // verilog-library-directories:("." "../../fpgaboy_files/" "../..")
-// verilog-library-files:("./cpu.v")
+// verilog-library-files:("./cpu.v" "../../cartridge_interface.v")
 // End:
