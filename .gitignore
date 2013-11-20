@@ -62,4 +62,5 @@ GAMEBOY_TOP/lcd_top_summary.html
 GAMEBOY_TOP/lcd_top_xst.xrpt
 GAMEBOY_TOP/webtalk_pn.xml
 GAMEBOY_TOP/xst/work/*
-cpu/cpusynth/iseconfig/cpusynth.projectmgr
+GAMEBOY_TOP/iseconfig/GAMEBOY_TOP.projectmgr
+GAMEBOY_TOP/iseconfig/lcd_top.xreport

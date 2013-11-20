@@ -22,7 +22,7 @@
 module gpu_top(//Outputs
 					do_video,					//MMU Outputs
 					mode_video,
-					int_req,						//INT Outputs
+					int_req, // 0: Vblank 1: LCDC						//INT Outputs
 					dvi_d, dvi_vs, dvi_hs,	//DIV Outputs
 					dvi_xclk_p, dvi_xclk_n,	//DIV Outputs
 					dvi_de, dvi_reset_b,		//DIV Outputs

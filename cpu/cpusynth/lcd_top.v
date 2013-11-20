@@ -5,6 +5,9 @@
 
 // The CPU's clock is 4194304 Hz, or 2^22 Hz.
 
+`include "cpu.vh"
+`default_nettype none
+
 module lcd_top(CLK_33MHZ_FPGA,
 	       CLK_27MHZ_FPGA,
 	       USER_CLK,
@@ -344,13 +347,14 @@ module lcd_top(CLK_33MHZ_FPGA,
                            (addr_ext == `MMIO_TAC);
 
    wire        timer_interrupt;
+   wire [1:0]  int_req, int_ack;
    
    wire [4:0]  IE_data, IF_in, IF_data, IE_in;
    wire        IE_load, IF_load;
    
    assign IF_in[I_TIMA] = timer_interrupt;
-   assign IF_in[I_VBLANK] = 1'b0;
-   assign IF_in[I_LCDC] = 1'b0;
+   assign IF_in[I_VBLANK] = int_req[0];
+   assign IF_in[I_LCDC] = int_req[1];
    assign IF_in[I_HILO] = 1'b0;
    assign IF_in[I_SERIAL] = 1'b0;
    
@@ -453,12 +457,15 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign video_oam_addr = addr_ext;
    assign video_oam_w_enable = (addr_ext >= 16'hFE00 && addr_ext <= 16'hFE9F);
 
-   wire [1:0]  int_req, int_ack;
+
    wire [1:0]  mode_video;
    wire [7:0]  do_video;
    wire        mem_enable_video;
    assign mem_enable_video = video_reg_w_enable || video_vram_w_enable ||
 			     video_oam_w_enable;
+
+   assign int_ack = 2'b0;
+   
    gpu_top gpu (// Outputs
 		.do_video		(do_video[7:0] ),
 		.mode_video		(mode_video[1:0]),
