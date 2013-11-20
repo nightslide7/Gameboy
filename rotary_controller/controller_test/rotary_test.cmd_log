@@ -1,0 +1,32 @@
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o rotary_test_map.ncd rotary_test.ngd rotary_test.pcf 
+par -w -intstyle ise -ol high -mt off rotary_test_map.ncd rotary_test.ncd rotary_test.pcf 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o rotary_test_map.ncd rotary_test.ngd rotary_test.pcf 
+par -w -intstyle ise -ol high -mt off rotary_test_map.ncd rotary_test.ncd rotary_test.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml rotary_test.twx rotary_test.ncd -o rotary_test.twr rotary_test.pcf -ucf rotary_test.ucf 
+bitgen -intstyle ise -f rotary_test.ut rotary_test.ncd 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o rotary_test_map.ncd rotary_test.ngd rotary_test.pcf 
+par -w -intstyle ise -ol high -mt off rotary_test_map.ncd rotary_test.ncd rotary_test.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml rotary_test.twx rotary_test.ncd -o rotary_test.twr rotary_test.pcf -ucf rotary_test.ucf 
+bitgen -intstyle ise -f rotary_test.ut rotary_test.ncd 
+xst -intstyle ise -ifn "/Gameboy/rotary_controller/controller_test/rotary_test.xst" -ofn "/Gameboy/rotary_controller/controller_test/rotary_test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc rotary_test.ucf -p xc5vlx110t-ff1136-1 rotary_test.ngc rotary_test.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o rotary_test_map.ncd rotary_test.ngd rotary_test.pcf 
+par -w -intstyle ise -ol high -mt off rotary_test_map.ncd rotary_test.ncd rotary_test.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml rotary_test.twx rotary_test.ncd -o rotary_test.twr rotary_test.pcf -ucf rotary_test.ucf 
+bitgen -intstyle ise -f rotary_test.ut rotary_test.ncd 

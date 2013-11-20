@@ -1,0 +1,66 @@
+0NET "sample_no" LOC="U25";
+NET "square_wave_enable" LOC="AG27";
+NET "rotary_inc_a" LOC = "AH30";
+NET "rotary_inc_b" LOC = "AG30";
+NET "rotary_inc_a" IOSTANDARD = LVCMOS18;
+NET "rotary_inc_b" IOSTANDARD = LVCMOS18;
+NET "ch1_reset_test" LOC="AE26";
+NET "ch2_reset_test" LOC="AC25";
+NET "ch3_reset_test" LOC="AC24";
+
+NET "ac97_bitclk" LOC="AF18" | TNM_NET = ac97_bitclk;
+NET "ac97_sdata_in" LOC="AE18";
+NET "ac97_sdata_out" LOC="AG16";
+NET "ac97_sync" LOC="AF19";
+NET "ac97_reset_b" LOC="AG17";
+TIMESPEC TS_ac97_bitclk = PERIOD "ac97_bitclk" 12.288MHz HIGH 50%;
+
+NET "flash_a<23>" LOC="AE13";
+NET "flash_a<22>" LOC="AE12";
+NET "flash_a<21>" LOC="AE22";
+NET "flash_a<20>" LOC="AE23";
+NET "flash_a<19>" LOC="L21";
+NET "flash_a<18>" LOC="L20";
+NET "flash_a<17>" LOC="L15";
+NET "flash_a<16>" LOC="L16";
+NET "flash_a<15>" LOC="J22";
+NET "flash_a<14>" LOC="K21";
+NET "flash_a<13>" LOC="K16";
+NET "flash_a<12>" LOC="J15";
+NET "flash_a<11>" LOC="G22";
+NET "flash_a<10>" LOC="H22";
+NET "flash_a<9>" LOC="L14";
+NET "flash_a<8>" LOC="K14";
+NET "flash_a<7>" LOC="K23";
+NET "flash_a<6>" LOC="K22";
+NET "flash_a<5>" LOC="J12";
+NET "flash_a<4>" LOC="H12";
+NET "flash_a<3>" LOC="G23";
+NET "flash_a<2>" LOC="H23";
+NET "flash_a<1>" LOC="K13";
+NET "flash_a<0>" LOC="K12";
+
+NET "flash_d<15>" LOC="AG22";
+NET "flash_d<14>" LOC="AH22";
+NET "flash_d<13>" LOC="AH12";
+NET "flash_d<12>" LOC="AG13";
+NET "flash_d<11>" LOC="AH20";
+NET "flash_d<10>" LOC="AH19";
+NET "flash_d<9>"  LOC="AH14";
+NET "flash_d<8>"  LOC="AH13";
+NET "flash_d<7>"  LOC="AF15";
+NET "flash_d<6>"  LOC="AE16";
+NET "flash_d<5>"  LOC="AE21";
+NET "flash_d<4>"  LOC="AD20";
+NET "flash_d<3>"  LOC="AF16";
+NET "flash_d<2>"  LOC="AE17";
+NET "flash_d<1>"  LOC="AE19";
+NET "flash_d<0>"  LOC="AD19";
+
+NET "flash_adv_n" LOC="F13";
+NET "flash_ce_n"  LOC="AE14";
+NET "flash_clk"   LOC="N9";
+NET "flash_oe_n"  LOC="AF14";
+NET "flash_we_n"  LOC="AF20";
+NET "flash_wait"  LOC="G13";
+

@@ -1,0 +1,8 @@
+verilog work "../audio_top.v"
+verilog work "AC97.v"
+verilog work "chipscope_icon.v"
+verilog work "chipscope_ila.v"
+verilog work "../rotary_controller/rotary_controller.v"
+verilog work "../sound_functions/sound_functions.v"
+verilog work "../sound_registers.v"
+verilog work "../my_clock_divider.v"
