@@ -128,8 +128,8 @@
 `define MEM_HIGH_START 16'hff80
 `define MEM_OAM_END 16'hfe9f
 `define MEM_OAM_START 16'hfe00
-`define MEM_CART_END 16'hbfff
-`define MEM_CART_START 16'ha000
+`define MEM_CART_END 16'h7fff
+`define MEM_CART_START 16'h0000
 `define MEM_WRAM_END 16'hdfff
 `define MEM_WRAM_START 16'hc000
 `define MEM_VRAM_END 16'h9fff

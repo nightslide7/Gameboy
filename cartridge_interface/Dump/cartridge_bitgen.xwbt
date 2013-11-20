@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/Gameboy/cartridge_controller/Dump/cartridge.ncd
+OUTFILE=/Gameboy/cartridge_controller/Dump/cartridge.bit
+FAMILY=Virtex5
+PART=xc5vlx110t-1ff1136
+WORKINGDIR=/Gameboy/cartridge_controller/Dump
+LICENSE=ISE
+USER_INFO=174679548_176449548_210550170_728

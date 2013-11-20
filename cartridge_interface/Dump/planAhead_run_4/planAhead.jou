@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# PlanAhead v14.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+# Start of session at: Sat Oct 12 14:26:24 2013
+# Process ID: 18149
+# Log file: /Gameboy/cartridge_controller/Dump/planAhead_run_4/planAhead.log
+# Journal file: /Gameboy/cartridge_controller/Dump/planAhead_run_4/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /Gameboy/cartridge_controller/Dump/pa.fromNetlist.tcl
+startgroup
+set_property package_pin AC24 [get_ports {switches[7]}]
+endgroup
+startgroup
+set_property package_pin AC25 [get_ports {switches[6]}]
+endgroup
+startgroup
+set_property package_pin AE26 [get_ports {switches[5]}]
+endgroup
+startgroup
+set_property package_pin AE27 [get_ports {switches[4]}]
+endgroup
+startgroup
+set_property package_pin AF26 [get_ports {switches[3]}]
+endgroup
+startgroup
+set_property package_pin AF25 [get_ports {switches[2]}]
+endgroup
+startgroup
+set_property package_pin AG27 [get_ports {switches[1]}]
+endgroup
+startgroup
+set_property package_pin U25 [get_ports {switches[0]}]
+endgroup
+save_design

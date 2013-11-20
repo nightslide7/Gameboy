@@ -2,6 +2,7 @@ module rotary_controller(
 		         input            clk,
                          input            rotary_inc_a,
                          input            rotary_inc_b,
+			 input            reset,
 		         output reg [3:0] level = 4'hE
                    );
 
@@ -10,10 +11,16 @@ module rotary_controller(
    reg 				      inc;
    reg 				      dec;
    
-   always@(posedge clk) begin
-      state <= next_state;
-      if (inc && (level != 4'hf)) level <= level + 1;
-      else if (dec && (level != 0)) level <= level - 1;
+   always@(posedge clk or posedge reset) begin
+      if (reset) begin
+	 level <= 4'hE;
+	 state <= 4'd0;
+      end
+      else begin
+	 state <= next_state;
+	 if (inc && (level != 4'hf)) level <= level + 1;
+	 else if (dec && (level != 0)) level <= level - 1;
+      end
    end
 
    always@( * ) begin

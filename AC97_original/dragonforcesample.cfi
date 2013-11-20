@@ -1,0 +1,10 @@
+# PROMGEN: Xilinx Prom Generator P.40xd
+# Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+SOFTWARE_VERSION P.40xd
+DATE             9/22/2013 - 17:19
+SOURCE          dragonforcesample.mcs
+DEVICE          1024K
+DATA_WIDTH      16
+FILL_DATA       0xFF
+START_ADDRESS   0x00000000 END_ADDRESS 0x000D6C63 DIRECTION_UP   "dragonforcesample.hex"
