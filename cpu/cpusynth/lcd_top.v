@@ -1,6 +1,5 @@
 // The Flash memory stores bytes from the hex -> mcs file as follows:
 // Little Endian
-// Intellllll!!!!
 // Notice that the Flash clock should be 1 for asynchronous read mode, which is
 // the default mode.
 
@@ -324,14 +323,6 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .clock(clock),
                 .reset(reset));
 
-`define MMIO_IF 16'hff0f
-`define MMIO_IE 16'hffff
-`define MMIO_DMA 16'hff46
-`define MMIO_DIV 16'hff04
-`define MMIO_TIMA 16'hff05
-`define MMIO_TMA 16'hff06
-`define MMIO_TAC 16'hff07
-   
    assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
                            (addr_ext == `MMIO_TMA) |
                            (addr_ext == `MMIO_TIMA) |
@@ -392,7 +383,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
    
-   breakpoints #(.reset_addr(16'h0007))
+   breakpoints #(.reset_addr(16'hffff))
    bpmod(.bp_addr(bp_addr[15:0]),
          .bp_addr_disp(bp_addr_disp[7:0]),
          // Inputs
@@ -402,10 +393,23 @@ module lcd_top(CLK_33MHZ_FPGA,
          .reset(reset),
          .clock(cpu_clock));
      
-   wire        addr_in_flash;
+   wire        addr_in_bootstrap_reg;
+   addr_in_bootstrap_reg = addr_ext == `MMIO_BOOTSTRAP;
+   register #(8) bootstrap_reg(.in(data_ext),
+                               .out(bootstrap_reg_data),
+                               .load(addr_in_bootstrap_reg & mem_we),
+                               .reset(reset),
+                               .clock(clock));
    
-   assign addr_in_flash = addr_ext <= 16'h140;
+   wire        addr_in_flash;
+   assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext <= 16'h103;
 
+   wire        addr_in_cart;
+   assign addr_in_cart = (bootstrap_reg_data[0]) ?
+                         (`MEM_CART_START <= addr_ext) && 
+                         (addr_ext <= `MEM_CART_END) :
+                         1'b0;
+   
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
    wire [7:0]  video_reg_data_out;
@@ -507,17 +511,6 @@ module lcd_top(CLK_33MHZ_FPGA,
 		  );
 
 
-`define MEM_HIGH_END 16'hfffe
-`define MEM_HIGH_START 16'hff80
-`define MEM_OAM_END 16'hfe9f
-`define MEM_OAM_START 16'hfe00
-`define MEM_CART_END 16'hbfff
-`define MEM_CART_START 16'ha000
-`define MEM_WRAM_END 16'hdfff
-`define MEM_WRAM_START 16'hc000
-`define MEM_VRAM_END 16'h9fff
-`define MEM_VRAM_START 16'h8000
-
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
 
@@ -548,7 +541,7 @@ module lcd_top(CLK_33MHZ_FPGA,
              .addra(wram_addr),
              .dina(wram_data_in),
              .douta(wram_data_out));
-   
+
 /*   tristate #(8) gating_ff44(.out(data_ext),
 			     .in(FF44_data),
 			     .en(FF44_read&~mem_we));*/
@@ -577,7 +570,10 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_video_oam(.out(data_ext),
 				  .in(do_video),//video_oam_data_out),
 				  .en(video_oam_w_enable&~mem_we));
-
+   tristate #(8) gating_boostrap_reg(.out(data_ext),
+                                     .in(bootstrap_reg_data),
+                                     .en(addr_in_bootstrap_reg & ~mem_we));
+   
 endmodule
 // Local Variables:
 // verilog-library-directories:("." "../../fpgaboy_files/")

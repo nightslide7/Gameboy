@@ -111,6 +111,32 @@
 `define MB_RES 3'h4
 
 /**
+ * MMIO addresses
+ */
+`define MMIO_IF 16'hff0f
+`define MMIO_IE 16'hffff
+`define MMIO_DMA 16'hff46
+`define MMIO_DIV 16'hff04
+`define MMIO_TIMA 16'hff05
+`define MMIO_TMA 16'hff06
+`define MMIO_TAC 16'hff07
+`define MMIO_BOOTSTRAP 16'hff50
+
+/**
+ * Memory boundaries
+ */
+`define MEM_HIGH_END 16'hfffe
+`define MEM_HIGH_START 16'hff80
+`define MEM_OAM_END 16'hfe9f
+`define MEM_OAM_START 16'hfe00
+`define MEM_CART_END 16'hbfff
+`define MEM_CART_START 16'ha000
+`define MEM_WRAM_END 16'hdfff
+`define MEM_WRAM_START 16'hc000
+`define MEM_VRAM_END 16'h9fff
+`define MEM_VRAM_START 16'h8000
+  
+/**
  * Small chart of values
  * 0000  0  0
  * 0001  1  1
