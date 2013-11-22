@@ -53,4 +53,5 @@ VRAM.xco
 VRAM.xise
 VRAM_flist.txt
 VRAM_xmdf.tcl
+_xmsgs/pn_parser.xmsgs
 summary.log

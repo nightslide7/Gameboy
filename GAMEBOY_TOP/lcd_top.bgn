@@ -1,13 +1,13 @@
-Release 14.3 - Bitgen P.40xd (nt64)
+Release 14.3 - Bitgen P.40xd (lin64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 Loading device for application Rf_Device from file '5vlx110t.nph' in environment
-C:\Xilinx\14.3\ISE_DS\ISE\.
+/opt/Xilinx/14.3/ISE_DS/ISE/.
    "lcd_top" is an NCD, version 3.2, device xc5vlx110t, package ff1136, speed -1
 Opened constraints file lcd_top.pcf.
 
-Wed Nov 20 17:45:59 2013
+Thu Nov 21 21:50:05 2013
 
-C:\Xilinx\14.3\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:2 -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g InitPin:Pullup -g CsPin:Pullup -g DinPin:Pullup -g BusyPin:Pullup -g RdWrPin:Pullup -g HswapenPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g ConfigFallback:Enable -g SelectMAPAbort:Enable -g BPI_page_size:1 -g OverTempPowerDown:Disable -g USR_ACCESS:None -g JTAG_SysMon:Enable -g DCIUpdateMode:AsRequired -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Match_cycle:Auto -g Security:None -g DonePipe:Yes -g DriveDone:No -g Encrypt:No lcd_top.ncd 
+/opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/bitgen -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g ConfigRate:2 -g CclkPin:PullUp -g M0Pin:PullUp -g M1Pin:PullUp -g M2Pin:PullUp -g ProgPin:PullUp -g DonePin:PullUp -g InitPin:Pullup -g CsPin:Pullup -g DinPin:Pullup -g BusyPin:Pullup -g RdWrPin:Pullup -g HswapenPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g ConfigFallback:Enable -g SelectMAPAbort:Enable -g BPI_page_size:1 -g OverTempPowerDown:Disable -g USR_ACCESS:None -g JTAG_SysMon:Enable -g DCIUpdateMode:AsRequired -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Match_cycle:Auto -g Security:None -g DonePipe:Yes -g DriveDone:No -g Encrypt:No lcd_top.ncd 
 
 INFO:Bitgen:40 - Replacing "Auto" with "NoWait" for option "Match_cycle".  Most
    commonly, bitgen has determined and will use a specific value instead of the
@@ -133,6 +133,8 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
    with the CLKFX and CLKFX180 outputs of the DCM_ADV comp
    gpu/setup/clk31p5_dcm_inst/DCM_31p5_INST, consult the device Data Sheet.
 DRC detected 0 errors and 0 warnings.
+INFO:Security:67 - XILINXD_LICENSE_FILE is set to '2101@xilinx-lic.ece.cmu.edu'
+in /root/.flexlmrc.
 INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
 INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
 '2101@xilinx-lic.ece.cmu.edu'.
@@ -144,7 +146,7 @@ WARNING:Security:44 - Since no license file was found,
        (xlcm or "Manage Xilinx Licenses")
        to assist in obtaining a license.
 WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
-10 days after which you will not qualify for Xilinx software updates or new
+9 days after which you will not qualify for Xilinx software updates or new
 releases.
 
 Creating bit map...
