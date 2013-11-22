@@ -354,9 +354,9 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [4:0]  IE_data, IF_in, IF_data, IE_in;
    wire        IE_load, IF_load;
    
-   assign IF_in[I_TIMA] = timer_interrupt;
-   assign IF_in[I_VBLANK] = int_req[0];
-   assign IF_in[I_LCDC] = int_req[1];
+   assign IF_in[I_TIMA] = timer_interrupt | IF_data[I_TIMA];
+   assign IF_in[I_VBLANK] = int_req[0] | IF_data[I_VBLANK];
+   assign IF_in[I_LCDC] = int_req[1] | IF_data[I_LCDC];
    assign IF_in[I_HILO] = 1'b0;
    assign IF_in[I_SERIAL] = 1'b0;
    
@@ -429,7 +429,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        addr_in_flash;
    assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext <= 16'h103;
 
-   /* The GPU */   
+   /* The GPU */
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
    wire [7:0]  video_reg_data_out;
@@ -532,11 +532,17 @@ module lcd_top(CLK_33MHZ_FPGA,
 
    /* The cartridge */
    wire        addr_in_cart;
-   assign addr_in_cart = (~bootstrap_reg_data[0]) ?
+  /* assign addr_in_cart = (~bootstrap_reg_data[0]) ?
                          (16'h104 <= addr_ext) && 
                          (addr_ext <= `MEM_CART_END) :
                          ((`MEM_CART_START <= addr_ext) && 
-                         (addr_ext <= `MEM_CART_END));
+                         (addr_ext <= `MEM_CART_END));*/
+   assign addr_in_cart = (bootstrap_reg_data[0]) ?
+                         ((`MEM_CART_START <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END)) :
+                         ((16'h104 <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END));
+   
    wire [7:0]  cart_data;
    wire [15:0] cart_address;
    wire        cart_w_enable_l, cart_r_enable_l, cart_reset_l, cart_cs_sram_l;
@@ -598,7 +604,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                          ~timer_reg_addr & ~addr_in_wram &
                          ~addr_in_dma & ~addr_in_tima & 
 			 ~video_reg_w_enable & ~video_vram_w_enable &
-			 ~video_oam_w_enable;
+			 ~video_oam_w_enable & ~addr_in_bootstrap_reg;
 
    wire        wram_we;
    wire [12:0] wram_addr;

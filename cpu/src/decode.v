@@ -224,7 +224,7 @@ module decode(/*AUTOARG*/
       end else if (debug_halt & ~step_inst) begin
          // Do nothing
          m_cycles = 4'd1;
-      end else if (interrupt & IME_data & cycle == 5'd0) begin
+      end else if (~debug_halt & interrupt & IME_data & cycle == 5'd0) begin
          // Go into interrupt mode, disable interrupts, SP --, TEMP1 = IntAddr
          m_cycles = 4'd5;
          
