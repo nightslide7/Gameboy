@@ -354,9 +354,9 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [4:0]  IE_data, IF_in, IF_data, IE_in;
    wire        IE_load, IF_load;
    
-   assign IF_in[I_TIMA] = timer_interrupt | IF_data[I_TIMA];
-   assign IF_in[I_VBLANK] = int_req[0] | IF_data[I_VBLANK];
-   assign IF_in[I_LCDC] = int_req[1] | IF_data[I_LCDC];
+   assign IF_in[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
+   assign IF_in[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
+   assign IF_in[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
    assign IF_in[I_HILO] = 1'b0;
    assign IF_in[I_SERIAL] = 1'b0;
    

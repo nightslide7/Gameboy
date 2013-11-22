@@ -57,7 +57,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:  18
 
-Total memory usage is 201964 kilobytes
+Total memory usage is 202732 kilobytes
 
 Writing NGD file "lcd_top.ngd" ...
 Total REAL time to NGDBUILD completion:  6 sec
