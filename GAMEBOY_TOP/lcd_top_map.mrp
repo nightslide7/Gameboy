@@ -1,4 +1,4 @@
-Release 14.3 Map P.40xd (lin64)
+Release 14.3 Map P.40xd (nt64)
 Xilinx Mapping Report File for Design 'lcd_top'
 
 Design Information
@@ -9,37 +9,37 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Wed Nov 20 13:58:45 2013
+Mapped Date    : Thu Nov 21 21:44:08 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                 2,650 out of  69,120    3%
-    Number used as Flip Flops:               2,650
-  Number of Slice LUTs:                      7,237 out of  69,120   10%
-    Number used as logic:                    5,147 out of  69,120    7%
-      Number using O6 output only:           4,771
-      Number using O5 output only:             268
-      Number using O5 and O6:                  108
+  Number of Slice Registers:                 2,662 out of  69,120    3%
+    Number used as Flip Flops:               2,662
+  Number of Slice LUTs:                      6,974 out of  69,120   10%
+    Number used as logic:                    4,889 out of  69,120    7%
+      Number using O6 output only:           4,193
+      Number using O5 output only:             263
+      Number using O5 and O6:                  433
     Number used as Memory:                   2,048 out of  17,920   11%
       Number used as Single Port RAM:        2,048
         Number using O6 output only:         2,048
-    Number used as exclusive route-thru:        42
-  Number of route-thrus:                       314
-    Number using O6 output only:               309
-    Number using O5 output only:                 5
+    Number used as exclusive route-thru:        37
+  Number of route-thrus:                       306
+    Number using O6 output only:               300
+    Number using O5 output only:                 6
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 2,909 out of  17,280   16%
-  Number of LUT Flip Flop pairs used:        8,285
-    Number with an unused Flip Flop:         5,635 out of   8,285   68%
-    Number with an unused LUT:               1,048 out of   8,285   12%
-    Number of fully used LUT-FF pairs:       1,602 out of   8,285   19%
-    Number of unique control sets:             543
+  Number of occupied Slices:                 2,736 out of  17,280   15%
+  Number of LUT Flip Flop pairs used:        8,103
+    Number with an unused Flip Flop:         5,441 out of   8,103   67%
+    Number with an unused LUT:               1,129 out of   8,103   13%
+    Number of fully used LUT-FF pairs:       1,533 out of   8,103   18%
+    Number of unique control sets:             546
     Number of slice register sites lost
-      to control set restrictions:             198 out of  69,120    1%
+      to control set restrictions:             202 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -50,8 +50,8 @@ Slice Logic Distribution:
   over-mapped for a non-BRAM resource or if placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                       110 out of     640   17%
-    Number of LOCed IOBs:                      108 out of     110   98%
+  Number of bonded IOBs:                       140 out of     640   21%
+    Number of LOCed IOBs:                      139 out of     140   99%
     IOB Flip Flops:                             14
 
 Specific Feature Utilization:
@@ -68,11 +68,11 @@ Specific Feature Utilization:
   Number of DCM_ADVs:                            2 out of      12   16%
   Number of DSP48Es:                             1 out of      64    1%
 
-Average Fanout of Non-Clock Nets:                6.39
+Average Fanout of Non-Clock Nets:                6.13
 
-Peak Memory Usage:  1127 MB
-Total REAL time to MAP completion:  37 secs 
-Total CPU time to MAP completion:   37 secs 
+Peak Memory Usage:  697 MB
+Total REAL time to MAP completion:  40 secs 
+Total CPU time to MAP completion:   40 secs 
 
 Table of Contents
 -----------------
@@ -99,13 +99,11 @@ WARNING:Security:43 - No license file was found in the standard Xilinx license
 directory.
 WARNING:Security:44 - Since no license file was found,
 WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
-10 days after which you will not qualify for Xilinx software updates or new
+9 days after which you will not qualify for Xilinx software updates or new
 releases.
 
 Section 3 - Informational
 -------------------------
-INFO:Security:67 - XILINXD_LICENSE_FILE is set to '2101@xilinx-lic.ece.cmu.edu'
-in /root/.flexlmrc.
 INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
 INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
 '2101@xilinx-lic.ece.cmu.edu'.
@@ -129,8 +127,8 @@ INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
    1.050 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
-INFO:Place:834 - Only a subset of IOs are locked. Out of 110 IOs, 108 are locked
-   and 2 are not locked. If you would like to print the names of these IOs,
+INFO:Place:834 - Only a subset of IOs are locked. Out of 140 IOs, 139 are locked
+   and 1 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 INFO:Pack:1650 - Map created a placed design.
 INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of
@@ -245,6 +243,36 @@ Section 6 - IOB Properties
 | GPIO_SW_N                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | GPIO_SW_S                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | GPIO_SW_W                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_2                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_6                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_8                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_10                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_12                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_14                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_16                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_18                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_20                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_22                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_24                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_26                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_28                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_30                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_32                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_34                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_36                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_38                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_40                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_42                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_44                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_46                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_48                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_50                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_52                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_54                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_56                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_58                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_60                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_64                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | LCD_FPGA_DB4                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | LCD_FPGA_DB5                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | LCD_FPGA_DB6                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |

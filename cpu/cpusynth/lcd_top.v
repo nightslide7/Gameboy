@@ -92,7 +92,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire       nextString;
    
    assign reset = GPIO_SW_C;
-   assign GPIO_LED_C = reset;
+//   assign GPIO_LED_C = reset;
    //assign resetFSM = GPIO_SW_S;
    //assign clearAll = GPIO_SW_E;
    //assign nextString = GPIO_SW_W;
@@ -112,10 +112,10 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign flash_we_n = 1'h1;
 
    output wire GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, GPIO_LED_3;
-   output wire 	  GPIO_LED_2, GPIO_LED_1, GPIO_LED_0;
+   output wire GPIO_LED_2, GPIO_LED_1, GPIO_LED_0;
 
-   input wire 	  GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5;
-   input wire 	  GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1;
+   input wire GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5;
+   input wire GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1;
 
 /*   wire       bram_we;
    wire [15:0] bram_addr;
@@ -128,7 +128,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                .dina(bram_data_in),
                .douta(bram_data_out));*/
    wire [7:0] 	  bp_addr_disp, bp_addr_part_in;
-   wire 	  bp_hi_lo_sel_in, bp_hi_lo_disp_in;
+   wire 	  bp_hi_lo_sel_in, bp_hi_lo_disp_in, hi_lo_disp;
    wire [15:0] 	  bp_addr;
    wire 	  bp_step, bp_continue;
    
@@ -140,6 +140,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign bp_addr_part_in = {GPIO_DIP_SW1, GPIO_DIP_SW2, GPIO_DIP_SW3,
                              GPIO_DIP_SW4, GPIO_DIP_SW5, GPIO_DIP_SW6,
                              GPIO_DIP_SW7, GPIO_DIP_SW8};
+   assign GPIO_LED_C = hi_lo_disp;
+
    
 `define cdisp0 3'd0
 `define cdisp1 3'd1
@@ -153,7 +155,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 //   wire [95:0] print_data;
 //   wire [39:0] print_data;
    wire [63:0] print_data;
-   assign print_data = {A_data, instruction, regs_data[79:48], regs_data[15:0]};
+
 //   wire [95:0] print_data;
 //   assign print_data = {A_data, instruction, regs_data};
 
@@ -235,32 +237,32 @@ module lcd_top(CLK_33MHZ_FPGA,
 
    assign button_down = bp_hi_lo_disp_in;
 
-   button #(.delay_cycles(6000000)) 
+   button #(.delay_cycles(2400000)) 
    addr_disp_button(.pressed(bp_hi_lo_disp_in),
                     .pressed_disp(GPIO_LED_E),
                     .button_input(GPIO_SW_E),
-                    .clock(clock),
+                    .clock(cpu_clock),
                     .reset(reset));
 
-   button #(.delay_cycles(6000000)) 
+   button #(.delay_cycles(2400000)) 
    addr_sel_button(.pressed(bp_hi_lo_sel_in),
                    .pressed_disp(GPIO_LED_W),
                    .button_input(GPIO_SW_W),
-                   .clock(clock),
+                   .clock(cpu_clock),
                    .reset(reset));
    
-   button #(.delay_cycles(6000000)) 
+   button #(.delay_cycles(2400000)) 
    step_button(.pressed(bp_step),
                .pressed_disp(GPIO_LED_N),
                .button_input(GPIO_SW_N),
-               .clock(clock),
+               .clock(cpu_clock),
                .reset(reset));
 
-   button #(.delay_cycles(6000000)) 
+   button #(.delay_cycles(2400000)) 
    continue_button(.pressed(bp_continue),
                    .pressed_disp(GPIO_LED_S),
                    .button_input(GPIO_SW_S),
-                   .clock(clock),
+                   .clock(cpu_clock),
                    .reset(reset));
 
 /*   button #(.delay_cycles(6000000)) inc_button(.pressed(button_down),
@@ -352,13 +354,16 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [4:0]  IE_data, IF_in, IF_data, IE_in;
    wire        IE_load, IF_load;
    
-   assign IF_in[I_TIMA] = timer_interrupt;
-   assign IF_in[I_VBLANK] = int_req[0];
-   assign IF_in[I_LCDC] = int_req[1];
+   assign IF_in[I_TIMA] = timer_interrupt | IF_data[I_TIMA];
+   assign IF_in[I_VBLANK] = int_req[0] | IF_data[I_VBLANK];
+   assign IF_in[I_LCDC] = int_req[1] | IF_data[I_LCDC];
    assign IF_in[I_HILO] = 1'b0;
    assign IF_in[I_SERIAL] = 1'b0;
    
-   assign IF_load = timer_interrupt;
+   assign IF_load = timer_interrupt | int_req[0] | int_req[1];
+
+   assign int_ack[1] = IF_data[I_LCDC];
+   assign int_ack[0] = IF_data[I_VBLANK];
    
    timers tima_module(// Outputs
                       .timer_interrupt  (timer_interrupt),
@@ -408,27 +413,23 @@ module lcd_top(CLK_33MHZ_FPGA,
          .bp_addr_part_in(bp_addr_part_in[7:0]),
          .bp_hi_lo_sel_in(bp_hi_lo_sel_in),
          .bp_hi_lo_disp_in(bp_hi_lo_disp_in),
-         .reset(reset),
+         .hi_lo_disp(hi_lo_disp),
+         .reset(1'b0),
          .clock(cpu_clock));
-     
+
+   wire [7:0]  bootstrap_reg_data;
    wire        addr_in_bootstrap_reg;
-   addr_in_bootstrap_reg = addr_ext == `MMIO_BOOTSTRAP;
-   register #(8) bootstrap_reg(.in(data_ext),
-                               .out(bootstrap_reg_data),
+   assign addr_in_bootstrap_reg = addr_ext == `MMIO_BOOTSTRAP;
+   register #(8) bootstrap_reg(.d(data_ext),
+                               .q(bootstrap_reg_data),
                                .load(addr_in_bootstrap_reg & mem_we),
                                .reset(reset),
-                               .clock(clock));
+                               .clock(cpu_clock));
    
    wire        addr_in_flash;
    assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext <= 16'h103;
 
    /* The GPU */
-   wire        addr_in_cart;
-   assign addr_in_cart = (bootstrap_reg_data[0]) ?
-                         (`MEM_CART_START <= addr_ext) && 
-                         (addr_ext <= `MEM_CART_END) :
-                         1'b0;
-   
    wire        video_reg_w_enable;
    wire [7:0]  video_reg_data_in;
    wire [7:0]  video_reg_data_out;
@@ -464,8 +465,6 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign mem_enable_video = video_reg_w_enable || video_vram_w_enable ||
 			     video_oam_w_enable;
 
-   assign int_ack = 2'b0;
-   
    gpu_top gpu (// Outputs
 		.do_video		(do_video[7:0] ),
 		.mode_video		(mode_video[1:0]),
@@ -532,6 +531,18 @@ module lcd_top(CLK_33MHZ_FPGA,
 		  );
 
    /* The cartridge */
+   wire        addr_in_cart;
+  /* assign addr_in_cart = (~bootstrap_reg_data[0]) ?
+                         (16'h104 <= addr_ext) && 
+                         (addr_ext <= `MEM_CART_END) :
+                         ((`MEM_CART_START <= addr_ext) && 
+                         (addr_ext <= `MEM_CART_END));*/
+   assign addr_in_cart = (bootstrap_reg_data[0]) ?
+                         ((`MEM_CART_START <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END)) :
+                         ((16'h104 <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END));
+   
    wire [7:0]  cart_data;
    wire [15:0] cart_address;
    wire        cart_w_enable_l, cart_r_enable_l, cart_reset_l, cart_cs_sram_l;
@@ -576,7 +587,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_56		(HDR1_56),
 		   .HDR1_58		(HDR1_58),
 		   .cart_address	(cart_address[15:0]),
-		   .clock		(clock),
+		   .clock		(cpu_clock),
 		   .cart_w_enable_l	(cart_w_enable_l),
 		   .cart_r_enable_l	(cart_r_enable_l),
 		   .cart_reset_l	(cart_reset_l),
@@ -593,7 +604,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                          ~timer_reg_addr & ~addr_in_wram &
                          ~addr_in_dma & ~addr_in_tima & 
 			 ~video_reg_w_enable & ~video_vram_w_enable &
-			 ~video_oam_w_enable;
+			 ~video_oam_w_enable & ~addr_in_bootstrap_reg;
 
    wire        wram_we;
    wire [12:0] wram_addr;
@@ -618,7 +629,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 			     .en(FF44_read&~mem_we));*/
    tristate #(8) gating_flash(.out(data_ext),
 			      .in(flash_d),
-			      .en(addr_in_flash&~mem_we));
+			      .en(addr_in_flash & ~mem_we));
 /*   tristate #(8) gating_bram(.out(data_ext),
 			     .in(bram_data_out),
 			     .en(~video_reg_w_enable&~video_vram_w_enable&~video_oam_w_enable&~addr_in_flash&~reg_w_enable&~mem_we));*/
@@ -644,10 +655,20 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_boostrap_reg(.out(data_ext),
                                      .in(bootstrap_reg_data),
                                      .en(addr_in_bootstrap_reg & ~mem_we));
-   tristate #(8) gating_boostrap_reg(.out(data_ext),
-                                     .in(cart_data),
-                                     .en(addr_in_cart & ~mem_we));
+   tristate #(8) gating_cart(.out(data_ext),
+                             .in(cart_data),
+                             .en(addr_in_cart & ~mem_we));
 
+
+   // Want to see: IF[3:0], IE[3:0], addr_in_bootstrap, addr_in_cart,
+   // bootstrap_reg_data
+//   assign print_data = {A_data, instruction, regs_data[79:48], regs_data[15:0]};
+   assign print_data = {A_data,
+                        instruction,
+                        IF_data[3:0], IE_data[3:0],
+                        bootstrap_reg_data[7:0], 
+                        6'b0, addr_in_bootstrap_reg, addr_in_cart,
+                        regs_data[79:72], regs_data[15:0]};
    
 endmodule
 // Local Variables:

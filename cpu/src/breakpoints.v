@@ -1,6 +1,6 @@
 module breakpoints(/*AUTOARG*/
    // Outputs
-   bp_addr, bp_addr_disp,
+   bp_addr, bp_addr_disp, hi_lo_disp,
    // Inputs
    bp_addr_part_in, bp_hi_lo_sel_in, bp_hi_lo_disp_in, reset, clock
    );
@@ -9,13 +9,12 @@ module breakpoints(/*AUTOARG*/
    
    output reg [15:0] bp_addr;
    output reg [7:0]  bp_addr_disp;
+   output reg        hi_lo_disp;
    
    input [7:0]       bp_addr_part_in;
    input             bp_hi_lo_sel_in, bp_hi_lo_disp_in;
    input             reset, clock;
 
-   reg               hi_lo_disp;
-   
    always @(posedge clock or posedge reset) begin
       if (reset) begin
          bp_addr <= reset_addr;
