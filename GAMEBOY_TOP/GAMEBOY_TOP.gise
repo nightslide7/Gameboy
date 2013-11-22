@@ -109,15 +109,12 @@
     <transform xil_pn:end_ts="1384978413" xil_pn:in_ck="5552731434052028797" xil_pn:name="TRANEXT_xstsynthesize_virtex5" xil_pn:prop_ck="-8520347394040804913" xil_pn:start_ts="1384978406">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="lcd_top.lso"/>
       <outfile xil_pn:name="lcd_top.ngc"/>
       <outfile xil_pn:name="lcd_top.ngr"/>
       <outfile xil_pn:name="lcd_top.prj"/>
-      <outfile xil_pn:name="lcd_top.syr"/>
-      <outfile xil_pn:name="lcd_top.xst"/>
-      <outfile xil_pn:name="lcd_top_xst.xrpt"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
     <transform xil_pn:end_ts="1384973917" xil_pn:in_ck="4416554822933299080" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="1262981273420214151" xil_pn:start_ts="1384973917">
@@ -129,6 +126,7 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="lcd_top.bld"/>
@@ -174,6 +172,7 @@
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="lcd_top.bgn"/>
       <outfile xil_pn:name="lcd_top.bit"/>
@@ -181,7 +180,6 @@
       <outfile xil_pn:name="lcd_top.ut"/>
       <outfile xil_pn:name="usage_statistics_webtalk.html"/>
       <outfile xil_pn:name="webtalk.log"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
     <transform xil_pn:end_ts="1384974005" xil_pn:in_ck="4243404421696925136" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416183" xil_pn:start_ts="1384973996">
       <status xil_pn:value="SuccessfullyRun"/>
