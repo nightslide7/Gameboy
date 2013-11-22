@@ -64,3 +64,5 @@ GAMEBOY_TOP/webtalk_pn.xml
 GAMEBOY_TOP/xst/work/*
 GAMEBOY_TOP/iseconfig/GAMEBOY_TOP.projectmgr
 GAMEBOY_TOP/iseconfig/lcd_top.xreport
+GAMEBOY_TOP/_impact.cmd
+GAMEBOY_TOP/_impact.log

@@ -1,7 +1,11 @@
 #Release 14.3 - par P.40xd (lin64)
 #Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
+<<<<<<< HEAD
 #Thu Nov 21 21:49:46 2013
+=======
+#Thu Nov 21 21:45:25 2013
+>>>>>>> 6d02509a57121237a37f78543d8c67990572f55e
 
 #
 ## NOTE: This file is designed to be imported into a spreadsheet program

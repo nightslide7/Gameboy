@@ -1,16 +1,33 @@
+/**
+ * Gameboy NES controller
+ * Sets register FF00 with button statuses as per Gameboy spec
+ *
+ */
+
 module NES (input clk_in, //Audio clk (12.288MHz)
-	    input data,
+	    input cpu_clk,
+	    input controller_data,
+	    input [7:0] FF00_data_in,
+	    output reg [7:0] FF00_data_out,
 	    output reg clk_out=0,
 	    output reg strobe=0,
-	    output reg ctrl_a,//all controller signals asserted LOW
-	    output reg ctrl_b,
-	    output reg ctrl_sel,
-	    output reg ctrl_start,
-	    output reg ctrl_up,
-	    output reg ctrl_dn,
-	    output reg ctrl_l,
-	    output reg ctrl_r
+	    output reg joypad_interrupt
 	    );
+
+   reg 	       ctrl_a;//all controller signals asserted low
+   reg 	       ctrl_b;
+   reg 	       ctrl_sel;
+   reg 	       ctrl_start;
+   reg 	       ctrl_up;
+   reg 	       ctrl_dn;
+   reg 	       ctrl_l;
+   reg 	       ctrl_r;
+
+   wire        cpu_a_b_sel_start_b;
+   wire        cpu_r_l_up_dn_b;
+
+   assign cpu_a_b_sel_start_b = FF00_data_in[5];
+   assign cpu_r_l_up_dn_b = FF00_data_in[4];
 
    parameter A = 5'd0, WAIT_A = 5'd1, B = 5'd2, WAIT_B = 5'd3, SEL = 5'd4,
 	       WAIT_SEL = 5'd5, START = 5'd6, WAIT_START = 5'd7, UP = 5'd8,
@@ -39,8 +56,37 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	 state <= n_state;
 	 clock_counter <= clock_counter + 18'd1;
       end
+      // Input and output to CPU
+      if (~cpu_a_b_sel_start_b) begin
+	 FF00_data_out[3:0] <= {ctrl_start, ctrl_sel, ctrl_b, ctrl_a};
+      end
+      else if (~cpu_r_l_up_dn_b) begin
+	 FF00_data_out[3:0] <= {ctrl_dn, ctrl_up, ctrl_l, ctrl_r};
+      end
    end // always @ (posedge clk_in)
 
+   always @(posedge cpu_clk) begin
+      if (~cpu_a_b_sel_start_b) begin
+	 if (FF00_data_out[3:0] != {ctrl_start, ctrl_sel, ctrl_b, ctrl_a}) begin
+	    joypad interrput <= 1;
+	 end
+ 	 else begin
+	    joypad interrput <= 0;
+	 end
+      end
+      else if (~cpu_r_l_up_dn_b) begin
+	 if (FF00_data_out[3:0] != {ctrl_dn, ctrl_up, ctrl_l, ctrl_r}) begin
+	    joypad_interrupt <= 1;
+	 end
+ 	 else begin
+	    joypad interrput <= 0;
+	 end	 
+      end
+      else begin
+	 joypad_interrupt <= 0;
+      end // else: !if(~cpu_r_l_up_dn_b)
+   end // always @ (posedge cpu_clk)
+      
    always @(posedge state_clk) begin
       case (state)
 	WAIT: begin
@@ -52,7 +98,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= A;
 	end
 	A: begin
-	   ctrl_a <= data;
+	   ctrl_a <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_A;
 	end
@@ -61,7 +107,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= B;
 	end
 	B: begin
-	   ctrl_b <= data;
+	   ctrl_b <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_B;
 	end
@@ -70,7 +116,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= SEL;
 	end
 	SEL: begin
-	   ctrl_sel <= data;
+	   ctrl_sel <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_SEL;
 	end
@@ -79,7 +125,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= START;
 	end
 	START: begin
-	   ctrl_start <= data;
+	   ctrl_start <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_START;
 	end
@@ -88,7 +134,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= UP;
 	end
 	UP: begin
-	   ctrl_up <= data;
+	   ctrl_up <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_UP;
 	end
@@ -97,7 +143,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= DN;
 	end
 	DN: begin
-	   ctrl_dn <= data;
+	   ctrl_dn <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_DN;
 	end
@@ -106,7 +152,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= LEFT;
 	end
 	LEFT: begin
-	   ctrl_l <= data;
+	   ctrl_l <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT_LEFT;
 	end
@@ -115,7 +161,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= RIGHT;
 	end
 	RIGHT: begin
-	   ctrl_r <= data;
+	   ctrl_r <= controller_data;
 	   clk_out <= ~clk_out;
 	   n_state <= WAIT;
 	end
