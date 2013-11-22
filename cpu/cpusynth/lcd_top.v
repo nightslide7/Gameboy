@@ -427,7 +427,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                                .clock(cpu_clock));
    
    wire        addr_in_flash;
-   assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext <= 16'h103;
+   assign addr_in_flash = (bootstrap_reg_data[0]) ? 1'b0 : addr_ext < 16'h103;
 
    /* The GPU */
    wire        video_reg_w_enable;
