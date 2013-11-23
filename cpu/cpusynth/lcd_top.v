@@ -635,7 +635,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign wram_addr = wram_addr_long[12:0]; // 8192 elts
 
    blockram8192
-     br_wram(.clka(cpu_clock),
+     br_wram(.clka(clock),//cpu_clock),
              .wea(wram_we),
              .addra(wram_addr),
              .dina(wram_data_in),
@@ -749,9 +749,23 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign TRIG7 = {IF_data[3:0], IE_data[3:0]};
    assign TRIG8 = {mem_re, mem_we};
    assign TRIG9 = cycle_count;
-   assign TRIG10 = 32'h0;
-   assign TRIG11 = 32'h0;
+   assign TRIG10 = {19'h0, wram_addr[12:0]};
+   assign TRIG11 = {24'h0, wram_data_out[7:0]};
 
+/*   assign wram_data_in = data_ext;
+   assign wram_we = addr_in_wram & mem_we;
+   assign wram_addr_long = (addr_in_echo) ? 
+                           addr_ext - `MEM_ECHO_START : 
+                           addr_ext - `MEM_WRAM_START;
+   assign wram_addr = wram_addr_long[12:0]; // 8192 elts
+
+   blockram8192
+     br_wram(.clka(cpu_clock),
+             .wea(wram_we),
+             .addra(wram_addr),
+             .dina(wram_data_in),
+             .douta(wram_data_out));*/
+   
    wire [35:0]   CONTROL0;
    
    chipscope_ila 
