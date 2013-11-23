@@ -18,7 +18,7 @@ module decode(/*AUTOARG*/
    IME_set, IME_reset, regfile_data_gate, A_data_gate, F_data_gate,
    alu_data_gate, regfile_addr_gate, interrupt_data_gate,
    alu_data1_in_sel, alu_data0_in_sel, addr_ff00_sel, alu_op,
-   alu_size, halt,
+   alu_size, halt, debug_halt,
    // Inputs
    bp_step, bp_continue, bp_pc, instruction, taken, interrupt,
    IME_data, clock, reset
@@ -62,6 +62,7 @@ module decode(/*AUTOARG*/
 
    // External
    output reg         halt;
+   output reg         debug_halt;        
    
    // Inputs ///////////////////////////////////////////////////////////////////
 
@@ -75,7 +76,7 @@ module decode(/*AUTOARG*/
    // Internal Signals /////////////////////////////////////////////////////////
 
    // Debugging
-   reg                debug_halt, next_debug_halt;
+   reg                /*debug_halt, */next_debug_halt;
    reg                step_inst, next_step_inst;
    reg                step_pressed, next_step_pressed;
    reg                continue_pressed, next_continue_pressed;

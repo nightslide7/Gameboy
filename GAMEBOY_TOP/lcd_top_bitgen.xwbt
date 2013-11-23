@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.ncd
-OUTFILE=/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit
+INFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP\lcd_top.ncd
+OUTFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP\lcd_top.bit
 FAMILY=Virtex5
 PART=xc5vlx110t-1ff1136
-WORKINGDIR=/Gameboy/Gameboy_git/GAMEBOY_TOP
+WORKINGDIR=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP
 LICENSE=ISE
 USER_INFO=174679548_176449548_210550170_728

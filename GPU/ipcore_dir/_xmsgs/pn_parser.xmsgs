@@ -8,7 +8,7 @@
 <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/VRAM.v&quot; into library work</arg>
 </msg>
 
 </messages>

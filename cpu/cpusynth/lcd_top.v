@@ -289,6 +289,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                            .lcd_writeDone       (writeDone));
 
    wire mem_we, mem_re;
+   wire cpu_mem_we, cpu_mem_re;
+   
    wire [15:0] addr_ext;
    wire [7:0]  data_ext;
    
@@ -337,12 +339,15 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .dma_mem_we(dma_mem_we),
                 .addr_ext(addr_ext),
                 .data_ext(data_ext),
-                .mem_we(mem_we),
-                .mem_re(mem_re),
+                .mem_we(cpu_mem_we),
+                .mem_re(cpu_mem_re),
                 .cpu_mem_disable(cpu_mem_disable),
-                .clock(clock),
+                .clock(cpu_clock),
                 .reset(reset));
 
+   assign mem_we = cpu_mem_we | dma_mem_we;
+   assign mem_re = cpu_mem_re | dma_mem_re;
+   
    assign timer_reg_addr = (addr_ext == `MMIO_DIV) |
                            (addr_ext == `MMIO_TMA) |
                            (addr_ext == `MMIO_TIMA) |
@@ -380,15 +385,20 @@ module lcd_top(CLK_33MHZ_FPGA,
    /* The CPU */
    assign IE_in = 5'b0;
    assign IE_load = 1'b0;
+
+   wire [7:0]  F_data;
+   wire        debug_halt;
    
-   cpu gb80_cpu(.mem_we(mem_we),
-                .mem_re(mem_re),
+   cpu gb80_cpu(.mem_we(cpu_mem_we),
+                .mem_re(cpu_mem_re),
                 .halt(halt),
+                .debug_halt(debug_halt),
                 .addr_ext(addr_ext),
                 .data_ext(data_ext),
                 .clock(cpu_clock),
                 .reset(reset),
                 .A_data(A_data),
+                .F_data(F_data),
                 .instruction(instruction),
                 .regs_data(regs_data),
                 .IF_data(IF_data),
@@ -596,6 +606,10 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
 
+   wire        addr_in_echo;
+   assign addr_in_echo = (`MEM_ECHO_START <= addr_ext) & 
+                         (addr_ext <= `MEM_ECHO_END);
+   
    assign addr_in_wram = (`MEM_WRAM_START <= addr_ext) & 
                          (addr_ext <= `MEM_WRAM_END);
    assign addr_in_dma = addr_ext == `MMIO_DMA;
@@ -604,7 +618,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                          ~timer_reg_addr & ~addr_in_wram &
                          ~addr_in_dma & ~addr_in_tima & 
 			 ~video_reg_w_enable & ~video_vram_w_enable &
-			 ~video_oam_w_enable & ~addr_in_bootstrap_reg;
+			 ~video_oam_w_enable & ~addr_in_bootstrap_reg & 
+                         ~addr_in_cart & ~addr_in_echo;
 
    wire        wram_we;
    wire [12:0] wram_addr;
@@ -614,11 +629,13 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [15:0] wram_addr_long;
    assign wram_data_in = data_ext;
    assign wram_we = addr_in_wram & mem_we;
-   assign wram_addr_long = addr_ext - `MEM_WRAM_START;
+   assign wram_addr_long = (addr_in_echo) ? 
+                           addr_ext - `MEM_ECHO_START : 
+                           addr_ext - `MEM_WRAM_START;
    assign wram_addr = wram_addr_long[12:0]; // 8192 elts
 
    blockram8192
-     br_wram(.clka(clock),
+     br_wram(.clka(cpu_clock),
              .wea(wram_we),
              .addra(wram_addr),
              .dina(wram_data_in),
@@ -635,7 +652,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 			     .en(~video_reg_w_enable&~video_vram_w_enable&~video_oam_w_enable&~addr_in_flash&~reg_w_enable&~mem_we));*/
    tristate #(8) gating_wram(.out(data_ext),
 			     .in(wram_data_out),
-			     .en(addr_in_wram & ~mem_we &
+			     .en((addr_in_wram | addr_in_echo) & ~mem_we &
 				 (mem_re | dma_mem_re)));
    tristate #(8) gating_junk(.out(data_ext),
 			     .in(8'h00),
@@ -659,6 +676,21 @@ module lcd_top(CLK_33MHZ_FPGA,
                              .in(cart_data),
                              .en(addr_in_cart & ~mem_we));
 
+   wire        flash_tri_en, wram_tri_en, junk_tri_en, sound_tri_en;
+   wire        video_tri_en, vram_tri_en, oam_tri_en, bootstrap_tri_en;
+   wire        cart_tri_en;
+   
+   assign flash_tri_en = addr_in_flash & ~mem_we;
+   assign wram_tri_en = (addr_in_wram | addr_in_echo) & ~mem_we &
+			(mem_re | dma_mem_re);
+   assign junk_tri_en = addr_in_junk & ~mem_we;
+   assign sound_tri_en = reg_w_enable&~mem_we;
+   assign video_tri_en = video_reg_w_enable&~mem_we;
+   assign vram_tri_en = video_vram_w_enable&~mem_we;
+   assign oam_tri_en = video_oam_w_enable&~mem_we;
+   assign bootstrap_tri_en = addr_in_bootstrap_reg & ~mem_we;
+   assign cart_tri_en = addr_in_cart & ~mem_we;
+
 
    // Want to see: IF[3:0], IE[3:0], addr_in_bootstrap, addr_in_cart,
    // bootstrap_reg_data
@@ -667,8 +699,79 @@ module lcd_top(CLK_33MHZ_FPGA,
                         instruction,
                         IF_data[3:0], IE_data[3:0],
                         bootstrap_reg_data[7:0], 
-                        6'b0, addr_in_bootstrap_reg, addr_in_cart,
-                        regs_data[79:72], regs_data[15:0]};
+                        bp_addr[15:0],
+                        regs_data[15:0]};
+
+   wire [31:0] cycle_count;
+   register #(32) cyc_reg(.q(cycle_count),
+                          .d(cycle_count + 32'd1),
+                          .load(~debug_halt),
+                          .reset(reset),
+                          .clock(cpu_clock));
+   
+   wire [35 : 0] CONTROL;
+   
+   wire [15 : 0] TRIG0;
+   wire [79 : 0] TRIG1;
+   wire [7 : 0]  TRIG2;
+   wire [15 : 0] TRIG3;
+   wire [7 : 0]  TRIG4;
+   wire [8 : 0]  TRIG5;
+   wire [7 : 0]  TRIG6;
+   wire [7 : 0]  TRIG7;
+   wire [1 : 0]  TRIG8;
+   wire [31 : 0] TRIG9;
+   wire [31 : 0] TRIG10;
+   wire [31 : 0] TRIG11;
+   
+   assign TRIG0 = regs_data[15:0];
+   assign TRIG1 = {A_data, F_data, regs_data[79:16]};
+   assign TRIG2 = instruction;
+   assign TRIG3 = addr_ext;
+   assign TRIG4 = data_ext;
+   assign TRIG5 = {flash_tri_en,
+                   wram_tri_en,
+                   junk_tri_en,
+                   sound_tri_en,
+                   video_tri_en,
+                   vram_tri_en,
+                   oam_tri_en,
+                   bootstrap_tri_en,
+                   cart_tri_en};
+   assign TRIG6 = {addr_in_wram,
+                   addr_in_junk,
+                   addr_in_dma, 
+                   addr_in_tima,
+                   addr_in_flash,
+                   addr_in_bootstrap_reg,
+                   addr_in_cart,
+                   addr_in_echo};
+   assign TRIG7 = {IF_data[3:0], IE_data[3:0]};
+   assign TRIG8 = {mem_re, mem_we};
+   assign TRIG9 = cycle_count;
+   assign TRIG10 = 32'h0;
+   assign TRIG11 = 32'h0;
+
+   wire [35:0]   CONTROL0;
+   
+   chipscope_ila 
+     cila(.CONTROL(CONTROL0),
+          .CLK(cpu_clock),
+          .TRIG0(TRIG0),
+          .TRIG1(TRIG1),
+          .TRIG2(TRIG2),
+          .TRIG3(TRIG3),
+          .TRIG4(TRIG4),
+          .TRIG5(TRIG5),
+          .TRIG6(TRIG6),
+          .TRIG7(TRIG7),
+          .TRIG8(TRIG8),
+          .TRIG9(TRIG9),
+          .TRIG10(TRIG10),
+          .TRIG11(TRIG11));
+
+   chipscope_icon
+     cicon(.CONTROL0(CONTROL0));
    
 endmodule
 // Local Variables:

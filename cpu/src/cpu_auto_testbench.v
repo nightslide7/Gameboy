@@ -10,7 +10,7 @@ module cpu_auto_testbench();
    wire [79:0] regs_data;
    wire        halt;
    wire        mem_we, mem_re;
-   wire [7:0]  A_data, instruction;
+   wire [7:0]  A_data, instruction, F_data;
    wire [4:0]  IF_data, IE_data;
 
    wire        dma_mem_re, dma_mem_we;
@@ -50,6 +50,7 @@ module cpu_auto_testbench();
    
    cpu dut(/*AUTOINST*/
            // Outputs
+           .F_data                      (F_data[7:0]),
            .A_data                      (A_data[7:0]),
            .instruction                 (instruction[7:0]),
            .IF_data                     (IF_data[4:0]),
@@ -111,15 +112,15 @@ module cpu_auto_testbench();
    timers
      tima_module(/*AUTOINST*/
                  // Outputs
-                 .timer_interrupt  (timer_interrupt),
+                 .timer_interrupt       (timer_interrupt),
                  // Inouts
-                 .addr_ext         (addr_ext[15:0]),
-                 .data_ext         (data_ext[7:0]),
+                 .addr_ext              (addr_ext[15:0]),
+                 .data_ext              (data_ext[7:0]),
                  // Inputs
-                 .mem_re           (mem_re),
-                 .mem_we           (mem_we),
-                 .clock            (clock),
-                 .reset            (reset));
+                 .mem_re                (mem_re),
+                 .mem_we                (mem_we),
+                 .clock                 (clock),
+                 .reset                 (reset));
 
 /*   breakpoints #(16'hffff)
    bp_module(/AUTOINST/

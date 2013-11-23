@@ -15,8 +15,8 @@
  */
 module cpu(/*AUTOARG*/
    // Outputs
-   A_data, instruction, IF_data, IE_data, regs_data, mem_we, mem_re,
-   halt,
+   F_data, A_data, instruction, IF_data, IE_data, regs_data, mem_we,
+   mem_re, halt, debug_halt,
    // Inouts
    addr_ext, data_ext,
    // Inputs
@@ -26,6 +26,7 @@ module cpu(/*AUTOARG*/
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
 
+   output wire [7:0] F_data;
    output wire [7:0] A_data, instruction;
    output wire [4:0] IF_data, IE_data;
 
@@ -33,6 +34,7 @@ module cpu(/*AUTOARG*/
 
    output wire  mem_we, mem_re;
    output wire  halt;
+   output wire  debug_halt;
 
    input [4:0]  IF_in, IE_in;
    input        IF_load, IE_load;
@@ -100,7 +102,7 @@ module cpu(/*AUTOARG*/
                             .clock(clock));
    
    // Registers
-   wire [7:0]   F_data, temp1_data, temp0_data;
+   wire [7:0]   /*F_data, */temp1_data, temp0_data;
    wire [4:0]   IF_in_l, IE_in_l;
    wire         IME_data;
    wire         IE_load_l;
@@ -226,7 +228,7 @@ module cpu(/*AUTOARG*/
       case (alu_data0_in_sel)
          `ALU_0_SEL_DATA: alu_data0_in = data_bus;
          `ALU_0_SEL_TEMP0: alu_data0_in = temp0_data;
-         `ALU_0_SEL_RSTP: alu_data0_in = {2'd0, data_bus[5:3], 3'd0};
+         `ALU_0_SEL_RSTP: alu_data0_in = {2'd0, instruction[5:3], 3'd0};
          `ALU_0_SEL_FF: alu_data0_in = (temp0_data[7]) ? 8'hff : 8'h00;
       endcase
    end
@@ -426,6 +428,7 @@ module cpu(/*AUTOARG*/
                       .alu_op           (alu_op[4:0]),
                       .alu_size         (alu_size),
                       .halt             (halt),
+                      .debug_halt       (debug_halt),
                       // Inputs
                       .bp_step          (bp_step),
                       .bp_continue      (bp_continue),
