@@ -1,5 +1,5 @@
 #ChipScope Pro Analyzer Project File, Version 3.0
-#Sat Nov 23 14:52:08 EST 2013
+#Sat Nov 23 21:49:49 EST 2013
 deviceChain.deviceName0=XCF32P
 deviceChain.deviceName1=XCF32P
 deviceChain.deviceName2=XC9500XL
@@ -47,7 +47,7 @@ unit.4.0.1.HEIGHT1=0.5207317
 unit.4.0.1.WIDTH1=0.9869432
 unit.4.0.1.X1=0.0
 unit.4.0.1.Y1=0.4390244
-unit.4.0.MFBitsA0=0000000010000000
+unit.4.0.MFBitsA0=0001110000000000
 unit.4.0.MFBitsA1=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 unit.4.0.MFBitsA10=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 unit.4.0.MFBitsA11=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -128,7 +128,7 @@ unit.4.0.SequencerOn=0
 unit.4.0.TCActive=0
 unit.4.0.TCAdvanced0=0
 unit.4.0.TCAdvanced1=0
-unit.4.0.TCCondition0_0=M3 && M9
+unit.4.0.TCCondition0_0=M0 && M9
 unit.4.0.TCCondition0_1=
 unit.4.0.TCCondition1_0=M0
 unit.4.0.TCCondition1_1=

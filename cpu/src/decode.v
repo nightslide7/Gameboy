@@ -1661,7 +1661,7 @@ module decode(/*AUTOARG*/
                    end
                    5'd8: begin
                       // TEMP1 = PCH
-                      rn_out = `RGF_PCL;
+                      rn_out = `RGF_PCH;
                       regfile_data_gate = 1'b1;
                       temp1_load = 1'b1;
                    end
@@ -1671,6 +1671,8 @@ module decode(/*AUTOARG*/
                       alu_data0_in_sel = `ALU_0_SEL_FF;
                       alu_op = `ALU_ADC;
                       rn_in = `RGF_PCH;
+                      alu_data_gate = 1'b1;
+                      regfile_we_l = 1'b1;
                    end
                    5'd10: begin
                       // F = DBUF (== flags)
