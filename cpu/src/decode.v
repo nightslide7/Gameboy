@@ -1115,6 +1115,8 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_op = `ALU_ADD;
                    alu_data_gate = 1'b1;
+                   F_load = 1'b1;
+                   alu_size = `ALU_SIZE_16;
                    rn_in = `RGF_L;
                    regfile_we_l = 1'b1;
                 end
@@ -1130,6 +1132,8 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_FF;
                    alu_op = `ALU_ADC;
                    alu_data_gate = 1'b1;
+                   F_load = 1'b1;
+                   alu_size = `ALU_SIZE_16;
                    rn_in = `RGF_H;
                    regfile_we_l = 1'b1;
                 end
@@ -1490,6 +1494,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_op = `ALU_ADD;
                    F_load = 1'b1;
+                   alu_size = `ALU_SIZE_16;
                    alu_data_gate = 1'b1;
                    rn_in = `RGF_SPL;
                    regfile_we_l = 1'b1;
@@ -1506,6 +1511,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_FF;
                    alu_op = `ALU_ADC;
                    F_load = 1'b1;
+                   alu_size = `ALU_SIZE_16;
                    alu_data_gate = 1'b1;
                    rn_in = `RGF_SPH;
                    regfile_we_l = 1'b1;
