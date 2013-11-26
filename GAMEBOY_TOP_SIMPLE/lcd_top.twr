@@ -1,0 +1,560 @@
+--------------------------------------------------------------------------------
+Release 14.3 Trace  (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.3\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 1
+-n 3 -fastpaths -xml lcd_top.twx lcd_top.ncd -o lcd_top.twr lcd_top.pcf
+
+Design file:              lcd_top.ncd
+Physical constraint file: lcd_top.pcf
+Device,package,speed:     xc5vlx110t,ff1136,-1 (PRODUCTION 1.73 2012-10-12, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+8 logic loops found and disabled.
+
+  ----------------------------------------------------------------------
+ ! Warning: The following connections close logic loops, and some paths !
+ !          through these connections may not be analyzed. To better    !
+ !          understand the logic associated with these loops, run a     !
+ !          Analyze Against User-Defined End-Point Analysis inside      !
+ !          Timing Analyzer (timingan) with the listed signal as a      !
+ !          source NET (*signal_name). The Timing Report will display   !
+ !          all the paths associated with this signal and the logic     !
+ !          loop will be reported.                                      !
+ !                                                                      !
+ ! Signal                            Driver            Load             !
+ ! --------------------------------  ----------------  ---------------- !
+ ! data_ext<0>                       SLICE_X56Y67.A    SLICE_X56Y67.A3  !
+ ! data_ext<1>                       SLICE_X56Y67.C    SLICE_X56Y67.C3  !
+ ! data_ext<2>                       SLICE_X57Y67.A    SLICE_X57Y67.A4  !
+ ! data_ext<4>                       SLICE_X55Y71.A    SLICE_X55Y71.A6  !
+ ! data_ext<5>                       SLICE_X55Y71.C    SLICE_X55Y71.C1  !
+ ! data_ext<6>                       SLICE_X54Y71.B    SLICE_X54Y71.B2  !
+ ! data_ext<3>                       SLICE_X57Y67.C    SLICE_X57Y67.C1  !
+ ! data_ext<7>                       SLICE_X54Y72.A    SLICE_X54Y72.A3  !
+  ---------------------------------------------------------------------- 
+
+
+================================================================================
+Timing constraint: TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz 
+HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 691 paths analyzed, 200 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   3.851ns.
+--------------------------------------------------------------------------------
+
+Paths for end point audio/gen/rot/level_1 (SLICE_X17Y60.CE), 14 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     77.529ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd1 (FF)
+  Destination:          audio/gen/rot/level_1 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.806ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd1 to audio/gen/rot/level_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.AQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.B1      net (fanout=6)        0.935   audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_1
+    -------------------------------------------------  ---------------------------
+    Total                                      3.806ns (1.043ns logic, 2.763ns route)
+                                                       (27.4% logic, 72.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.675ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_1 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.660ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.B2      net (fanout=3)        0.789   audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_1
+    -------------------------------------------------  ---------------------------
+    Total                                      3.660ns (1.043ns logic, 2.617ns route)
+                                                       (28.5% logic, 71.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.966ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_1 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.369ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B2      net (fanout=3)        0.607   audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B       Tilo                  0.094   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_and0000_SW0
+    SLICE_X19Y67.C3      net (fanout=4)        0.927   N462
+    SLICE_X19Y67.C       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_and0000
+    SLICE_X19Y67.D5      net (fanout=3)        0.235   audio/gen/rot/level_and0000
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_1
+    -------------------------------------------------  ---------------------------
+    Total                                      3.369ns (0.982ns logic, 2.387ns route)
+                                                       (29.1% logic, 70.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point audio/gen/rot/level_0 (SLICE_X17Y60.CE), 14 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     77.529ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd1 (FF)
+  Destination:          audio/gen/rot/level_0 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.806ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd1 to audio/gen/rot/level_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.AQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.B1      net (fanout=6)        0.935   audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_0
+    -------------------------------------------------  ---------------------------
+    Total                                      3.806ns (1.043ns logic, 2.763ns route)
+                                                       (27.4% logic, 72.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.675ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_0 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.660ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.B2      net (fanout=3)        0.789   audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_0
+    -------------------------------------------------  ---------------------------
+    Total                                      3.660ns (1.043ns logic, 2.617ns route)
+                                                       (28.5% logic, 71.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.966ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_0 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.369ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B2      net (fanout=3)        0.607   audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B       Tilo                  0.094   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_and0000_SW0
+    SLICE_X19Y67.C3      net (fanout=4)        0.927   N462
+    SLICE_X19Y67.C       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_and0000
+    SLICE_X19Y67.D5      net (fanout=3)        0.235   audio/gen/rot/level_and0000
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_0
+    -------------------------------------------------  ---------------------------
+    Total                                      3.369ns (0.982ns logic, 2.387ns route)
+                                                       (29.1% logic, 70.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point audio/gen/rot/level_2 (SLICE_X17Y60.CE), 14 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     77.529ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd1 (FF)
+  Destination:          audio/gen/rot/level_2 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.806ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd1 to audio/gen/rot/level_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.AQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.B1      net (fanout=6)        0.935   audio/gen/rot/state_FSM_FFd1
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.806ns (1.043ns logic, 2.763ns route)
+                                                       (27.4% logic, 72.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.675ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_2 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.660ns (Levels of Logic = 2)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.B2      net (fanout=3)        0.789   audio/gen/rot/state_FSM_FFd2
+    SLICE_X16Y60.BMUX    Tilo                  0.249   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/level_not0001_SW0
+    SLICE_X19Y67.D1      net (fanout=1)        1.210   N205
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.660ns (1.043ns logic, 2.617ns route)
+                                                       (28.5% logic, 71.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     77.966ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               audio/gen/rot/state_FSM_FFd2 (FF)
+  Destination:          audio/gen/rot/level_2 (FF)
+  Requirement:          81.380ns
+  Data Path Delay:      3.369ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.010ns (0.143 - 0.153)
+  Source Clock:         ac97_bitclk_BUFGP rising at 0.000ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: audio/gen/rot/state_FSM_FFd2 to audio/gen/rot/level_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y60.CQ      Tcko                  0.471   audio/gen/rot/state_FSM_FFd2
+                                                       audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B2      net (fanout=3)        0.607   audio/gen/rot/state_FSM_FFd2
+    SLICE_X17Y60.B       Tilo                  0.094   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_and0000_SW0
+    SLICE_X19Y67.C3      net (fanout=4)        0.927   N462
+    SLICE_X19Y67.C       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_and0000
+    SLICE_X19Y67.D5      net (fanout=3)        0.235   audio/gen/rot/level_and0000
+    SLICE_X19Y67.D       Tilo                  0.094   audio/gen/rot/level_not0001
+                                                       audio/gen/rot/level_not0001
+    SLICE_X17Y60.CE      net (fanout=2)        0.618   audio/gen/rot/level_not0001
+    SLICE_X17Y60.CLK     Tceck                 0.229   audio/gen/rot/level<2>
+                                                       audio/gen/rot/level_2
+    -------------------------------------------------  ---------------------------
+    Total                                      3.369ns (0.982ns logic, 2.387ns route)
+                                                       (29.1% logic, 70.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point audio/freq3div/counter_6 (SLICE_X61Y94.CX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.464ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               audio/freq3div/counter_6 (FF)
+  Destination:          audio/freq3div/counter_6 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.464ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         ac97_bitclk_BUFGP rising at 81.380ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: audio/freq3div/counter_6 to audio/freq3div/counter_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X61Y94.CQ      Tcko                  0.414   audio/freq3div/counter<6>
+                                                       audio/freq3div/counter_6
+    SLICE_X61Y94.CX      net (fanout=2)        0.156   audio/freq3div/counter<6>
+    SLICE_X61Y94.CLK     Tckdi       (-Th)     0.106   audio/freq3div/counter<6>
+                                                       audio/freq3div/Mcount_counter_xor<6>11_f7
+                                                       audio/freq3div/counter_6
+    -------------------------------------------------  ---------------------------
+    Total                                      0.464ns (0.308ns logic, 0.156ns route)
+                                                       (66.4% logic, 33.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point audio/freq3div/counter_5 (SLICE_X61Y94.B6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.496ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               audio/freq3div/counter_2 (FF)
+  Destination:          audio/freq3div/counter_5 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.510ns (Levels of Logic = 1)
+  Clock Path Skew:      0.014ns (0.480 - 0.466)
+  Source Clock:         ac97_bitclk_BUFGP rising at 81.380ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: audio/freq3div/counter_2 to audio/freq3div/counter_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X58Y94.BQ      Tcko                  0.414   audio/freq3div/counter<3>
+                                                       audio/freq3div/counter_2
+    SLICE_X61Y94.B6      net (fanout=6)        0.292   audio/freq3div/counter<2>
+    SLICE_X61Y94.CLK     Tah         (-Th)     0.196   audio/freq3div/counter<6>
+                                                       audio/freq3div/Mcount_counter_xor<5>11
+                                                       audio/freq3div/counter_5
+    -------------------------------------------------  ---------------------------
+    Total                                      0.510ns (0.218ns logic, 0.292ns route)
+                                                       (42.7% logic, 57.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point audio/freq12div/counter_5 (SLICE_X51Y90.B6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               audio/freq12div/counter_2 (FF)
+  Destination:          audio/freq12div/counter_5 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.500ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.023ns (0.122 - 0.145)
+  Source Clock:         ac97_bitclk_BUFGP rising at 81.380ns
+  Destination Clock:    ac97_bitclk_BUFGP rising at 81.380ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: audio/freq12div/counter_2 to audio/freq12div/counter_5
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X50Y91.BQ      Tcko                  0.414   audio/freq12div/counter<3>
+                                                       audio/freq12div/counter_2
+    SLICE_X51Y90.B6      net (fanout=4)        0.282   audio/freq12div/counter<2>
+    SLICE_X51Y90.CLK     Tah         (-Th)     0.196   audio/freq12div/counter<5>
+                                                       audio/freq12div/Mcount_counter_xor<5>11
+                                                       audio/freq12div/counter_5
+    -------------------------------------------------  ---------------------------
+    Total                                      0.500ns (0.218ns logic, 0.282ns route)
+                                                       (43.6% logic, 56.4% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 79.714ns (period - min period limit)
+  Period: 81.380ns
+  Min period limit: 1.666ns (600.240MHz) (Tbgper_I)
+  Physical resource: ac97_bitclk_BUFGP/BUFG/I0
+  Logical resource: ac97_bitclk_BUFGP/BUFG/I0
+  Location pin: BUFGCTRL_X0Y7.I0
+  Clock network: ac97_bitclk_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 80.326ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 81.380ns
+  Low pulse: 40.690ns
+  Low pulse limit: 0.527ns (Trpw)
+  Physical resource: audio/regs/NR51<4>/SR
+  Logical resource: audio/regs/NR51_0/SR
+  Location pin: SLICE_X46Y95.SR
+  Clock network: GPIO_SW_C_IBUF
+--------------------------------------------------------------------------------
+Slack: 80.326ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 81.380ns
+  High pulse: 40.690ns
+  High pulse limit: 0.527ns (Trpw)
+  Physical resource: audio/regs/NR51<4>/SR
+  Logical resource: audio/regs/NR51_0/SR
+  Location pin: SLICE_X46Y95.SR
+  Clock network: GPIO_SW_C_IBUF
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock ac97_bitclk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ac97_bitclk    |    3.851|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 691 paths, 0 nets, and 207 connections
+
+Design statistics:
+   Minimum period:   3.851ns{1}   (Maximum frequency: 259.673MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Mon Nov 25 21:25:32 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 517 MB
+
+
+

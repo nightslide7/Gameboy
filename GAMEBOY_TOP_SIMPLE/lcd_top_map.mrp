@@ -1,0 +1,824 @@
+Release 14.3 Map P.40xd (nt64)
+Xilinx Mapping Report File for Design 'lcd_top'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off
+-global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_map.ncd lcd_top.ngd lcd_top.pcf 
+Target Device  : xc5vlx110t
+Target Package : ff1136
+Target Speed   : -1
+Mapper Version : virtex5 -- $Revision: 1.55 $
+Mapped Date    : Mon Nov 25 21:23:46 2013
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    1
+Slice Logic Utilization:
+  Number of Slice Registers:                 4,021 out of  69,120    5%
+    Number used as Flip Flops:               4,020
+    Number used as Latches:                      1
+  Number of Slice LUTs:                      7,678 out of  69,120   11%
+    Number used as logic:                    5,146 out of  69,120    7%
+      Number using O6 output only:           4,357
+      Number using O5 output only:             358
+      Number using O5 and O6:                  431
+    Number used as Memory:                   2,488 out of  17,920   13%
+      Number used as Single Port RAM:        2,048
+        Number using O6 output only:         2,048
+      Number used as Shift Register:           440
+        Number using O6 output only:           407
+        Number using O5 output only:             1
+        Number using O5 and O6:                 32
+    Number used as exclusive route-thru:        44
+  Number of route-thrus:                       409
+    Number using O6 output only:               399
+    Number using O5 output only:                 8
+    Number using O5 and O6:                      2
+
+Slice Logic Distribution:
+  Number of occupied Slices:                 3,415 out of  17,280   19%
+  Number of LUT Flip Flop pairs used:        9,710
+    Number with an unused Flip Flop:         5,689 out of   9,710   58%
+    Number with an unused LUT:               2,032 out of   9,710   20%
+    Number of fully used LUT-FF pairs:       1,989 out of   9,710   20%
+    Number of unique control sets:             603
+    Number of slice register sites lost
+      to control set restrictions:             251 out of  69,120    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                       140 out of     640   21%
+    Number of LOCed IOBs:                      139 out of     140   99%
+    IOB Flip Flops:                             14
+
+Specific Feature Utilization:
+  Number of BlockRAM/FIFO:                      68 out of     148   45%
+    Number using BlockRAM only:                 68
+    Total primitives used:
+      Number of 36k BlockRAM used:              67
+      Number of 18k BlockRAM used:               1
+    Total Memory used (KB):                  2,430 out of   5,328   45%
+  Number of BUFG/BUFGCTRLs:                     14 out of      32   43%
+    Number used as BUFGs:                       12
+    Number used as BUFGCTRLs:                    2
+  Number of IDELAYCTRLs:                         1 out of      22    4%
+  Number of BSCANs:                              1 out of       4   25%
+  Number of DCM_ADVs:                            2 out of      12   16%
+  Number of DSP48Es:                             1 out of      64    1%
+
+  Number of RPM macros:           14
+Average Fanout of Non-Clock Nets:                5.87
+
+Peak Memory Usage:  728 MB
+Total REAL time to MAP completion:  49 secs 
+Total CPU time to MAP completion:   48 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - Since no license file was found,
+WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
+5 days after which you will not qualify for Xilinx software updates or new
+releases.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL0<13> is sourced by a combinatorial pin. This is not good
+   design practice. Use the CE pin to control the loading of data into the flip-flop.
+
+Section 3 - Informational
+-------------------------
+INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2101@xilinx-lic.ece.cmu.edu'.
+INFO:Security:56 - Part 'xc5vlx110t' is not a WebPack part.
+INFO:LIT:243 - Logical network CONTROL0<10> has no load.
+INFO:LIT:395 - The above info message is repeated 32 more times for the
+   following (max. 5 shown):
+   CONTROL0<11>,
+   CONTROL0<15>,
+   CONTROL0<16>,
+   CONTROL0<17>,
+   CONTROL0<18>
+   To see the details of these info messages, please use the -detail switch.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
+   1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Place:834 - Only a subset of IOs are locked. Out of 140 IOs, 139 are locked
+   and 1 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
+INFO:Pack:1650 - Map created a placed design.
+INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of
+   the DCM_ADV comp gpu/setup/clk31p5_dcm_inst/DCM_31p5_INST, consult the device Data Sheet.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+  54 block(s) removed
+ 323 block(s) optimized away
+  45 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[10].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[11].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[12].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[13].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[14].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[1].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[2].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[3].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[4].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[5].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[6].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[7].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[8].U_LUT" (ROM)
+removed.
+Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[9].U_LUT" (ROM)
+removed.
+Loadless block "cila/U0/I_NO_D.U_ILA/U_STAT/U_DSR" (ROM) removed.
+Loadless block "cila/U0/I_NO_D.U_ILA/U_TRIG/U_TC/I_STORAGE_QUAL.U_CAP_B" (ROM)
+removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<0>2" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<0>4" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<0>5" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<1>1" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<1>2" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<1>4" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<1>5" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<2>1" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<2>2" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<2>5" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lut<3>1" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi10" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi11" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi12" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi13" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi2" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi3" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi4" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi5" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi6" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi7" (ROM) removed.
+Loadless block "lcd/Mcompar_control_cmp_gt0000_lutdi9" (ROM) removed.
+The signal "CONTROL0<10>" is sourceless and has been removed.
+The signal "CONTROL0<11>" is sourceless and has been removed.
+The signal "CONTROL0<15>" is sourceless and has been removed.
+The signal "CONTROL0<16>" is sourceless and has been removed.
+The signal "CONTROL0<17>" is sourceless and has been removed.
+The signal "CONTROL0<18>" is sourceless and has been removed.
+The signal "CONTROL0<19>" is sourceless and has been removed.
+The signal "CONTROL0<32>" is sourceless and has been removed.
+The signal "CONTROL0<33>" is sourceless and has been removed.
+The signal "CONTROL0<34>" is sourceless and has been removed.
+The signal "CONTROL0<35>" is sourceless and has been removed.
+The signal "CONTROL0<7>" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[2].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[4].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal
+"cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/SRL_Q_O" is sourceless and has been removed.
+The signal "cicon/U0/U_ICON/iCOMMAND_SEL<12>" is sourceless and has been
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[12].U_HCE" (ROM)
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[12].U_LCE" (ROM)
+removed.
+The signal "cicon/U0/U_ICON/iCOMMAND_SEL<13>" is sourceless and has been
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[13].U_HCE" (ROM)
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[13].U_LCE" (ROM)
+removed.
+The signal "cicon/U0/U_ICON/iCOMMAND_SEL<14>" is sourceless and has been
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[14].U_HCE" (ROM)
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[14].U_LCE" (ROM)
+removed.
+The signal "cicon/U0/U_ICON/iCOMMAND_SEL<15>" is sourceless and has been
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[15].U_HCE" (ROM)
+removed.
+ Sourceless block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[15].U_LCE" (ROM)
+removed.
+The signal "gpu/video/oam/web<0>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<7>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<6>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<5>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<4>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<3>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<2>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<1>" is sourceless and has been removed.
+The signal "gpu/video/oam/dinb<0>" is sourceless and has been removed.
+The signal "gpu/video/vram/web<0>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<7>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<6>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<5>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<4>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<3>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<2>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<1>" is sourceless and has been removed.
+The signal "gpu/video/vram/dinb<0>" is sourceless and has been removed.
+Unused block "cicon/U0/U_ICON/U_CMD/U_COMMAND_SEL/I4.FI[12].U_LUT" (ROM)
+removed.
+Unused block "cicon/U0/U_ICON/U_CMD/U_COMMAND_SEL/I4.FI[13].U_LUT" (ROM)
+removed.
+Unused block "cicon/U0/U_ICON/U_CMD/U_COMMAND_SEL/I4.FI[14].U_LUT" (ROM)
+removed.
+Unused block "cicon/U0/U_ICON/U_CMD/U_COMMAND_SEL/I4.FI[15].U_LUT" (ROM)
+removed.
+Unused block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[11].U_LCE" (ROM)
+removed.
+Unused block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[3].U_LCE" (ROM) removed.
+Unused block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[6].U_LCE" (ROM) removed.
+Unused block "cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[7].U_LCE" (ROM) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+GND 		br_wram/XST_GND
+VCC 		br_wram/XST_VCC
+GND 		cicon/XST_GND
+VCC 		cicon/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_SCNT_CMP/I_CS_GAND.U_CS
+_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_G
+AND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_SCNT_CMP/I_CS_GAND.U_CS
+_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_G
+AND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_SCNT_CMP/I_CS_GAND.U_CS
+_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_HCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_
+GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_HCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_
+GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_HCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_LCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_
+GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_LCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/I_PARTIAL_SLICE.U_
+GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_LCMP/I_CS_GAND.U_C
+S_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[2].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[2].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_G
+ANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND
+_SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[2].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[3].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[4].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[5].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[6].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[7].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[8].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[9].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[9].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[2].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[2].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[2].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[4].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[4].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[4].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[1].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_GND
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/I_WHOLE_SLICE.G_SLICE_IDX[0].U_GAND_SRL_SLICE/XST_VCC
+VCC
+		cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GA
+NDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_
+SRL_SET/XST_VCC
+GND 		cila/XST_GND
+VCC 		cila/XST_VCC
+GND 		gpu/video/oam/XST_GND
+VCC 		gpu/video/oam/XST_VCC
+GND 		gpu/video/vram/XST_GND
+VCC 		gpu/video/vram/XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CLK_27MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| CLK_33MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW1                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW2                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW3                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW4                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW5                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW6                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW7                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_DIP_SW8                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_LED_0                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_1                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_2                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_3                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_4                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_5                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_6                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_7                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_C                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_E                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_N                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_S                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_W                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_SW_C                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_SW_E                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_SW_N                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_SW_S                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| GPIO_SW_W                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_2                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_6                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_8                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_10                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_12                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_14                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_16                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_18                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_20                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_22                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_24                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_26                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_28                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_30                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_32                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_34                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_36                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_38                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_40                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_42                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_44                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_46                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_48                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_50                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_52                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_54                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_56                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_58                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| HDR1_60                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| HDR1_64                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_DB4                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_DB5                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_DB6                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_DB7                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_E                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_RS                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| LCD_FPGA_RW                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| USER_CLK                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ac97_bitclk                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ac97_reset_b                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ac97_sdata_in                      | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ac97_sdata_out                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ac97_sync                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_d<0>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<1>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<2>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<3>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<4>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<5>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<6>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<7>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<8>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<9>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<10>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_d<11>                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          |          |
+| dvi_de                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_hs                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_reset_b                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_scl                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_sda                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_vs                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dvi_xclk_n                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          | FIXED    |
+| dvi_xclk_p                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | ODDR         |          | FIXED    |
+| flash_a<0>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<1>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<2>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<3>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<4>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<5>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<6>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<7>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<8>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<9>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<10>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<11>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<12>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<13>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<14>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<15>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<16>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<17>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<18>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<19>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<20>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<21>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<22>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_a<23>                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_adv_n                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_ce_n                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_clk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_d<0>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<1>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<2>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<3>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<4>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<5>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<6>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<7>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<8>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<9>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<10>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<11>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<12>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<13>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<14>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_d<15>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_oe_n                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| flash_wait                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| flash_we_n                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| rotary_inc_a                       | IOB              | INPUT     | LVCMOS18             |       |          |      |              |          |          |
+| rotary_inc_b                       | IOB              | INPUT     | LVCMOS18             |       |          |      |              |          |          |
+| strobe                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_SCNT_CMP/I_CS_GAND.U_CS_G
+AND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/U_SCNT_CMP/I_CS_GAND.
+U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_HCMP/I_CS_GAND.U_CS_
+GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/U_WCNT_HCMP/I_CS_GAN
+D.U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_G2_SQ.U_CAPCTRL/U_CAP_ADDRGEN/U_WCNT_LCMP/I_CS_GAND.U_CS_
+GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET/U_WCNT_LCMP/I_CS_GAN
+D.U_CS_GAND_SRL/I_V5.U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAN
+DX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_S
+RL_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[2].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[3].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[4].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[5].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GAND
+X.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SR
+L_SET/G_NMU[8].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_
+GANDX_SRL_V5/U_CS_GAND_SRL_V5/I_USE_RPM_EQ0.U_GAND_SRL_SET_MSET
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

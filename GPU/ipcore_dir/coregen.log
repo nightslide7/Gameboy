@@ -16,9 +16,10 @@ Running ngcbuild...
 Writing VEO instantiation template for 'VRAM'...
 Writing Verilog behavioral simulation model for 'VRAM'...
 WARNING:sim - Overwriting existing file
-   /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM/doc/blk_mem_gen_v7_3_vinfo.h
-   tml with file from view xilinx_documentation
-Delivered 1 file into directory /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM
+   C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM/doc/blk_
+   mem_gen_v7_3_vinfo.html with file from view xilinx_documentation
+Delivered 1 file into directory
+C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM
 Generating ASY schematic symbol...
 INFO:sim:949 - Finished generation of ASY schematic symbol.
 Generating SYM schematic symbol for 'VRAM'...
@@ -27,23 +28,25 @@ Regenerating ISE project file for 'VRAM'...
 Generating ISE project...
 XCO file found: VRAM.xco
 XMDF file found: VRAM_xmdf.tcl
-Adding /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.asy -view all
--origin_type imported
-Adding /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.ngc -view all
--origin_type created
-Checking file "/Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.ngc" for project
-device match ...
-File "/Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.ngc" device information
-matches project device.
-Adding /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.sym -view all
--origin_type imported
-Adding /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.v -view all -origin_type
-created
+Adding C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.asy
+-view all -origin_type imported
+Adding C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.ngc
+-view all -origin_type created
+Checking file
+"C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.ngc" for
+project device match ...
+File "C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.ngc"
+device information matches project device.
+Adding C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.sym
+-view all -origin_type imported
+Adding C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.v
+-view all -origin_type created
 INFO:HDLCompiler:1845 - Analyzing Verilog file
-   "/Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.v" into library work
+   "C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.v" into
+   library work
 INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
-Adding /Gameboy/Gameboy_git/GPU/ipcore_dir/tmp/_cg/VRAM.veo -view all
--origin_type imported
+Adding C:/Users/Joseph/Documents/GitHub/Gameboy/GPU/ipcore_dir/tmp/_cg/VRAM.veo
+-view all -origin_type imported
 INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
    Please set the new top explicitly by running the "project set top" command.
    To re-calculate the new top automatically, set the "Auto Implementation Top"

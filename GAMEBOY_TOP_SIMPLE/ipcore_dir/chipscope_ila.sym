@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<symbol version="7" name="chipscope_ila">
+    <symboltype>BLOCK</symboltype>
+    <timestamp>2013-11-26T2:2:0</timestamp>
+    <pin polarity="Input" x="0" y="80" name="control[35:0]" />
+    <pin polarity="Input" x="0" y="112" name="clk" />
+    <pin polarity="Input" x="0" y="176" name="trig0[15:0]" />
+    <pin polarity="Input" x="0" y="208" name="trig1[79:0]" />
+    <pin polarity="Input" x="0" y="240" name="trig2[7:0]" />
+    <pin polarity="Input" x="0" y="272" name="trig3[15:0]" />
+    <pin polarity="Input" x="0" y="304" name="trig4[7:0]" />
+    <pin polarity="Input" x="0" y="336" name="trig5[8:0]" />
+    <pin polarity="Input" x="0" y="368" name="trig6[7:0]" />
+    <pin polarity="Input" x="0" y="400" name="trig7[7:0]" />
+    <pin polarity="Input" x="0" y="432" name="trig8[1:0]" />
+    <pin polarity="Input" x="0" y="464" name="trig9[31:0]" />
+    <pin polarity="Input" x="0" y="496" name="trig10[31:0]" />
+    <pin polarity="Input" x="0" y="528" name="trig11[31:0]" />
+    <graph>
+        <text style="fontsize:40;fontname:Arial" x="32" y="32">chipscope_ila</text>
+        <rect width="256" x="32" y="32" height="672" />
+        <line x2="32" y1="80" y2="80" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="80" type="pin control[35:0]" />
+        <line x2="32" y1="112" y2="112" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="112" type="pin clk" />
+        <line x2="32" y1="176" y2="176" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="176" type="pin trig0[15:0]" />
+        <line x2="32" y1="208" y2="208" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="208" type="pin trig1[79:0]" />
+        <line x2="32" y1="240" y2="240" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="240" type="pin trig2[7:0]" />
+        <line x2="32" y1="272" y2="272" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="272" type="pin trig3[15:0]" />
+        <line x2="32" y1="304" y2="304" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="304" type="pin trig4[7:0]" />
+        <line x2="32" y1="336" y2="336" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="336" type="pin trig5[8:0]" />
+        <line x2="32" y1="368" y2="368" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="368" type="pin trig6[7:0]" />
+        <line x2="32" y1="400" y2="400" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="400" type="pin trig7[7:0]" />
+        <line x2="32" y1="432" y2="432" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="432" type="pin trig8[1:0]" />
+        <line x2="32" y1="464" y2="464" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="464" type="pin trig9[31:0]" />
+        <line x2="32" y1="496" y2="496" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="496" type="pin trig10[31:0]" />
+        <line x2="32" y1="528" y2="528" style="linewidth:W" x1="0" />
+        <attrtext style="fontsize:24;fontname:Arial" attrname="PinName" x="36" y="528" type="pin trig11[31:0]" />
+    </graph>
+</symbol>
