@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.09 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: lcd_top_flashcart.prj
 
@@ -1151,16 +1151,16 @@ WARNING:Xst:646 - Signal <carry> is assigned but never used. This unconnected si
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0005> created at line 90.
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0006> created at line 90.
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0007> created at line 90.
-    Found 8-bit adder carry out for signal <old_intermediate_result1_18$addsub0001> created at line 130.
-    Found 4-bit comparator greater for signal <old_intermediate_result1_18$cmp_gt0000> created at line 129.
-    Found 9-bit subtractor for signal <old_intermediate_result1_19$addsub0000> created at line 144.
-    Found 9-bit comparator greater for signal <old_intermediate_result2_20$cmp_gt0000> created at line 135.
-    Found 9-bit addsub for signal <old_intermediate_result2_20$share0000>.
-    Found 5-bit adder for signal <old_result_high_13$addsub0000> created at line 73.
-    Found 5-bit adder for signal <old_result_high_17$addsub0000> created at line 113.
-    Found 5-bit adder for signal <old_result_low_12$addsub0000> created at line 69.
-    Found 5-bit adder for signal <old_result_low_12$addsub0001> created at line 69.
-    Found 5-bit adder for signal <old_result_low_9$addsub0000> created at line 52.
+    Found 8-bit adder carry out for signal <old_intermediate_result1_20$addsub0001> created at line 130.
+    Found 4-bit comparator greater for signal <old_intermediate_result1_20$cmp_gt0000> created at line 129.
+    Found 9-bit subtractor for signal <old_intermediate_result1_21$addsub0000> created at line 144.
+    Found 9-bit comparator greater for signal <old_intermediate_result2_22$cmp_gt0000> created at line 135.
+    Found 9-bit addsub for signal <old_intermediate_result2_22$share0000>.
+    Found 5-bit adder for signal <old_result_high_15$addsub0000> created at line 73.
+    Found 5-bit adder for signal <old_result_high_19$addsub0000> created at line 113.
+    Found 5-bit adder for signal <old_result_low_11$addsub0000> created at line 52.
+    Found 5-bit adder for signal <old_result_low_14$addsub0000> created at line 69.
+    Found 5-bit adder for signal <old_result_low_14$addsub0001> created at line 69.
     Summary:
 	inferred  16 Adder/Subtractor(s).
 	inferred   2 Comparator(s).
@@ -1833,16 +1833,16 @@ Synthesizing Unit <cpu>.
     Related source file is "../cpu/src/cpu.v".
 WARNING:Xst:646 - Signal <interrupt_sel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <flags<2:1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_6> of Case statement line 155 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
-   	- add an 'INIT' attribute on signal <$old_interrupt_sel_6> (optimization is then done without any risk)
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_8> of Case statement line 158 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <$old_interrupt_sel_8> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Using one-hot encoding for signal <$old_interrupt_sel_6>.
+    Using one-hot encoding for signal <$old_interrupt_sel_8>.
+    Found 16-bit subtractor for signal <high_mem_addr>.
     Found 16-bit tristate buffer for signal <addr_ext_in>.
     Found 16-bit comparator equal for signal <bp_pc>.
-    Found 16-bit comparator greatequal for signal <high_mem$cmp_le0000> created at line 73.
-    Found 16-bit comparator lessequal for signal <high_mem$cmp_le0001> created at line 73.
-    Found 16-bit subtractor for signal <high_mem_addr>.
+    Found 16-bit comparator greatequal for signal <high_mem$cmp_le0000> created at line 76.
+    Found 16-bit comparator lessequal for signal <high_mem$cmp_le0001> created at line 76.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
@@ -2646,18 +2646,18 @@ WARNING:Xst:2677 - Node <audio/regs/NR52_3> of sequential type is unconnected in
 WARNING:Xst:2677 - Node <gpu/dvi/init/Done> of sequential type is unconnected in block <lcd_top_flashcart>.
 
 Mapping all equations...
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>, lcd_top_flashcart/data_ext<3>LogicTrst45, dina<3>, lcd_top_flashcart/data_ext<3>LogicTrst10.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<2>, lcd_top_flashcart/data_ext<2>LogicTrst115, lcd_top_flashcart/data_ext<2>LogicTrst100, dina<2>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<1>LogicTrst100, dina<1>, lcd_top_flashcart/data_ext<1>, lcd_top_flashcart/data_ext<1>LogicTrst115.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>, lcd_top_flashcart/data_ext<0>LogicTrst100, dina<0>, lcd_top_flashcart/data_ext<0>LogicTrst115.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<7>LogicTrst45, dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst10, lcd_top_flashcart/data_ext<7>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>, lcd_top_flashcart/data_ext<6>LogicTrst45, lcd_top_flashcart/data_ext<6>LogicTrst10, dina<6>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>LogicTrst10, lcd_top_flashcart/data_ext<5>, lcd_top_flashcart/data_ext<5>LogicTrst45, dina<5>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<4>LogicTrst10, lcd_top_flashcart/data_ext<4>LogicTrst45, dina<4>, lcd_top_flashcart/data_ext<4>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<0>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/alu_data1_in<2>32, gb80_cpu/alu_data1_in<2>, gb80_cpu/alu_data_out<4>, gb80_cpu/alu_data_out<1>, gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>, gb80_cpu/gb80_alu/alu_data_out_0_mux0000233, gb80_cpu/gb80_alu/N19, gb80_cpu/data_bus<4>, gb80_cpu/data_bus<0>, gb80_cpu/alu_data_out<2>, gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>, gb80_cpu/gb80_alu/alu_data_out_4_mux0000142, gb80_cpu/gb80_alu/_old_result_low_12<2>, gb80_cpu/alu_data1_in<1>32, gb80_cpu/alu_data1_in<4>, gb80_cpu/alu_data1_in<1>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<3>, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/data_bus<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000188, gb80_cpu/alu_data1_in<3>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_5_mux0000181, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/alu_data0_in<5>, gb80_cpu/alu_data_out<5>, gb80_cpu/data_bus<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000153.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<6>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000209, gb80_cpu/gb80_alu/_old_result_high_17<3>, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/data_bus<6>, N158, gb80_cpu/gb80_alu/alu_data_out_6_mux0000191, gb80_cpu/alu_data_out<7>, gb80_cpu/gb80_alu/_old_intermediate_result2_20<6>, gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt0000, gb80_cpu/gb80_alu/_old_intermediate_result2_20<6>5, gb80_cpu/alu_data1_in<7>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>LogicTrst45, lcd_top_flashcart/data_ext<3>, lcd_top_flashcart/data_ext<3>LogicTrst10, dina<3>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<2>, dina<2>, lcd_top_flashcart/data_ext<2>LogicTrst100, lcd_top_flashcart/data_ext<2>LogicTrst115.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<1>, lcd_top_flashcart/data_ext<1>LogicTrst115, lcd_top_flashcart/data_ext<1>, lcd_top_flashcart/data_ext<1>LogicTrst100.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>, lcd_top_flashcart/data_ext<0>LogicTrst115, lcd_top_flashcart/data_ext<0>LogicTrst100, dina<0>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<7>, dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst45, lcd_top_flashcart/data_ext<7>LogicTrst10.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>LogicTrst10, lcd_top_flashcart/data_ext<6>, dina<6>, lcd_top_flashcart/data_ext<6>LogicTrst45.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>LogicTrst10, lcd_top_flashcart/data_ext<5>, dina<5>, lcd_top_flashcart/data_ext<5>LogicTrst45.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<4>LogicTrst45, dina<4>, lcd_top_flashcart/data_ext<4>LogicTrst10, lcd_top_flashcart/data_ext<4>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_4_mux0000142, gb80_cpu/data_bus<0>, gb80_cpu/alu_data1_in<4>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/data_bus<4>, gb80_cpu/alu_data_out<1>, gb80_cpu/alu_data1_in<2>, gb80_cpu/alu_data1_in<2>32, gb80_cpu/alu_data_out<4>, gb80_cpu/gb80_alu/N19, gb80_cpu/gb80_alu/alu_data_out_0_mux0000233, gb80_cpu/alu_data_out<2>, gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>, gb80_cpu/gb80_alu/_old_result_low_14<2>, gb80_cpu/alu_data1_in<1>32, gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>, gb80_cpu/alu_data_out<0>, gb80_cpu/alu_data1_in<1>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<3>, gb80_cpu/gb80_alu/Madd__old_result_low_11_Madd_lut<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000189, gb80_cpu/alu_data1_in<3>, gb80_cpu/gb80_alu/_old_result_low_11<3>, gb80_cpu/data_bus<3>, gb80_cpu/data_buf/q_mux0000<3>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_5_mux0000181, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000153, gb80_cpu/data_bus<5>, gb80_cpu/alu_data_out<5>, gb80_cpu/alu_data0_in<5>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<6>, gb80_cpu/alu_data_out<6>, gb80_cpu/alu_data1_in<7>, gb80_cpu/gb80_alu/_old_intermediate_result2_22<6>5, gb80_cpu/gb80_alu/_old_result_high_19<3>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000191, gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt0000, gb80_cpu/alu_data_out<7>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000209, N158, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/gb80_alu/_old_intermediate_result2_22<6>.
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block lcd_top_flashcart, actual ratio is 11.
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
@@ -3020,27 +3020,27 @@ Delay:               49.818ns (Levels of Logic = 70)
      LUT4:I3->O            1   0.094   0.480  gb80_cpu/data_bus<1>LogicTrst_SW0 (N848)
      LUT6:I5->O            8   0.094   0.614  gb80_cpu/data_bus<1>LogicTrst (gb80_cpu/data_bus<1>)
      LUT5:I3->O            7   0.094   0.609  gb80_cpu/alu_data0_in<1>1 (gb80_cpu/alu_data0_in<1>)
-     LUT3:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd_old_result_low_12_addsub0000_xor<2>111 (gb80_cpu/gb80_alu/N141)
-     LUT3:I2->O            2   0.094   0.978  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>1 (gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>)
-     LUT6:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_xor<4>111 (gb80_cpu/gb80_alu/N5)
-     LUT5:I4->O            6   0.094   0.737  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_xor<4>12 (gb80_cpu/gb80_alu/_old_result_low_12<4>)
-     LUT6:I3->O            2   0.094   0.581  gb80_cpu/gb80_alu/Madd__old_result_high_13_Madd_xor<2>11 (gb80_cpu/gb80_alu/_old_result_high_13<2>)
+     LUT3:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd_old_result_low_14_addsub0000_xor<2>111 (gb80_cpu/gb80_alu/N141)
+     LUT3:I2->O            2   0.094   0.978  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>1 (gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>)
+     LUT6:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_xor<4>111 (gb80_cpu/gb80_alu/N5)
+     LUT5:I4->O            6   0.094   0.737  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_xor<4>12 (gb80_cpu/gb80_alu/_old_result_low_14<4>)
+     LUT6:I3->O            2   0.094   0.581  gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_xor<2>11 (gb80_cpu/gb80_alu/_old_result_high_15<2>)
      LUT3:I1->O            1   0.094   0.973  gb80_cpu/gb80_alu/alu_data_out_6_mux0000146 (gb80_cpu/gb80_alu/alu_data_out_6_mux0000146)
      LUT5:I0->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_6_mux0000174 (gb80_cpu/gb80_alu/alu_data_out_6_mux0000174)
      LUT3:I2->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_6_mux0000203 (gb80_cpu/alu_data_out<6>)
      LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<6>LogicTrst76 (gb80_cpu/data_bus<6>)
      LUT6:I3->O           27   0.094   0.606  gb80_cpu/alu_data1_in<6>1 (gb80_cpu/alu_data1_in<6>)
      LUT5:I4->O            2   0.094   0.485  gb80_cpu/gb80_alu/alu_flags_out_0_mux00001010 (gb80_cpu/gb80_alu/N93)
-     LUT5:I4->O            4   0.094   0.496  gb80_cpu/gb80_alu/_old_intermediate_result1_18<7>1 (gb80_cpu/gb80_alu/_old_intermediate_result1_18<7>)
-     LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_alu/old_intermediate_result2_20_mux0000<7>1 (gb80_cpu/gb80_alu/old_intermediate_result2_20_mux0000<7>)
-     LUT2:I0->O            2   0.094   0.794  gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_20_share0000_lut<7>1 (gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_20_share0000_lut<7>)
-     LUT6:I2->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_20<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_20<7>)
+     LUT5:I4->O            4   0.094   0.496  gb80_cpu/gb80_alu/_old_intermediate_result1_20<7>1 (gb80_cpu/gb80_alu/_old_intermediate_result1_20<7>)
+     LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_alu/old_intermediate_result2_22_mux0000<7>1 (gb80_cpu/gb80_alu/old_intermediate_result2_22_mux0000<7>)
+     LUT2:I0->O            2   0.094   0.794  gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_22_share0000_lut<7>1 (gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_22_share0000_lut<7>)
+     LUT6:I2->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_22<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_22<7>)
      LUT6:I3->O            3   0.094   0.491  gb80_cpu/gb80_alu/alu_data_out_7_mux0000285 (gb80_cpu/alu_data_out<7>)
      LUT4:I3->O            2   0.094   0.715  gb80_cpu/alu_data1_in<7>72 (N158)
      LUT6:I3->O           25   0.094   1.099  gb80_cpu/alu_data1_in<7>35 (gb80_cpu/alu_data1_in<7>)
-     LUT5:I0->O           15   0.094   0.557  gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt00001 (gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt0000)
-     LUT5:I4->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_20<5>131 (gb80_cpu/gb80_alu/_old_intermediate_result2_20<5>131)
-     LUT6:I4->O            2   0.094   0.581  gb80_cpu/gb80_alu/_old_intermediate_result2_20<5>143 (gb80_cpu/gb80_alu/_old_intermediate_result2_20<5>)
+     LUT5:I0->O           15   0.094   0.557  gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt00001 (gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt0000)
+     LUT5:I4->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>131 (gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>131)
+     LUT6:I4->O            2   0.094   0.581  gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>143 (gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>)
      LUT6:I4->O            1   0.094   0.576  gb80_cpu/gb80_alu/alu_data_out_5_mux0000181 (gb80_cpu/gb80_alu/alu_data_out_5_mux0000181)
      LUT3:I1->O            3   0.094   0.984  gb80_cpu/gb80_alu/alu_data_out_5_mux0000202 (gb80_cpu/alu_data_out<5>)
      LUT6:I1->O            9   0.094   0.620  gb80_cpu/data_bus<5>LogicTrst (gb80_cpu/data_bus<5>)
@@ -3049,7 +3049,7 @@ Delay:               49.818ns (Levels of Logic = 70)
      LUT5:I1->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_3_mux000088 (gb80_cpu/gb80_alu/alu_data_out_3_mux000088)
      LUT6:I5->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_3_mux0000132 (gb80_cpu/gb80_alu/alu_data_out_3_mux0000132)
      LUT5:I4->O            1   0.094   0.789  gb80_cpu/gb80_alu/alu_data_out_3_mux0000154 (gb80_cpu/gb80_alu/alu_data_out_3_mux0000154)
-     LUT5:I1->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_3_mux0000205 (gb80_cpu/alu_data_out<3>)
+     LUT5:I1->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_3_mux0000206 (gb80_cpu/alu_data_out<3>)
      LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<3>LogicTrst60 (gb80_cpu/data_bus<3>)
      LUT6:I3->O           41   0.094   0.918  gb80_cpu/alu_data1_in<3>1 (gb80_cpu/alu_data1_in<3>)
      LUT6:I2->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_2_mux000032 (gb80_cpu/gb80_alu/alu_data_out_2_mux000032)
@@ -3058,13 +3058,13 @@ Delay:               49.818ns (Levels of Logic = 70)
      LUT5:I4->O            4   0.094   0.592  gb80_cpu/gb80_alu/alu_data_out_2_mux0000196 (gb80_cpu/alu_data_out<2>)
      LUT6:I4->O            1   0.094   0.480  gb80_cpu/alu_data1_in<2>32 (gb80_cpu/alu_data1_in<2>32)
      LUT2:I1->O           30   0.094   0.607  gb80_cpu/alu_data1_in<2>35 (gb80_cpu/alu_data1_in<2>)
-     LUT6:I5->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_20<1>_SW0 (N845)
-     LUT6:I4->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_20<1> (gb80_cpu/gb80_alu/_old_intermediate_result2_20<1>)
+     LUT6:I5->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_22<1>_SW0 (N845)
+     LUT6:I4->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_22<1> (gb80_cpu/gb80_alu/_old_intermediate_result2_22<1>)
      LUT5:I2->O            4   0.094   0.592  gb80_cpu/gb80_alu/alu_data_out_1_mux0000220 (gb80_cpu/alu_data_out<1>)
      LUT6:I4->O            1   0.094   0.480  gb80_cpu/alu_data1_in<1>32 (gb80_cpu/alu_data1_in<1>32)
      LUT2:I1->O           30   0.094   0.703  gb80_cpu/alu_data1_in<1>35 (gb80_cpu/alu_data1_in<1>)
-     LUT2:I0->O            6   0.094   0.816  gb80_cpu/gb80_alu/_old_intermediate_result2_20<3>21 (gb80_cpu/gb80_alu/N19)
-     LUT4:I0->O            5   0.094   0.811  gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>1 (gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>)
+     LUT2:I0->O            6   0.094   0.816  gb80_cpu/gb80_alu/_old_intermediate_result2_22<3>21 (gb80_cpu/gb80_alu/N19)
+     LUT4:I0->O            5   0.094   0.811  gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>1 (gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>)
      LUT5:I1->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_4_mux0000142 (gb80_cpu/gb80_alu/alu_data_out_4_mux0000142)
      LUT6:I0->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_4_mux0000181 (gb80_cpu/alu_data_out<4>)
      LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<4>LogicTrst95 (gb80_cpu/data_bus<4>)
@@ -3552,7 +3552,7 @@ Offset:              16.200ns (Levels of Logic = 15)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDCE:C->Q            97   0.471   1.112  gb80_cpu/inst_reg/q_1 (gb80_cpu/inst_reg/q_1)
-     LUT5:I0->O            9   0.094   0.524  gb80_cpu/gb80_decode/old_m_cycles_27_cmp_eq002111 (gb80_cpu/gb80_decode/N1831)
+     LUT5:I0->O            9   0.094   0.524  gb80_cpu/gb80_decode/old_m_cycles_29_cmp_eq002111 (gb80_cpu/gb80_decode/N1831)
      LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_decode/rn_out_mux0000<0>1111 (gb80_cpu/gb80_decode/N1231)
      LUT5:I3->O            2   0.094   0.978  gb80_cpu/gb80_decode/addr_buf_load_mux000011111 (gb80_cpu/gb80_decode/N141)
      LUT6:I1->O            1   0.094   0.973  gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011112 (gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011112)
@@ -3685,12 +3685,12 @@ WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to cicon.
 WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to cicon.
 
 
-Total REAL time to Xst completion: 134.00 secs
-Total CPU time to Xst completion: 133.61 secs
+Total REAL time to Xst completion: 135.00 secs
+Total CPU time to Xst completion: 134.80 secs
  
 --> 
 
-Total memory usage is 543780 kilobytes
+Total memory usage is 544036 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  369 (   0 filtered)

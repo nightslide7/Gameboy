@@ -15,8 +15,8 @@
  */
 module cpu(/*AUTOARG*/
    // Outputs
-   F_data, A_data, instruction, IF_data, IE_data, regs_data, mem_we,
-   mem_re, halt, debug_halt,
+   high_mem_data, high_mem_addr, F_data, A_data, instruction, IF_data,
+   IE_data, regs_data, mem_we, mem_re, halt, debug_halt,
    // Inouts
    addr_ext, data_ext,
    // Inputs
@@ -26,6 +26,9 @@ module cpu(/*AUTOARG*/
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
 
+   output wire [7:0] high_mem_data;
+   output wire [15:0] high_mem_addr;
+   
    output wire [7:0] F_data;
    output wire [7:0] A_data, instruction;
    output wire [4:0] IF_data, IE_data;
@@ -68,7 +71,7 @@ module cpu(/*AUTOARG*/
    // Buffers/High memory
    wire [7:0]   data_ext_out, data_ext_in;
    wire [15:0]  addr_ext_out, addr_ext_in;
-   wire [7:0]   high_mem_data;
+//   wire [7:0]   high_mem_data;
    
    wire         high_mem = (`MEM_HIGH_START <= addr_ext_out) & 
                 (addr_ext_out <= `MEM_HIGH_END); 
@@ -87,7 +90,7 @@ module cpu(/*AUTOARG*/
                                .en(addr_buf_write_ext & ~cpu_mem_disable &
                                    ~high_mem));
    
-   wire [15:0]  high_mem_addr;
+  // wire [15:0]  high_mem_addr;
    assign high_mem_addr = addr_ext_out - `MEM_HIGH_START;
 
    tristate #(8) high_mem_data_tri(.out(high_mem_data[7:0]),
