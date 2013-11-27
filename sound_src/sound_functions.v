@@ -283,6 +283,9 @@ module SquareWave(
 	  *  sweep. Basically the frequency. Except if it's zero we stop
 	  *  the envelope operation, so we only check if it's 1 or greater.
 	  */
+/*	 if (num_envelope_sweeps == 3'b0) begin
+	    env_counter <= 5'b1;
+	 end*/
 	 if (env_counter == num_envelope_sweeps) begin
 	    if (envelope_increasing && reg_vol < 4'hF) begin
 	       reg_vol <= reg_vol + 4'b1;
