@@ -80,6 +80,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="lcd_top_flashcart.ut" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:fileType="FILE_XPI" xil_pn:name="lcd_top_flashcart.xpi"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="lcd_top_flashcart.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="lcd_top_flashcart_envsettings.html"/>
     <file xil_pn:fileType="FILE_NCD" xil_pn:name="lcd_top_flashcart_guide.ncd" xil_pn:origination="imported"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="lcd_top_flashcart_map.map" xil_pn:subbranch="Map"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="lcd_top_flashcart_map.mrp" xil_pn:subbranch="Map"/>
@@ -90,6 +91,7 @@
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="lcd_top_flashcart_pad.csv" xil_pn:subbranch="Par"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="lcd_top_flashcart_pad.txt" xil_pn:subbranch="Par"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="lcd_top_flashcart_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="lcd_top_flashcart_summary.html"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="lcd_top_flashcart_summary.xml"/>
     <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="lcd_top_flashcart_usage.xml"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="lcd_top_flashcart_xst.xrpt"/>
@@ -152,22 +154,17 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1385433236" xil_pn:in_ck="-3728416887021894148" xil_pn:name="TRANEXT_xstsynthesize_virtex5" xil_pn:prop_ck="-4016308005693204090" xil_pn:start_ts="1385433100">
-      <status xil_pn:value="SuccessfullyRun"/>
+    <transform xil_pn:end_ts="1385498987" xil_pn:in_ck="-1427344589212802624" xil_pn:name="TRANEXT_xstsynthesize_virtex5" xil_pn:prop_ck="-4016308005693204090" xil_pn:start_ts="1385498978">
+      <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="lcd_top.ngr"/>
       <outfile xil_pn:name="lcd_top_flashcart.lso"/>
       <outfile xil_pn:name="lcd_top_flashcart.ngc"/>
-      <outfile xil_pn:name="lcd_top_flashcart.ngr"/>
       <outfile xil_pn:name="lcd_top_flashcart.prj"/>
-      <outfile xil_pn:name="lcd_top_flashcart.stx"/>
       <outfile xil_pn:name="lcd_top_flashcart.syr"/>
       <outfile xil_pn:name="lcd_top_flashcart.xst"/>
-      <outfile xil_pn:name="lcd_top_flashcart_xst.xrpt"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
@@ -179,6 +176,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="lcd_top_flashcart.bld"/>
@@ -189,6 +188,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
@@ -205,6 +206,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="lcd_top_flashcart.ncd"/>
       <outfile xil_pn:name="lcd_top_flashcart.pad"/>
@@ -220,6 +223,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="lcd_top_flashcart.bgn"/>
       <outfile xil_pn:name="lcd_top_flashcart.bit"/>
@@ -232,12 +239,14 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1385433360" xil_pn:in_ck="1778909865323354488" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416183" xil_pn:start_ts="1385433348">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="lcd_top_flashcart.twr"/>
       <outfile xil_pn:name="lcd_top_flashcart.twx"/>
