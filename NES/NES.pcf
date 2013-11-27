@@ -1,19 +1,19 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Fri Oct 25 17:29:28 2013
+// Written by: Map P.40xd on Wed Nov 27 00:36:55 2013
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "data" LOCATE = SITE "K34" LEVEL 1;
-COMP "ctrl_a" LOCATE = SITE "H18" LEVEL 1;
-COMP "ctrl_b" LOCATE = SITE "L18" LEVEL 1;
-COMP "ctrl_sel" LOCATE = SITE "G15" LEVEL 1;
-COMP "ctrl_up" LOCATE = SITE "G16" LEVEL 1;
+COMP "controller_data" LOCATE = SITE "K34" LEVEL 1;
 COMP "clk_out" LOCATE = SITE "K32" LEVEL 1;
-COMP "ctrl_start" LOCATE = SITE "AD26" LEVEL 1;
+COMP "FF00_data_out<0>" LOCATE = SITE "AD26" LEVEL 1;
+COMP "FF00_data_out<1>" LOCATE = SITE "G15" LEVEL 1;
+COMP "joypad_interrupt" LOCATE = SITE "AE24" LEVEL 1;
+COMP "FF00_data_out<2>" LOCATE = SITE "L18" LEVEL 1;
+COMP "FF00_data_out<3>" LOCATE = SITE "H18" LEVEL 1;
 COMP "strobe" LOCATE = SITE "L34" LEVEL 1;
-COMP "ctrl_dn" LOCATE = SITE "AD25" LEVEL 1;
-COMP "ctrl_r" LOCATE = SITE "AE24" LEVEL 1;
-COMP "ctrl_l" LOCATE = SITE "AD24" LEVEL 1;
+COMP "clock" LOCATE = SITE "AH17" LEVEL 1;
+COMP "FF00_data_in<4>" LOCATE = SITE "AC24" LEVEL 1;
+COMP "FF00_data_in<5>" LOCATE = SITE "AC25" LEVEL 1;
 COMP "clk_in" LOCATE = SITE "AF18" LEVEL 1;
 SCHEMATIC END;
 
