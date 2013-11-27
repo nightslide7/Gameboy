@@ -24,8 +24,8 @@ run
 -slice_utilization_ratio 100
 -bram_utilization_ratio 100
 -dsp_utilization_ratio 100
--lc Off
--reduce_control_sets Off
+-lc Auto
+-reduce_control_sets Auto
 -verilog2001 YES
 -fsm_extract YES -fsm_encoding Auto
 -safe_implementation No

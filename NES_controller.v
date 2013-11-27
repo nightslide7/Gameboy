@@ -5,7 +5,7 @@
  */
 
 module NES (input clk_in, //Audio clk (12.288MHz)
-	    input cpu_clk,
+	    input clock,
 	    input controller_data,
 	    input [7:0] FF00_data_in,
 	    output reg [7:0] FF00_data_out,
@@ -25,6 +25,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 
    wire        cpu_a_b_sel_start_b;
    wire        cpu_r_l_up_dn_b;
+   wire        cpu_clock;
 
    assign cpu_a_b_sel_start_b = FF00_data_in[5];
    assign cpu_r_l_up_dn_b = FF00_data_in[4];
@@ -44,6 +45,10 @@ module NES (input clk_in, //Audio clk (12.288MHz)
                     statediv (.clock_out (state_clk),
 			      .clock_in (clk_in)
 			      );
+
+   my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(40)) //~4.125MHz
+   cdiv(.clock_out(cpu_clock),
+        .clock_in(clock));
    
    always @(posedge clk_in) begin
       if (clock_counter == DIV_CNT) begin
@@ -65,13 +70,13 @@ module NES (input clk_in, //Audio clk (12.288MHz)
       end
    end // always @ (posedge clk_in)
 
-   always @(posedge cpu_clk) begin
+   always @(posedge cpu_clock) begin
       if (~cpu_a_b_sel_start_b) begin
 	 if (FF00_data_out[3:0] != {ctrl_start, ctrl_sel, ctrl_b, ctrl_a}) begin
-	    joypad interrput <= 1;
+	    joypad_interrupt <= 1;
 	 end
  	 else begin
-	    joypad interrput <= 0;
+	    joypad_interrupt <= 0;
 	 end
       end
       else if (~cpu_r_l_up_dn_b) begin
@@ -79,13 +84,13 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	    joypad_interrupt <= 1;
 	 end
  	 else begin
-	    joypad interrput <= 0;
+	    joypad_interrupt <= 0;
 	 end	 
       end
       else begin
 	 joypad_interrupt <= 0;
       end // else: !if(~cpu_r_l_up_dn_b)
-   end // always @ (posedge cpu_clk)
+   end // always @ (posedge cpu_clock)
       
    always @(posedge state_clk) begin
       case (state)
