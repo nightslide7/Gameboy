@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\DRAM\tb.ncd
+OUTFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\DRAM\tb.bit
+FAMILY=Virtex5
+PART=xc5vlx110t-1ff1136
+WORKINGDIR=C:\Users\Joseph\Documents\GitHub\Gameboy\DRAM
+LICENSE=ISE
+USER_INFO=174679548_176449548_210550170_728

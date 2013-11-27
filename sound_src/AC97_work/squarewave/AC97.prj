@@ -1,2 +1,0 @@
-verilog work "../rotary_controller.v"
-verilog work "../AC97.v"

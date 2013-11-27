@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# PlanAhead v14.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+# Start of session at: Wed Oct  2 15:58:40 2013
+# Process ID: 15130
+# Log file: /Gameboy/rotary_controller/controller_test/planAhead_run_1/planAhead.log
+# Journal file: /Gameboy/rotary_controller/controller_test/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /Gameboy/rotary_controller/controller_test/pa.fromHdl.tcl
+update_compile_order -fileset sim_1
+startgroup
+set_property package_pin AH30 [get_ports rotary_inc_a]
+endgroup
+startgroup
+set_property package_pin AG30 [get_ports rotary_inc_b]
+endgroup
+startgroup
+set_property package_pin AH29 [get_ports rotary_push]
+endgroup
+set_property iostandard LVCMOS25 [get_ports [list rotary_inc_a]]
+set_property iostandard HSLVDCI_18 [get_ports [list rotary_inc_a]]
+set_property iostandard HSLVDCI_33 [get_ports [list rotary_inc_a]]
+set_property iostandard GTL_DCI [get_ports [list rotary_inc_a]]
+set_property iostandard GTLP_DCI [get_ports [list rotary_inc_a]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_inc_a]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_inc_b]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_push]]
+startgroup
+set_property package_pin H18 [get_ports inca]
+endgroup
+startgroup
+set_property package_pin G15 [get_ports incb]
+endgroup
+startgroup
+set_property package_pin L18 [get_ports incb]
+endgroup
+startgroup
+set_property package_pin G15 [get_ports push]
+endgroup
+save_design

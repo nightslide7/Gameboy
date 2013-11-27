@@ -1,0 +1,203 @@
+Release 14.3 Map P.40xd (lin64)
+Xilinx Mapping Report File for Design 'NES'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol
+high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr
+off -lc off -power off -o NES_map.ncd NES.ngd NES.pcf 
+Target Device  : xc5vlx110t
+Target Package : ff1136
+Target Speed   : -1
+Mapper Version : virtex5 -- $Revision: 1.55 $
+Mapped Date    : Fri Oct 25 17:29:15 2013
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    7
+Slice Logic Utilization:
+  Number of Slice Registers:                    56 out of  69,120    1%
+    Number used as Flip Flops:                  56
+  Number of Slice LUTs:                         64 out of  69,120    1%
+    Number used as logic:                       63 out of  69,120    1%
+      Number using O6 output only:              46
+      Number using O5 output only:              16
+      Number using O5 and O6:                    1
+    Number used as exclusive route-thru:         1
+  Number of route-thrus:                        17
+    Number using O6 output only:                17
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    25 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:           80
+    Number with an unused Flip Flop:            24 out of      80   30%
+    Number with an unused LUT:                  16 out of      80   20%
+    Number of fully used LUT-FF pairs:          40 out of      80   50%
+    Number of unique control sets:               5
+    Number of slice register sites lost
+      to control set restrictions:               8 out of  69,120    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        12 out of     640    1%
+    Number of LOCed IOBs:                       12 out of      12  100%
+    IOB Flip Flops:                              8
+
+Specific Feature Utilization:
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
+
+Average Fanout of Non-Clock Nets:                2.84
+
+Peak Memory Usage:  1031 MB
+Total REAL time to MAP completion:  14 secs 
+Total CPU time to MAP completion:   14 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:Pack:2548 - The register "ctrl_b" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_sel" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_start" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_up" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_r" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_dn" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_l" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
+   1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+
+Section 5 - Removed Logic
+-------------------------
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| clk_in                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| clk_out                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ctrl_a                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ctrl_b                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_dn                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_l                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_r                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_sel                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_start                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| ctrl_up                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| data                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
+| strobe                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

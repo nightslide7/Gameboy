@@ -1,0 +1,78 @@
+#-----------------------------------------------------------
+# PlanAhead v14.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+# Start of session at: Mon Oct 28 11:49:30 2013
+# Process ID: 26732
+# Log file: /Gameboy/DRAM/planAhead_run_1/planAhead.log
+# Journal file: /Gameboy/DRAM/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+source /Gameboy/DRAM/pa.fromNetlist.tcl
+startgroup
+set_property package_pin AH15 [get_ports clka]
+endgroup
+startgroup
+set_property package_pin H18 [get_ports {douta[7]}]
+endgroup
+startgroup
+set_property package_pin L18 [get_ports {douta[6]}]
+endgroup
+startgroup
+set_property package_pin G15 [get_ports {douta[5]}]
+endgroup
+startgroup
+set_property package_pin AD26 [get_ports {douta[4]}]
+endgroup
+startgroup
+set_property package_pin G16 [get_ports {douta[3]}]
+endgroup
+startgroup
+set_property package_pin AD25 [get_ports {douta[2]}]
+endgroup
+startgroup
+set_property package_pin AD24 [get_ports {douta[1]}]
+endgroup
+startgroup
+set_property package_pin AE24 [get_ports {douta[0]}]
+endgroup
+startgroup
+set_property package_pin AC24 [get_ports {dina[0]}]
+endgroup
+startgroup
+set_property package_pin AC25 [get_ports {dina[1]}]
+endgroup
+startgroup
+set_property package_pin AE26 [get_ports {dina[2]}]
+endgroup
+startgroup
+set_property package_pin AE27 [get_ports {dina[3]}]
+endgroup
+startgroup
+set_property package_pin AF26 [get_ports {addra[0]}]
+endgroup
+startgroup
+set_property package_pin AF25 [get_ports {addra[1]}]
+endgroup
+startgroup
+set_property package_pin AG27 [get_ports {addra[2]}]
+endgroup
+startgroup
+set_property package_pin U25 [get_ports {addra[3]}]
+endgroup
+set_property package_pin "" [get_ports [list  {dina[0]}]]
+set_property package_pin "" [get_ports [list  {dina[1]}]]
+startgroup
+set_property package_pin AC25 [get_ports {dina[0]}]
+endgroup
+set_property package_pin "" [get_ports [list  {dina[2]}]]
+startgroup
+set_property package_pin AE26 [get_ports {dina[1]}]
+endgroup
+set_property package_pin "" [get_ports [list  {dina[3]}]]
+startgroup
+set_property package_pin AE27 [get_ports {dina[2]}]
+endgroup
+startgroup
+set_property package_pin AC24 [get_ports wea]
+endgroup
+save_design

@@ -1,0 +1,15 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "clk_in" LOC = AF18;
+NET "ctrl_a" LOC = H18;
+NET "ctrl_b" LOC = L18;
+NET "ctrl_sel" LOC = G15;
+NET "ctrl_start" LOC = AD26;
+NET "ctrl_up" LOC = G16;
+NET "ctrl_dn" LOC = AD25;
+NET "ctrl_l" LOC = AD24;
+NET "ctrl_r" LOC = AE24;
+NET "data" LOC = K34;
+NET "strobe" LOC = L34;
+NET "clk_out" LOC = K32;
