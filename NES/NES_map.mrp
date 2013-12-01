@@ -10,31 +10,31 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Fri Oct 25 17:29:15 2013
+Mapped Date    : Wed Nov 27 00:36:39 2013
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    7
+Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                    56 out of  69,120    1%
-    Number used as Flip Flops:                  56
-  Number of Slice LUTs:                         64 out of  69,120    1%
-    Number used as logic:                       63 out of  69,120    1%
-      Number using O6 output only:              46
+  Number of Slice Registers:                    76 out of  69,120    1%
+    Number used as Flip Flops:                  76
+  Number of Slice LUTs:                         92 out of  69,120    1%
+    Number used as logic:                       91 out of  69,120    1%
+      Number using O6 output only:              73
       Number using O5 output only:              16
-      Number using O5 and O6:                    1
+      Number using O5 and O6:                    2
     Number used as exclusive route-thru:         1
   Number of route-thrus:                        17
     Number using O6 output only:                17
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    25 out of  17,280    1%
-  Number of LUT Flip Flop pairs used:           80
-    Number with an unused Flip Flop:            24 out of      80   30%
-    Number with an unused LUT:                  16 out of      80   20%
-    Number of fully used LUT-FF pairs:          40 out of      80   50%
-    Number of unique control sets:               5
+  Number of occupied Slices:                    40 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:          111
+    Number with an unused Flip Flop:            35 out of     111   31%
+    Number with an unused LUT:                  19 out of     111   17%
+    Number of fully used LUT-FF pairs:          57 out of     111   51%
+    Number of unique control sets:               7
     Number of slice register sites lost
       to control set restrictions:               8 out of  69,120    1%
 
@@ -49,17 +49,17 @@ Slice Logic Distribution:
 IO Utilization:
   Number of bonded IOBs:                        12 out of     640    1%
     Number of LOCed IOBs:                       12 out of      12  100%
-    IOB Flip Flops:                              8
+    IOB Flip Flops:                              5
 
 Specific Feature Utilization:
-  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
-    Number used as BUFGs:                        2
+  Number of BUFG/BUFGCTRLs:                      3 out of      32    9%
+    Number used as BUFGs:                        3
 
-Average Fanout of Non-Clock Nets:                2.84
+Average Fanout of Non-Clock Nets:                3.13
 
-Peak Memory Usage:  1031 MB
-Total REAL time to MAP completion:  14 secs 
-Total CPU time to MAP completion:   14 secs 
+Peak Memory Usage:  1033 MB
+Total REAL time to MAP completion:  17 secs 
+Total CPU time to MAP completion:   16 secs 
 
 Table of Contents
 -----------------
@@ -82,30 +82,18 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:Pack:2548 - The register "ctrl_b" has the property IOB=TRUE, but was not
-   packed into the ILOGIC component. The ILOGIC component already contains an
-   IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_sel" has the property IOB=TRUE, but was
-   not packed into the ILOGIC component. The ILOGIC component already contains
-   an IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_start" has the property IOB=TRUE, but was
-   not packed into the ILOGIC component. The ILOGIC component already contains
-   an IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_up" has the property IOB=TRUE, but was
-   not packed into the ILOGIC component. The ILOGIC component already contains
-   an IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_r" has the property IOB=TRUE, but was not
-   packed into the ILOGIC component. The ILOGIC component already contains an
-   IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_dn" has the property IOB=TRUE, but was
-   not packed into the ILOGIC component. The ILOGIC component already contains
-   an IFF or IDDR.
-WARNING:Pack:2548 - The register "ctrl_l" has the property IOB=TRUE, but was not
-   packed into the ILOGIC component. The ILOGIC component already contains an
-   IFF or IDDR.
 
 Section 3 - Informational
 -------------------------
+INFO:LIT:243 - Logical network FF00_data_out<7> has no load.
+INFO:LIT:395 - The above info message is repeated 9 more times for the following
+   (max. 5 shown):
+   FF00_data_out<6>,
+   FF00_data_out<5>,
+   FF00_data_out<4>,
+   FF00_data_in<7>,
+   FF00_data_in<6>
+   To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs
@@ -140,17 +128,17 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| FF00_data_in<4>                    | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| FF00_data_in<5>                    | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| FF00_data_out<0>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| FF00_data_out<1>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| FF00_data_out<2>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
+| FF00_data_out<3>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
 | clk_in                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | clk_out                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| ctrl_a                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| ctrl_b                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_dn                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_l                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_r                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_sel                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_start                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| ctrl_up                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
-| data                               | IOB              | INPUT     | LVCMOS25             |       |          |      | IFF          |          |          |
+| clock                              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| controller_data                    | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| joypad_interrupt                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF          |          |          |
 | strobe                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 

@@ -1,7 +1,7 @@
 Release 14.3 par P.40xd (lin64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-magnum.ece.cmu.edu::  Fri Oct 25 17:29:30 2013
+magnum.ece.cmu.edu::  Wed Nov 27 00:36:57 2013
 
 par -w -intstyle ise -ol high -mt off NES_map.ncd NES.ncd NES.pcf 
 
@@ -25,20 +25,19 @@ Device speed data version:  "PRODUCTION 1.73 2012-10-12".
 
 Device Utilization Summary:
 
-   Number of BUFGs                           2 out of 32      6%
-   Number of ILOGICs                         1 out of 800     1%
+   Number of BUFGs                           3 out of 32      9%
    Number of External IOBs                  12 out of 640     1%
       Number of LOCed IOBs                  12 out of 12    100%
 
-   Number of OLOGICs                         7 out of 800     1%
-   Number of Slices                         25 out of 17280   1%
-   Number of Slice Registers                56 out of 69120   1%
-      Number used as Flip Flops             56
+   Number of OLOGICs                         5 out of 800     1%
+   Number of Slices                         40 out of 17280   1%
+   Number of Slice Registers                76 out of 69120   1%
+      Number used as Flip Flops             76
       Number used as Latches                 0
       Number used as LatchThrus              0
 
-   Number of Slice LUTS                     64 out of 69120   1%
-   Number of Slice LUT-Flip Flop pairs      80 out of 69120   1%
+   Number of Slice LUTS                     92 out of 69120   1%
+   Number of Slice LUT-Flip Flop pairs     111 out of 69120   1%
 
 
 Overall effort level (-ol):   High 
@@ -50,13 +49,13 @@ Finished initial Timing Analysis.  REAL time: 6 secs
 Starting Router
 
 
-Phase  1  : 308 unrouted;      REAL time: 8 secs 
+Phase  1  : 439 unrouted;      REAL time: 7 secs 
 
-Phase  2  : 265 unrouted;      REAL time: 8 secs 
+Phase  2  : 388 unrouted;      REAL time: 7 secs 
 
-Phase  3  : 93 unrouted;      REAL time: 8 secs 
+Phase  3  : 127 unrouted;      REAL time: 8 secs 
 
-Phase  4  : 86 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+Phase  4  : 130 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
 
 Updating file: NES.ncd with current fully routed design.
 
@@ -92,11 +91,14 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net sta | SETUP       |         N/A|     1.324ns|     N/A|           0
-  tediv/clock_out                           | HOLD        |     0.891ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|     2.869ns|     N/A|           0
+  _in_BUFGP                                 | HOLD        |     0.523ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|     2.797ns|     N/A|           0
-  _in_BUFGP                                 | HOLD        |     0.514ns|            |       0|           0
+  Autotimespec constraint for clock net clo | SETUP       |         N/A|     2.337ns|     N/A|           0
+  ck_BUFGP                                  | HOLD        |     0.431ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net sta | SETUP       |         N/A|     1.324ns|     N/A|           0
+  tediv/clock_out                           | HOLD        |     0.557ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 

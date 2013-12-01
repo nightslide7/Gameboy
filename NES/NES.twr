@@ -31,31 +31,52 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
+Setup/Hold to clock clk_in
+---------------+------------+------------+------------------+--------+
+               |Max Setup to|Max Hold to |                  | Clock  |
+Source         | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+---------------+------------+------------+------------------+--------+
+FF00_data_in<4>|    4.206(R)|    0.160(R)|clk_in_BUFGP      |   0.000|
+FF00_data_in<5>|    4.657(R)|    0.756(R)|clk_in_BUFGP      |   0.000|
+---------------+------------+------------+------------------+--------+
+
 Clock clk_in to Pad
-------------+------------+------------------+--------+
-            | clk (edge) |                  | Clock  |
-Destination |   to PAD   |Internal Clock(s) | Phase  |
-------------+------------+------------------+--------+
-strobe      |    9.813(R)|clk_in_BUFGP      |   0.000|
-------------+------------+------------------+--------+
+----------------+------------+------------------+--------+
+                | clk (edge) |                  | Clock  |
+Destination     |   to PAD   |Internal Clock(s) | Phase  |
+----------------+------------+------------------+--------+
+FF00_data_out<0>|    7.724(R)|clk_in_BUFGP      |   0.000|
+FF00_data_out<1>|    7.432(R)|clk_in_BUFGP      |   0.000|
+FF00_data_out<2>|    7.394(R)|clk_in_BUFGP      |   0.000|
+FF00_data_out<3>|    7.420(R)|clk_in_BUFGP      |   0.000|
+strobe          |    9.805(R)|clk_in_BUFGP      |   0.000|
+----------------+------------+------------------+--------+
 
 Clock to Setup on destination clock clk_in
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_in         |    2.797|         |         |         |
+clk_in         |    2.869|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clock
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clock          |    2.337|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Fri Oct 25 17:29:53 2013 
+Analysis completed Wed Nov 27 00:37:20 2013 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 597 MB
+Peak Memory Usage: 598 MB
 
 
 

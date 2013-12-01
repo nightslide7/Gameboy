@@ -1,0 +1,525 @@
+Release 14.3 - xst P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Reading design: NES.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "NES.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "NES"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : NES
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Off
+Reduce Control Sets                : Off
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../my_clock_divider.v" in library work
+Compiling verilog file "../NES_controller.v" in library work
+Module <my_clock_divider> compiled
+Module <NES> compiled
+No errors in compilation
+Analysis of file <"NES.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <NES> in library <work> with parameters.
+	A = "00000"
+	B = "00010"
+	DIV_CNT = "00000000000000110010000000000000"
+	DN = "01010"
+	LEFT = "01100"
+	RIGHT = "01110"
+	SEL = "00100"
+	START = "00110"
+	STROBED = "01111"
+	UP = "01000"
+	WAIT = "10000"
+	WAIT_A = "00001"
+	WAIT_B = "00011"
+	WAIT_DN = "01011"
+	WAIT_LEFT = "01101"
+	WAIT_SEL = "00101"
+	WAIT_START = "00111"
+	WAIT_UP = "01001"
+
+Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
+	DIV_OVER_TWO = "00000000000000000000000000000001"
+	DIV_SIZE = "00000000000000000000000000000100"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <NES>.
+	A = 5'b00000
+	B = 5'b00010
+	DIV_CNT = 32'sb00000000000000110010000000000000
+	DN = 5'b01010
+	LEFT = 5'b01100
+	RIGHT = 5'b01110
+	SEL = 5'b00100
+	START = 5'b00110
+	STROBED = 5'b01111
+	UP = 5'b01000
+	WAIT = 5'b10000
+	WAIT_A = 5'b00001
+	WAIT_B = 5'b00011
+	WAIT_DN = 5'b01011
+	WAIT_LEFT = 5'b01101
+	WAIT_SEL = 5'b00101
+	WAIT_START = 5'b00111
+	WAIT_UP = 5'b01001
+Module <NES> is correct for synthesis.
+ 
+Analyzing module <my_clock_divider> in library <work>.
+	DIV_OVER_TWO = 32'sb00000000000000000000000000000001
+	DIV_SIZE = 32'sb00000000000000000000000000000100
+Module <my_clock_divider> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <my_clock_divider>.
+    Related source file is "../my_clock_divider.v".
+    Found 1-bit register for signal <clock_out>.
+    Found 4-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <my_clock_divider> synthesized.
+
+
+Synthesizing Unit <NES>.
+    Related source file is "../NES_controller.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 45 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Using one-hot encoding for signal <state>.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 45 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found 1-bit register for signal <clk_out>.
+    Found 1-bit register for signal <ctrl_a>.
+    Found 1-bit register for signal <ctrl_b>.
+    Found 1-bit register for signal <ctrl_dn>.
+    Found 1-bit register for signal <ctrl_l>.
+    Found 1-bit register for signal <ctrl_r>.
+    Found 1-bit register for signal <ctrl_sel>.
+    Found 1-bit register for signal <ctrl_start>.
+    Found 1-bit register for signal <ctrl_up>.
+    Found 1-bit register for signal <strobe>.
+    Found 18-bit up counter for signal <clock_counter>.
+    Found 17-bit register for signal <n_state>.
+    Found 17-bit register for signal <state>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  44 D-type flip-flop(s).
+Unit <NES> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 18-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 13
+ 1-bit register                                        : 11
+ 17-bit register                                       : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1293 - FF/Latch <n_state_15> has a constant value of 0 in block <NES>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <n_state_16> of sequential type is unconnected in block <NES>.
+WARNING:Xst:2677 - Node <state_16> of sequential type is unconnected in block <NES>.
+WARNING:Xst:2677 - Node <n_state_16> of sequential type is unconnected in block <NES>.
+WARNING:Xst:2677 - Node <state_16> of sequential type is unconnected in block <NES>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 2
+ 18-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 43
+ Flip-Flops                                            : 43
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <n_state_15> has a constant value of 0 in block <NES>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <NES> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block NES, actual ratio is 0.
+INFO:Xst:2260 - The FF/Latch <state_15> in Unit <NES> is equivalent to the following FF/Latch : <strobe> 
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 64
+ Flip-Flops                                            : 64
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : NES.ngr
+Top Level Output File Name         : NES
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 12
+
+Cell Usage :
+# BELS                             : 101
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 17
+#      LUT2                        : 8
+#      LUT3                        : 1
+#      LUT4                        : 4
+#      LUT5                        : 27
+#      LUT6                        : 4
+#      MUXCY                       : 17
+#      VCC                         : 1
+#      XORCY                       : 18
+# FlipFlops/Latches                : 64
+#      FD                          : 50
+#      FDE                         : 9
+#      FDR                         : 4
+#      FDRS                        : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 1
+#      OBUF                        : 10
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              56  out of  69120     0%  
+ Number of Slice LUTs:                   64  out of  69120     0%  
+    Number used as Logic:                64  out of  69120     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     79
+   Number with an unused Flip Flop:      23  out of     79    29%  
+   Number with an unused LUT:            15  out of     79    18%  
+   Number of fully used LUT-FF pairs:    41  out of     79    51%  
+   Number of unique control sets:        13
+
+IO Utilization: 
+ Number of IOs:                          12
+ Number of bonded IOBs:                  12  out of    640     1%  
+    IOB Flip Flops/Latches:               8
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+statediv/clock_out1                | BUFG                   | 24    |
+clk_in                             | BUFGP                  | 40    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 3.124ns (Maximum Frequency: 320.148MHz)
+   Minimum input arrival time before clock: 1.192ns
+   Maximum output required time after clock: 3.264ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_in'
+  Clock period: 3.124ns (frequency: 320.148MHz)
+  Total number of paths / destination ports: 832 / 45
+-------------------------------------------------------------------------
+Delay:               3.124ns (Levels of Logic = 10)
+  Source:            clock_counter_3 (FF)
+  Destination:       clock_counter_10 (FF)
+  Source Clock:      clk_in rising
+  Destination Clock: clk_in rising
+
+  Data Path: clock_counter_3 to clock_counter_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              28   0.471   0.607  clock_counter_3 (clock_counter_3)
+     LUT1:I0->O            1   0.094   0.000  Mcount_clock_counter_cy<3>_rt (Mcount_clock_counter_cy<3>_rt)
+     MUXCY:S->O            1   0.372   0.000  Mcount_clock_counter_cy<3> (Mcount_clock_counter_cy<3>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<4> (Mcount_clock_counter_cy<4>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<5> (Mcount_clock_counter_cy<5>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<6> (Mcount_clock_counter_cy<6>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<7> (Mcount_clock_counter_cy<7>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<8> (Mcount_clock_counter_cy<8>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<9> (Mcount_clock_counter_cy<9>)
+     XORCY:CI->O           1   0.357   0.973  Mcount_clock_counter_xor<10> (Result<10>)
+     LUT5:I0->O            1   0.094   0.000  clock_counter_10_rstpot (clock_counter_10_rstpot)
+     FD:D                     -0.018          clock_counter_10
+    ----------------------------------------
+    Total                      3.124ns (1.544ns logic, 1.580ns route)
+                                       (49.4% logic, 50.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'statediv/clock_out1'
+  Clock period: 1.385ns (frequency: 722.022MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.385ns (Levels of Logic = 0)
+  Source:            clk_out (FF)
+  Destination:       clk_out (FF)
+  Source Clock:      statediv/clock_out1 rising
+  Destination Clock: statediv/clock_out1 rising
+
+  Data Path: clk_out to clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q             2   0.471   0.341  clk_out (clk_out_OBUF)
+     FDRS:R                    0.573          clk_out
+    ----------------------------------------
+    Total                      1.385ns (1.044ns logic, 0.341ns route)
+                                       (75.4% logic, 24.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'statediv/clock_out1'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              1.192ns (Levels of Logic = 1)
+  Source:            data (PAD)
+  Destination:       ctrl_a (FF)
+  Destination Clock: statediv/clock_out1 rising
+
+  Data Path: data to ctrl_a
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.818   0.374  data_IBUF (data_IBUF)
+     FDE:D                    -0.018          ctrl_a
+    ----------------------------------------
+    Total                      1.192ns (0.818ns logic, 0.374ns route)
+                                       (68.6% logic, 31.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'statediv/clock_out1'
+  Total number of paths / destination ports: 9 / 9
+-------------------------------------------------------------------------
+Offset:              3.264ns (Levels of Logic = 1)
+  Source:            clk_out (FF)
+  Destination:       clk_out (PAD)
+  Source Clock:      statediv/clock_out1 rising
+
+  Data Path: clk_out to clk_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q             2   0.471   0.341  clk_out (clk_out_OBUF)
+     OBUF:I->O                 2.452          clk_out_OBUF (clk_out)
+    ----------------------------------------
+    Total                      3.264ns (2.923ns logic, 0.341ns route)
+                                       (89.6% logic, 10.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_in'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.259ns (Levels of Logic = 1)
+  Source:            strobe (FF)
+  Destination:       strobe (PAD)
+  Source Clock:      clk_in rising
+
+  Data Path: strobe to strobe
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.471   0.336  strobe (strobe_OBUF)
+     OBUF:I->O                 2.452          strobe_OBUF (strobe)
+    ----------------------------------------
+    Total                      3.259ns (2.923ns logic, 0.336ns route)
+                                       (89.7% logic, 10.3% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.24 secs
+ 
+--> 
+
+
+Total memory usage is 639468 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    6 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
+

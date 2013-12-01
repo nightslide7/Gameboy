@@ -1,0 +1,2 @@
+verilog work "../my_clock_divider.v"
+verilog work "../NES_controller.v"

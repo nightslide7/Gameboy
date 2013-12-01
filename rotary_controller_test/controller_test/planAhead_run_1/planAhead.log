@@ -1,0 +1,80 @@
+#-----------------------------------------------------------
+# PlanAhead v14.3 (64-bit)
+# Build 209282 by xbuild on Thu Oct 18 20:46:04 MDT 2012
+# Start of session at: Wed Oct  2 15:58:40 2013
+# Process ID: 15130
+# Log file: /Gameboy/rotary_controller/controller_test/planAhead_run_1/planAhead.log
+# Journal file: /Gameboy/rotary_controller/controller_test/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source /Gameboy/rotary_controller/controller_test/pa.fromHdl.tcl
+# create_project -name controller_test -dir "/Gameboy/rotary_controller/controller_test/planAhead_run_1" -part xc5vlx110tff1136-1
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property target_constrs_file "rotary_test.ucf" [current_fileset -constrset]
+Adding file '/Gameboy/rotary_controller/controller_test/rotary_test.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {../controller.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set_property top rotary_test $srcset
+# add_files [list {rotary_test.ucf}] -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc5vlx110tff1136-1
+Using Verific elaboration
+Parsing VHDL file "/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Analyzing Verilog file "/Gameboy/rotary_controller/controller.v" into library work
+INFO: [Designutils 20-910] Reading macro library /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn
+Parsing EDIF File [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+Finished Parsing EDIF File [/opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+INFO: [Device 21-21] Reading bus macro file /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/pr_bus_macros.xml
+Loading clock regions from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockBuffers.xml
+Loading package from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/Package.xml
+Loading io standards from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/SSORules.xml
+Loading list of drcs for the architecture : /opt/Xilinx/14.3/ISE_DS/PlanAhead/data/./parts/xilinx/virtex5/drc.xml
+Parsing UCF File [/Gameboy/rotary_controller/controller_test/rotary_test.ucf]
+Finished Parsing UCF File [/Gameboy/rotary_controller/controller_test/rotary_test.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: c6164c26
+open_rtl_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 2969.207 ; gain = 293.574
+update_compile_order -fileset sim_1
+startgroup
+set_property package_pin AH30 [get_ports rotary_inc_a]
+endgroup
+startgroup
+set_property package_pin AG30 [get_ports rotary_inc_b]
+endgroup
+startgroup
+set_property package_pin AH29 [get_ports rotary_push]
+endgroup
+set_property iostandard LVCMOS25 [get_ports [list rotary_inc_a]]
+set_property iostandard HSLVDCI_18 [get_ports [list rotary_inc_a]]
+set_property iostandard HSLVDCI_33 [get_ports [list rotary_inc_a]]
+set_property iostandard GTL_DCI [get_ports [list rotary_inc_a]]
+set_property iostandard GTLP_DCI [get_ports [list rotary_inc_a]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_inc_a]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_inc_b]]
+set_property iostandard LVCMOS18 [get_ports [list rotary_push]]
+startgroup
+set_property package_pin H18 [get_ports inca]
+endgroup
+startgroup
+set_property package_pin G15 [get_ports incb]
+endgroup
+startgroup
+set_property package_pin L18 [get_ports incb]
+endgroup
+startgroup
+set_property package_pin G15 [get_ports push]
+endgroup
+save_design
+exit
+INFO: [Common 17-206] Exiting PlanAhead at Wed Oct  2 16:03:49 2013...
+INFO: [Common 17-83] Releasing license: PlanAhead

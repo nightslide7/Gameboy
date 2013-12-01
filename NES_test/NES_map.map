@@ -1,0 +1,157 @@
+Release 14.3 Map P.40xd (lin64)
+Xilinx Map Application Log File for Design 'NES'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol
+high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr
+off -lc off -power off -o NES_map.ncd NES.ngd NES.pcf 
+Target Device  : xc5vlx110t
+Target Package : ff1136
+Target Speed   : -1
+Mapper Version : virtex5 -- $Revision: 1.55 $
+Mapped Date    : Fri Oct 25 17:29:15 2013
+
+Mapping design into LUTs...
+Running directed packing...
+WARNING:Pack:2548 - The register "ctrl_b" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_sel" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_start" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_up" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_r" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_dn" has the property IOB=TRUE, but was
+   not packed into the ILOGIC component. The ILOGIC component already contains
+   an IFF or IDDR.
+WARNING:Pack:2548 - The register "ctrl_l" has the property IOB=TRUE, but was not
+   packed into the ILOGIC component. The ILOGIC component already contains an
+   IFF or IDDR.
+Running delay-based LUT packing...
+Updating timing models...
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven placement...
+Total REAL time at the beginning of Placer: 8 secs 
+Total CPU  time at the beginning of Placer: 8 secs 
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 4.37  Local Placement Optimization
+Phase 4.37  Local Placement Optimization (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 5.33  Local Placement Optimization
+Phase 5.33  Local Placement Optimization (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 6.32  Local Placement Optimization
+Phase 6.32  Local Placement Optimization (Checksum:d3209b92) REAL time: 9 secs 
+
+Phase 7.2  Initial Clock and IO Placement
+
+Phase 7.2  Initial Clock and IO Placement (Checksum:4599032a) REAL time: 9 secs 
+
+Phase 8.36  Local Placement Optimization
+Phase 8.36  Local Placement Optimization (Checksum:4599032a) REAL time: 9 secs 
+
+Phase 9.30  Global Clock Region Assignment
+Phase 9.30  Global Clock Region Assignment (Checksum:4599032a) REAL time: 9 secs 
+
+Phase 10.3  Local Placement Optimization
+Phase 10.3  Local Placement Optimization (Checksum:4599032a) REAL time: 9 secs 
+
+Phase 11.5  Local Placement Optimization
+Phase 11.5  Local Placement Optimization (Checksum:4599032a) REAL time: 9 secs 
+
+Phase 12.8  Global Placement
+....
+....
+Phase 12.8  Global Placement (Checksum:9fd3f275) REAL time: 9 secs 
+
+Phase 13.29  Local Placement Optimization
+Phase 13.29  Local Placement Optimization (Checksum:9fd3f275) REAL time: 9 secs 
+
+Phase 14.5  Local Placement Optimization
+Phase 14.5  Local Placement Optimization (Checksum:9fd3f275) REAL time: 9 secs 
+
+Phase 15.18  Placement Optimization
+Phase 15.18  Placement Optimization (Checksum:7b29ad7f) REAL time: 13 secs 
+
+Phase 16.5  Local Placement Optimization
+Phase 16.5  Local Placement Optimization (Checksum:7b29ad7f) REAL time: 13 secs 
+
+Phase 17.34  Placement Validation
+Phase 17.34  Placement Validation (Checksum:7b29ad7f) REAL time: 13 secs 
+
+Total REAL time to Placer completion: 13 secs 
+Total CPU  time to Placer completion: 13 secs 
+Running post-placement packing...
+Writing output files...
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    7
+Slice Logic Utilization:
+  Number of Slice Registers:                    56 out of  69,120    1%
+    Number used as Flip Flops:                  56
+  Number of Slice LUTs:                         64 out of  69,120    1%
+    Number used as logic:                       63 out of  69,120    1%
+      Number using O6 output only:              46
+      Number using O5 output only:              16
+      Number using O5 and O6:                    1
+    Number used as exclusive route-thru:         1
+  Number of route-thrus:                        17
+    Number using O6 output only:                17
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    25 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:           80
+    Number with an unused Flip Flop:            24 out of      80   30%
+    Number with an unused LUT:                  16 out of      80   20%
+    Number of fully used LUT-FF pairs:          40 out of      80   50%
+    Number of unique control sets:               5
+    Number of slice register sites lost
+      to control set restrictions:               8 out of  69,120    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        12 out of     640    1%
+    Number of LOCed IOBs:                       12 out of      12  100%
+    IOB Flip Flops:                              8
+
+Specific Feature Utilization:
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
+
+Average Fanout of Non-Clock Nets:                2.84
+
+Peak Memory Usage:  1031 MB
+Total REAL time to MAP completion:  14 secs 
+Total CPU time to MAP completion:   14 secs 
+
+Mapping completed.
+See MAP report file "NES_map.mrp" for details.
