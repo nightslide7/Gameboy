@@ -4,15 +4,24 @@
  *
  */
 
-module NES (input clk_in, //Audio clk (12.288MHz)
+module NES (input ac97_bitclk, //Audio clk (12.288MHz)
 	    input clock,
-	    input controller_data,
+	    input HDR2_2_SM_8_N,
 	    input [7:0] FF00_data_in,
+	    input FF00_load_in,
 	    output reg [7:0] FF00_data_out,
-	    output reg clk_out=0,
-	    output reg strobe=0,
+	    output wire HDR2_6_SM_7_N,
+	    output wire HDR2_4_SM_8_P,
 	    output reg joypad_interrupt
 	    );
+
+   wire 	       controller_data;
+   reg 		       strobe=0;
+   reg 		       clk_out=0;
+   
+   assign controller_data = HDR2_2_SM_8_N;
+   assign HDR2_4_SM_8_P = strobe;
+   assign HDR2_6_SM_7_N = clk_out;
 
    reg 	       ctrl_a;//all controller signals asserted low
    reg 	       ctrl_b;
@@ -23,12 +32,9 @@ module NES (input clk_in, //Audio clk (12.288MHz)
    reg 	       ctrl_l;
    reg 	       ctrl_r;
 
-   wire        cpu_a_b_sel_start_b;
-   wire        cpu_r_l_up_dn_b;
+   reg        cpu_a_b_sel_start_b;
+   reg        cpu_r_l_up_dn_b;
    wire        cpu_clock;
-
-   assign cpu_a_b_sel_start_b = FF00_data_in[5];
-   assign cpu_r_l_up_dn_b = FF00_data_in[4];
 
    parameter A = 5'd0, WAIT_A = 5'd1, B = 5'd2, WAIT_B = 5'd3, SEL = 5'd4,
 	       WAIT_SEL = 5'd5, START = 5'd6, WAIT_START = 5'd7, UP = 5'd8,
@@ -43,14 +49,18 @@ module NES (input clk_in, //Audio clk (12.288MHz)
    wire 	   state_clk;
    my_clock_divider #(.DIV_SIZE(4), .DIV_OVER_TWO(1))
                     statediv (.clock_out (state_clk),
-			      .clock_in (clk_in)
+			      .clock_in (ac97_bitclk)
 			      );
 
    my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(40)) //~4.125MHz
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
    
-   always @(posedge clk_in) begin
+   always @(posedge ac97_bitclk) begin
+      if (FF00_load_in) begin
+	 cpu_a_b_sel_start_b <= FF00_data_in[5];
+	 cpu_r_l_up_dn_b <= FF00_data_in[4];
+      end
       if (clock_counter == DIV_CNT) begin
 	 strobe <= 1'd1;
 	 state <= STROBED;
@@ -68,7 +78,7 @@ module NES (input clk_in, //Audio clk (12.288MHz)
       else if (~cpu_r_l_up_dn_b) begin
 	 FF00_data_out[3:0] <= {ctrl_dn, ctrl_up, ctrl_l, ctrl_r};
       end
-   end // always @ (posedge clk_in)
+   end // always @ (posedge ac97_bitclk)
 
    always @(posedge cpu_clock) begin
       if (~cpu_a_b_sel_start_b) begin
@@ -171,5 +181,5 @@ module NES (input clk_in, //Audio clk (12.288MHz)
 	   n_state <= WAIT;
 	end
       endcase // case state
-   end // always @ (posedge clk_in)
+   end // always @ (posedge state_clk)
 endmodule
