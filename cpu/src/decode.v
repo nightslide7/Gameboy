@@ -84,6 +84,9 @@ module decode(/*AUTOARG*/
    // Multibyte instructions
    reg                cb, next_cb;
 
+   // Branch taken
+   reg                branch_taken, next_branch_taken;
+   
    // Counter
    // Top 3 bits are machine cycle, lower 2 are T cycle
    reg [4:0]          cycle, next_cycle;
@@ -141,6 +144,7 @@ module decode(/*AUTOARG*/
       if (reset) begin
          cycle <= 5'd0;
          cb <= 1'b0;
+         branch_taken <= 1'b0;
          halted <= 1'd0;
          interrupt_handle <= 1'b0;
          debug_halt <= 1'b0;
@@ -150,6 +154,7 @@ module decode(/*AUTOARG*/
       end else begin
          cycle <= next_cycle;
          cb <= next_cb;
+         branch_taken <= next_branch_taken;
          interrupt_handle <= next_interrupt_handle;
          halted <= halt;
          debug_halt <= next_debug_halt;
@@ -196,6 +201,9 @@ module decode(/*AUTOARG*/
       m_cycles = 4'd1;
       next_interrupt_handle = interrupt_handle;
 
+      // Branch taken
+      next_branch_taken = branch_taken;
+      
       // Register number decoding
       rn_in = `RGF_NONE;
       rn_out = `RGF_NONE;
@@ -1560,11 +1568,14 @@ module decode(/*AUTOARG*/
 
            // JP nn, JP cc, nn //
            8'b11_000_011, 8'b11_0xx_010: begin
-              if (instruction[0] | taken) begin
+              if (instruction[0] | taken | branch_taken) begin
                  // JP nn, JP cc, nn: taken //
                  m_cycles = 4'd3;
                  case (cycle)
                    5'd3: begin
+                      // Taken
+                      next_branch_taken = 1'b1;
+                      
                       // PC++, DBUF = nnL
                       regfile_inc_pc = 1'b1;
                       addr_buf_write_ext = 1'b1;
@@ -1628,11 +1639,14 @@ module decode(/*AUTOARG*/
 
            // JR e; JR cc, e //
            8'b00_011_000, 8'b00_1xx_000: begin
-              if ((~instruction[5]) | taken) begin
+              if ((~instruction[5]) | taken | branch_taken) begin
                  // JR e, JR cc, e: taken //
                  m_cycles = 4'd3;
                  case (cycle)
                    5'd3: begin
+                      // Taken
+                      next_branch_taken = 1'b1;
+                      
                       // DBUF = e, PC = PC + 2
                       data_buf_load_ext = 1'b1;
                       addr_buf_write_ext = 1'b1;
@@ -1712,11 +1726,14 @@ module decode(/*AUTOARG*/
 
            // CALL nn, CALL cc, nn //
            8'b11_001_101, 8'b11_0xx_100: begin
-              if (instruction[0] | taken) begin
+              if (instruction[0] | taken | branch_taken) begin
                  // CALL nn, CALL cc, nn taken //
                  m_cycles = 4'd6;
                  case (cycle)
                    5'd3: begin
+                      // Taken
+                      next_branch_taken = 1'b1;
+                      
                       // PC ++, DBUF = nnL
                       regfile_inc_pc = 1'b1;
 
@@ -1820,11 +1837,14 @@ module decode(/*AUTOARG*/
 
            // RET; RETI; RET cc //
            8'b11_001_001, 8'b11_011_001, 8'b11_0xx_000: begin
-              if (instruction[0] | taken) begin
+              if (instruction[0] | taken | branch_taken) begin
                  // RET; RETI; RET cc: taken //
                  m_cycles = 4'd4;
                  case (cycle)
                    5'd3: begin
+                      // Taken
+                      next_branch_taken = 1'b1;
+                      
                       // ABUF = SP, SP = SP + 1
                       rn_out = `RGF_SP;
                       regfile_addr_gate = 1'b1;
@@ -2244,6 +2264,7 @@ module decode(/*AUTOARG*/
          next_cycle = 5'b0;
          next_cb = 1'b0;
          next_interrupt_handle = 1'b0;
+         next_branch_taken = 1'b0;
          
          if (step_pressed | bp_step) begin
             next_step_inst = 1'b1;

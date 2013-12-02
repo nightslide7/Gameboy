@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: lcd_top_flashcart.prj
 
@@ -492,10 +492,10 @@ Analyzing top module <lcd_top_flashcart>.
 	I_SERIAL = 32'sb00000000000000000000000000000011
 	I_TIMA = 32'sb00000000000000000000000000000010
 	I_VBLANK = 32'sb00000000000000000000000000000000
-WARNING:Xst:852 - "lcd_top.v" line 477: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
-WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 644: Instantiating black box module <blockram8192>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 777: Instantiating black box module <chipscope_ila>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 793: Instantiating black box module <chipscope_icon>.
+WARNING:Xst:852 - "lcd_top.v" line 492: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
+WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 662: Instantiating black box module <blockram8192>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 804: Instantiating black box module <chipscope_ila>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 820: Instantiating black box module <chipscope_icon>.
 Module <lcd_top_flashcart> is correct for synthesis.
  
     Set user-defined property "SYN_BLACK_BOX =  1" for instance <cila> in unit <lcd_top_flashcart>.
@@ -1151,16 +1151,16 @@ WARNING:Xst:646 - Signal <carry> is assigned but never used. This unconnected si
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0005> created at line 90.
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0006> created at line 90.
     Found 1-bit xor2 for signal <alu_flags_out_3$xor0007> created at line 90.
-    Found 8-bit adder carry out for signal <old_intermediate_result1_20$addsub0001> created at line 130.
-    Found 4-bit comparator greater for signal <old_intermediate_result1_20$cmp_gt0000> created at line 129.
-    Found 9-bit subtractor for signal <old_intermediate_result1_21$addsub0000> created at line 144.
-    Found 9-bit comparator greater for signal <old_intermediate_result2_22$cmp_gt0000> created at line 135.
-    Found 9-bit addsub for signal <old_intermediate_result2_22$share0000>.
-    Found 5-bit adder for signal <old_result_high_15$addsub0000> created at line 73.
-    Found 5-bit adder for signal <old_result_high_19$addsub0000> created at line 113.
-    Found 5-bit adder for signal <old_result_low_11$addsub0000> created at line 52.
-    Found 5-bit adder for signal <old_result_low_14$addsub0000> created at line 69.
-    Found 5-bit adder for signal <old_result_low_14$addsub0001> created at line 69.
+    Found 8-bit adder carry out for signal <old_intermediate_result1_18$addsub0001> created at line 130.
+    Found 4-bit comparator greater for signal <old_intermediate_result1_18$cmp_gt0000> created at line 129.
+    Found 9-bit subtractor for signal <old_intermediate_result1_19$addsub0000> created at line 144.
+    Found 9-bit comparator greater for signal <old_intermediate_result2_20$cmp_gt0000> created at line 135.
+    Found 9-bit addsub for signal <old_intermediate_result2_20$share0000>.
+    Found 5-bit adder for signal <old_result_high_13$addsub0000> created at line 73.
+    Found 5-bit adder for signal <old_result_high_17$addsub0000> created at line 113.
+    Found 5-bit adder for signal <old_result_low_12$addsub0000> created at line 69.
+    Found 5-bit adder for signal <old_result_low_12$addsub0001> created at line 69.
+    Found 5-bit adder for signal <old_result_low_9$addsub0000> created at line 52.
     Summary:
 	inferred  16 Adder/Subtractor(s).
 	inferred   2 Comparator(s).
@@ -1377,8 +1377,9 @@ Unit <sound_registers> synthesized.
 Synthesizing Unit <SquareWave>.
     Related source file is "../sound_src/sound_functions.v".
     Found 9-bit adder carry out for signal <add0000$addsub0000> created at line 154.
-    Found 5-bit up counter for signal <env_counter>.
-    Found 5-bit comparator equal for signal <env_counter$cmp_eq0000> created at line 286.
+    Found 5-bit register for signal <env_counter>.
+    Found 5-bit adder for signal <env_counter$addsub0000> created at line 299.
+    Found 5-bit comparator equal for signal <env_counter$cmp_eq0000> created at line 289.
     Found 12-bit register for signal <freq_counter>.
     Found 12-bit adder for signal <freq_counter$share0000> created at line 167.
     Found 9-bit up counter for signal <len_counter>.
@@ -1392,10 +1393,10 @@ Synthesizing Unit <SquareWave>.
     Found 12-bit comparator greatequal for signal <reg_level$cmp_ge0000> created at line 178.
     Found 9-bit comparator lessequal for signal <reg_level$cmp_le0000> created at line 165.
     Found 4-bit updown counter for signal <reg_vol>.
-    Found 4-bit comparator greatequal for signal <reg_vol$cmp_ge0000> created at line 287.
-    Found 4-bit comparator lessequal for signal <reg_vol$cmp_le0000> created at line 290.
-    Found 4-bit comparator less for signal <reg_vol$cmp_lt0000> created at line 287.
-    Found 5-bit comparator not equal for signal <reg_vol$cmp_ne0000> created at line 286.
+    Found 4-bit comparator greatequal for signal <reg_vol$cmp_ge0000> created at line 290.
+    Found 4-bit comparator lessequal for signal <reg_vol$cmp_le0000> created at line 293.
+    Found 4-bit comparator less for signal <reg_vol$cmp_lt0000> created at line 290.
+    Found 5-bit comparator not equal for signal <reg_vol$cmp_ne0000> created at line 289.
     Found 4-bit up counter for signal <sweep_counter>.
     Found 12-bit register for signal <true_freq>.
     Found 12-bit adder for signal <true_freq$addsub0000> created at line 240.
@@ -1408,9 +1409,9 @@ Synthesizing Unit <SquareWave>.
     Found 12-bit shifter logical right for signal <true_freq$shift0000> created at line 254.
     Found 8-bit adder for signal <true_len$sub0000> created at line 147.
     Summary:
-	inferred   5 Counter(s).
-	inferred  28 D-type flip-flop(s).
-	inferred   6 Adder/Subtractor(s).
+	inferred   4 Counter(s).
+	inferred  33 D-type flip-flop(s).
+	inferred   7 Adder/Subtractor(s).
 	inferred  16 Comparator(s).
 	inferred   1 Combinational logic shifter(s).
 Unit <SquareWave> synthesized.
@@ -1604,17 +1605,18 @@ WARNING:Xst:646 - Signal <t_cycle> is assigned but never used. This unconnected 
 WARNING:Xst:646 - Signal <m_cycles> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <m_cycle> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 1-bit register for signal <debug_halt>.
+    Found 1-bit register for signal <branch_taken>.
     Found 1-bit register for signal <cb>.
     Found 1-bit register for signal <continue_pressed>.
     Found 5-bit register for signal <cycle>.
     Found 1-bit register for signal <halted>.
     Found 1-bit register for signal <interrupt_handle>.
-    Found 4-bit comparator equal for signal <next_cb$cmp_eq0000> created at line 2243.
+    Found 4-bit comparator equal for signal <next_cb$cmp_eq0000> created at line 2263.
     Found 6-bit adder for signal <next_cycle_high>.
     Found 1-bit register for signal <step_inst>.
     Found 1-bit register for signal <step_pressed>.
     Summary:
-	inferred  12 D-type flip-flop(s).
+	inferred  13 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Comparator(s).
 Unit <decode> synthesized.
@@ -1833,11 +1835,11 @@ Synthesizing Unit <cpu>.
     Related source file is "../cpu/src/cpu.v".
 WARNING:Xst:646 - Signal <interrupt_sel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <flags<2:1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_8> of Case statement line 158 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
-   	- add an 'INIT' attribute on signal <$old_interrupt_sel_8> (optimization is then done without any risk)
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_6> of Case statement line 158 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <$old_interrupt_sel_6> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
-    Using one-hot encoding for signal <$old_interrupt_sel_8>.
+    Using one-hot encoding for signal <$old_interrupt_sel_6>.
     Found 16-bit subtractor for signal <high_mem_addr>.
     Found 16-bit tristate buffer for signal <addr_ext_in>.
     Found 16-bit comparator equal for signal <bp_pc>.
@@ -1924,12 +1926,11 @@ WARNING:Xst:646 - Signal <video_oam_addr> is assigned but never used. This uncon
 WARNING:Xst:1780 - Signal <reg_data_out> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <nextString> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mode_video> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <high_mem_addr<16>> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <cart_w_enable_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <cart_reset_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <cart_r_enable_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <cart_cs_sram_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IF_data<4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IE_data<4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <CONTROL> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_7> for signal <cstate>.
     -----------------------------------------------------------------------
@@ -1944,27 +1945,27 @@ WARNING:Xst:1780 - Signal <CONTROL> is never used or assigned. This unconnected 
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit adder for signal <$add0000> created at line 711.
-    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 549.
-    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 549.
-    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 616.
-    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 616.
-    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 439.
-    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 619.
-    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 619.
+    Found 32-bit adder for signal <$add0000> created at line 738.
+    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 564.
+    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 564.
+    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 634.
+    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 634.
+    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 454.
+    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 637.
+    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 637.
     Found 16-bit adder for signal <cart_address>.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 512.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 512.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 512.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 512.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 512.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 512.
-    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 469.
-    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 469.
-    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 451.
-    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 451.
-    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 460.
-    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 460.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 527.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 527.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 527.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 527.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 527.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 527.
+    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 484.
+    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 484.
+    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 466.
+    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 466.
+    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 475.
+    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 475.
     Found 16-bit subtractor for signal <wram_addr_long>.
     Summary:
 	inferred   1 Finite State Machine(s).
@@ -1985,7 +1986,7 @@ Macro Statistics
 # Multipliers                                          : 2
  32x9-bit multiplier                                   : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 94
+# Adders/Subtractors                                   : 96
  10-bit adder                                          : 3
  10-bit subtractor                                     : 4
  11-bit adder                                          : 1
@@ -2006,7 +2007,7 @@ Macro Statistics
  4-bit adder                                           : 2
  4-bit adder carry out                                 : 2
  4-bit subtractor                                      : 2
- 5-bit adder                                           : 14
+ 5-bit adder                                           : 16
  5-bit adder carry in                                  : 1
  6-bit adder                                           : 1
  7-bit adder                                           : 1
@@ -2017,7 +2018,7 @@ Macro Statistics
  9-bit adder carry out                                 : 3
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 1
-# Counters                                             : 27
+# Counters                                             : 25
  12-bit up counter                                     : 4
  15-bit up counter                                     : 1
  2-bit up counter                                      : 2
@@ -2026,13 +2027,12 @@ Macro Statistics
  32-bit up counter                                     : 1
  4-bit up counter                                      : 5
  4-bit updown counter                                  : 3
- 5-bit up counter                                      : 2
  6-bit up counter                                      : 1
  7-bit up counter                                      : 1
  8-bit up counter                                      : 1
  9-bit up counter                                      : 3
-# Registers                                            : 664
- 1-bit register                                        : 370
+# Registers                                            : 667
+ 1-bit register                                        : 371
  10-bit register                                       : 1
  12-bit register                                       : 4
  13-bit register                                       : 2
@@ -2044,7 +2044,7 @@ Macro Statistics
  3-bit register                                        : 4
  32-bit register                                       : 2
  4-bit register                                        : 7
- 5-bit register                                        : 11
+ 5-bit register                                        : 13
  7-bit register                                        : 1
  8-bit register                                        : 247
  9-bit register                                        : 1
@@ -2102,9 +2102,9 @@ Macro Statistics
  4-bit shifter logical right                           : 1
  8-bit shifter logical left                            : 8
  8-bit shifter logical right                           : 4
-# Tristates                                            : 29
+# Tristates                                            : 32
  16-bit tristate buffer                                : 5
- 8-bit tristate buffer                                 : 24
+ 8-bit tristate buffer                                 : 27
 # Xors                                                 : 8
  1-bit xor2                                            : 8
 
@@ -2358,7 +2358,7 @@ Macro Statistics
  8x8-to-15-bit MAC                                     : 1
 # Multipliers                                          : 1
  32x9-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 90
+# Adders/Subtractors                                   : 92
  10-bit adder                                          : 3
  10-bit subtractor                                     : 4
  11-bit adder                                          : 1
@@ -2381,7 +2381,7 @@ Macro Statistics
  4-bit adder carry in                                  : 1
  4-bit adder carry out                                 : 2
  4-bit subtractor                                      : 1
- 5-bit adder                                           : 7
+ 5-bit adder                                           : 9
  5-bit adder carry in                                  : 3
  6-bit adder                                           : 1
  7-bit adder                                           : 1
@@ -2392,7 +2392,7 @@ Macro Statistics
  9-bit adder carry out                                 : 3
  9-bit addsub                                          : 1
  9-bit subtractor                                      : 1
-# Counters                                             : 27
+# Counters                                             : 25
  12-bit up counter                                     : 4
  15-bit up counter                                     : 1
  2-bit up counter                                      : 2
@@ -2401,13 +2401,12 @@ Macro Statistics
  32-bit up counter                                     : 1
  4-bit up counter                                      : 5
  4-bit updown counter                                  : 3
- 5-bit up counter                                      : 2
  6-bit up counter                                      : 1
  7-bit up counter                                      : 1
  8-bit up counter                                      : 1
  9-bit up counter                                      : 3
-# Registers                                            : 2567
- Flip-Flops                                            : 2567
+# Registers                                            : 2578
+ Flip-Flops                                            : 2578
 # Comparators                                          : 118
  10-bit comparator greatequal                          : 1
  10-bit comparator lessequal                           : 3
@@ -2480,8 +2479,6 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <video/tile_byte_off
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <video/sprite_y_size_0> (without init value) has a constant value of 0 in block <gpu_top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <video/sprite_y_size_1> (without init value) has a constant value of 0 in block <gpu_top>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <video/sprite_y_size_2> (without init value) has a constant value of 0 in block <gpu_top>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <IF_reg/q_4> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <IF_reg/q_3> (without init value) has a constant value of 0 in block <cpu>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <converter/Mmult_buffer_pos_mult00011> of sequential type is unconnected in block <gpu_top>.
 WARNING:Xst:1710 - FF/Latch <converter/Maddsub_write_addr_mult0001_0> (without init value) has a constant value of 0 in block <gpu_top>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:1901 - Instance x2/DCM_2X_INST in unit ddr2_idelay_ctrl_mod of type DCM_BASE has been replaced by DCM_ADV
@@ -2510,7 +2507,6 @@ WARNING:Xst:2042 - Unit mem: 8 internal tristates are replaced by logic (pull-up
 WARNING:Xst:2042 - Unit tristate_2: 16 internal tristates are replaced by logic (pull-up yes): out<0>, out<10>, out<11>, out<12>, out<13>, out<14>, out<15>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>, out<8>, out<9>.
 WARNING:Xst:2042 - Unit nobus_buffer_2: 16 internal tristates are replaced by logic (pull-up yes): bus<0>, bus<10>, bus<11>, bus<12>, bus<13>, bus<14>, bus<15>, bus<1>, bus<2>, bus<3>, bus<4>, bus<5>, bus<6>, bus<7>, bus<8>, bus<9>.
 WARNING:Xst:2042 - Unit nobus_buffer_1: 8 internal tristates are replaced by logic (pull-up yes): bus<0>, bus<1>, bus<2>, bus<3>, bus<4>, bus<5>, bus<6>, bus<7>.
-WARNING:Xst:2677 - Node <gb80_cpu/IE_reg/q_4> of sequential type is unconnected in block <lcd_top_flashcart>.
 
 Optimizing unit <lcd_top_flashcart> ...
 
@@ -2646,18 +2642,20 @@ WARNING:Xst:2677 - Node <audio/regs/NR52_3> of sequential type is unconnected in
 WARNING:Xst:2677 - Node <gpu/dvi/init/Done> of sequential type is unconnected in block <lcd_top_flashcart>.
 
 Mapping all equations...
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>LogicTrst45, lcd_top_flashcart/data_ext<3>, lcd_top_flashcart/data_ext<3>LogicTrst10, dina<3>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<2>, dina<2>, lcd_top_flashcart/data_ext<2>LogicTrst100, lcd_top_flashcart/data_ext<2>LogicTrst115.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<1>, lcd_top_flashcart/data_ext<1>LogicTrst115, lcd_top_flashcart/data_ext<1>, lcd_top_flashcart/data_ext<1>LogicTrst100.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>, lcd_top_flashcart/data_ext<0>LogicTrst115, lcd_top_flashcart/data_ext<0>LogicTrst100, dina<0>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<7>, dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst45, lcd_top_flashcart/data_ext<7>LogicTrst10.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>LogicTrst10, lcd_top_flashcart/data_ext<6>, dina<6>, lcd_top_flashcart/data_ext<6>LogicTrst45.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>LogicTrst10, lcd_top_flashcart/data_ext<5>, dina<5>, lcd_top_flashcart/data_ext<5>LogicTrst45.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<4>LogicTrst45, dina<4>, lcd_top_flashcart/data_ext<4>LogicTrst10, lcd_top_flashcart/data_ext<4>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_4_mux0000142, gb80_cpu/data_bus<0>, gb80_cpu/alu_data1_in<4>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/data_bus<4>, gb80_cpu/alu_data_out<1>, gb80_cpu/alu_data1_in<2>, gb80_cpu/alu_data1_in<2>32, gb80_cpu/alu_data_out<4>, gb80_cpu/gb80_alu/N19, gb80_cpu/gb80_alu/alu_data_out_0_mux0000233, gb80_cpu/alu_data_out<2>, gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>, gb80_cpu/gb80_alu/_old_result_low_14<2>, gb80_cpu/alu_data1_in<1>32, gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>, gb80_cpu/alu_data_out<0>, gb80_cpu/alu_data1_in<1>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<3>, gb80_cpu/gb80_alu/Madd__old_result_low_11_Madd_lut<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000189, gb80_cpu/alu_data1_in<3>, gb80_cpu/gb80_alu/_old_result_low_11<3>, gb80_cpu/data_bus<3>, gb80_cpu/data_buf/q_mux0000<3>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_5_mux0000181, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000153, gb80_cpu/data_bus<5>, gb80_cpu/alu_data_out<5>, gb80_cpu/alu_data0_in<5>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<6>, gb80_cpu/alu_data_out<6>, gb80_cpu/alu_data1_in<7>, gb80_cpu/gb80_alu/_old_intermediate_result2_22<6>5, gb80_cpu/gb80_alu/_old_result_high_19<3>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000191, gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt0000, gb80_cpu/alu_data_out<7>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000209, N158, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/gb80_alu/_old_intermediate_result2_22<6>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<6>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<2>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<5>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<1>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<4>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<7>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<0>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: data_ext<3>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_0_mux000092, gb80_cpu/gb80_alu/alu_data_out_0_mux00000, gb80_cpu/alu_data0_in<0>, gb80_cpu/data_bus<0>, gb80_cpu/alu_data_out<0>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/gb80_alu/alu_data_out_0_mux0000184.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data1_in<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000168, gb80_cpu/alu_data_out<5>, gb80_cpu/data_buf/q_mux0000<1>, gb80_cpu/data_bus<1>, gb80_cpu/gb80_alu/alu_data_out_1_mux00007, gb80_cpu/gb80_alu/alu_data_out_1_mux000061, gb80_cpu/alu_data_out<1>, gb80_cpu/gb80_alu/alu_data_out_1_mux0000177, gb80_cpu/data_bus<5>, gb80_cpu/alu_data0_in<5>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_buf/q_mux0000<2>, gb80_cpu/data_bus<2>, gb80_cpu/alu_data1_in<2>, gb80_cpu/gb80_alu/_old_result_low_12<2>, gb80_cpu/alu_data_out<2>, gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<3>, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/gb80_alu/_old_result_low_9<3>, gb80_cpu/data_bus<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000167, gb80_cpu/gb80_alu/Madd__old_result_low_9_Madd_lut<3>, gb80_cpu/alu_data1_in<3>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_4_mux0000142, gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>, gb80_cpu/alu_data1_in<4>, gb80_cpu/alu_data_out<4>, gb80_cpu/data_bus<4>, gb80_cpu/data_buf/q_mux0000<4>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_7_mux000034, gb80_cpu/data_bus<6>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000191, gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt0000, gb80_cpu/gb80_alu/alu_data_out_7_mux0000210, gb80_cpu/alu_data0_in<7>, gb80_cpu/gb80_alu/_old_intermediate_result2_20<6>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000160, gb80_cpu/data_bus<7>, gb80_cpu/alu_data_out<6>, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/alu_data1_in<7>, gb80_cpu/alu_data_out<7>, gb80_cpu/gb80_alu/_old_intermediate_result2_20<6>5.
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block lcd_top_flashcart, actual ratio is 11.
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
@@ -2738,8 +2736,8 @@ Unit <lcd_top_flashcart> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2693
- Flip-Flops                                            : 2693
+# Registers                                            : 2697
+ Flip-Flops                                            : 2697
 
 =========================================================================
 
@@ -2768,35 +2766,35 @@ Design Statistics
 # IOs                              : 110
 
 Cell Usage :
-# BELS                             : 7240
+# BELS                             : 7259
 #      GND                         : 38
-#      INV                         : 82
+#      INV                         : 80
 #      LUT1                        : 418
-#      LUT2                        : 349
-#      LUT3                        : 397
-#      LUT4                        : 911
-#      LUT5                        : 994
-#      LUT6                        : 2492
+#      LUT2                        : 352
+#      LUT3                        : 390
+#      LUT4                        : 922
+#      LUT5                        : 988
+#      LUT6                        : 2513
 #      MUXCY                       : 518
 #      MUXCY_L                     : 240
 #      MUXF5                       : 2
 #      MUXF6                       : 1
-#      MUXF7                       : 186
+#      MUXF7                       : 185
 #      MUXF8                       : 3
 #      VCC                         : 34
 #      XORCY                       : 575
-# FlipFlops/Latches                : 4035
-#      FD                          : 305
-#      FDC                         : 151
-#      FDCE                        : 718
+# FlipFlops/Latches                : 4039
+#      FD                          : 315
+#      FDC                         : 152
+#      FDCE                        : 721
 #      FDE                         : 589
 #      FDP                         : 282
 #      FDPE                        : 1343
-#      FDR                         : 219
+#      FDR                         : 211
 #      FDRE                        : 340
 #      FDRS                        : 4
 #      FDRSE                       : 3
-#      FDS                         : 46
+#      FDS                         : 44
 #      FDSE                        : 20
 #      LDC                         : 1
 #      ODDR                        : 14
@@ -2835,19 +2833,19 @@ Selected Device : 5vlx110tff1136-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            4035  out of  69120     5%  
- Number of Slice LUTs:                 8099  out of  69120    11%  
-    Number used as Logic:              5643  out of  69120     8%  
+ Number of Slice Registers:            4039  out of  69120     5%  
+ Number of Slice LUTs:                 8119  out of  69120    11%  
+    Number used as Logic:              5663  out of  69120     8%  
     Number used as Memory:             2456  out of  17920    13%  
        Number used as RAM:             2048
        Number used as SRL:              408
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:  10232
-   Number with an unused Flip Flop:    6197  out of  10232    60%  
-   Number with an unused LUT:          2133  out of  10232    20%  
-   Number of fully used LUT-FF pairs:  1902  out of  10232    18%  
-   Number of unique control sets:       352
+ Number of LUT Flip Flop pairs used:  10256
+   Number with an unused Flip Flop:    6217  out of  10256    60%  
+   Number with an unused LUT:          2137  out of  10256    20%  
+   Number of fully used LUT-FF pairs:  1902  out of  10256    18%  
+   Number of unique control sets:       351
 
 IO Utilization: 
  Number of IOs:                         110
@@ -2883,7 +2881,7 @@ Clock Signal                                                            | Clock 
 ------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
 CLK_33MHZ_FPGA                                                          | IBUFG+BUFGCTRL                                                                                                                    | 1014  |
 br_wram/N1                                                              | NONE(br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP)| 2     |
-cdiv/clock_out1                                                         | BUFG                                                                                                                              | 2949  |
+cdiv/clock_out1                                                         | BUFG                                                                                                                              | 2953  |
 cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL                            | BUFG                                                                                                                              | 318   |
 cicon/CONTROL0<13>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_LCE:O)| NONE(*)(cila/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_LDC)                                                                                  | 1     |
 cicon/U0/iUPDATE_OUT                                                    | NONE(cicon/U0/U_ICON/U_iDATA_CMD)                                                                                                 | 1     |
@@ -2892,7 +2890,7 @@ audio/freq3div/clock_out1                                               | BUFG  
 audio/lendiv/clock_out1                                                 | BUFG                                                                                                                              | 27    |
 audio/freq12div/clock_out1                                              | BUFG                                                                                                                              | 32    |
 audio/sweepdiv/clock_out1                                               | BUFG                                                                                                                              | 32    |
-audio/envdiv/clock_out                                                  | NONE(audio/ch1/reg_vol_0)                                                                                                         | 18    |
+audio/envdiv/clock_out                                                  | NONE(audio/ch1/env_counter_0)                                                                                                     | 18    |
 audio/framediv/clock_out                                                | NONE(audio/lendiv/counter_1)                                                                                                      | 12    |
 CLK_27MHZ_FPGA                                                          | gpu/setup/clk31p5_dcm_inst/DCM_31p5_INST:CLKFX+BUFGCTRL                                                                           | 395   |
 USER_CLK                                                                | gpu/setup/idelay_ctrl_mod/x2/DCM_2X_INST:CLK2X                                                                                    | 25    |
@@ -2907,7 +2905,7 @@ Asynchronous Control Signals Information:
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Control Signal                                                                                     | Buffer(FF name)                                                                                                                                                                         | Load  |
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
-GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1608  |
+GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1612  |
 cila/N1(cila/XST_VCC:P)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[0].u_ramb36/U_RAMB36)                 | 504   |
 cila/N0(cila/XST_GND:G)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_RST/U_POR)                                                                                                                                                  | 252   |
 cicon/CONTROL0<21>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[1].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1) | 160   |
@@ -2942,9 +2940,9 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 49.818ns (Maximum Frequency: 20.073MHz)
-   Minimum input arrival time before clock: 4.234ns
-   Maximum output required time after clock: 16.200ns
+   Minimum period: 53.179ns (Maximum Frequency: 18.805MHz)
+   Minimum input arrival time before clock: 3.951ns
+   Maximum output required time after clock: 16.084ns
    Maximum combinational path delay: 2.788ns
 
 Timing Detail:
@@ -2981,7 +2979,7 @@ Delay:               9.991ns (Levels of Logic = 16)
      MUXCY:CI->O           1   0.026   0.000  gpu/video/Madd_vram_addrA_share0000_cy<10> (gpu/video/Madd_vram_addrA_share0000_cy<10>)
      MUXCY:CI->O           0   0.026   0.000  gpu/video/Madd_vram_addrA_share0000_cy<11> (gpu/video/Madd_vram_addrA_share0000_cy<11>)
      XORCY:CI->O           1   0.357   0.789  gpu/video/Madd_vram_addrA_share0000_xor<12> (gpu/video/vram_addrA_share0000<12>)
-     LUT6:I2->O            1   0.094   0.789  gpu/video/vram_addrA_mux0001<12>34_SW0 (N1514)
+     LUT6:I2->O            1   0.094   0.789  gpu/video/vram_addrA_mux0001<12>34_SW0 (N1359)
      LUT6:I2->O            1   0.094   0.000  gpu/video/vram_addrA_mux0001<12>39 (gpu/video/vram_addrA_mux0001<12>)
      FDRE:D                   -0.018          gpu/video/vram_addrA_12
     ----------------------------------------
@@ -2990,94 +2988,91 @@ Delay:               9.991ns (Levels of Logic = 16)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cdiv/clock_out1'
-  Clock period: 49.818ns (frequency: 20.073MHz)
-  Total number of paths / destination ports: 53419195228 / 6607
+  Clock period: 53.179ns (frequency: 18.805MHz)
+  Total number of paths / destination ports: 601684832826 / 6626
 -------------------------------------------------------------------------
-Delay:               49.818ns (Levels of Logic = 70)
-  Source:            bpmod/bp_addr_2 (FF)
+Delay:               53.179ns (Levels of Logic = 67)
+  Source:            gb80_cpu/inst_reg/q_5 (FF)
   Destination:       gb80_cpu/data_buf/q_0 (FF)
   Source Clock:      cdiv/clock_out1 rising
   Destination Clock: cdiv/clock_out1 rising
 
-  Data Path: bpmod/bp_addr_2 to gb80_cpu/data_buf/q_0
+  Data Path: gb80_cpu/inst_reg/q_5 to gb80_cpu/data_buf/q_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              4   0.471   1.085  bpmod/bp_addr_2 (bpmod/bp_addr_2)
-     LUT6:I0->O            1   0.094   0.000  gb80_cpu/Mcompar_bp_pc_lut<0> (gb80_cpu/Mcompar_bp_pc_lut<0>)
-     MUXCY:S->O            1   0.372   0.000  gb80_cpu/Mcompar_bp_pc_cy<0> (gb80_cpu/Mcompar_bp_pc_cy<0>)
-     MUXCY:CI->O           1   0.026   0.000  gb80_cpu/Mcompar_bp_pc_cy<1> (gb80_cpu/Mcompar_bp_pc_cy<1>)
-     MUXCY:CI->O           1   0.026   0.000  gb80_cpu/Mcompar_bp_pc_cy<2> (gb80_cpu/Mcompar_bp_pc_cy<2>)
-     MUXCY:CI->O           1   0.026   0.000  gb80_cpu/Mcompar_bp_pc_cy<3> (gb80_cpu/Mcompar_bp_pc_cy<3>)
-     MUXCY:CI->O           1   0.026   0.000  gb80_cpu/Mcompar_bp_pc_cy<4> (gb80_cpu/Mcompar_bp_pc_cy<4>)
-     MUXCY:CI->O          12   0.254   0.849  gb80_cpu/Mcompar_bp_pc_cy<5> (gb80_cpu/bp_pc)
-     LUT6:I2->O           48   0.094   0.610  gb80_cpu/gb80_decode/alu_op<2>23 (gb80_cpu/gb80_decode/N146)
-     LUT6:I5->O            3   0.094   0.721  gb80_cpu/gb80_decode/nin_rn_out<2> (gb80_cpu/gb80_decode/nin_rn_out<2>)
-     LUT4:I1->O            1   0.094   0.480  gb80_cpu/gb80_decode/rgf_out_decoder/rgf_rn_out_cmp_eq00001_SW1 (N1000)
-     LUT6:I5->O           16   0.094   0.658  gb80_cpu/gb80_decode/rgf_out_decoder/rgf_rn_out<0>1 (gb80_cpu/regfile_rn_out<0>)
+     FDCE:C->Q            90   0.471   1.207  gb80_cpu/inst_reg/q_5 (gb80_cpu/inst_reg/q_5)
+     LUT6:I0->O           15   0.094   0.557  gb80_cpu/gb80_decode/old_m_cycles_27_cmp_eq000721 (gb80_cpu/gb80_decode/N188)
+     LUT3:I2->O           17   0.094   0.568  gb80_cpu/gb80_decode/old_m_cycles_27_cmp_eq00261 (gb80_cpu/gb80_decode/old_m_cycles_27_cmp_eq0026)
+     LUT6:I5->O            2   0.094   0.485  gb80_cpu/gb80_decode/rn_out_mux0000<2>211383 (gb80_cpu/gb80_decode/rn_out_mux0000<2>211383)
+     LUT4:I3->O            2   0.094   0.485  gb80_cpu/gb80_decode/rn_out_mux0000<0>1232_SW1 (N847)
+     LUT6:I5->O            2   0.094   0.485  gb80_cpu/gb80_decode/rn_out_mux0000<0>1241 (gb80_cpu/gb80_decode/N82)
+     LUT6:I5->O            3   0.094   0.984  gb80_cpu/gb80_decode/rn_out<1>82 (gb80_cpu/gb80_decode/rn_out<1>)
+     LUT6:I1->O            4   0.094   0.496  gb80_cpu/gb80_decode/rgf_out_decoder/rgf_rn_out_cmp_eq00001 (gb80_cpu/gb80_decode/rgf_out_decoder/rgf_rn_out_cmp_eq0000)
+     LUT5:I4->O           16   0.094   0.658  gb80_cpu/gb80_decode/rgf_out_decoder/rgf_rn_out<1>1 (gb80_cpu/regfile_rn_out<1>)
      LUT6:I4->O            1   0.094   0.576  gb80_cpu/gb80_regfile/regfile_data_out<1>21 (gb80_cpu/gb80_regfile/regfile_data_out<1>_bdd0)
      LUT6:I4->O            3   0.094   0.491  gb80_cpu/gb80_regfile/regfile_data_out<1>1 (gb80_cpu/regfile_data_addr<1>)
-     LUT4:I3->O            1   0.094   0.480  gb80_cpu/data_bus<1>LogicTrst_SW0 (N848)
+     LUT4:I3->O            1   0.094   0.480  gb80_cpu/data_bus<1>LogicTrst_SW0 (N774)
      LUT6:I5->O            8   0.094   0.614  gb80_cpu/data_bus<1>LogicTrst (gb80_cpu/data_bus<1>)
-     LUT5:I3->O            7   0.094   0.609  gb80_cpu/alu_data0_in<1>1 (gb80_cpu/alu_data0_in<1>)
-     LUT3:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd_old_result_low_14_addsub0000_xor<2>111 (gb80_cpu/gb80_alu/N141)
-     LUT3:I2->O            2   0.094   0.978  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>1 (gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_lut<2>)
-     LUT6:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_xor<4>111 (gb80_cpu/gb80_alu/N5)
-     LUT5:I4->O            6   0.094   0.737  gb80_cpu/gb80_alu/Madd__old_result_low_14_Madd_xor<4>12 (gb80_cpu/gb80_alu/_old_result_low_14<4>)
-     LUT6:I3->O            2   0.094   0.581  gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_xor<2>11 (gb80_cpu/gb80_alu/_old_result_high_15<2>)
+     LUT5:I3->O            8   0.094   0.614  gb80_cpu/alu_data0_in<1>1 (gb80_cpu/alu_data0_in<1>)
+     LUT3:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/Madd_old_result_low_12_addsub0000_xor<2>111 (gb80_cpu/gb80_alu/N141)
+     LUT3:I2->O            2   0.094   0.978  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>1 (gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_lut<2>)
+     LUT6:I1->O            3   0.094   0.491  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_xor<4>111 (gb80_cpu/gb80_alu/N5)
+     LUT5:I4->O            5   0.094   0.732  gb80_cpu/gb80_alu/Madd__old_result_low_12_Madd_xor<4>12 (gb80_cpu/gb80_alu/_old_result_low_12<4>)
+     LUT6:I3->O            2   0.094   0.581  gb80_cpu/gb80_alu/Madd__old_result_high_13_Madd_xor<2>11 (gb80_cpu/gb80_alu/_old_result_high_13<2>)
      LUT3:I1->O            1   0.094   0.973  gb80_cpu/gb80_alu/alu_data_out_6_mux0000146 (gb80_cpu/gb80_alu/alu_data_out_6_mux0000146)
      LUT5:I0->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_6_mux0000174 (gb80_cpu/gb80_alu/alu_data_out_6_mux0000174)
      LUT3:I2->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_6_mux0000203 (gb80_cpu/alu_data_out<6>)
-     LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<6>LogicTrst76 (gb80_cpu/data_bus<6>)
-     LUT6:I3->O           27   0.094   0.606  gb80_cpu/alu_data1_in<6>1 (gb80_cpu/alu_data1_in<6>)
-     LUT5:I4->O            2   0.094   0.485  gb80_cpu/gb80_alu/alu_flags_out_0_mux00001010 (gb80_cpu/gb80_alu/N93)
-     LUT5:I4->O            4   0.094   0.496  gb80_cpu/gb80_alu/_old_intermediate_result1_20<7>1 (gb80_cpu/gb80_alu/_old_intermediate_result1_20<7>)
-     LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_alu/old_intermediate_result2_22_mux0000<7>1 (gb80_cpu/gb80_alu/old_intermediate_result2_22_mux0000<7>)
-     LUT2:I0->O            2   0.094   0.794  gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_22_share0000_lut<7>1 (gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_22_share0000_lut<7>)
-     LUT6:I2->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_22<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_22<7>)
-     LUT6:I3->O            3   0.094   0.491  gb80_cpu/gb80_alu/alu_data_out_7_mux0000285 (gb80_cpu/alu_data_out<7>)
-     LUT4:I3->O            2   0.094   0.715  gb80_cpu/alu_data1_in<7>72 (N158)
-     LUT6:I3->O           25   0.094   1.099  gb80_cpu/alu_data1_in<7>35 (gb80_cpu/alu_data1_in<7>)
-     LUT5:I0->O           15   0.094   0.557  gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt00001 (gb80_cpu/gb80_alu/old_intermediate_result2_22_cmp_gt0000)
-     LUT5:I4->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>131 (gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>131)
-     LUT6:I4->O            2   0.094   0.581  gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>143 (gb80_cpu/gb80_alu/_old_intermediate_result2_22<5>)
-     LUT6:I4->O            1   0.094   0.576  gb80_cpu/gb80_alu/alu_data_out_5_mux0000181 (gb80_cpu/gb80_alu/alu_data_out_5_mux0000181)
-     LUT3:I1->O            3   0.094   0.984  gb80_cpu/gb80_alu/alu_data_out_5_mux0000202 (gb80_cpu/alu_data_out<5>)
-     LUT6:I1->O            9   0.094   0.620  gb80_cpu/data_bus<5>LogicTrst (gb80_cpu/data_bus<5>)
-     LUT6:I4->O           20   0.094   0.680  gb80_cpu/alu_data0_in<5>1 (gb80_cpu/alu_data0_in<5>)
-     LUT5:I3->O            1   0.094   0.789  gb80_cpu/gb80_alu/alu_data_out_3_mux000022 (gb80_cpu/gb80_alu/alu_data_out_3_mux000022)
-     LUT5:I1->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_3_mux000088 (gb80_cpu/gb80_alu/alu_data_out_3_mux000088)
-     LUT6:I5->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_3_mux0000132 (gb80_cpu/gb80_alu/alu_data_out_3_mux0000132)
-     LUT5:I4->O            1   0.094   0.789  gb80_cpu/gb80_alu/alu_data_out_3_mux0000154 (gb80_cpu/gb80_alu/alu_data_out_3_mux0000154)
-     LUT5:I1->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_3_mux0000206 (gb80_cpu/alu_data_out<3>)
-     LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<3>LogicTrst60 (gb80_cpu/data_bus<3>)
-     LUT6:I3->O           41   0.094   0.918  gb80_cpu/alu_data1_in<3>1 (gb80_cpu/alu_data1_in<3>)
-     LUT6:I2->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_2_mux000032 (gb80_cpu/gb80_alu/alu_data_out_2_mux000032)
-     LUT5:I4->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_2_mux000092 (gb80_cpu/gb80_alu/alu_data_out_2_mux000092)
-     LUT6:I0->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_2_mux0000172 (gb80_cpu/gb80_alu/alu_data_out_2_mux0000172)
-     LUT5:I4->O            4   0.094   0.592  gb80_cpu/gb80_alu/alu_data_out_2_mux0000196 (gb80_cpu/alu_data_out<2>)
-     LUT6:I4->O            1   0.094   0.480  gb80_cpu/alu_data1_in<2>32 (gb80_cpu/alu_data1_in<2>32)
-     LUT2:I1->O           30   0.094   0.607  gb80_cpu/alu_data1_in<2>35 (gb80_cpu/alu_data1_in<2>)
-     LUT6:I5->O            1   0.094   0.576  gb80_cpu/gb80_alu/_old_intermediate_result2_22<1>_SW0 (N845)
-     LUT6:I4->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_22<1> (gb80_cpu/gb80_alu/_old_intermediate_result2_22<1>)
-     LUT5:I2->O            4   0.094   0.592  gb80_cpu/gb80_alu/alu_data_out_1_mux0000220 (gb80_cpu/alu_data_out<1>)
-     LUT6:I4->O            1   0.094   0.480  gb80_cpu/alu_data1_in<1>32 (gb80_cpu/alu_data1_in<1>32)
-     LUT2:I1->O           30   0.094   0.703  gb80_cpu/alu_data1_in<1>35 (gb80_cpu/alu_data1_in<1>)
-     LUT2:I0->O            6   0.094   0.816  gb80_cpu/gb80_alu/_old_intermediate_result2_22<3>21 (gb80_cpu/gb80_alu/N19)
-     LUT4:I0->O            5   0.094   0.811  gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>1 (gb80_cpu/gb80_alu/Madd__old_result_high_17_Madd_lut<0>)
+     LUT5:I3->O            9   0.094   0.754  gb80_cpu/data_bus<6>LogicTrst75 (gb80_cpu/data_bus<6>)
+     LUT6:I3->O           26   0.094   0.606  gb80_cpu/alu_data1_in<6>1 (gb80_cpu/alu_data1_in<6>)
+     LUT5:I4->O            2   0.094   0.485  gb80_cpu/gb80_alu/alu_flags_out_0_mux0000101 (gb80_cpu/gb80_alu/N93)
+     LUT5:I4->O            4   0.094   0.496  gb80_cpu/gb80_alu/_old_intermediate_result1_18<7>1 (gb80_cpu/gb80_alu/_old_intermediate_result1_18<7>)
+     LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_alu/old_intermediate_result2_20_mux0000<7>1 (gb80_cpu/gb80_alu/old_intermediate_result2_20_mux0000<7>)
+     LUT2:I0->O            2   0.094   0.794  gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_20_share0000_lut<7>1 (gb80_cpu/gb80_alu/Maddsub_old_intermediate_result2_20_share0000_lut<7>)
+     LUT6:I2->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_20<7> (gb80_cpu/gb80_alu/_old_intermediate_result2_20<7>)
+     LUT6:I3->O            4   0.094   0.989  gb80_cpu/gb80_alu/alu_data_out_7_mux0000285 (gb80_cpu/alu_data_out<7>)
+     LUT6:I1->O           24   0.094   1.095  gb80_cpu/alu_data1_in<7> (gb80_cpu/alu_data1_in<7>)
+     LUT5:I0->O           18   0.094   0.882  gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt00001 (gb80_cpu/gb80_alu/old_intermediate_result2_20_cmp_gt0000)
+     LUT6:I2->O            1   0.094   0.973  gb80_cpu/gb80_alu/_old_intermediate_result2_20<2>_SW1 (N764)
+     LUT6:I1->O            2   0.094   0.715  gb80_cpu/gb80_alu/_old_intermediate_result2_20<2> (gb80_cpu/gb80_alu/_old_intermediate_result2_20<2>)
+     LUT5:I2->O            4   0.094   0.726  gb80_cpu/gb80_alu/alu_data_out_2_mux0000196 (gb80_cpu/alu_data_out<2>)
+     LUT6:I3->O           30   0.094   0.607  gb80_cpu/alu_data1_in<2>72 (gb80_cpu/alu_data1_in<2>)
+     LUT6:I5->O            2   0.094   0.715  gb80_cpu/gb80_alu/Madd__old_result_low_9_Madd_xor<3>11 (gb80_cpu/gb80_alu/_old_result_low_9<3>)
+     LUT5:I2->O            1   0.094   0.789  gb80_cpu/gb80_alu/alu_data_out_3_mux0000167 (gb80_cpu/gb80_alu/alu_data_out_3_mux0000167)
+     LUT4:I0->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_3_mux0000204 (gb80_cpu/alu_data_out<3>)
+     LUT6:I4->O            9   0.094   0.620  gb80_cpu/data_bus<3>LogicTrst68 (gb80_cpu/data_bus<3>)
+     LUT6:I4->O           19   0.094   0.675  gb80_cpu/alu_data0_in<3>1 (gb80_cpu/alu_data0_in<3>)
+     LUT3:I1->O            2   0.094   0.485  gb80_cpu/gb80_alu/alu_data_out_1_mux000051 (gb80_cpu/gb80_alu/N951)
+     LUT6:I5->O            1   0.094   0.480  gb80_cpu/gb80_alu/alu_data_out_5_mux000022 (gb80_cpu/gb80_alu/alu_data_out_5_mux000022)
+     LUT6:I5->O            1   0.094   0.576  gb80_cpu/gb80_alu/alu_data_out_5_mux000059 (gb80_cpu/gb80_alu/alu_data_out_5_mux000059)
+     LUT5:I3->O            2   0.094   0.715  gb80_cpu/gb80_alu/alu_data_out_5_mux000089 (gb80_cpu/gb80_alu/alu_data_out_5_mux000089)
+     LUT5:I2->O            1   0.094   0.000  gb80_cpu/gb80_alu/alu_data_out_5_mux00001302 (gb80_cpu/gb80_alu/alu_data_out_5_mux00001302)
+     MUXF7:I0->O           1   0.251   0.480  gb80_cpu/gb80_alu/alu_data_out_5_mux0000130_f7 (gb80_cpu/gb80_alu/alu_data_out_5_mux0000130)
+     LUT4:I3->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_5_mux0000203 (gb80_cpu/alu_data_out<5>)
+     LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<5>LogicTrst77 (gb80_cpu/data_bus<5>)
+     LUT6:I3->O           36   0.094   0.838  gb80_cpu/alu_data1_in<5>1 (gb80_cpu/alu_data1_in<5>)
+     LUT4:I1->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_1_mux00007 (gb80_cpu/gb80_alu/alu_data_out_1_mux00007)
+     LUT6:I0->O            1   0.094   0.710  gb80_cpu/gb80_alu/alu_data_out_1_mux000061 (gb80_cpu/gb80_alu/alu_data_out_1_mux000061)
+     LUT3:I0->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_1_mux0000177 (gb80_cpu/gb80_alu/alu_data_out_1_mux0000177)
+     LUT6:I0->O            4   0.094   0.726  gb80_cpu/gb80_alu/alu_data_out_1_mux00002211 (gb80_cpu/alu_data_out<1>)
+     LUT6:I3->O           32   0.094   0.703  gb80_cpu/alu_data1_in<1>72 (gb80_cpu/alu_data1_in<1>)
+     LUT2:I0->O            6   0.094   0.816  gb80_cpu/gb80_alu/_old_intermediate_result2_20<3>21 (gb80_cpu/gb80_alu/N19)
+     LUT4:I0->O            5   0.094   0.811  gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>1 (gb80_cpu/gb80_alu/Madd__old_result_high_15_Madd_lut<0>)
      LUT5:I1->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_4_mux0000142 (gb80_cpu/gb80_alu/alu_data_out_4_mux0000142)
      LUT6:I0->O            3   0.094   0.587  gb80_cpu/gb80_alu/alu_data_out_4_mux0000181 (gb80_cpu/alu_data_out<4>)
-     LUT6:I4->O            9   0.094   0.754  gb80_cpu/data_bus<4>LogicTrst95 (gb80_cpu/data_bus<4>)
-     LUT6:I3->O           33   0.094   0.916  gb80_cpu/alu_data1_in<4>1 (gb80_cpu/alu_data1_in<4>)
-     LUT6:I2->O            1   0.094   0.576  gb80_cpu/gb80_alu/alu_data_out_0_mux0000233 (gb80_cpu/gb80_alu/alu_data_out_0_mux0000233)
-     LUT3:I1->O            4   0.094   0.989  gb80_cpu/gb80_alu/alu_data_out_0_mux0000247 (gb80_cpu/alu_data_out<0>)
-     LUT6:I1->O           16   0.094   0.562  gb80_cpu/data_bus<0>LogicTrst (gb80_cpu/data_bus<0>)
-     LUT6:I5->O            1   0.094   0.000  gb80_cpu/data_buf/q_mux0000<0>_G (N1621)
-     MUXF7:I1->O           1   0.254   0.000  gb80_cpu/data_buf/q_mux0000<0> (gb80_cpu/data_buf/q_mux0000<0>)
+     LUT6:I4->O            8   0.094   0.614  gb80_cpu/data_bus<4>LogicTrst73 (gb80_cpu/data_bus<4>)
+     LUT6:I4->O           15   0.094   0.787  gb80_cpu/alu_data0_in<4>1 (gb80_cpu/alu_data0_in<4>)
+     LUT3:I0->O            3   0.094   0.721  gb80_cpu/gb80_alu/alu_data_out_0_mux0000121 (gb80_cpu/gb80_alu/N74)
+     LUT5:I2->O            1   0.094   0.000  gb80_cpu/gb80_alu/alu_data_out_0_mux0000921 (gb80_cpu/gb80_alu/alu_data_out_0_mux0000921)
+     MUXF7:I1->O           1   0.254   1.069  gb80_cpu/gb80_alu/alu_data_out_0_mux000092_f7 (gb80_cpu/gb80_alu/alu_data_out_0_mux000092)
+     LUT6:I0->O            1   0.094   1.069  gb80_cpu/gb80_alu/alu_data_out_0_mux0000184 (gb80_cpu/gb80_alu/alu_data_out_0_mux0000184)
+     LUT6:I0->O            4   0.094   0.989  gb80_cpu/gb80_alu/alu_data_out_0_mux0000243 (gb80_cpu/alu_data_out<0>)
+     LUT6:I1->O           15   0.094   0.557  gb80_cpu/data_bus<0>LogicTrst (gb80_cpu/data_bus<0>)
+     LUT6:I5->O            1   0.094   0.000  gb80_cpu/data_buf/q_mux0000<0> (gb80_cpu/data_buf/q_mux0000<0>)
      FDCE:D                   -0.018          gb80_cpu/data_buf/q_0
     ----------------------------------------
-    Total                     49.818ns (7.377ns logic, 42.441ns route)
-                                       (14.8% logic, 85.2% route)
+    Total                     53.179ns (7.086ns logic, 46.092ns route)
+                                       (13.3% logic, 86.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL'
@@ -3146,7 +3141,7 @@ Delay:               3.525ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDC:C->Q              5   0.471   0.732  audio/gen/rot/state_FSM_FFd2 (audio/gen/rot/state_FSM_FFd2)
-     LUT4:I1->O            4   0.094   0.805  audio/gen/rot/level_and0000_SW0 (N472)
+     LUT4:I1->O            4   0.094   0.805  audio/gen/rot/level_and0000_SW0 (N420)
      LUT6:I2->O            3   0.094   0.984  audio/gen/rot/level_and0000 (audio/gen/rot/level_and0000)
      LUT6:I1->O            1   0.094   0.000  audio/gen/rot/Mcount_level_xor<3>112 (audio/gen/rot/Mcount_level_xor<3>111)
      MUXF7:I0->O           1   0.251   0.000  audio/gen/rot/Mcount_level_xor<3>11_f7 (audio/gen/rot/Result<3>)
@@ -3171,7 +3166,7 @@ Delay:               4.767ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDR:C->Q              2   0.471   0.978  audio/wp/freq_counter_9 (audio/wp/freq_counter_9)
-     LUT6:I1->O            1   0.094   1.069  audio/wp/upper_half_cmp_eq000012412_SW0 (N1208)
+     LUT6:I1->O            1   0.094   1.069  audio/wp/upper_half_cmp_eq000012412_SW0 (N1071)
      LUT6:I0->O            3   0.094   0.587  audio/wp/upper_half_cmp_eq000012412 (audio/wp/upper_half_cmp_eq000012412)
      LUT3:I1->O            2   0.094   0.715  audio/wp/upper_half_cmp_eq000012494 (audio/wp/upper_half_cmp_eq0000)
      LUT5:I2->O            5   0.094   0.358  audio/wp/index_hi_not00041 (audio/wp/index_hi_not0004)
@@ -3222,8 +3217,8 @@ Delay:               5.155ns (Levels of Logic = 5)
      FDRE:C->Q             6   0.471   1.096  audio/ch1/freq_counter_7 (audio/ch1/freq_counter_7)
      LUT6:I0->O            1   0.094   0.789  audio/ch1/reg_level_mux0000<0>11281 (audio/ch1/reg_level_mux0000<0>11281)
      LUT6:I2->O            1   0.094   0.973  audio/ch1/reg_level_mux0000<0>11428 (audio/ch1/reg_level_mux0000<0>11428)
-     LUT5:I0->O           14   0.094   0.551  audio/ch1/reg_level_mux0000<0>11438 (audio/ch1/N60)
-     LUT6:I5->O            4   0.094   0.805  audio/ch1/reg_level_mux0000<0>4 (audio/ch1/N81)
+     LUT5:I0->O           14   0.094   0.551  audio/ch1/reg_level_mux0000<0>11438 (audio/ch1/N59)
+     LUT6:I5->O            4   0.094   0.805  audio/ch1/reg_level_mux0000<0>4 (audio/ch1/N77)
      LUT6:I2->O            1   0.094   0.000  audio/ch1/reg_level_mux0000<3>1 (audio/ch1/reg_level_mux0000<3>)
      FD:D                     -0.018          audio/ch1/reg_level_3
     ----------------------------------------
@@ -3232,61 +3227,55 @@ Delay:               5.155ns (Levels of Logic = 5)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/sweepdiv/clock_out1'
-  Clock period: 6.174ns (frequency: 161.970MHz)
-  Total number of paths / destination ports: 2315 / 51
+  Clock period: 4.732ns (frequency: 211.327MHz)
+  Total number of paths / destination ports: 2303 / 51
 -------------------------------------------------------------------------
-Delay:               6.174ns (Levels of Logic = 14)
-  Source:            audio/ch1/true_freq_10 (FF)
+Delay:               4.732ns (Levels of Logic = 6)
+  Source:            audio/ch1/num_sweeps_done_1 (FF)
   Destination:       audio/ch1/true_freq_0 (FF)
   Source Clock:      audio/sweepdiv/clock_out1 rising
   Destination Clock: audio/sweepdiv/clock_out1 rising
 
-  Data Path: audio/ch1/true_freq_10 to audio/ch1/true_freq_0
+  Data Path: audio/ch1/num_sweeps_done_1 to audio/ch1/true_freq_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q             16   0.471   1.055  audio/ch1/true_freq_10 (audio/ch1/true_freq_10)
-     LUT5:I0->O            2   0.094   0.341  audio/ch1/true_freq_mux0002<9>1_SW0 (N468)
-     INV:I->O              1   0.238   0.000  audio/ch1/Sh17_G_INV_0 (N1565)
-     MUXF7:I1->O           2   0.254   0.485  audio/ch1/Sh17 (audio/ch1/Sh17)
-     LUT2:I1->O            1   0.094   0.000  audio/ch1/Madd_true_freq_addsub0001_lut<5> (audio/ch1/Madd_true_freq_addsub0001_lut<5>)
-     MUXCY:S->O            1   0.372   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<5> (audio/ch1/Madd_true_freq_addsub0001_cy<5>)
-     MUXCY:CI->O           1   0.026   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<6> (audio/ch1/Madd_true_freq_addsub0001_cy<6>)
-     MUXCY:CI->O           1   0.026   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<7> (audio/ch1/Madd_true_freq_addsub0001_cy<7>)
-     MUXCY:CI->O           1   0.026   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<8> (audio/ch1/Madd_true_freq_addsub0001_cy<8>)
-     MUXCY:CI->O           1   0.026   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<9> (audio/ch1/Madd_true_freq_addsub0001_cy<9>)
-     MUXCY:CI->O           0   0.026   0.000  audio/ch1/Madd_true_freq_addsub0001_cy<10> (audio/ch1/Madd_true_freq_addsub0001_cy<10>)
-     XORCY:CI->O           1   0.357   0.576  audio/ch1/Madd_true_freq_addsub0001_xor<11> (audio/ch1/true_freq_addsub0001<11>)
-     LUT3:I1->O            1   0.094   0.789  audio/ch1/true_freq_mux0000<7>1_SW1 (N1462)
-     LUT6:I2->O           12   0.094   0.636  audio/ch1/true_freq_mux0000<7>1 (audio/ch1/N01)
+     FDRE:C->Q             5   0.471   1.091  audio/ch1/num_sweeps_done_1 (audio/ch1/num_sweeps_done_1)
+     LUT6:I0->O            1   0.094   0.000  audio/ch1/true_freq_cmp_ge000011 (audio/ch1/true_freq_cmp_ge00001)
+     MUXF7:I1->O           7   0.254   0.743  audio/ch1/true_freq_cmp_ge00001_f7 (audio/ch1/true_freq_cmp_ge0000)
+     LUT6:I3->O            3   0.094   0.491  audio/ch1/num_sweeps_done_not0001311 (audio/ch1/N83)
+     LUT4:I3->O            1   0.094   0.576  audio/ch1/true_freq_mux0000<7>1_SW0 (N451)
+     LUT6:I4->O           12   0.094   0.636  audio/ch1/true_freq_mux0000<7>1 (audio/ch1/N01)
      LUT5:I3->O            1   0.094   0.000  audio/ch1/true_freq_mux0000<0>1 (audio/ch1/true_freq_mux0000<0>)
      FDE:D                    -0.018          audio/ch1/true_freq_0
     ----------------------------------------
-    Total                      6.174ns (2.292ns logic, 3.882ns route)
-                                       (37.1% logic, 62.9% route)
+    Total                      4.732ns (1.195ns logic, 3.537ns route)
+                                       (25.3% logic, 74.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/envdiv/clock_out'
-  Clock period: 3.041ns (frequency: 328.839MHz)
-  Total number of paths / destination ports: 162 / 26
+  Clock period: 3.944ns (frequency: 253.550MHz)
+  Total number of paths / destination ports: 178 / 26
 -------------------------------------------------------------------------
-Delay:               3.041ns (Levels of Logic = 2)
-  Source:            audio/ch1/env_counter_3 (FF)
-  Destination:       audio/ch1/reg_vol_0 (FF)
+Delay:               3.944ns (Levels of Logic = 4)
+  Source:            audio/ch1/env_counter_1 (FF)
+  Destination:       audio/ch1/env_counter_4 (FF)
   Source Clock:      audio/envdiv/clock_out rising
   Destination Clock: audio/envdiv/clock_out rising
 
-  Data Path: audio/ch1/env_counter_3 to audio/ch1/reg_vol_0
+  Data Path: audio/ch1/env_counter_1 to audio/ch1/env_counter_4
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              7   0.471   1.102  audio/ch1/env_counter_3 (audio/ch1/env_counter_3)
-     LUT6:I0->O            2   0.094   0.715  audio/ch1/Mcount_env_counter_xor<0>111 (audio/ch1/N911)
-     LUT5:I2->O            4   0.094   0.352  audio/ch1/reg_vol_not0001 (audio/ch1/reg_vol_not0001)
-     FDE:CE                    0.213          audio/ch1/reg_vol_0
+     FD:C->Q               5   0.471   0.732  audio/ch1/env_counter_1 (audio/ch1/env_counter_1)
+     LUT4:I1->O            1   0.094   0.480  audio/ch1/reg_vol_cmp_ne0000_SW0 (N306)
+     LUT5:I4->O            3   0.094   0.800  audio/ch1/reg_vol_cmp_ne0000 (audio/ch1/reg_vol_cmp_ne0000)
+     LUT5:I1->O            4   0.094   1.085  audio/ch1/env_counter_mux0000<0>131 (audio/ch1/N72)
+     LUT6:I0->O            1   0.094   0.000  audio/ch1/env_counter_mux0000<0>11 (audio/ch1/env_counter_mux0000<0>1)
+     FD:D                     -0.018          audio/ch1/env_counter_4
     ----------------------------------------
-    Total                      3.041ns (0.872ns logic, 2.169ns route)
-                                       (28.7% logic, 71.3% route)
+    Total                      3.944ns (0.847ns logic, 3.097ns route)
+                                       (21.5% logic, 78.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/framediv/clock_out'
@@ -3378,7 +3367,7 @@ Offset:              3.789ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O          1795   0.818   0.694  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
+     IBUF:I->O          1799   0.818   0.694  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
      LUT5:I4->O            1   0.094   0.480  lcd/count_temp_or00007 (lcd/count_temp_or00007)
      LUT5:I4->O            1   0.094   0.480  lcd/count_temp_or000019 (lcd/count_temp_or000019)
      LUT6:I5->O           25   0.094   0.462  lcd/count_temp_or000049 (lcd/count_temp_or0000)
@@ -3414,26 +3403,25 @@ Offset:              3.898ns (Levels of Logic = 5)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'cdiv/clock_out1'
-  Total number of paths / destination ports: 156 / 93
+  Total number of paths / destination ports: 161 / 99
 -------------------------------------------------------------------------
-Offset:              4.234ns (Levels of Logic = 5)
-  Source:            flash_d<6> (PAD)
-  Destination:       tima_module/TIMA/q_6 (FF)
+Offset:              3.490ns (Levels of Logic = 4)
+  Source:            flash_d<1> (PAD)
+  Destination:       gb80_cpu/IF_reg/q_1 (FF)
   Destination Clock: cdiv/clock_out1 rising
 
-  Data Path: flash_d<6> to tima_module/TIMA/q_6
+  Data Path: flash_d<1> to gb80_cpu/IF_reg/q_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   0.818   0.710  flash_d_6_IBUF (flash_d_6_IBUF)
-     LUT5:I2->O            1   0.094   0.973  data_ext<6>LogicTrst55 (data_ext<6>LogicTrst55)
-     LUT5:I0->O           52   0.094   1.200  data_ext<6>LogicTrst82 (data_ext<6>)
-     LUT6:I0->O            1   0.094   0.000  tima_module/_mux0000<6>622 (tima_module/_mux0000<6>621)
-     MUXF7:I0->O           1   0.251   0.000  tima_module/_mux0000<6>62_f7 (tima_module/_mux0000<6>)
-     FDCE:D                   -0.018          tima_module/TIMA/q_6
+     IBUF:I->O             1   0.818   0.710  flash_d_1_IBUF (flash_d_1_IBUF)
+     LUT6:I3->O            1   0.094   0.480  data_ext<1>LogicTrst77 (data_ext<1>LogicTrst77)
+     LUT6:I5->O           52   0.094   1.200  data_ext<1>LogicTrst115 (data_ext<1>)
+     LUT6:I0->O            1   0.094   0.000  gb80_cpu/IF_in_l<1> (gb80_cpu/IF_in_l<1>)
+     FDCE:D                   -0.018          gb80_cpu/IF_reg/q_1
     ----------------------------------------
-    Total                      4.234ns (1.351ns logic, 2.883ns route)
-                                       (31.9% logic, 68.1% route)
+    Total                      3.490ns (1.100ns logic, 2.390ns route)
+                                       (31.5% logic, 68.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bitclk'
@@ -3449,7 +3437,7 @@ Offset:              3.951ns (Levels of Logic = 5)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUF:I->O             5   0.818   0.811  rotary_inc_a_IBUF (rotary_inc_a_IBUF)
-     LUT4:I0->O            4   0.094   0.805  audio/gen/rot/level_and0000_SW0 (N472)
+     LUT4:I0->O            4   0.094   0.805  audio/gen/rot/level_and0000_SW0 (N420)
      LUT6:I2->O            3   0.094   0.984  audio/gen/rot/level_and0000 (audio/gen/rot/level_and0000)
      LUT6:I1->O            1   0.094   0.000  audio/gen/rot/Mcount_level_xor<3>112 (audio/gen/rot/Mcount_level_xor<3>111)
      MUXF7:I0->O           1   0.251   0.000  audio/gen/rot/Mcount_level_xor<3>11_f7 (audio/gen/rot/Result<3>)
@@ -3473,7 +3461,7 @@ Offset:              5.328ns (Levels of Logic = 4)
     ----------------------------------------  ------------
      FDRE:C->Q             7   0.471   0.822  gpu/converter/dvi_sync/y_8 (gpu/converter/dvi_sync/y_8)
      LUT4:I0->O            2   0.094   0.485  gpu/converter/dvi_sync/border21 (gpu/converter/dvi_sync/N5)
-     LUT4:I3->O            1   0.094   0.480  gpu/converter/blank_b_SW0 (N231)
+     LUT4:I3->O            1   0.094   0.480  gpu/converter/blank_b_SW0 (N171)
      LUT6:I5->O            1   0.094   0.336  gpu/converter/blank_b (dvi_de_OBUF)
      OBUF:I->O                 2.452          dvi_de_OBUF (dvi_de)
     ----------------------------------------
@@ -3484,7 +3472,7 @@ Offset:              5.328ns (Levels of Logic = 4)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK_33MHZ_FPGA'
   Total number of paths / destination ports: 185 / 6
 -------------------------------------------------------------------------
-Offset:              8.883ns (Levels of Logic = 8)
+Offset:              8.979ns (Levels of Logic = 8)
   Source:            lcd/count_23 (FF)
   Destination:       LCD_FPGA_E (PAD)
   Source Clock:      CLK_33MHZ_FPGA rising
@@ -3494,23 +3482,23 @@ Offset:              8.883ns (Levels of Logic = 8)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FD:C->Q               5   0.471   0.811  lcd/count_23 (lcd/count_23)
-     LUT4:I0->O            1   0.094   0.480  lcd/state_cmp_eq00001_SW0 (N584)
+     LUT4:I0->O            1   0.094   0.480  lcd/state_cmp_eq00001_SW0 (N509)
      LUT6:I5->O            4   0.094   0.989  lcd/state_cmp_eq00001 (lcd/N6)
      LUT6:I1->O            6   0.094   0.363  lcd/state_cmp_eq000111 (lcd/N5)
      MUXF7:S->O            2   0.329   0.794  lcd/state_cmp_eq00021_f7 (lcd/N7)
      LUT6:I2->O           20   0.094   0.814  lcd/state_cmp_eq00022 (lcd/state_cmp_eq0002)
-     LUT6:I3->O            1   0.094   0.480  lcd/control<0>50_SW0 (N1250)
-     LUT6:I5->O            1   0.094   0.336  lcd/control<0>50 (LCD_FPGA_E_OBUF)
+     LUT6:I3->O            1   0.094   0.576  lcd/control<0>50_SW0 (N1105)
+     LUT6:I4->O            1   0.094   0.336  lcd/control<0>50 (LCD_FPGA_E_OBUF)
      OBUF:I->O                 2.452          LCD_FPGA_E_OBUF (LCD_FPGA_E)
     ----------------------------------------
-    Total                      8.883ns (3.816ns logic, 5.067ns route)
-                                       (43.0% logic, 57.0% route)
+    Total                      8.979ns (3.816ns logic, 5.163ns route)
+                                       (42.5% logic, 57.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bitclk'
   Total number of paths / destination ports: 8224 / 3
 -------------------------------------------------------------------------
-Offset:              13.769ns (Levels of Logic = 14)
+Offset:              13.827ns (Levels of Logic = 15)
   Source:            audio/regs/NR32_5 (FF)
   Destination:       ac97_sdata_out (PAD)
   Source Clock:      ac97_bitclk rising
@@ -3519,57 +3507,60 @@ Offset:              13.769ns (Levels of Logic = 14)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             8   0.471   0.827  audio/regs/NR32_5 (audio/regs/NR32_5)
-     LUT4:I0->O           19   0.094   1.072  audio/gen/source/ac97_out_slot3<0>91 (audio/gen/source/ac97_out_slot3<0>_bdd21)
-     LUT5:I0->O            1   0.094   0.000  audio/gen/source/ac97_out_slot3<0>1712 (audio/gen/source/ac97_out_slot3<0>1711)
-     MUXF7:I0->O           2   0.251   0.978  audio/gen/source/ac97_out_slot3<0>171_f7 (audio/gen/source/ac97_out_slot3<0>_bdd19)
-     LUT6:I1->O            1   0.094   0.789  audio/gen/source/ac97_out_slot3<0>676 (audio/gen/source/ac97_out_slot3<0>676)
-     LUT6:I2->O            1   0.094   0.973  audio/gen/source/ac97_out_slot3<0>6145 (audio/gen/source/ac97_out_slot3<0>6145)
-     LUT6:I1->O            7   0.094   0.609  audio/gen/source/ac97_out_slot3<0>6524 (audio/gen/source/ac97_out_slot3<0>_bdd6)
-     LUT3:I1->O            3   0.094   0.721  audio/gen/source/ac97_out_slot3<11>51 (audio/gen/source/ac97_out_slot3<11>_bdd5)
-     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1246)
-     LUT6:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151 (audio/gen/link/Mmux_ac97_sdata_out_151)
-     LUT6:I1->O            1   0.094   0.576  audio/gen/link/Mmux_ac97_sdata_out_10 (audio/gen/link/Mmux_ac97_sdata_out_10)
-     LUT4:I2->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
+     FDCE:C->Q             8   0.471   0.614  audio/regs/NR32_5 (audio/regs/NR32_5)
+     LUT3:I1->O           17   0.094   1.157  audio/wp/level<2>1 (audio/ch3_level<2>)
+     LUT6:I0->O           12   0.094   0.770  audio/gen/source/ac97_out_slot3<0>151 (audio/gen/source/ac97_out_slot3<0>_bdd30)
+     LUT6:I3->O            2   0.094   0.794  audio/gen/source/ac97_out_slot3<10>271 (audio/gen/source/ac97_out_slot3<10>_bdd39)
+     LUT6:I2->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>7174_F (N1399)
+     MUXF7:I0->O           1   0.251   0.973  audio/gen/source/ac97_out_slot4<10>7174 (audio/gen/source/ac97_out_slot4<10>7174)
+     LUT6:I1->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>7492_G (N1448)
+     MUXF7:I1->O           4   0.254   0.989  audio/gen/source/ac97_out_slot4<10>7492 (audio/gen/source/ac97_out_slot4<10>_bdd7)
+     LUT6:I1->O            1   0.094   0.789  audio/gen/source/ac97_out_slot4<10>3_SW2 (N582)
+     LUT6:I2->O            1   0.094   0.710  audio/gen/source/ac97_out_slot4<10>3 (audio/gen/ac97_out_slot4<10>)
+     LUT6:I3->O            1   0.094   0.710  audio/gen/link/Mmux_ac97_sdata_out_161 (audio/gen/link/Mmux_ac97_sdata_out_161)
+     LUT6:I3->O            1   0.094   0.789  audio/gen/link/Mmux_ac97_sdata_out_11 (audio/gen/link/Mmux_ac97_sdata_out_11)
+     LUT4:I0->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
      MUXF7:I1->O           1   0.254   0.480  audio/gen/link/Mmux_ac97_sdata_out_5_f7 (audio/gen/link/Mmux_ac97_sdata_out_5_f7)
      LUT2:I1->O            1   0.094   0.336  audio/gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
      OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
     ----------------------------------------
-    Total                     13.769ns (4.462ns logic, 9.307ns route)
-                                       (32.4% logic, 67.6% route)
+    Total                     13.827ns (4.716ns logic, 9.111ns route)
+                                       (34.1% logic, 65.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'cdiv/clock_out1'
-  Total number of paths / destination ports: 135028 / 158
+  Total number of paths / destination ports: 166138 / 158
 -------------------------------------------------------------------------
-Offset:              16.200ns (Levels of Logic = 15)
-  Source:            gb80_cpu/inst_reg/q_1 (FF)
-  Destination:       flash_a<12> (PAD)
+Offset:              16.084ns (Levels of Logic = 17)
+  Source:            gb80_cpu/inst_reg/q_7 (FF)
+  Destination:       flash_a<13> (PAD)
   Source Clock:      cdiv/clock_out1 rising
 
-  Data Path: gb80_cpu/inst_reg/q_1 to flash_a<12>
+  Data Path: gb80_cpu/inst_reg/q_7 to flash_a<13>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            97   0.471   1.112  gb80_cpu/inst_reg/q_1 (gb80_cpu/inst_reg/q_1)
-     LUT5:I0->O            9   0.094   0.524  gb80_cpu/gb80_decode/old_m_cycles_29_cmp_eq002111 (gb80_cpu/gb80_decode/N1831)
-     LUT3:I2->O            2   0.094   0.581  gb80_cpu/gb80_decode/rn_out_mux0000<0>1111 (gb80_cpu/gb80_decode/N1231)
-     LUT5:I3->O            2   0.094   0.978  gb80_cpu/gb80_decode/addr_buf_load_mux000011111 (gb80_cpu/gb80_decode/N141)
-     LUT6:I1->O            1   0.094   0.973  gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011112 (gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011112)
-     LUT6:I1->O            2   0.094   0.978  gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011122 (gb80_cpu/gb80_decode/N53)
-     LUT6:I1->O            1   0.094   0.973  gb80_cpu/gb80_decode/addr_buf_write_ext267 (gb80_cpu/gb80_decode/addr_buf_write_ext267)
-     LUT6:I1->O            1   0.094   0.789  gb80_cpu/gb80_decode/addr_buf_write_ext337 (gb80_cpu/gb80_decode/addr_buf_write_ext337)
-     LUT4:I0->O           10   0.094   0.625  gb80_cpu/gb80_decode/addr_buf_write_ext362 (gb80_cpu/addr_buf_write_ext)
-     LUT5:I3->O           18   0.094   0.573  Madd_cart_address_lut<10>LogicTrst21 (N79)
-     LUT4:I3->O           17   0.094   1.157  Madd_cart_address_lut<11>LogicTrst1 (Madd_cart_address_lut<11>)
-     LUT6:I0->O            2   0.094   0.485  addr_in_cart25_SW0 (N1172)
-     LUT6:I5->O           16   0.094   1.055  addr_in_cart25 (addr_in_cart25)
-     LUT5:I0->O            7   0.094   0.822  addr_in_cart33 (addr_in_cart)
-     LUT6:I2->O            1   0.094   0.336  flash_a<5>1 (flash_a_5_OBUF)
-     OBUF:I->O                 2.452          flash_a_5_OBUF (flash_a<5>)
+     FDCE:C->Q            80   0.471   0.712  gb80_cpu/inst_reg/q_7 (gb80_cpu/inst_reg/q_7)
+     LUT2:I0->O           18   0.094   0.573  gb80_cpu/gb80_decode/old_m_cycles_27_mux0000<2>42 (gb80_cpu/gb80_decode/N189)
+     LUT6:I5->O           16   0.094   1.151  gb80_cpu/gb80_decode/old_m_cycles_27_or00001 (gb80_cpu/gb80_decode/old_m_cycles_27_or0000)
+     LUT6:I0->O            2   0.094   1.074  gb80_cpu/gb80_decode/addr_buf_write_ext_mux00001138 (gb80_cpu/gb80_decode/addr_buf_write_ext_mux00001138)
+     LUT6:I0->O            1   0.094   0.000  gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011591 (gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011591)
+     MUXF7:I1->O           1   0.254   0.576  gb80_cpu/gb80_decode/addr_buf_write_ext_mux00001159_f7 (gb80_cpu/gb80_decode/addr_buf_write_ext_mux00001159)
+     LUT6:I4->O            2   0.094   0.581  gb80_cpu/gb80_decode/addr_buf_write_ext_mux000011128 (gb80_cpu/gb80_decode/N54)
+     LUT6:I4->O            1   0.094   0.576  gb80_cpu/gb80_decode/addr_buf_write_ext347 (gb80_cpu/gb80_decode/addr_buf_write_ext347)
+     LUT6:I4->O            2   0.094   0.485  gb80_cpu/gb80_decode/addr_buf_write_ext413_SW0 (N1109)
+     LUT3:I2->O           12   0.094   0.636  gb80_cpu/gb80_decode/addr_buf_write_ext413 (gb80_cpu/addr_buf_write_ext)
+     LUT5:I3->O           19   0.094   0.579  Madd_cart_address_lut<14>LogicTrst11 (N60)
+     LUT4:I3->O           19   0.094   1.168  Madd_cart_address_lut<11>LogicTrst1 (Madd_cart_address_lut<11>)
+     LUT6:I0->O            2   0.094   0.485  addr_in_cart25_SW0 (N1059)
+     LUT6:I5->O            8   0.094   1.011  addr_in_cart25 (addr_in_cart25)
+     LUT5:I0->O            9   0.094   0.754  addr_in_cart33 (addr_in_cart)
+     LUT6:I3->O            3   0.094   0.800  flash_a<14>11 (N74)
+     LUT5:I1->O            1   0.094   0.336  flash_a<13>1 (flash_a_13_OBUF)
+     OBUF:I->O                 2.452          flash_a_13_OBUF (flash_a<13>)
     ----------------------------------------
-    Total                     16.200ns (4.239ns logic, 11.961ns route)
-                                       (26.2% logic, 73.8% route)
+    Total                     16.084ns (4.587ns logic, 11.497ns route)
+                                       (28.5% logic, 71.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'audio/freq12div/clock_out1'
@@ -3592,7 +3583,7 @@ Offset:              13.551ns (Levels of Logic = 14)
      LUT6:I2->O            1   0.094   0.973  audio/gen/source/ac97_out_slot3<0>6145 (audio/gen/source/ac97_out_slot3<0>6145)
      LUT6:I1->O            7   0.094   0.609  audio/gen/source/ac97_out_slot3<0>6524 (audio/gen/source/ac97_out_slot3<0>_bdd6)
      LUT3:I1->O            3   0.094   0.721  audio/gen/source/ac97_out_slot3<11>51 (audio/gen/source/ac97_out_slot3<11>_bdd5)
-     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1246)
+     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1101)
      LUT6:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151 (audio/gen/link/Mmux_ac97_sdata_out_151)
      LUT6:I1->O            1   0.094   0.576  audio/gen/link/Mmux_ac97_sdata_out_10 (audio/gen/link/Mmux_ac97_sdata_out_10)
      LUT4:I2->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
@@ -3607,7 +3598,7 @@ Offset:              13.551ns (Levels of Logic = 14)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'audio/freq3div/clock_out1'
   Total number of paths / destination ports: 3156 / 1
 -------------------------------------------------------------------------
-Offset:              13.848ns (Levels of Logic = 15)
+Offset:              13.961ns (Levels of Logic = 15)
   Source:            audio/wp/reg_level_2 (FF)
   Destination:       ac97_sdata_out (PAD)
   Source Clock:      audio/freq3div/clock_out1 rising
@@ -3619,22 +3610,22 @@ Offset:              13.848ns (Levels of Logic = 15)
      FDRE:C->Q             8   0.471   0.748  audio/wp/reg_level_2 (audio/wp/reg_level_2)
      LUT3:I0->O           17   0.094   1.157  audio/wp/level<2>1 (audio/ch3_level<2>)
      LUT6:I0->O           12   0.094   0.770  audio/gen/source/ac97_out_slot3<0>151 (audio/gen/source/ac97_out_slot3<0>_bdd30)
-     LUT6:I3->O            2   0.094   0.794  audio/gen/source/ac97_out_slot3<10>521 (audio/gen/source/ac97_out_slot3<10>_bdd90)
-     LUT6:I2->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14174_F (N1558)
-     MUXF7:I0->O           1   0.251   0.973  audio/gen/source/ac97_out_slot4<10>14174 (audio/gen/source/ac97_out_slot4<10>14174)
-     LUT6:I1->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14492_G (N1613)
-     MUXF7:I1->O           4   0.254   0.592  audio/gen/source/ac97_out_slot4<10>14492 (audio/gen/source/ac97_out_slot4<10>_bdd8)
-     LUT3:I1->O            4   0.094   0.726  audio/gen/source/ac97_out_slot4<11>71 (audio/gen/source/ac97_out_slot4<11>_bdd8)
-     LUT6:I3->O            2   0.094   0.794  audio/gen/link/Mmux_ac97_sdata_out_162_SW0 (N1234)
-     LUT5:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_162 (audio/gen/link/Mmux_ac97_sdata_out_162)
-     LUT6:I1->O            1   0.094   0.789  audio/gen/link/Mmux_ac97_sdata_out_11 (audio/gen/link/Mmux_ac97_sdata_out_11)
+     LUT6:I3->O            2   0.094   0.794  audio/gen/source/ac97_out_slot3<10>271 (audio/gen/source/ac97_out_slot3<10>_bdd39)
+     LUT6:I2->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>7174_F (N1399)
+     MUXF7:I0->O           1   0.251   0.973  audio/gen/source/ac97_out_slot4<10>7174 (audio/gen/source/ac97_out_slot4<10>7174)
+     LUT6:I1->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>7492_G (N1448)
+     MUXF7:I1->O           4   0.254   0.989  audio/gen/source/ac97_out_slot4<10>7492 (audio/gen/source/ac97_out_slot4<10>_bdd7)
+     LUT6:I1->O            1   0.094   0.789  audio/gen/source/ac97_out_slot4<10>3_SW2 (N582)
+     LUT6:I2->O            1   0.094   0.710  audio/gen/source/ac97_out_slot4<10>3 (audio/gen/ac97_out_slot4<10>)
+     LUT6:I3->O            1   0.094   0.710  audio/gen/link/Mmux_ac97_sdata_out_161 (audio/gen/link/Mmux_ac97_sdata_out_161)
+     LUT6:I3->O            1   0.094   0.789  audio/gen/link/Mmux_ac97_sdata_out_11 (audio/gen/link/Mmux_ac97_sdata_out_11)
      LUT4:I0->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
      MUXF7:I1->O           1   0.254   0.480  audio/gen/link/Mmux_ac97_sdata_out_5_f7 (audio/gen/link/Mmux_ac97_sdata_out_5_f7)
      LUT2:I1->O            1   0.094   0.336  audio/gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
      OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
     ----------------------------------------
-    Total                     13.848ns (4.716ns logic, 9.132ns route)
-                                       (34.1% logic, 65.9% route)
+    Total                     13.961ns (4.716ns logic, 9.245ns route)
+                                       (33.8% logic, 66.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL'
@@ -3685,14 +3676,14 @@ WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to cicon.
 WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to cicon.
 
 
-Total REAL time to Xst completion: 135.00 secs
-Total CPU time to Xst completion: 134.80 secs
+Total REAL time to Xst completion: 138.00 secs
+Total CPU time to Xst completion: 137.24 secs
  
 --> 
 
-Total memory usage is 544036 kilobytes
+Total memory usage is 543972 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  369 (   0 filtered)
+Number of warnings :  367 (   0 filtered)
 Number of infos    :   96 (   0 filtered)
 

@@ -1,9 +1,9 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Tue Nov 26 21:17:57 2013
+// Written by: Map P.40xd on Mon Dec 02 16:38:33 2013
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
+COMP "flash_a<14>" LOCATE = SITE "K21" LEVEL 1;
 COMP "LCD_FPGA_RS" LOCATE = SITE "J17" LEVEL 1;
 COMP "LCD_FPGA_RW" LOCATE = SITE "AC10" LEVEL 1;
 COMP "USER_CLK" LOCATE = SITE "AH15" LEVEL 1;
@@ -14,7 +14,6 @@ COMP "flash_a<12>" LOCATE = SITE "J15" LEVEL 1;
 COMP "flash_a<21>" LOCATE = SITE "AE22" LEVEL 1;
 COMP "flash_a<13>" LOCATE = SITE "K16" LEVEL 1;
 COMP "flash_a<22>" LOCATE = SITE "AE12" LEVEL 1;
-COMP "flash_a<14>" LOCATE = SITE "K21" LEVEL 1;
 COMP "flash_a<23>" LOCATE = SITE "AE13" LEVEL 1;
 COMP "flash_a<15>" LOCATE = SITE "J22" LEVEL 1;
 COMP "flash_a<16>" LOCATE = SITE "L16" LEVEL 1;
@@ -47,6 +46,7 @@ COMP "flash_a<4>" LOCATE = SITE "H12" LEVEL 1;
 COMP "flash_a<5>" LOCATE = SITE "J12" LEVEL 1;
 COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
 COMP "flash_a<7>" LOCATE = SITE "K23" LEVEL 1;
+COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
 COMP "flash_a<9>" LOCATE = SITE "L14" LEVEL 1;
 COMP "flash_d<0>" LOCATE = SITE "AD19" LEVEL 1;
 COMP "flash_d<1>" LOCATE = SITE "AE19" LEVEL 1;

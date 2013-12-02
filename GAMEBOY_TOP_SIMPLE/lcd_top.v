@@ -355,17 +355,32 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire        timer_interrupt;
    wire [1:0]  int_req, int_ack;
    
-   wire [4:0]  IE_data, IF_in, IF_data, IE_in;
+   wire [4:0]  IE_data, IF_in, IF_data, IE_in, IF_in_int;
    wire        IE_load, IF_load;
    
-   assign IF_in[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
-   assign IF_in[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
-   assign IF_in[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
-   assign IF_in[I_HILO] = 1'b0;
-   assign IF_in[I_SERIAL] = 1'b0;
+   wire        addr_in_IF, addr_in_IE;
+   assign addr_in_IF = addr_ext == `MMIO_IF;
+   assign addr_in_IE = addr_ext == `MMIO_IE;
+   
+   assign IF_in_int[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
+   assign IF_in_int[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
+   assign IF_in_int[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
+   assign IF_in_int[I_HILO] = 1'b0;
+   assign IF_in_int[I_SERIAL] = 1'b0;
    
    assign IF_load = timer_interrupt | int_req[0] | int_req[1];
 
+   assign IF_in = (addr_in_IF & mem_we) ?
+                  data_ext :
+                  IF_in_int;
+
+   // IE loading is taken care of CPU-internally
+   assign IE_load = 1'b0;
+   assign IE_in = 5'd0;
+
+   // However, IE/IF reading is done out here
+
+   
    assign int_ack[1] = IF_data[I_LCDC];
    assign int_ack[0] = IF_data[I_VBLANK];
    
@@ -379,13 +394,11 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
                       .mem_we           (mem_we),
                       .clock            (cpu_clock),
                       .reset            (reset));
- 
 
-   /* The CPU */
-   assign IE_in = 5'b0;
-   assign IE_load = 1'b0;
 
    wire [7:0]  F_data;
+   wire [7:0]  high_mem_data;
+   wire [16:0] high_mem_addr;
    wire        debug_halt;
    
    cpu gb80_cpu(.mem_we(cpu_mem_we),
@@ -398,6 +411,8 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
                 .reset(reset),
                 .A_data(A_data),
                 .F_data(F_data),
+                .high_mem_data(high_mem_data[7:0]),
+                .high_mem_addr(high_mem_addr[15:0]),
                 .instruction(instruction),
                 .regs_data(regs_data),
                 .IF_data(IF_data),
@@ -609,6 +624,9 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
 		   .cart_reset_l	(cart_reset_l),
 		   .cart_cs_sram_l	(cart_cs_sram_l));*/
    
+   wire        addr_in_controller;
+   assign addr_in_controller = (addr_ext == `MMIO_CONTROLLER);
+   
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
 
@@ -681,7 +699,16 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    tristate #(8) gating_cart(.out(data_ext),
                              .in(cart_data),
                              .en(addr_in_cart & ~mem_we));
-
+   tristate #(8) gating_cont_reg(.out(data_ext),
+                                 .in(8'hff),
+                                 .en(addr_in_controller & ~mem_we));
+   tristate #(8) gating_IE(.out(data_ext),
+                           .in({3'd0, IE_data}),
+                           .en(addr_in_IE & mem_re));
+   tristate #(8) gating_IF(.out(data_ext),
+                           .in({3'd0, IF_data}),
+                           .en(addr_in_IF & mem_re));
+                           
    wire        flash_tri_en, wram_tri_en, junk_tri_en, sound_tri_en;
    wire        video_tri_en, vram_tri_en, oam_tri_en, bootstrap_tri_en;
    wire        cart_tri_en;
@@ -754,8 +781,8 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    assign TRIG7 = {IF_data[3:0], IE_data[3:0]};
    assign TRIG8 = {mem_re, mem_we};
    assign TRIG9 = cycle_count;
-   assign TRIG10 = {19'h0, wram_addr[12:0]};
-   assign TRIG11 = {24'h0, wram_data_out[7:0]};
+   assign TRIG10 = {16'h0, high_mem_addr[15:0]};
+   assign TRIG11 = {24'h0, high_mem_data[7:0]};
 
 /*   assign wram_data_in = data_ext;
    assign wram_we = addr_in_wram & mem_we;

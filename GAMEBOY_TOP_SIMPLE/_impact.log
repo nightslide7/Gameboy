@@ -1,9 +1,11 @@
 iMPACT Version: 14.3
 
-iMPACT log file Started on Tue Nov 26 21:22:33 2013
+iMPACT log file Started on Mon Dec 02 16:45:38 2013
 
 Welcome to iMPACT
 iMPACT Version: 14.3
+Project:'C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project.ipf' alreadyexists.
+Original project has been renamed to'C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project_1.ipf'.
 Project: C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project.ipfcreated.
 // *** BATCH CMD : setMode -bs
 GUI --- Auto connect to cable...
@@ -34,11 +36,11 @@ Downloaded firmware version = 1303.
 PLD file version = 0012h.
  PLD version = 0012h.
 PROGRESS_END - End Operation.
-Elapsed time =      1 sec.
+Elapsed time =      0 sec.
 Type = 0x0004.
-ESN option: 00001024278301.
+ESN option: 000010EF936801.
 Attempting to identify devices in the boundary-scan chain configuration...
-INFO:iMPACT - Current time: 11/26/2013 9:22:36 PM
+INFO:iMPACT - Current time: 12/2/2013 4:45:41 PM
 // *** BATCH CMD : Identify -inferir 
 PROGRESS_START - Starting Operation.
 Identifying chain contents...'0': : Manufacturer's ID = Xilinx xc5vlx110t, Version : 7
@@ -77,58 +79,15 @@ UserID read from the bitstream file = 0xFFFFFFFF.
 ----------------------------------------------------------------------
 INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
 ----------------------------------------------------------------------
-Selected part: 28F256P30
-// *** BATCH CMD : attachflash -position 5 -bpi "28F256P30"
-// *** BATCH CMD : assignfiletoattachedflash -position 5 -file"C:/Users/Joseph/Documents/F13/18545/programs/test_roms/07.mcs"
-INFO:iMPACT - Current time: 11/26/2013 9:23:47 PM
-// *** BATCH CMD : Program -p 5 -dataWidth 16 -rs1 NONE -rs0 NONE -bpionly -e -v 
+INFO:iMPACT - Current time: 12/2/2013 4:46:14 PM
+// *** BATCH CMD : Program -p 5 
 Maximum TCK operating frequency for this device chain: 10000000.
 Validating chain...
 Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.47 C, Min. Reading:   43.98 C, Max.Reading:   44.96 C
+5: VCCINT Supply: Current Reading:   0.999 V, Min. Reading:   0.999 V, Max.Reading:   0.999 V
+5: VCCAUX Supply: Current Reading:   2.490 V, Min. Reading:   2.487 V, Max.Reading:   2.490 V
 PROGRESS_START - Starting Operation.
-5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   47.42 C, Max.Reading:   69.57 C
-5: VCCINT Supply: Current Reading:   1.002 V, Min. Reading:   0.996 V, Max.Reading:   1.061 V
-5: VCCAUX Supply: Current Reading:   2.505 V, Min. Reading:   2.484 V, Max.Reading:   2.648 V
-'5': BPI access core not detected. BPI access core will be downloaded to thedevice to enable operations.
-INFO:iMPACT - Downloading core file   C:/Xilinx/14.3/ISE_DS/ISE/virtex5/data/xc5vlx110t_jbpi.cor.
-'5': Downloading core...
- Match_cycle = NoWait.
-Match cycle: NoWait
- LCK_cycle = NoWait.
-LCK cycle: NoWait
-done.
-INFO:iMPACT:2219 - Status register values:
-INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
-INFO:iMPACT:2492 - '5': Completed downloading core to device.
-Current cable speed is set to 6.000 Mhz.
-Cable speed is default to 3Mhz or lower for BPI operations.
-Current cable speed is set to 3.000 Mhz.
-Setting Flash Control Pins ...
-Populating BPI common flash interface ...
-Common Flash Interface Information Query completed successfully.
-INFO:iMPACT - Common Flash Interface Information from Device:
-INFO:iMPACT - Verification string:	 51 52 59
-INFO:iMPACT - Manufacturer ID:    	 89 
-INFO:iMPACT - Vendor ID:          	 01 
-INFO:iMPACT - Device Code:        	 19 
-Using x16 mode ...
-Setting Flash Control Pins ...
-'5': Erasing device...
-'5': Start address = 0x00000000, End address = 0x00010207.
-done.
-'5': Erasure completed successfully.
-Using x16 mode ...
-Setting Flash Control Pins ...
-INFO:iMPACT - Using Word Programming.
-'5': Programming Flash.
-done.
-'5': Flash Programming completed successfully.
-Using x16 mode ...
-Setting Flash Control Pins ...
-'5': Reading device contents...
-done.
-'5': Verification completed.
-Current cable speed is resumed to 6.000 Mhz.
 '5': Programming device...
  Match_cycle = NoWait.
 Match cycle: NoWait
@@ -146,4 +105,36 @@ LCK cycle: NoWait
 INFO:iMPACT - '5': Checking done pin....done.
 '5': Programmed successfully.
 PROGRESS_END - End Operation.
-Elapsed time =     33 sec.
+Elapsed time =      9 sec.
+Project:'C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project.ipf'created.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file"C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project.ipf"
+// *** BATCH CMD : setMode -bs
+INFO:iMPACT - Launching WebTalk, please refer to the webtalk log at   C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\webtalk.log for details.
+INFO:iMPACT - Running wbtc successfully.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff

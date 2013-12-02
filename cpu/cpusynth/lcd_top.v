@@ -398,11 +398,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                       .mem_we           (mem_we),
                       .clock            (cpu_clock),
                       .reset            (reset));
- 
 
-   /* The CPU */
-   assign IE_in = 5'b0;
-   assign IE_load = 1'b0;
 
    wire [7:0]  F_data;
    wire [7:0]  high_mem_data;
