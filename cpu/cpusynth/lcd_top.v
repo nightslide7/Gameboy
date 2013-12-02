@@ -38,7 +38,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                HDR1_36, HDR1_38, HDR1_40, HDR1_42,
                HDR1_44, HDR1_46, HDR1_48, HDR1_50,
                HDR1_52, HDR1_54, HDR1_56, HDR1_58,
-               HDR1_60, HDR1_64
+               HDR1_60, HDR1_64,
+	       HDR2_2_SM_8_N, HDR2_4_SM_8_P, HDR2_6_SM_7_N
 );
    parameter
      I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
@@ -75,6 +76,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    input 		HDR1_44, HDR1_46, HDR1_48, HDR1_50;
    input 		HDR1_52, HDR1_54, HDR1_56, HDR1_58;
    output wire 		HDR1_60, HDR1_64;
+   input wire 		HDR2_2_SM_8_N;
+   output wire 		HDR2_4_SM_8_P, HDR2_6_SM_7_N;
    wire   clock;
 
    assign clock = CLK_33MHZ_FPGA;
@@ -616,15 +619,36 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_56		(HDR1_56),
 		   .HDR1_58		(HDR1_58),
 		   .cart_address	(cart_address[15:0]),
-		   .clock		(cpu_clock),
+		   .clock		(clock),
 		   .cart_w_enable_l	(cart_w_enable_l),
 		   .cart_r_enable_l	(cart_r_enable_l),
 		   .cart_reset_l	(cart_reset_l),
 		   .cart_cs_sram_l	(cart_cs_sram_l));
 
+   /* The controller */
+   wire        addr_in_controller;
+   assign addr_in_controller = (addr_ext == `MMIO_CONTROLLER);
+
+   wire [7:0]  FF00_data_in, FF00_load_in, FF00_data_out;
+   wire        joypad_interrupt;
+   assign FF00_data_in = data_ext;
+   assign FF00_load_in = addr_in_controller & mem_we;
+   
+   NES cont (/*AUTOINST*/
+	     // Outputs
+	     .FF00_data_out		(FF00_data_out[7:0]),
+	     .HDR2_6_SM_7_N		(HDR2_6_SM_7_N),
+	     .HDR2_4_SM_8_P		(HDR2_4_SM_8_P),
+	     .joypad_interrupt		(joypad_interrupt),
+	     // Inputs
+	     .ac97_bitclk		(ac97_bitclk),
+	     .clock			(clock),
+	     .HDR2_2_SM_8_N		(HDR2_2_SM_8_N),
+	     .FF00_data_in		(FF00_data_in[7:0]),
+	     .FF00_load_in		(FF00_load_in));
 
    
-   wire        addr_in_controller;
+   /* Memory stuff */
    
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
@@ -639,7 +663,6 @@ module lcd_top(CLK_33MHZ_FPGA,
                          (addr_ext <= `MEM_WRAM_END);
    assign addr_in_dma = addr_ext == `MMIO_DMA;
    assign addr_in_tima = timer_reg_addr;
-   assign addr_in_controller = (addr_ext == `MMIO_CONTROLLER);
    assign addr_in_junk = ~addr_in_flash & ~reg_w_enable &
                          ~timer_reg_addr & ~addr_in_wram &
                          ~addr_in_dma & ~addr_in_tima & 
@@ -703,7 +726,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                              .in(cart_data),
                              .en(addr_in_cart & ~mem_we));
    tristate #(8) gating_cont_reg(.out(data_ext),
-                                 .in(8'hff),
+                                 .in(FF00_data_out),
                                  .en(addr_in_controller & ~mem_we));
    tristate #(8) gating_IE(.out(data_ext),
                            .in({3'd0, IE_data}),
@@ -826,5 +849,5 @@ module lcd_top(CLK_33MHZ_FPGA,
 endmodule
 // Local Variables:
 // verilog-library-directories:("." "../../fpgaboy_files/" "../..")
-// verilog-library-files:("./cpu.v" "../../cartridge_interface.v")
+// verilog-library-files:("./cpu.v" "../../cartridge_interface.v" "../../NES_controller.v")
 // End:
