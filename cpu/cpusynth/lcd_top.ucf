@@ -270,9 +270,9 @@ NET  HDR1_58              LOC="AJ34";  # Bank 13, Vcco=2.5V or 3.3V user selecta
 NET  HDR1_60              LOC="AM32";  # Bank 13, Vcco=2.5V or 3.3V user selectable by J20
 #NET  HDR1_62              LOC="AN34";  # Bank 13, Vcco=2.5V or 3.3V user selectable by J20
 NET  HDR1_64              LOC="AN33";  # Bank 13, Vcco=2.5V or 3.3V user selectable by J20
-#NET  HDR2_2_SM_8_N        LOC="K34";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXN[15]) J4-2
-#NET  HDR2_4_SM_8_P        LOC="L34";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXP[15]) J4-4
-#NET  HDR2_6_SM_7_N        LOC="K32";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXN[14]) J4-6
+NET  HDR2_2_SM_8_N        LOC="K34";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXN[15]) J4-2
+NET  HDR2_4_SM_8_P        LOC="L34";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXP[15]) J4-4
+NET  HDR2_6_SM_7_N        LOC="K32";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXN[14]) J4-6
 #NET  HDR2_8_SM_7_P        LOC="K33";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXP[14]) J4-8
 #NET  HDR2_10_DIFF_0_N     LOC="N32";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXN[13]) J4-10
 #NET  HDR2_12_DIFF_0_P     LOC="P32";   # Bank 11, Vcco=2.5V or 3.3V user selectable by J20 (SYSMON External Input: VAUXP[13]) J4-12
