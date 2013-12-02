@@ -15,15 +15,15 @@
   <version xil_pn:ise_version="14.3" xil_pn:schema_version="2"/>
 
   <files>
-    <file xil_pn:name="/Gameboy/NES_controller.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="1"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
-    </file>
     <file xil_pn:name="NES.ucf" xil_pn:type="FILE_UCF">
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
     </file>
-    <file xil_pn:name="/Gameboy/my_clock_divider.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="55"/>
+    <file xil_pn:name="../NES_controller.v" xil_pn:type="FILE_VERILOG">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="57"/>
+      <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
+    </file>
+    <file xil_pn:name="../my_clock_divider.v" xil_pn:type="FILE_VERILOG">
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="58"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="1"/>
     </file>
   </files>
@@ -97,6 +97,7 @@
     <property xil_pn:name="Enable BitStream Compression" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Cyclic Redundancy Checking (CRC)" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Debugging of Serial Mode BitStream" xil_pn:value="false" xil_pn:valueState="default"/>
+    <property xil_pn:name="Enable Hardware Co-Simulation" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Internal Done Pipe" xil_pn:value="true" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Enable Message Filtering" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Enable Multi-Threading" xil_pn:value="Off" xil_pn:valueState="default"/>
@@ -145,7 +146,7 @@
     <property xil_pn:name="Ignore User Timing Constraints Map" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Ignore User Timing Constraints Par" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Implementation Top" xil_pn:value="Module|NES" xil_pn:valueState="non-default"/>
-    <property xil_pn:name="Implementation Top File" xil_pn:value="/Gameboy/NES_controller.v" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Implementation Top File" xil_pn:value="../NES_controller.v" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Implementation Top Instance Path" xil_pn:value="/NES" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Include 'uselib Directive in Verilog File" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Include SIMPRIM Models in Verilog File" xil_pn:value="false" xil_pn:valueState="default"/>

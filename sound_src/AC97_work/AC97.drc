@@ -1,8 +1,0 @@
-Release 14.3 Drc P.40xd (lin64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
-
-Sat Nov  2 18:47:20 2013
-
-drc -z AC97.ncd AC97.pcf
-
-DRC detected 0 errors and 0 warnings.

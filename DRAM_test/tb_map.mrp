@@ -1,0 +1,247 @@
+Release 14.3 Map P.40xd (nt64)
+Xilinx Mapping Report File for Design 'tb'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol
+high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr
+off -lc off -power off -o tb_map.ncd tb.ngd tb.pcf 
+Target Device  : xc5vlx110t
+Target Package : ff1136
+Target Speed   : -1
+Mapper Version : virtex5 -- $Revision: 1.55 $
+Mapped Date    : Sun Nov 03 18:27:48 2013
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    2
+Slice Logic Utilization:
+  Number of Slice Registers:                     3 out of  69,120    1%
+    Number used as Flip Flops:                   3
+  Number of Slice LUTs:                         24 out of  69,120    1%
+    Number used as logic:                       24 out of  69,120    1%
+      Number using O6 output only:              24
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    16 out of  17,280    1%
+  Number of LUT Flip Flop pairs used:           27
+    Number with an unused Flip Flop:            24 out of      27   88%
+    Number with an unused LUT:                   3 out of      27   11%
+    Number of fully used LUT-FF pairs:           0 out of      27    0%
+    Number of unique control sets:               1
+    Number of slice register sites lost
+      to control set restrictions:               1 out of  69,120    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        33 out of     640    5%
+    Number of LOCed IOBs:                       17 out of      33   51%
+
+Specific Feature Utilization:
+  Number of BlockRAM/FIFO:                       8 out of     148    5%
+    Number using BlockRAM only:                  8
+    Total primitives used:
+      Number of 36k BlockRAM used:               8
+    Total Memory used (KB):                    288 out of   5,328    5%
+  Number of BUFG/BUFGCTRLs:                      1 out of      32    3%
+    Number used as BUFGs:                        1
+
+Average Fanout of Non-Clock Nets:                4.41
+
+Peak Memory Usage:  570 MB
+Total REAL time to MAP completion:  11 secs 
+Total CPU time to MAP completion:   11 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:Security:43 - No license file was found in the standard Xilinx license
+directory.
+WARNING:Security:44 - Since no license file was found,
+WARNING:Security:42 - Your license support version '2013.11' for ISE expires in
+27 days after which you will not qualify for Xilinx software updates or new
+releases.
+WARNING:Place:837 - Partially locked IO Bus is found. 
+    Following components of the bus are not locked: 
+   	 Comp: addra<14>
+   	 Comp: addra<13>
+   	 Comp: addra<12>
+   	 Comp: addra<11>
+   	 Comp: addra<10>
+   	 Comp: addra<9>
+   	 Comp: addra<8>
+   	 Comp: addra<7>
+   	 Comp: addra<6>
+   	 Comp: addra<5>
+   	 Comp: addra<4>
+
+WARNING:Place:837 - Partially locked IO Bus is found. 
+    Following components of the bus are not locked: 
+   	 Comp: dina<7>
+   	 Comp: dina<6>
+   	 Comp: dina<5>
+   	 Comp: dina<4>
+   	 Comp: dina<3>
+
+
+Section 3 - Informational
+-------------------------
+INFO:Security:51 - The XILINXD_LICENSE_FILE environment variable is not set.
+INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
+'2101@xilinx-lic.ece.cmu.edu'.
+INFO:Security:56 - Part 'xc5vlx110t' is not a WebPack part.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
+   1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Place:834 - Only a subset of IOs are locked. Out of 33 IOs, 17 are locked
+   and 16 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
+INFO:Pack:1650 - Map created a placed design.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) optimized away
+   1 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "drm/N0" is sourceless and has been removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		drm/XST_GND
+VCC 		drm/XST_VCC
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| addra<0>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<1>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<2>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<3>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<4>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<5>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<6>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<7>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<8>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<9>                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<10>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<11>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<12>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<13>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| addra<14>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| clka                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<0>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<1>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<2>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<3>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<4>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<5>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<6>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dina<7>                            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| douta<0>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<1>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<2>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<3>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<4>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<5>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<6>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| douta<7>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| wea                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

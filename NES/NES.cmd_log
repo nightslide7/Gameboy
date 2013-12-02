@@ -35,3 +35,22 @@ map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -regist
 par -w -intstyle ise -ol high -mt off NES_map.ncd NES.ncd NES.pcf 
 trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml NES.twx NES.ncd -o NES.twr NES.pcf -ucf NES.ucf 
 bitgen -intstyle ise -f NES.ut NES.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/NES/NES.xst" -ofn "/Gameboy/Gameboy_git/NES/NES.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc NES.ucf -p xc5vlx110t-ff1136-1 NES.ngc NES.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o NES_map.ncd NES.ngd NES.pcf 
+par -w -intstyle ise -ol high -mt off NES_map.ncd NES.ncd NES.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml NES.twx NES.ncd -o NES.twr NES.pcf -ucf NES.ucf 
+bitgen -intstyle ise -f NES.ut NES.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/NES/NES.xst" -ofn "/Gameboy/Gameboy_git/NES/NES.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc NES.ucf -p xc5vlx110t-ff1136-1 NES.ngc NES.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o NES_map.ncd NES.ngd NES.pcf 
+par -w -intstyle ise -ol high -mt off NES_map.ncd NES.ncd NES.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml NES.twx NES.ncd -o NES.twr NES.pcf -ucf NES.ucf 
+bitgen -intstyle ise -f NES.ut NES.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/NES/NES.xst" -ofn "/Gameboy/Gameboy_git/NES/NES.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/NES/NES.xst" -ofn "/Gameboy/Gameboy_git/NES/NES.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc NES.ucf -p xc5vlx110t-ff1136-1 NES.ngc NES.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o NES_map.ncd NES.ngd NES.pcf 
+par -w -intstyle ise -ol high -mt off NES_map.ncd NES.ncd NES.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml NES.twx NES.ncd -o NES.twr NES.pcf -ucf NES.ucf 
+bitgen -intstyle ise -f NES.ut NES.ncd 

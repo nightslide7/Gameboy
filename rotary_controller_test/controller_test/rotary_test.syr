@@ -1,0 +1,419 @@
+Release 14.3 - xst P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Reading design: rotary_test.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "rotary_test.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "rotary_test"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : rotary_test
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../rotary_controller.v" in library work
+Module <rotary_test> compiled
+No errors in compilation
+Analysis of file <"rotary_test.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <rotary_test> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <rotary_test>.
+Module <rotary_test> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <rotary_test>.
+    Related source file is "../rotary_controller.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 23                                             |
+    | Inputs             | 2                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4-bit updown counter for signal <level>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+Unit <rotary_test> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 4-bit updown counter                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <state/FSM> on signal <state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 010
+ 0011  | 110
+ 0100  | 011
+ 0101  | 111
+ 0110  | 101
+-------------------
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Counters                                             : 1
+ 4-bit updown counter                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <rotary_test> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block rotary_test, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 7
+ Flip-Flops                                            : 7
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : rotary_test.ngr
+Top Level Output File Name         : rotary_test
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 11
+
+Cell Usage :
+# BELS                             : 14
+#      LUT3                        : 3
+#      LUT4                        : 1
+#      LUT5                        : 5
+#      LUT6                        : 5
+# FlipFlops/Latches                : 7
+#      FD                          : 7
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 10
+#      IBUF                        : 3
+#      OBUF                        : 7
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:               7  out of  69120     0%  
+ Number of Slice LUTs:                   14  out of  69120     0%  
+    Number used as Logic:                14  out of  69120     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     14
+   Number with an unused Flip Flop:       7  out of     14    50%  
+   Number with an unused LUT:             0  out of     14     0%  
+   Number of fully used LUT-FF pairs:     7  out of     14    50%  
+   Number of unique control sets:         1
+
+IO Utilization: 
+ Number of IOs:                          11
+ Number of bonded IOBs:                  11  out of    640     1%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     32     3%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 7     |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 2.831ns (Maximum Frequency: 353.232MHz)
+   Minimum input arrival time before clock: 2.989ns
+   Maximum output required time after clock: 3.292ns
+   Maximum combinational path delay: 3.639ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 2.831ns (frequency: 353.232MHz)
+  Total number of paths / destination ports: 82 / 7
+-------------------------------------------------------------------------
+Delay:               2.831ns (Levels of Logic = 3)
+  Source:            level_0 (FF)
+  Destination:       level_1 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: level_0 to level_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               7   0.471   1.006  level_0 (level_0)
+     LUT5:I0->O            2   0.094   0.581  level_not0001_SW2 (N11)
+     LUT5:I3->O            3   0.094   0.491  level_not0001 (level_not0001)
+     LUT3:I2->O            1   0.094   0.000  level_1_rstpot (level_1_rstpot)
+     FD:D                     -0.018          level_1
+    ----------------------------------------
+    Total                      2.831ns (0.753ns logic, 2.078ns route)
+                                       (26.6% logic, 73.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 20 / 7
+-------------------------------------------------------------------------
+Offset:              2.989ns (Levels of Logic = 4)
+  Source:            rotary_inc_b (PAD)
+  Destination:       level_1 (FF)
+  Destination Clock: clk rising
+
+  Data Path: rotary_inc_b to level_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.818   0.822  rotary_inc_b_IBUF (incb_OBUF)
+     LUT4:I0->O            3   0.094   0.491  level_and0000_SW0 (N5)
+     LUT6:I5->O            1   0.094   0.576  Mcount_level_xor<3>11 (Result<3>)
+     LUT3:I1->O            1   0.094   0.000  level_3_rstpot (level_3_rstpot)
+     FD:D                     -0.018          level_3
+    ----------------------------------------
+    Total                      2.989ns (1.100ns logic, 1.889ns route)
+                                       (36.8% logic, 63.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              3.292ns (Levels of Logic = 1)
+  Source:            level_3 (FF)
+  Destination:       level<3> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: level_3 to level<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               7   0.471   0.369  level_3 (level_3)
+     OBUF:I->O                 2.452          level_3_OBUF (level<3>)
+    ----------------------------------------
+    Total                      3.292ns (2.923ns logic, 0.369ns route)
+                                       (88.8% logic, 11.2% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Delay:               3.639ns (Levels of Logic = 2)
+  Source:            rotary_inc_a (PAD)
+  Destination:       inca (PAD)
+
+  Data Path: rotary_inc_a to inca
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.818   0.369  rotary_inc_a_IBUF (inca_OBUF)
+     OBUF:I->O                 2.452          inca_OBUF (inca)
+    ----------------------------------------
+    Total                      3.639ns (3.270ns logic, 0.369ns route)
+                                       (89.9% logic, 10.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 4.15 secs
+ 
+--> 
+
+
+Total memory usage is 647900 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

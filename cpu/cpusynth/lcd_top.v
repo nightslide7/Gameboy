@@ -431,7 +431,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .bp_step(bp_step),
                 .bp_continue(bp_continue));
 
-   my_clock_divider #(.DIV_SIZE(2), .DIV_OVER_TWO(4)) //~4.125MHz
+   my_clock_divider #(.DIV_SIZE(4), .DIV_OVER_TWO(4)) //~4.125MHz
    cdiv(.clock_out(cpu_clock),
         .clock_in(clock));
    

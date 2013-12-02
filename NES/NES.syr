@@ -4,15 +4,15 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: NES.prj
@@ -70,8 +70,8 @@ Use DSP Block                      : Auto
 Automatic Register Balancing       : No
 
 ---- Target Options
-LUT Combining                      : Off
-Reduce Control Sets                : Off
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
 Add IO Buffers                     : YES
 Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 32
@@ -146,6 +146,10 @@ Analyzing hierarchy for module <my_clock_divider> in library <work> with paramet
 	DIV_OVER_TWO = "00000000000000000000000000000001"
 	DIV_SIZE = "00000000000000000000000000000100"
 
+Analyzing hierarchy for module <my_clock_divider> in library <work> with parameters.
+	DIV_OVER_TWO = "00000000000000000000000000101000"
+	DIV_SIZE = "00000000000000000000000000000111"
+
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -171,10 +175,15 @@ Analyzing top module <NES>.
 	WAIT_UP = 5'b01001
 Module <NES> is correct for synthesis.
  
-Analyzing module <my_clock_divider> in library <work>.
+Analyzing module <my_clock_divider.1> in library <work>.
 	DIV_OVER_TWO = 32'sb00000000000000000000000000000001
 	DIV_SIZE = 32'sb00000000000000000000000000000100
-Module <my_clock_divider> is correct for synthesis.
+Module <my_clock_divider.1> is correct for synthesis.
+ 
+Analyzing module <my_clock_divider.2> in library <work>.
+	DIV_OVER_TWO = 32'sb00000000000000000000000000101000
+	DIV_SIZE = 32'sb00000000000000000000000000000111
+Module <my_clock_divider.2> is correct for synthesis.
  
 
 =========================================================================
@@ -183,28 +192,45 @@ Module <my_clock_divider> is correct for synthesis.
 
 Performing bidirectional port resolution...
 
-Synthesizing Unit <my_clock_divider>.
+Synthesizing Unit <my_clock_divider_1>.
     Related source file is "../my_clock_divider.v".
     Found 1-bit register for signal <clock_out>.
     Found 4-bit up counter for signal <counter>.
     Summary:
 	inferred   1 Counter(s).
 	inferred   1 D-type flip-flop(s).
-Unit <my_clock_divider> synthesized.
+Unit <my_clock_divider_1> synthesized.
+
+
+Synthesizing Unit <my_clock_divider_2>.
+    Related source file is "../my_clock_divider.v".
+    Found 1-bit register for signal <clock_out>.
+    Found 7-bit up counter for signal <counter>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 D-type flip-flop(s).
+Unit <my_clock_divider_2> synthesized.
 
 
 Synthesizing Unit <NES>.
     Related source file is "../NES_controller.v".
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 45 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+WARNING:Xst:1306 - Output <FF00_data_out<7:4>> is never assigned.
+WARNING:Xst:647 - Input <FF00_data_in<7:6>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <FF00_data_in<3:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 96 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
     Using one-hot encoding for signal <state>.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 45 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 96 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found 4-bit register for signal <FF00_data_out<3:0>>.
     Found 1-bit register for signal <clk_out>.
+    Found 1-bit register for signal <joypad_interrupt>.
+    Found 1-bit register for signal <strobe>.
+    Found 18-bit up counter for signal <clock_counter>.
     Found 1-bit register for signal <ctrl_a>.
     Found 1-bit register for signal <ctrl_b>.
     Found 1-bit register for signal <ctrl_dn>.
@@ -213,13 +239,14 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 45 was
     Found 1-bit register for signal <ctrl_sel>.
     Found 1-bit register for signal <ctrl_start>.
     Found 1-bit register for signal <ctrl_up>.
-    Found 1-bit register for signal <strobe>.
-    Found 18-bit up counter for signal <clock_counter>.
+    Found 4-bit comparator not equal for signal <joypad_interrupt$cmp_ne0000> created at line 75.
+    Found 4-bit comparator not equal for signal <joypad_interrupt$cmp_ne0001> created at line 83.
     Found 17-bit register for signal <n_state>.
     Found 17-bit register for signal <state>.
     Summary:
 	inferred   1 Counter(s).
-	inferred  44 D-type flip-flop(s).
+	inferred  49 D-type flip-flop(s).
+	inferred   2 Comparator(s).
 Unit <NES> synthesized.
 
 
@@ -227,12 +254,15 @@ Unit <NES> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 2
+# Counters                                             : 3
  18-bit up counter                                     : 1
  4-bit up counter                                      : 1
-# Registers                                            : 13
- 1-bit register                                        : 11
+ 7-bit up counter                                      : 1
+# Registers                                            : 19
+ 1-bit register                                        : 17
  17-bit register                                       : 2
+# Comparators                                          : 2
+ 4-bit comparator not equal                            : 2
 
 =========================================================================
 
@@ -250,11 +280,14 @@ WARNING:Xst:2677 - Node <state_16> of sequential type is unconnected in block <N
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 2
+# Counters                                             : 3
  18-bit up counter                                     : 1
  4-bit up counter                                      : 1
-# Registers                                            : 43
- Flip-Flops                                            : 43
+ 7-bit up counter                                      : 1
+# Registers                                            : 49
+ Flip-Flops                                            : 49
+# Comparators                                          : 2
+ 4-bit comparator not equal                            : 2
 
 =========================================================================
 
@@ -269,6 +302,10 @@ Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block NES, actual ratio is 0.
 INFO:Xst:2260 - The FF/Latch <state_15> in Unit <NES> is equivalent to the following FF/Latch : <strobe> 
+FlipFlop FF00_data_out_3 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop FF00_data_out_2 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop FF00_data_out_1 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop FF00_data_out_0 has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -276,8 +313,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 64
- Flip-Flops                                            : 64
+# Registers                                            : 81
+ Flip-Flops                                            : 81
 
 =========================================================================
 
@@ -303,32 +340,33 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 12
+# IOs                              : 22
 
 Cell Usage :
-# BELS                             : 101
+# BELS                             : 131
 #      GND                         : 1
 #      INV                         : 3
 #      LUT1                        : 17
-#      LUT2                        : 8
-#      LUT3                        : 1
-#      LUT4                        : 4
-#      LUT5                        : 27
-#      LUT6                        : 4
+#      LUT2                        : 5
+#      LUT3                        : 16
+#      LUT4                        : 5
+#      LUT5                        : 38
+#      LUT6                        : 9
 #      MUXCY                       : 17
+#      MUXF7                       : 1
 #      VCC                         : 1
 #      XORCY                       : 18
-# FlipFlops/Latches                : 64
-#      FD                          : 50
-#      FDE                         : 9
-#      FDR                         : 4
+# FlipFlops/Latches                : 81
+#      FD                          : 66
+#      FDE                         : 8
+#      FDR                         : 6
 #      FDRS                        : 1
-# Clock Buffers                    : 2
+# Clock Buffers                    : 3
 #      BUFG                        : 1
-#      BUFGP                       : 1
-# IO Buffers                       : 11
-#      IBUF                        : 1
-#      OBUF                        : 10
+#      BUFGP                       : 2
+# IO Buffers                       : 10
+#      IBUF                        : 3
+#      OBUF                        : 7
 =========================================================================
 
 Device utilization summary:
@@ -338,24 +376,24 @@ Selected Device : 5vlx110tff1136-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              56  out of  69120     0%  
- Number of Slice LUTs:                   64  out of  69120     0%  
-    Number used as Logic:                64  out of  69120     0%  
+ Number of Slice Registers:              76  out of  69120     0%  
+ Number of Slice LUTs:                   93  out of  69120     0%  
+    Number used as Logic:                93  out of  69120     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     79
-   Number with an unused Flip Flop:      23  out of     79    29%  
-   Number with an unused LUT:            15  out of     79    18%  
-   Number of fully used LUT-FF pairs:    41  out of     79    51%  
-   Number of unique control sets:        13
+ Number of LUT Flip Flop pairs used:    105
+   Number with an unused Flip Flop:      29  out of    105    27%  
+   Number with an unused LUT:            12  out of    105    11%  
+   Number of fully used LUT-FF pairs:    64  out of    105    60%  
+   Number of unique control sets:         8
 
 IO Utilization: 
- Number of IOs:                          12
+ Number of IOs:                          22
  Number of bonded IOBs:                  12  out of    640     1%  
-    IOB Flip Flops/Latches:               8
+    IOB Flip Flops/Latches:               5
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+ Number of BUFG/BUFGCTRLs:                3  out of     32     9%  
 
 ---------------------------
 Partition Resource Summary:
@@ -378,9 +416,12 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
+clk_in                             | BUFGP                  | 48    |
+cdiv/clock_out                     | NONE(joypad_interrupt) | 1     |
 statediv/clock_out1                | BUFG                   | 24    |
-clk_in                             | BUFGP                  | 40    |
+clock                              | BUFGP                  | 8     |
 -----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -390,8 +431,8 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 3.124ns (Maximum Frequency: 320.148MHz)
-   Minimum input arrival time before clock: 1.192ns
+   Minimum period: 3.123ns (Maximum Frequency: 320.220MHz)
+   Minimum input arrival time before clock: 2.080ns
    Maximum output required time after clock: 3.264ns
    Maximum combinational path delay: No path found
 
@@ -401,20 +442,20 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_in'
-  Clock period: 3.124ns (frequency: 320.148MHz)
-  Total number of paths / destination ports: 832 / 45
+  Clock period: 3.123ns (frequency: 320.220MHz)
+  Total number of paths / destination ports: 832 / 44
 -------------------------------------------------------------------------
-Delay:               3.124ns (Levels of Logic = 10)
+Delay:               3.123ns (Levels of Logic = 17)
   Source:            clock_counter_3 (FF)
-  Destination:       clock_counter_10 (FF)
+  Destination:       clock_counter_17 (FF)
   Source Clock:      clk_in rising
   Destination Clock: clk_in rising
 
-  Data Path: clock_counter_3 to clock_counter_10
+  Data Path: clock_counter_3 to clock_counter_17
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q              28   0.471   0.607  clock_counter_3 (clock_counter_3)
+     FD:C->Q              35   0.471   0.608  clock_counter_3 (clock_counter_3)
      LUT1:I0->O            1   0.094   0.000  Mcount_clock_counter_cy<3>_rt (Mcount_clock_counter_cy<3>_rt)
      MUXCY:S->O            1   0.372   0.000  Mcount_clock_counter_cy<3> (Mcount_clock_counter_cy<3>)
      MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<4> (Mcount_clock_counter_cy<4>)
@@ -423,17 +464,47 @@ Delay:               3.124ns (Levels of Logic = 10)
      MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<7> (Mcount_clock_counter_cy<7>)
      MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<8> (Mcount_clock_counter_cy<8>)
      MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<9> (Mcount_clock_counter_cy<9>)
-     XORCY:CI->O           1   0.357   0.973  Mcount_clock_counter_xor<10> (Result<10>)
-     LUT5:I0->O            1   0.094   0.000  clock_counter_10_rstpot (clock_counter_10_rstpot)
-     FD:D                     -0.018          clock_counter_10
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<10> (Mcount_clock_counter_cy<10>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<11> (Mcount_clock_counter_cy<11>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<12> (Mcount_clock_counter_cy<12>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<13> (Mcount_clock_counter_cy<13>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<14> (Mcount_clock_counter_cy<14>)
+     MUXCY:CI->O           1   0.026   0.000  Mcount_clock_counter_cy<15> (Mcount_clock_counter_cy<15>)
+     MUXCY:CI->O           0   0.026   0.000  Mcount_clock_counter_cy<16> (Mcount_clock_counter_cy<16>)
+     XORCY:CI->O           1   0.357   0.789  Mcount_clock_counter_xor<17> (Result<17>)
+     LUT5:I1->O            1   0.094   0.000  clock_counter_17_rstpot (clock_counter_17_rstpot)
+     FD:D                     -0.018          clock_counter_17
     ----------------------------------------
-    Total                      3.124ns (1.544ns logic, 1.580ns route)
-                                       (49.4% logic, 50.6% route)
+    Total                      3.123ns (1.726ns logic, 1.397ns route)
+                                       (55.3% logic, 44.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock'
+  Clock period: 2.657ns (frequency: 376.364MHz)
+  Total number of paths / destination ports: 56 / 10
+-------------------------------------------------------------------------
+Delay:               2.657ns (Levels of Logic = 2)
+  Source:            cdiv/counter_4 (FF)
+  Destination:       cdiv/counter_5 (FF)
+  Source Clock:      clock rising
+  Destination Clock: clock rising
+
+  Data Path: cdiv/counter_4 to cdiv/counter_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               5   0.471   0.598  cdiv/counter_4 (cdiv/counter_4)
+     LUT2:I0->O            1   0.094   0.480  cdiv/clock_out_cmp_eq0000_SW0 (N11)
+     LUT6:I5->O            3   0.094   0.347  cdiv/clock_out_cmp_eq0000 (cdiv/clock_out_cmp_eq0000)
+     FDR:R                     0.573          cdiv/counter_5
+    ----------------------------------------
+    Total                      2.657ns (1.232ns logic, 1.425ns route)
+                                       (46.4% logic, 53.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'statediv/clock_out1'
   Clock period: 1.385ns (frequency: 722.022MHz)
-  Total number of paths / destination ports: 1 / 1
+  Total number of paths / destination ports: 9 / 9
 -------------------------------------------------------------------------
 Delay:               1.385ns (Levels of Logic = 0)
   Source:            clk_out (FF)
@@ -452,27 +523,68 @@ Delay:               1.385ns (Levels of Logic = 0)
                                        (75.4% logic, 24.6% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'statediv/clock_out1'
-  Total number of paths / destination ports: 8 / 8
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_in'
+  Total number of paths / destination ports: 24 / 16
 -------------------------------------------------------------------------
-Offset:              1.192ns (Levels of Logic = 1)
-  Source:            data (PAD)
-  Destination:       ctrl_a (FF)
-  Destination Clock: statediv/clock_out1 rising
+Offset:              2.080ns (Levels of Logic = 2)
+  Source:            FF00_data_in<4> (PAD)
+  Destination:       FF00_data_out_3 (FF)
+  Destination Clock: clk_in rising
 
-  Data Path: data to ctrl_a
+  Data Path: FF00_data_in<4> to FF00_data_out_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             8   0.818   0.374  data_IBUF (data_IBUF)
-     FDE:D                    -0.018          ctrl_a
+     IBUF:I->O             2   0.818   0.581  FF00_data_in_4_IBUF (FF00_data_in_4_IBUF)
+     LUT2:I0->O            8   0.094   0.374  FF00_data_out_3_and0000_inv1 (FF00_data_out_3_and0000_inv)
+     FDE:CE                    0.213          FF00_data_out_3
     ----------------------------------------
-    Total                      1.192ns (0.818ns logic, 0.374ns route)
-                                       (68.6% logic, 31.4% route)
+    Total                      2.080ns (1.125ns logic, 0.955ns route)
+                                       (54.1% logic, 45.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'cdiv/clock_out'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              2.008ns (Levels of Logic = 2)
+  Source:            FF00_data_in<5> (PAD)
+  Destination:       joypad_interrupt (FF)
+  Destination Clock: cdiv/clock_out rising
+
+  Data Path: FF00_data_in<5> to joypad_interrupt
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.818   1.096  FF00_data_in_5_IBUF (FF00_data_in_5_IBUF)
+     LUT6:I0->O            1   0.094   0.000  joypad_interrupt_mux0000272 (joypad_interrupt_mux0000)
+     FD:D                     -0.018          joypad_interrupt
+    ----------------------------------------
+    Total                      2.008ns (0.912ns logic, 1.096ns route)
+                                       (45.4% logic, 54.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'statediv/clock_out1'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              1.526ns (Levels of Logic = 2)
+  Source:            controller_data (PAD)
+  Destination:       ctrl_b (FF)
+  Destination Clock: statediv/clock_out1 rising
+
+  Data Path: controller_data to ctrl_b
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.818   0.614  controller_data_IBUF (controller_data_IBUF)
+     LUT3:I1->O            1   0.094   0.000  ctrl_b_rstpot (ctrl_b_rstpot)
+     FD:D                     -0.018          ctrl_b
+    ----------------------------------------
+    Total                      1.526ns (0.912ns logic, 0.614ns route)
+                                       (59.8% logic, 40.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'statediv/clock_out1'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
 Offset:              3.264ns (Levels of Logic = 1)
   Source:            clk_out (FF)
@@ -490,8 +602,27 @@ Offset:              3.264ns (Levels of Logic = 1)
                                        (89.6% logic, 10.4% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_in'
+Timing constraint: Default OFFSET OUT AFTER for Clock 'cdiv/clock_out'
   Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              3.259ns (Levels of Logic = 1)
+  Source:            joypad_interrupt (FF)
+  Destination:       joypad_interrupt (PAD)
+  Source Clock:      cdiv/clock_out rising
+
+  Data Path: joypad_interrupt to joypad_interrupt
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.471   0.336  joypad_interrupt (joypad_interrupt_OBUF)
+     OBUF:I->O                 2.452          joypad_interrupt_OBUF (joypad_interrupt)
+    ----------------------------------------
+    Total                      3.259ns (2.923ns logic, 0.336ns route)
+                                       (89.7% logic, 10.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_in'
+  Total number of paths / destination ports: 5 / 5
 -------------------------------------------------------------------------
 Offset:              3.259ns (Levels of Logic = 1)
   Source:            strobe (FF)
@@ -511,15 +642,15 @@ Offset:              3.259ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 4.24 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.65 secs
  
 --> 
 
 
-Total memory usage is 639468 kilobytes
+Total memory usage is 641264 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    6 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of warnings :    9 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
 
