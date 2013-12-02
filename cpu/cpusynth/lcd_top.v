@@ -356,17 +356,32 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        timer_interrupt;
    wire [1:0]  int_req, int_ack;
    
-   wire [4:0]  IE_data, IF_in, IF_data, IE_in;
+   wire [4:0]  IE_data, IF_in, IF_data, IE_in, IF_in_int;
    wire        IE_load, IF_load;
+
+   wire        addr_in_IF, addr_in_IE;
+   assign addr_in_IF = addr_ext == `MMIO_IF;
+   assign addr_in_IE = addr_ext == `MMIO_IE;
    
-   assign IF_in[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
-   assign IF_in[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
-   assign IF_in[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
-   assign IF_in[I_HILO] = 1'b0;
-   assign IF_in[I_SERIAL] = 1'b0;
+   assign IF_in_int[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
+   assign IF_in_int[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
+   assign IF_in_int[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
+   assign IF_in_int[I_HILO] = 1'b0;
+   assign IF_in_int[I_SERIAL] = 1'b0;
    
    assign IF_load = timer_interrupt | int_req[0] | int_req[1];
 
+   assign IF_in = (addr_in_IF & mem_we) ?
+                  data_ext :
+                  IF_in_int;
+
+   // IE loading is taken care of CPU-internally
+   assign IE_load = 1'b0;
+   assign IE_in = 5'd0;
+
+   // However, IE/IF reading is done out here
+
+   
    assign int_ack[1] = IF_data[I_LCDC];
    assign int_ack[0] = IF_data[I_VBLANK];
    
@@ -607,12 +622,16 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .cart_reset_l	(cart_reset_l),
 		   .cart_cs_sram_l	(cart_cs_sram_l));
 
+
+   
    wire        addr_in_controller;
    
    wire        addr_in_wram, addr_in_junk;
    wire        addr_in_dma, addr_in_tima;
 
    wire        addr_in_echo;
+
+   
    assign addr_in_echo = (`MEM_ECHO_START <= addr_ext) & 
                          (addr_ext <= `MEM_ECHO_END);
    
@@ -626,7 +645,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                          ~addr_in_dma & ~addr_in_tima & 
 			 ~video_reg_w_enable & ~video_vram_w_enable &
 			 ~video_oam_w_enable & ~addr_in_bootstrap_reg & 
-                         ~addr_in_cart & ~addr_in_echo & ~addr_in_controller;
+                         ~addr_in_cart & ~addr_in_echo & ~addr_in_controller &
+                         ~addr_in_IE & ~addr_in_IF;
 
    wire        wram_we;
    wire [12:0] wram_addr;
@@ -685,7 +705,12 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_cont_reg(.out(data_ext),
                                  .in(8'hff),
                                  .en(addr_in_controller & ~mem_we));
-
+   tristate #(8) gating_IE(.out(data_ext),
+                           .in({3'd0, IE_data}),
+                           .en(addr_in_IE & mem_re));
+   tristate #(8) gating_IF(.out(data_ext),
+                           .in({3'd0, IF_data}),
+                           .en(addr_in_IF & mem_re));
    
    wire        flash_tri_en, wram_tri_en, junk_tri_en, sound_tri_en;
    wire        video_tri_en, vram_tri_en, oam_tri_en, bootstrap_tri_en;
