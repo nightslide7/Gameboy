@@ -1,7 +1,7 @@
 Release 14.3 par P.40xd (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-JOSEPH-THINK::  Mon Dec 02 16:38:39 2013
+JOSEPH-THINK::  Mon Dec 02 18:52:18 2013
 
 par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd
 lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
@@ -22,26 +22,26 @@ Device speed data version:  "PRODUCTION 1.73 2012-10-12".
 Device Utilization Summary:
 
    Number of BSCANs                          1 out of 4      25%
-   Number of BUFGs                          12 out of 32     37%
+   Number of BUFGs                          13 out of 32     40%
    Number of BUFGCTRLs                       2 out of 32      6%
    Number of DCM_ADVs                        2 out of 12     16%
    Number of DSP48Es                         1 out of 64      1%
    Number of IDELAYCTRLs                     1 out of 22      4%
-   Number of External IOBs                 110 out of 640    17%
-      Number of LOCed IOBs                 109 out of 110    99%
+   Number of External IOBs                 113 out of 640    17%
+      Number of LOCed IOBs                 112 out of 113    99%
 
    Number of IODELAYs                        2 out of 800     1%
    Number of OLOGICs                        14 out of 800     1%
    Number of RAMB18X2s                       1 out of 148     1%
    Number of RAMB36_EXPs                    67 out of 148    45%
-   Number of Slices                       3399 out of 17280  19%
-   Number of Slice Registers              4025 out of 69120   5%
-      Number used as Flip Flops           4024
+   Number of Slices                       3439 out of 17280  19%
+   Number of Slice Registers              4104 out of 69120   5%
+      Number used as Flip Flops           4103
       Number used as Latches                 1
       Number used as LatchThrus              0
 
-   Number of Slice LUTS                   7648 out of 69120  11%
-   Number of Slice LUT-Flip Flop pairs    9582 out of 69120  13%
+   Number of Slice LUTS                   7746 out of 69120  11%
+   Number of Slice LUT-Flip Flop pairs    9771 out of 69120  14%
 
 
 Overall effort level (-ol):   High 
@@ -63,29 +63,29 @@ WARNING:Par:288 - The signal ac97_sdata_in_IBUF has no load.  PAR will not attem
 Starting Router
 
 
-Phase  1  : 56980 unrouted;      REAL time: 11 secs 
+Phase  1  : 57522 unrouted;      REAL time: 10 secs 
 
-Phase  2  : 49673 unrouted;      REAL time: 13 secs 
+Phase  2  : 50161 unrouted;      REAL time: 13 secs 
 
-Phase  3  : 15610 unrouted;      REAL time: 27 secs 
+Phase  3  : 15384 unrouted;      REAL time: 26 secs 
 
-Phase  4  : 15610 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 31 secs 
+Phase  4  : 15384 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 30 secs 
 
 Updating file: lcd_top_flashcart.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
 Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
-Total REAL time to Router completion: 38 secs 
-Total CPU time to Router completion: 37 secs 
+Total REAL time to Router completion: 37 secs 
+Total CPU time to Router completion: 36 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -103,48 +103,53 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
+|      cdiv/clock_out |BUFGCTRL_X0Y25| No   | 1010 |  0.650     |  2.174      |
++---------------------+--------------+------+------+------------+-------------+
+|          gpu/gpuclk | BUFGCTRL_X0Y3| No   |   51 |  0.377     |  2.012      |
++---------------------+--------------+------+------+------------+-------------+
 |CLK_33MHZ_FPGA_IBUFG |              |      |      |            |             |
-|                     | BUFGCTRL_X0Y0| No   |  266 |  0.453     |  2.015      |
+|                     | BUFGCTRL_X0Y0| No   |  270 |  0.404     |  1.952      |
 +---------------------+--------------+------+------+------------+-------------+
-|      cdiv/clock_out |BUFGCTRL_X0Y26| No   | 1021 |  0.663     |  2.196      |
+|   ac97_bitclk_BUFGP | BUFGCTRL_X0Y7| No   |   96 |  0.274     |  1.811      |
 +---------------------+--------------+------+------+------------+-------------+
-|audio/freq3div/clock |              |      |      |            |             |
-|                _out |BUFGCTRL_X0Y30| No   |   10 |  0.052     |  1.655      |
+|cont/statediv/clock_ |              |      |      |            |             |
+|                 out |BUFGCTRL_X0Y27| No   |   11 |  0.044     |  1.786      |
 +---------------------+--------------+------+------+------------+-------------+
-|   ac97_bitclk_BUFGP | BUFGCTRL_X0Y7| No   |   80 |  0.328     |  1.872      |
-+---------------------+--------------+------+------+------------+-------------+
-|          gpu/gpuclk | BUFGCTRL_X0Y3| No   |   50 |  0.386     |  2.012      |
+|         CONTROL0<0> |BUFGCTRL_X0Y26| No   |  217 |  0.645     |  2.174      |
 +---------------------+--------------+------+------+------------+-------------+
 |audio/sweepdiv/clock |              |      |      |            |             |
-|                _out |BUFGCTRL_X0Y28| No   |   11 |  0.187     |  1.838      |
+|                _out |BUFGCTRL_X0Y28| No   |   11 |  0.138     |  1.816      |
 +---------------------+--------------+------+------+------------+-------------+
-|         CONTROL0<0> |BUFGCTRL_X0Y27| No   |  216 |  0.637     |  2.196      |
+|audio/freq3div/clock |              |      |      |            |             |
+|                _out |BUFGCTRL_X0Y30| No   |   10 |  0.090     |  1.712      |
++---------------------+--------------+------+------+------------+-------------+
+|audio/freq12div/cloc |              |      |      |            |             |
+|               k_out |BUFGCTRL_X0Y29| No   |   10 |  0.117     |  1.791      |
 +---------------------+--------------+------+------+------------+-------------+
 |audio/lendiv/clock_o |              |      |      |            |             |
-|                  ut |BUFGCTRL_X0Y31| No   |    9 |  0.102     |  1.760      |
+|                  ut |BUFGCTRL_X0Y31| No   |    9 |  0.107     |  1.769      |
 +---------------------+--------------+------+------+------------+-------------+
 |gpu/setup/idelay_ctr |              |      |      |            |             |
 |        l_mod/clk200 | BUFGCTRL_X0Y6| No   |    8 |  0.307     |  1.862      |
 +---------------------+--------------+------+------+------------+-------------+
 |gpu/converter/b1_clk |              |      |      |            |             |
-|                     | BUFGCTRL_X0Y1| No   |  256 |  0.424     |  1.998      |
+|                     | BUFGCTRL_X0Y1| No   |  256 |  0.390     |  2.003      |
 +---------------------+--------------+------+------+------------+-------------+
 |gpu/converter/b2_clk |              |      |      |            |             |
-|                     | BUFGCTRL_X0Y2| No   |  256 |  0.338     |  2.080      |
-+---------------------+--------------+------+------+------------+-------------+
-|audio/freq12div/cloc |              |      |      |            |             |
-|               k_out |BUFGCTRL_X0Y29| No   |   10 |  0.154     |  1.860      |
+|                     | BUFGCTRL_X0Y2| No   |  256 |  0.344     |  2.080      |
 +---------------------+--------------+------+------+------------+-------------+
 |audio/framediv/clock |              |      |      |            |             |
-|                _out |         Local|      |    7 |  1.152     |  2.026      |
+|                _out |         Local|      |    7 |  0.497     |  1.339      |
 +---------------------+--------------+------+------+------------+-------------+
 |audio/envdiv/clock_o |              |      |      |            |             |
-|                  ut |         Local|      |    9 |  0.485     |  0.959      |
+|                  ut |         Local|      |    9 |  0.619     |  1.490      |
 +---------------------+--------------+------+------+------------+-------------+
 |cicon/U0/iUPDATE_OUT |              |      |      |            |             |
-|                     |         Local|      |    1 |  0.000     |  0.766      |
+|                     |         Local|      |    1 |  0.000     |  0.696      |
 +---------------------+--------------+------+------+------------+-------------+
-|        CONTROL0<13> |         Local|      |    5 |  0.000     |  1.114      |
+|        CONTROL0<13> |         Local|      |    5 |  0.000     |  1.248      |
++---------------------+--------------+------+------+------------+-------------+
+| cont/cdiv/clock_out |         Local|      |    2 |  0.000     |  0.470      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -164,8 +169,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bit | SETUP       |    77.110ns|     4.270ns|       0|           0
-  clk" 12.288 MHz HIGH 50%                  | HOLD        |     0.482ns|            |       0|           0
+  TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bit | SETUP       |    73.613ns|     7.767ns|       0|           0
+  clk" 12.288 MHz HIGH 50%                  | HOLD        |     0.469ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -178,8 +183,8 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 10 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 43 secs 
-Total CPU time to PAR completion: 42 secs 
+Total REAL time to PAR completion: 42 secs 
+Total CPU time to PAR completion: 41 secs 
 
 Peak Memory Usage:  643 MB
 

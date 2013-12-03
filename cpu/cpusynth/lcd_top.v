@@ -365,14 +365,17 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        addr_in_IF, addr_in_IE;
    assign addr_in_IF = addr_ext == `MMIO_IF;
    assign addr_in_IE = addr_ext == `MMIO_IE;
+
+   wire        joypad_interrupt;
    
    assign IF_in_int[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
    assign IF_in_int[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
    assign IF_in_int[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
-   assign IF_in_int[I_HILO] = 1'b0;
+   assign IF_in_int[I_HILO] = joypad_interrupt | (IF_data[I_HILO] & IF_load);
    assign IF_in_int[I_SERIAL] = 1'b0;
    
-   assign IF_load = timer_interrupt | int_req[0] | int_req[1];
+   assign IF_load = timer_interrupt | int_req[0] | int_req[1] | 
+                     joypad_interrupt;
 
    assign IF_in = (addr_in_IF & mem_we) ?
                   data_ext :
@@ -626,7 +629,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign addr_in_controller = (addr_ext == `MMIO_CONTROLLER);
 
    wire [7:0]  FF00_data_in, FF00_load_in, FF00_data_out;
-   wire        joypad_interrupt;
+
    assign FF00_data_in = data_ext;
    assign FF00_load_in = addr_in_controller & mem_we;
    

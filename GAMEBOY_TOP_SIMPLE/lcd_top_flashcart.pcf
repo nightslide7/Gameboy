@@ -1,9 +1,9 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Mon Dec 02 16:38:33 2013
+// Written by: Map P.40xd on Mon Dec 02 18:52:12 2013
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "flash_a<14>" LOCATE = SITE "K21" LEVEL 1;
+COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
 COMP "LCD_FPGA_RS" LOCATE = SITE "J17" LEVEL 1;
 COMP "LCD_FPGA_RW" LOCATE = SITE "AC10" LEVEL 1;
 COMP "USER_CLK" LOCATE = SITE "AH15" LEVEL 1;
@@ -14,6 +14,7 @@ COMP "flash_a<12>" LOCATE = SITE "J15" LEVEL 1;
 COMP "flash_a<21>" LOCATE = SITE "AE22" LEVEL 1;
 COMP "flash_a<13>" LOCATE = SITE "K16" LEVEL 1;
 COMP "flash_a<22>" LOCATE = SITE "AE12" LEVEL 1;
+COMP "flash_a<14>" LOCATE = SITE "K21" LEVEL 1;
 COMP "flash_a<23>" LOCATE = SITE "AE13" LEVEL 1;
 COMP "flash_a<15>" LOCATE = SITE "J22" LEVEL 1;
 COMP "flash_a<16>" LOCATE = SITE "L16" LEVEL 1;
@@ -37,14 +38,15 @@ COMP "flash_clk" LOCATE = SITE "N9" LEVEL 1;
 COMP "dvi_sda" LOCATE = SITE "T29" LEVEL 1;
 COMP "dvi_scl" LOCATE = SITE "U27" LEVEL 1;
 COMP "ac97_bitclk" LOCATE = SITE "AF18" LEVEL 1;
+COMP "HDR2_2_SM_8_N" LOCATE = SITE "K34" LEVEL 1;
 COMP "LCD_FPGA_E" LOCATE = SITE "AC9" LEVEL 1;
+COMP "HDR2_4_SM_8_P" LOCATE = SITE "L34" LEVEL 1;
 COMP "flash_a<0>" LOCATE = SITE "K12" LEVEL 1;
 COMP "flash_a<1>" LOCATE = SITE "K13" LEVEL 1;
 COMP "flash_a<2>" LOCATE = SITE "H23" LEVEL 1;
 COMP "flash_a<3>" LOCATE = SITE "G23" LEVEL 1;
 COMP "flash_a<4>" LOCATE = SITE "H12" LEVEL 1;
 COMP "flash_a<5>" LOCATE = SITE "J12" LEVEL 1;
-COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
 COMP "flash_a<7>" LOCATE = SITE "K23" LEVEL 1;
 COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
 COMP "flash_a<9>" LOCATE = SITE "L14" LEVEL 1;
@@ -59,6 +61,7 @@ COMP "dvi_reset_b" LOCATE = SITE "AK6" LEVEL 1;
 COMP "flash_d<7>" LOCATE = SITE "AF15" LEVEL 1;
 COMP "flash_d<8>" LOCATE = SITE "AH13" LEVEL 1;
 COMP "flash_d<9>" LOCATE = SITE "AH14" LEVEL 1;
+COMP "HDR2_6_SM_7_N" LOCATE = SITE "K32" LEVEL 1;
 COMP "flash_ce_n" LOCATE = SITE "AE14" LEVEL 1;
 COMP "flash_oe_n" LOCATE = SITE "AF14" LEVEL 1;
 COMP "ac97_sdata_out" LOCATE = SITE "AG16" LEVEL 1;
@@ -112,7 +115,21 @@ COMP "CLK_33MHZ_FPGA" LOCATE = SITE "AH17" LEVEL 1;
 COMP "rotary_inc_a" LOCATE = SITE "AH30" LEVEL 1;
 COMP "rotary_inc_b" LOCATE = SITE "AG30" LEVEL 1;
 COMP "CLK_27MHZ_FPGA" LOCATE = SITE "AG18" LEVEL 1;
-TIMEGRP ac97_bitclk = BEL "audio/gen/link/curbit_0" BEL
+TIMEGRP ac97_bitclk = BEL "cont/statediv/counter_3" BEL
+        "cont/statediv/counter_2" BEL "cont/statediv/counter_1" BEL
+        "cont/statediv/counter_0" BEL "cont/clock_counter_17" BEL
+        "cont/clock_counter_16" BEL "cont/clock_counter_15" BEL
+        "cont/clock_counter_14" BEL "cont/clock_counter_13" BEL
+        "cont/clock_counter_12" BEL "cont/clock_counter_11" BEL
+        "cont/clock_counter_10" BEL "cont/clock_counter_9" BEL
+        "cont/clock_counter_8" BEL "cont/clock_counter_7" BEL
+        "cont/clock_counter_6" BEL "cont/clock_counter_5" BEL
+        "cont/clock_counter_4" BEL "cont/clock_counter_3" BEL
+        "cont/clock_counter_2" BEL "cont/clock_counter_1" BEL
+        "cont/clock_counter_0" BEL "cont/state_15" BEL "cont/FF00_data_out_0"
+        BEL "cont/FF00_data_out_1" BEL "cont/FF00_data_out_3" BEL
+        "cont/FF00_data_out_2" BEL "cont/strobe" BEL "cont/cpu_r_l_up_dn_b"
+        BEL "cont/cpu_a_b_sel_start_b" BEL "audio/gen/link/curbit_0" BEL
         "audio/gen/link/curbit_1" BEL "audio/gen/link/curbit_2" BEL
         "audio/gen/link/curbit_3" BEL "audio/gen/link/curbit_4" BEL
         "audio/gen/link/curbit_5" BEL "audio/gen/link/curbit_6" BEL
@@ -211,8 +228,13 @@ TIMEGRP ac97_bitclk = BEL "audio/gen/link/curbit_0" BEL
         "audio/framediv/counter_6" BEL "audio/framediv/counter_5" BEL
         "audio/framediv/counter_4" BEL "audio/framediv/counter_3" BEL
         "audio/framediv/counter_2" BEL "audio/framediv/counter_1" BEL
-        "audio/framediv/counter_0" BEL "audio/regs/NR30_7" BEL
-        "audio/regs/NR52_7" BEL "audio/freq3div/clock_out" BEL
+        "audio/framediv/counter_0" BEL "cont/state_14" BEL "cont/state_13" BEL
+        "cont/state_12" BEL "cont/state_11" BEL "cont/state_10" BEL
+        "cont/state_9" BEL "cont/state_8" BEL "cont/state_7" BEL
+        "cont/state_6" BEL "cont/state_5" BEL "cont/state_4" BEL
+        "cont/state_3" BEL "cont/state_2" BEL "cont/state_1" BEL
+        "cont/state_0" BEL "audio/regs/NR30_7" BEL "audio/regs/NR52_7" BEL
+        "cont/statediv/clock_out" BEL "audio/freq3div/clock_out" BEL
         "audio/freq12div/clock_out" BEL "audio/framediv/clock_out" BEL
         "ac97_bitclk_BUFGP/BUFG";
 TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz HIGH 50%;

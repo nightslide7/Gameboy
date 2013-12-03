@@ -329,4 +329,4 @@
 <!ELEMENT twName (#PCDATA)>
 <!ELEMENT twValue (#PCDATA)>
 ]>
-<twReport><twBody><twSumRpt><twConstSummaryTable><twConstSummary><twConstName UCFConstName="" ScopeName="">TS_ac97_bitclk = PERIOD TIMEGRP &quot;ac97_bitclk&quot; 12.288 MHz HIGH 50%</twConstName><twConstData type="SETUP" slack="77.110" best="4.270" units="ns" errors="0" score="0"/><twConstData type="HOLD" slack="0.482" units="ns" errors="0" score="0"/></twConstSummary></twConstSummaryTable><twUnmetConstCnt anchorID="4">0</twUnmetConstCnt></twSumRpt></twBody></twReport>
+<twReport><twBody><twSumRpt><twConstSummaryTable><twConstSummary><twConstName UCFConstName="" ScopeName="">TS_ac97_bitclk = PERIOD TIMEGRP &quot;ac97_bitclk&quot; 12.288 MHz HIGH 50%</twConstName><twConstData type="SETUP" slack="73.613" best="7.767" units="ns" errors="0" score="0"/><twConstData type="HOLD" slack="0.469" units="ns" errors="0" score="0"/></twConstSummary></twConstSummaryTable><twUnmetConstCnt anchorID="4">0</twUnmetConstCnt></twSumRpt></twBody></twReport>
