@@ -726,6 +726,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
                              .en(addr_in_cart & ~mem_we));
    tristate #(8) gating_cont_reg(.out(data_ext),
                                  .in(FF00_data_out),
+                                 //.in(8'hff),
                                  .en(addr_in_controller & ~mem_we));
    tristate #(8) gating_IE(.out(data_ext),
                            .in({3'd0, IE_data}),

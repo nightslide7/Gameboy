@@ -11,7 +11,7 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Mon Dec 02 18:51:22 2013
+Mapped Date    : Mon Dec 02 22:05:18 2013
 
 Mapping design into LUTs...
 Running directed packing...
@@ -20,39 +20,39 @@ Updating timing models...
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 18 secs 
-Total CPU  time at the beginning of Placer: 18 secs 
+Total REAL time at the beginning of Placer: 31 secs 
+Total CPU  time at the beginning of Placer: 30 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:cc6ebf21) REAL time: 20 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:1e263674) REAL time: 34 secs 
 
 Phase 2.7  Design Feasibility Check
 INFO:Place:834 - Only a subset of IOs are locked. Out of 113 IOs, 112 are locked
    and 1 are not locked. If you would like to print the names of these IOs,
    please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
-Phase 2.7  Design Feasibility Check (Checksum:cc6ebf21) REAL time: 20 secs 
+Phase 2.7  Design Feasibility Check (Checksum:1e263674) REAL time: 34 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:8dcc7581) REAL time: 20 secs 
+Phase 3.31  Local Placement Optimization (Checksum:d537d044) REAL time: 34 secs 
 
 Phase 4.37  Local Placement Optimization
-Phase 4.37  Local Placement Optimization (Checksum:8dcc7581) REAL time: 20 secs 
+Phase 4.37  Local Placement Optimization (Checksum:d537d044) REAL time: 34 secs 
 
 Phase 5.33  Local Placement Optimization
-Phase 5.33  Local Placement Optimization (Checksum:8dcc7581) REAL time: 22 secs 
+Phase 5.33  Local Placement Optimization (Checksum:d537d044) REAL time: 36 secs 
 
 Phase 6.32  Local Placement Optimization
-Phase 6.32  Local Placement Optimization (Checksum:8dcc7581) REAL time: 22 secs 
+Phase 6.32  Local Placement Optimization (Checksum:d537d044) REAL time: 37 secs 
 
 Phase 7.2  Initial Clock and IO Placement
 ...
-Phase 7.2  Initial Clock and IO Placement (Checksum:6faa96f9) REAL time: 22 secs 
+Phase 7.2  Initial Clock and IO Placement (Checksum:1b0723cf) REAL time: 38 secs 
 
 Phase 8.36  Local Placement Optimization
-Phase 8.36  Local Placement Optimization (Checksum:6faa96f9) REAL time: 22 secs 
+Phase 8.36  Local Placement Optimization (Checksum:1b0723cf) REAL time: 38 secs 
 
 ...
-...................................................
+................................................................................
 Phase 9.30  Global Clock Region Assignment
 
 
@@ -105,7 +105,7 @@ AREA_GROUP "CLKAG_CLK_33MHZ_FPGA_IBUFG" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_
 # gpu/setup/idelay_ctrl_mod/x2/clk0 driven by BUFGCTRL_X0Y5
 NET "gpu/setup/idelay_ctrl_mod/x2/clk0" TNM_NET = "TN_gpu/setup/idelay_ctrl_mod/x2/clk0" ;
 TIMEGRP "TN_gpu/setup/idelay_ctrl_mod/x2/clk0" AREA_GROUP = "CLKAG_gpu/setup/idelay_ctrl_mod/x2/clk0" ;
-AREA_GROUP "CLKAG_gpu/setup/idelay_ctrl_mod/x2/clk0" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X0Y1 ;
+AREA_GROUP "CLKAG_gpu/setup/idelay_ctrl_mod/x2/clk0" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1 ;
 
 # cont/statediv/clock_out driven by BUFGCTRL_X0Y27
 NET "cont/statediv/clock_out" TNM_NET = "TN_cont/statediv/clock_out" ;
@@ -130,7 +130,7 @@ AREA_GROUP "CLKAG_gpu/converter/b2_clk" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_
 # gpu/gpuclk driven by BUFGCTRL_X0Y3
 NET "gpu/gpuclk" TNM_NET = "TN_gpu/gpuclk" ;
 TIMEGRP "TN_gpu/gpuclk" AREA_GROUP = "CLKAG_gpu/gpuclk" ;
-AREA_GROUP "CLKAG_gpu/gpuclk" RANGE =   CLOCKREGION_X1Y0, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
+AREA_GROUP "CLKAG_gpu/gpuclk" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X0Y5, CLOCKREGION_X0Y6, CLOCKREGION_X0Y7 ;
 
 # gpu/setup/clk31p5_dcm_inst/clk0 driven by BUFGCTRL_X0Y4
 NET "gpu/setup/clk31p5_dcm_inst/clk0" TNM_NET = "TN_gpu/setup/clk31p5_dcm_inst/clk0" ;
@@ -145,17 +145,17 @@ AREA_GROUP "CLKAG_audio/sweepdiv/clock_out" RANGE =   CLOCKREGION_X0Y4, CLOCKREG
 # audio/freq12div/clock_out driven by BUFGCTRL_X0Y29
 NET "audio/freq12div/clock_out" TNM_NET = "TN_audio/freq12div/clock_out" ;
 TIMEGRP "TN_audio/freq12div/clock_out" AREA_GROUP = "CLKAG_audio/freq12div/clock_out" ;
-AREA_GROUP "CLKAG_audio/freq12div/clock_out" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
+AREA_GROUP "CLKAG_audio/freq12div/clock_out" RANGE =   CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
 # audio/freq3div/clock_out driven by BUFGCTRL_X0Y30
 NET "audio/freq3div/clock_out" TNM_NET = "TN_audio/freq3div/clock_out" ;
 TIMEGRP "TN_audio/freq3div/clock_out" AREA_GROUP = "CLKAG_audio/freq3div/clock_out" ;
-AREA_GROUP "CLKAG_audio/freq3div/clock_out" RANGE =   CLOCKREGION_X0Y3, CLOCKREGION_X1Y3 ;
+AREA_GROUP "CLKAG_audio/freq3div/clock_out" RANGE =   CLOCKREGION_X1Y0, CLOCKREGION_X1Y1, CLOCKREGION_X1Y2, CLOCKREGION_X1Y3, CLOCKREGION_X1Y4, CLOCKREGION_X1Y5, CLOCKREGION_X1Y6, CLOCKREGION_X1Y7 ;
 
 # audio/lendiv/clock_out driven by BUFGCTRL_X0Y31
 NET "audio/lendiv/clock_out" TNM_NET = "TN_audio/lendiv/clock_out" ;
 TIMEGRP "TN_audio/lendiv/clock_out" AREA_GROUP = "CLKAG_audio/lendiv/clock_out" ;
-AREA_GROUP "CLKAG_audio/lendiv/clock_out" RANGE =   CLOCKREGION_X1Y0, CLOCKREGION_X1Y1, CLOCKREGION_X1Y2, CLOCKREGION_X1Y3, CLOCKREGION_X1Y4, CLOCKREGION_X1Y5, CLOCKREGION_X1Y6, CLOCKREGION_X1Y7 ;
+AREA_GROUP "CLKAG_audio/lendiv/clock_out" RANGE =   CLOCKREGION_X1Y4, CLOCKREGION_X1Y5, CLOCKREGION_X1Y6, CLOCKREGION_X1Y7 ;
 
 # ac97_bitclk_BUFGP driven by BUFGCTRL_X0Y7
 NET "ac97_bitclk_BUFGP" TNM_NET = "TN_ac97_bitclk_BUFGP" ;
@@ -180,7 +180,7 @@ Number of Global Clock Networks: 15
 Clock Region Assignment: SUCCESSFUL
 
 Clock-Region: <CLOCKREGION_X0Y0> 
- key resource utilizations (used/available): global-clocks - 3/10 ;
+ key resource utilizations (used/available): global-clocks - 4/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -189,11 +189,12 @@ Clock-Region: <CLOCKREGION_X0Y0>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |    674 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |      0 |gpu/converter/b2_clk
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    246 |CLK_33MHZ_FPGA_IBUFG
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    320 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |      0 |gpu/converter/b2_clk
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     28 |    674 | Total 
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |    566 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -207,17 +208,17 @@ Clock-Region: <CLOCKREGION_X1Y0>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    438 |CLK_33MHZ_FPGA_IBUFG
-      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |   1350 |      0 |gpu/converter/b2_clk
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    183 |CLK_33MHZ_FPGA_IBUFG
+      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |   1182 |      0 |gpu/converter/b2_clk
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |   1354 |    440 | Total 
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |   1182 |    183 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X0Y1> 
- key resource utilizations (used/available): global-clocks - 4/10 ;
+ key resource utilizations (used/available): global-clocks - 5/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -226,12 +227,13 @@ Clock-Region: <CLOCKREGION_X0Y1>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      7 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      7 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     60 |    408 |cdiv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     32 |    672 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |      0 |gpu/converter/b1_clk
       0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |gpu/setup/clk31p5_dcm_inst/clk0
       0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |gpu/setup/idelay_ctrl_mod/x2/clk0
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     14 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     60 |    408 | Total 
+      8 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     56 |    672 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -245,15 +247,15 @@ Clock-Region: <CLOCKREGION_X1Y1>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    182 |CLK_33MHZ_FPGA_IBUFG
+      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    173 |CLK_33MHZ_FPGA_IBUFG
       5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     16 |     20 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    792 |      0 |gpu/converter/b1_clk
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    162 |      0 |gpu/converter/b2_clk
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     18 |      9 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    474 |      0 |gpu/converter/b1_clk
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    306 |      0 |gpu/converter/b2_clk
       0 |      0 |      0 |      0 |      0 |     14 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     30 |gpu/gpuclk
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |gpu/setup/idelay_ctrl_mod/clk200
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     11 |      0 |      0 |      0 |      0 |     14 |      0 |      0 |      0 |      0 |      1 |      0 |    970 |    232 | Total 
+     11 |      0 |      0 |      0 |      0 |     14 |      0 |      0 |      0 |      0 |      1 |      0 |    798 |    212 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -267,12 +269,12 @@ Clock-Region: <CLOCKREGION_X0Y2>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |      0 |CONTROL0<0>
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      3 |ac97_bitclk_BUFGP
-      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     94 |    465 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |      0 |gpu/converter/b1_clk
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     68 |    266 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     36 |      0 |gpu/converter/b1_clk
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     12 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    166 |    468 | Total 
+     10 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    104 |    269 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -286,19 +288,19 @@ Clock-Region: <CLOCKREGION_X1Y2>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     54 |CLK_33MHZ_FPGA_IBUFG
-      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     18 |      0 |CONTROL0<0>
-      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     52 |    323 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    696 |      0 |gpu/converter/b1_clk
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     49 |CLK_33MHZ_FPGA_IBUFG
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     52 |    159 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    894 |      0 |gpu/converter/b1_clk
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     16 |gpu/gpuclk
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      5 |gpu/setup/idelay_ctrl_mod/clk200
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      7 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    766 |    398 | Total 
+     10 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    946 |    229 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X0Y3> 
- key resource utilizations (used/available): global-clocks - 6/10 ;
+ key resource utilizations (used/available): global-clocks - 5/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -308,18 +310,17 @@ Clock-Region: <CLOCKREGION_X0Y3>
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      8 |CLK_33MHZ_FPGA_IBUFG
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     92 |     68 |CONTROL0<0>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     22 |ac97_bitclk_BUFGP
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     72 |    371 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      8 |cont/statediv/clock_out
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     98 |      1 |CONTROL0<0>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     16 |ac97_bitclk_BUFGP
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |    338 |cdiv/clock_out
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |gpu/gpuclk
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     16 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |    164 |    477 | Total 
+     10 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |    122 |    363 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X1Y3> 
- key resource utilizations (used/available): global-clocks - 8/10 ;
+ key resource utilizations (used/available): global-clocks - 6/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -328,16 +329,14 @@ Clock-Region: <CLOCKREGION_X1Y3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     76 |CLK_33MHZ_FPGA_IBUFG
-      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     53 |      7 |CONTROL0<0>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    139 |ac97_bitclk_BUFGP
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      7 |audio/freq12div/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     21 |audio/freq3div/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      9 |audio/lendiv/clock_out
-      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     50 |    147 |cdiv/clock_out
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     99 |CLK_33MHZ_FPGA_IBUFG
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     78 |      0 |CONTROL0<0>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |ac97_bitclk_BUFGP
+      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     38 |    317 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    108 |      0 |gpu/converter/b1_clk
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     20 |gpu/setup/idelay_ctrl_mod/clk200
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     11 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    103 |    426 | Total 
+      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    224 |    440 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -352,18 +351,18 @@ Clock-Region: <CLOCKREGION_X0Y4>
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      3 |CLK_33MHZ_FPGA_IBUFG
-      7 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     68 |     23 |CONTROL0<0>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     44 |ac97_bitclk_BUFGP
-      7 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     50 |    144 |cdiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     16 |cont/statediv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |     67 |CONTROL0<0>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     37 |ac97_bitclk_BUFGP
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     50 |    195 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |cont/statediv/clock_out
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     79 |gpu/gpuclk
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-     14 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    118 |    309 | Total 
+      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     90 |    405 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X1Y4> 
- key resource utilizations (used/available): global-clocks - 6/10 ;
+ key resource utilizations (used/available): global-clocks - 7/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -372,14 +371,15 @@ Clock-Region: <CLOCKREGION_X1Y4>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     79 |ac97_bitclk_BUFGP
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     25 |audio/freq12div/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     33 |     15 |CONTROL0<0>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    173 |ac97_bitclk_BUFGP
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     20 |audio/freq12div/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     21 |audio/freq3div/clock_out
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     18 |audio/lendiv/clock_out
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     32 |audio/sweepdiv/clock_out
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     30 |     34 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     12 |audio/sweepdiv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |    127 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     30 |    188 | Total 
+      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     81 |    386 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -393,15 +393,15 @@ Clock-Region: <CLOCKREGION_X0Y5>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |     21 |cdiv/clock_out
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     66 |     15 |CONTROL0<0>
+      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     56 |    138 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |     21 | Total 
+     10 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    122 |    153 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X1Y5> 
- key resource utilizations (used/available): global-clocks - 2/10 ;
+ key resource utilizations (used/available): global-clocks - 6/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -411,9 +411,13 @@ Clock-Region: <CLOCKREGION_X1Y5>
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
       4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     22 |     19 |cdiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     50 |ac97_bitclk_BUFGP
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     12 |audio/freq12div/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      9 |audio/lendiv/clock_out
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     20 |audio/sweepdiv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |     36 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     22 |     19 | Total 
+      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |    127 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -428,9 +432,9 @@ Clock-Region: <CLOCKREGION_X0Y6>
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
       4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 |cdiv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |     29 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 | Total 
+      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |     29 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -444,15 +448,15 @@ Clock-Region: <CLOCKREGION_X1Y6>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
-      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 |cdiv/clock_out
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |     20 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 | Total 
+      8 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |     20 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X0Y7> 
- key resource utilizations (used/available): global-clocks - 0/10 ;
+ key resource utilizations (used/available): global-clocks - 2/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -461,13 +465,15 @@ Clock-Region: <CLOCKREGION_X0Y7>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
+      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 | Total 
+     12 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |      2 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X1Y7> 
- key resource utilizations (used/available): global-clocks - 0/10 ;
+ key resource utilizations (used/available): global-clocks - 2/10 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |    PLL |     GT | ILOGIC | OLOGIC |   MULT |  TEMAC |    PPC |   PCIE | IDLYCT | BUFGCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -476,8 +482,10 @@ Clock-Region: <CLOCKREGION_X1Y7>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
+      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |CONTROL0<0>
+      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |cdiv/clock_out
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 | Total 
+      6 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 NOTE:
@@ -490,37 +498,37 @@ maybe moved to adjacent clock-regions as long as the "number of clocks per regio
 ######################################################################################
 
 
-Phase 9.30  Global Clock Region Assignment (Checksum:6faa96f9) REAL time: 27 secs 
+Phase 9.30  Global Clock Region Assignment (Checksum:1b0723cf) REAL time: 44 secs 
 
 Phase 10.3  Local Placement Optimization
 ...
-Phase 10.3  Local Placement Optimization (Checksum:c0b067a0) REAL time: 27 secs 
+Phase 10.3  Local Placement Optimization (Checksum:668896a5) REAL time: 44 secs 
 
 Phase 11.5  Local Placement Optimization
-Phase 11.5  Local Placement Optimization (Checksum:c0b067a0) REAL time: 27 secs 
+Phase 11.5  Local Placement Optimization (Checksum:668896a5) REAL time: 44 secs 
 
 Phase 12.8  Global Placement
-.................................................................................................................
-......................................................................................
-Phase 12.8  Global Placement (Checksum:b646206d) REAL time: 34 secs 
+..........................................................................................................................
+............................................................................................
+Phase 12.8  Global Placement (Checksum:3d932fdd) REAL time: 56 secs 
 
 Phase 13.29  Local Placement Optimization
-Phase 13.29  Local Placement Optimization (Checksum:b646206d) REAL time: 34 secs 
+Phase 13.29  Local Placement Optimization (Checksum:3d932fdd) REAL time: 56 secs 
 
 Phase 14.5  Local Placement Optimization
-Phase 14.5  Local Placement Optimization (Checksum:b646206d) REAL time: 34 secs 
+Phase 14.5  Local Placement Optimization (Checksum:3d932fdd) REAL time: 56 secs 
 
 Phase 15.18  Placement Optimization
-Phase 15.18  Placement Optimization (Checksum:bbe28492) REAL time: 47 secs 
+Phase 15.18  Placement Optimization (Checksum:fc2271ad) REAL time: 1 mins 12 secs 
 
 Phase 16.5  Local Placement Optimization
-Phase 16.5  Local Placement Optimization (Checksum:bbe28492) REAL time: 47 secs 
+Phase 16.5  Local Placement Optimization (Checksum:fc2271ad) REAL time: 1 mins 12 secs 
 
 Phase 17.34  Placement Validation
-Phase 17.34  Placement Validation (Checksum:bbe28492) REAL time: 47 secs 
+Phase 17.34  Placement Validation (Checksum:fc2271ad) REAL time: 1 mins 12 secs 
 
-Total REAL time to Placer completion: 47 secs 
-Total CPU  time to Placer completion: 46 secs 
+Total REAL time to Placer completion: 1 mins 13 secs 
+Total CPU  time to Placer completion: 1 mins 12 secs 
 Running post-placement packing...
 Writing output files...
 WARNING:PhysDesignRules:372 - Gated clock. Clock net CONTROL0<13> is sourced by a combinatorial pin. This is not good
@@ -536,11 +544,11 @@ Slice Logic Utilization:
   Number of Slice Registers:                 4,104 out of  69,120    5%
     Number used as Flip Flops:               4,103
     Number used as Latches:                      1
-  Number of Slice LUTs:                      7,746 out of  69,120   11%
+  Number of Slice LUTs:                      7,747 out of  69,120   11%
     Number used as logic:                    5,217 out of  69,120    7%
-      Number using O6 output only:           4,391
+      Number using O6 output only:           4,392
       Number using O5 output only:             373
-      Number using O5 and O6:                  453
+      Number using O5 and O6:                  452
     Number used as Memory:                   2,488 out of  17,920   13%
       Number used as Single Port RAM:        2,048
         Number using O6 output only:         2,048
@@ -548,17 +556,17 @@ Slice Logic Utilization:
         Number using O6 output only:           407
         Number using O5 output only:             1
         Number using O5 and O6:                 32
-    Number used as exclusive route-thru:        41
-  Number of route-thrus:                       418
+    Number used as exclusive route-thru:        42
+  Number of route-thrus:                       415
     Number using O6 output only:               414
-    Number using O5 output only:                 4
+    Number using O5 and O6:                      1
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 3,439 out of  17,280   19%
-  Number of LUT Flip Flop pairs used:        9,771
-    Number with an unused Flip Flop:         5,667 out of   9,771   57%
-    Number with an unused LUT:               2,025 out of   9,771   20%
-    Number of fully used LUT-FF pairs:       2,079 out of   9,771   21%
+  Number of occupied Slices:                 3,448 out of  17,280   19%
+  Number of LUT Flip Flop pairs used:        9,747
+    Number with an unused Flip Flop:         5,643 out of   9,747   57%
+    Number with an unused LUT:               2,000 out of   9,747   20%
+    Number of fully used LUT-FF pairs:       2,104 out of   9,747   21%
     Number of unique control sets:             611
     Number of slice register sites lost
       to control set restrictions:             272 out of  69,120    1%
@@ -594,9 +602,9 @@ Specific Feature Utilization:
   Number of RPM macros:           14
 Average Fanout of Non-Clock Nets:                5.81
 
-Peak Memory Usage:  732 MB
-Total REAL time to MAP completion:  53 secs 
-Total CPU time to MAP completion:   52 secs 
+Peak Memory Usage:  733 MB
+Total REAL time to MAP completion:  1 mins 22 secs 
+Total CPU time to MAP completion:   1 mins 22 secs 
 
 Mapping completed.
 See MAP report file "lcd_top_flashcart_map.mrp" for details.

@@ -146,10 +146,10 @@
 <msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/blockram8192.v</arg>&quot; line <arg fmt="%d" index="2">687</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">blockram8192</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">829</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">830</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">845</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">846</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">data</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -498,6 +498,9 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">FF00_load_in&lt;7:1&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">FF00_data_out</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">CONTROL</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.

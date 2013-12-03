@@ -7,7 +7,7 @@ module breakpoints(/*AUTOARG*/
    parameter
      reset_addr = 16'hffff;
    
-   output reg [15:0] bp_addr;
+   output reg [15:0] bp_addr = reset_addr;
    output reg [7:0]  bp_addr_disp;
    output reg        hi_lo_disp;
    
