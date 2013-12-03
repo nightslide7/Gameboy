@@ -58,10 +58,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:  18
 
-Total memory usage is 240992 kilobytes
+Total memory usage is 261216 kilobytes
 
 Writing NGD file "lcd_top_flashcart.ngd" ...
-Total REAL time to NGDBUILD completion:  16 sec
-Total CPU time to NGDBUILD completion:   15 sec
+Total REAL time to NGDBUILD completion:  13 sec
+Total CPU time to NGDBUILD completion:   12 sec
 
 Writing NGDBUILD log file "lcd_top_flashcart.bld"...

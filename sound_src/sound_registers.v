@@ -10,8 +10,8 @@
 module sound_registers
   (input               ac97_bitclk,
    input               reset,
-   input       [15:0]  reg_addr,
-   input       [7:0]   reg_data,
+   input [15:0]        reg_addr,
+   input [7:0]         reg_data,
    input               reg_w_enable,
    output wire [2:0]   ch1_sweep_time,
    output wire         ch1_sweep_decreasing,
@@ -19,7 +19,7 @@ module sound_registers
    output wire [1:0]   ch1_wave_duty,
    output wire [5:0]   ch1_length_data,
    output wire [3:0]   ch1_initial_volume,
-   output wire 	       ch1_envelope_increasing,
+   output wire         ch1_envelope_increasing,
    output wire [2:0]   ch1_num_envelope_sweeps,
    output wire         ch1_reset,
    output wire         ch1_dont_loop,
@@ -27,10 +27,10 @@ module sound_registers
    output wire [1:0]   ch2_wave_duty,
    output wire [5:0]   ch2_length_data,
    output wire [3:0]   ch2_initial_volume,
-   output wire 	       ch2_envelope_increasing,
+   output wire         ch2_envelope_increasing,
    output wire [2:0]   ch2_num_envelope_sweeps,
-   output wire 	       ch2_reset,
-   output wire 	       ch2_dont_loop,
+   output wire         ch2_reset,
+   output wire         ch2_dont_loop,
    output wire [10:0]  ch2_frequency_data,
    output wire         ch3_enable,
    output wire [7:0]   ch3_length_data,
@@ -64,7 +64,8 @@ module sound_registers
    output wire         ch4_on_flag,
    output wire         ch3_on_flag,
    output wire         ch2_on_flag,
-   output wire         ch1_on_flag
+   output wire         ch1_on_flag,
+   output wire [247:0] chipscope_signals
    );
 
    /* Channel 1 - Tone & Sweep */
@@ -500,4 +501,16 @@ always@(posedge ac97_bitclk or posedge reset) begin
       end
    end // else: !if(~ac97_reset_b)
 end // always@ (posedge ac97_bitclk or negedge ac97_reset_b)
+
+   wire [39:0] sound1, sound2, sound3;
+   wire [127:0] waveform;
+
+   assign sound1 = {NR14, NR13, NR12, NR11, NR10};
+   assign sound2 = {NR24, NR23, NR22, NR21, NR14};
+   assign sound3 = {NR34, NR33, NR32, NR31, NR30};
+   assign waveform = {WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38,
+                      WR37, WR36, WR35, WR34, WR33, WR32, WR31, WR30};
+   
+   assign chipscope_signals = {waveform, sound3, sound2, sound1};
+   
 endmodule

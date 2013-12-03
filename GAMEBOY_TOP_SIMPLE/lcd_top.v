@@ -297,40 +297,6 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire [15:0] addr_ext;
    wire [7:0]  data_ext;
    
-
-/*
-`define MAX_VCOUNT 9'd440
-   
-   reg [7:0]   FF44_data;
-   reg [8:0]   v_count;
-
-   always @(posedge cpu_clock or posedge reset) begin
-      if (reset) begin
-         v_count <= 9'd0;
-         FF44_data <= 8'd0;
-      end else begin
-         if (v_count >= `MAX_VCOUNT) begin//9'd440) begin
-            v_count <= 9'd0;
-            if (FF44_data >= 8'd153) begin
-               FF44_data <= 8'd0;
-            end else  begin
-               FF44_data <= FF44_data + 8'd1;
-            end
-         end
-         v_count <= v_count + 9'd1;
-      end
-   end
-   
-   wire        FF44_read;
-   assign FF44_read = (addr_ext == 16'hff44) & mem_re;*/
- 
-   
-//   assign data_ext = (mem_we) ? 8'bzzzzzzzz : flash_d[7:0];
-//   assign data_ext = (mem_we) ? 8'bzzzzzzzz : (addr_in_flash ? 
-//                                               flash_d[7:0] :
-//                                               bram_data_out[7:0]);
-     
-
    // Timers, DMA ////////////////////////////////////////////////////////////
 
    wire        timer_reg_addr; // addr_ext == timer MMIO address
@@ -530,6 +496,8 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire [7:0]  reg_data_out;
    wire [15:0] reg_addr;
 
+   wire [247:0] chipscope_signals;
+   
    assign reg_w_enable = ((addr_ext >= 16'hFF10 && addr_ext <= 16'hFF1E) ||
 			  (addr_ext >= 16'hFF30 && addr_ext <= 16'hFF3F) ||
 			  (addr_ext >= 16'hFF20 && addr_ext <= 16'hFF26));
@@ -557,7 +525,8 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
 		   .strobe(strobe),
 		   .reg_addr(reg_addr),
 		   .reg_data(reg_data_in),
-		   .reg_w_enable(reg_w_enable)
+		   .reg_w_enable(reg_w_enable),
+                   .chipscope_signals(chipscope_signals)
 		  );
 
    /* The cartridge */
@@ -767,6 +736,14 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
                           .reset(reset),
                           .clock(cpu_clock));
    
+   wire [39:0] sound3, sound2, sound1;
+   wire [127:0] waveform;
+
+   assign waveform = chipscope_signals[247:120];
+   assign sound3 = chipscope_signals[119:80];
+   assign sound2 = chipscope_signals[79:40];
+   assign sound1 = chipscope_signals[39:0];
+   
    wire [35 : 0] CONTROL;
    
    wire [15 : 0] TRIG0;
@@ -781,6 +758,10 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire [31 : 0] TRIG9;
    wire [31 : 0] TRIG10;
    wire [31 : 0] TRIG11;
+   wire [39 : 0] TRIG12;
+   wire [39 : 0] TRIG13;
+   wire [39 : 0] TRIG14;
+   wire [127 : 0] TRIG15;
    
    assign TRIG0 = regs_data[15:0];
    assign TRIG1 = {A_data, F_data, regs_data[79:16]};
@@ -809,6 +790,10 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    assign TRIG9 = cycle_count;
    assign TRIG10 = {16'h0, high_mem_addr[15:0]};
    assign TRIG11 = {24'h0, high_mem_data[7:0]};
+   assign TRIG12 = sound1;
+   assign TRIG13 = sound2;
+   assign TRIG14 = sound3;
+   assign TRIG15 = waveform;
 
 /*   assign wram_data_in = data_ext;
    assign wram_we = addr_in_wram & mem_we;
@@ -840,7 +825,11 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
           .TRIG8(TRIG8),
           .TRIG9(TRIG9),
           .TRIG10(TRIG10),
-          .TRIG11(TRIG11));
+          .TRIG11(TRIG11),
+          .TRIG12(TRIG12),
+          .TRIG13(TRIG13),
+          .TRIG14(TRIG14),
+          .TRIG15(TRIG15));
 
    chipscope_icon
      cicon(.CONTROL0(CONTROL0));

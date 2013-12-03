@@ -21,7 +21,8 @@ module audio_top (input              square_wave_enable,
 		  output wire        flash_clk,
 		  output wire        flash_oe_n,
 		  output wire        flash_we_n,*/
-		  output wire        strobe
+		  output wire        strobe,
+                  output wire [247:0] chipscope_signals
 		  );
    wire [3:0] 		     ch1_level;
    wire [3:0] 		     ch2_level;
@@ -217,6 +218,7 @@ module audio_top (input              square_wave_enable,
 			.ch3_on_flag	(ch3_on_flag),
 			.ch2_on_flag	(ch2_on_flag),
 			.ch1_on_flag	(ch1_on_flag),
+                        .chipscope_signals(chipscope_signals),
 			// Inputs
 			.ac97_bitclk	(ac97_bitclk),
 			.reset		(reset),

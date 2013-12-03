@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: lcd_top_flashcart.prj
 
@@ -522,10 +522,10 @@ Analyzing top module <lcd_top_flashcart>.
 	I_SERIAL = 32'sb00000000000000000000000000000011
 	I_TIMA = 32'sb00000000000000000000000000000010
 	I_VBLANK = 32'sb00000000000000000000000000000000
-WARNING:Xst:852 - "lcd_top.v" line 498: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
-WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 687: Instantiating black box module <blockram8192>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 830: Instantiating black box module <chipscope_ila>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 846: Instantiating black box module <chipscope_icon>.
+WARNING:Xst:852 - "lcd_top.v" line 464: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
+WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 656: Instantiating black box module <blockram8192>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 815: Instantiating black box module <chipscope_ila>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 835: Instantiating black box module <chipscope_icon>.
 Module <lcd_top_flashcart> is correct for synthesis.
  
     Set user-defined property "SYN_BLACK_BOX =  1" for instance <cila> in unit <lcd_top_flashcart>.
@@ -1386,13 +1386,6 @@ Synthesizing Unit <sound_registers>.
 WARNING:Xst:646 - Signal <NR52<6:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <NR44<5:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <NR41<7:6>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR34<5:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR32<7>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR32<4:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR30<6:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR24<5:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR14<5:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <NR10<7>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 8-bit register for signal <NR10>.
     Found 8-bit register for signal <NR11>.
     Found 8-bit register for signal <NR12>.
@@ -2053,7 +2046,6 @@ WARNING:Xst:646 - Signal <cart_reset_l> is assigned but never used. This unconne
 WARNING:Xst:646 - Signal <cart_r_enable_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <cart_cs_sram_l> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <FF00_load_in<7:1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <FF00_data_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <CONTROL> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found finite state machine <FSM_7> for signal <cstate>.
     -----------------------------------------------------------------------
@@ -2068,27 +2060,27 @@ WARNING:Xst:1780 - Signal <CONTROL> is never used or assigned. This unconnected 
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit adder for signal <$add0000> created at line 764.
-    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 570.
-    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 570.
-    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 659.
-    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 659.
-    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 460.
-    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 662.
-    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 662.
+    Found 32-bit adder for signal <$add0000> created at line 733.
+    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 539.
+    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 539.
+    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 628.
+    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 628.
+    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 426.
+    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 631.
+    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 631.
     Found 16-bit adder for signal <cart_address>.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 533.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 533.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 533.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 533.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 533.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 533.
-    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 490.
-    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 490.
-    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 472.
-    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 472.
-    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 481.
-    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 481.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 501.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 501.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 501.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 501.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 501.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 501.
+    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 456.
+    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 456.
+    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 438.
+    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 438.
+    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 447.
+    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 447.
     Found 16-bit subtractor for signal <wram_addr_long>.
     Summary:
 	inferred   1 Finite State Machine(s).
@@ -2373,29 +2365,6 @@ WARNING:Xst:2677 - Node <sprite_attributes_2> of sequential type is unconnected 
 WARNING:Xst:2677 - Node <sprite_attributes_3> of sequential type is unconnected in block <video>.
 WARNING:Xst:2677 - Node <sprite_attributes_5> of sequential type is unconnected in block <video>.
 WARNING:Xst:2677 - Node <sprite_attributes_6> of sequential type is unconnected in block <video>.
-WARNING:Xst:2677 - Node <NR10_7> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR14_3> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR14_4> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR14_5> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR24_3> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR24_4> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR24_5> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_0> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_1> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_2> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_3> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_4> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_5> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR30_6> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_0> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_1> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_2> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_3> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_4> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR32_7> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR34_3> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR34_4> of sequential type is unconnected in block <regs>.
-WARNING:Xst:2677 - Node <NR34_5> of sequential type is unconnected in block <regs>.
 WARNING:Xst:2677 - Node <NR51_3> of sequential type is unconnected in block <regs>.
 WARNING:Xst:2677 - Node <NR51_7> of sequential type is unconnected in block <regs>.
 WARNING:Xst:2677 - Node <NR52_0> of sequential type is unconnected in block <regs>.
@@ -2428,29 +2397,6 @@ Synthesizing (advanced) Unit <gpu_top>.
 	Multiplier <converter/Mmult_write_addr_mult0001> in block <gpu_top> and adder/subtractor <converter/Madd_write_addr> in block <gpu_top> are combined into a MAC<converter/Maddsub_write_addr_mult0001>.
 	The following registers are also absorbed by the MAC: <video/line_count> in block <gpu_top>, <video/pixel_data_count> in block <gpu_top>.
 Unit <gpu_top> synthesized (advanced).
-WARNING:Xst:2677 - Node <NR10_7> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR14_3> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR14_4> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR14_5> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR24_3> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR24_4> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR24_5> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_0> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_1> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_2> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_3> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_4> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_5> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR30_6> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_0> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_1> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_2> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_3> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_4> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR32_7> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR34_3> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR34_4> of sequential type is unconnected in block <sound_registers>.
-WARNING:Xst:2677 - Node <NR34_5> of sequential type is unconnected in block <sound_registers>.
 WARNING:Xst:2677 - Node <NR41_6> of sequential type is unconnected in block <sound_registers>.
 WARNING:Xst:2677 - Node <NR41_7> of sequential type is unconnected in block <sound_registers>.
 WARNING:Xst:2677 - Node <NR44_0> of sequential type is unconnected in block <sound_registers>.
@@ -2536,8 +2482,8 @@ Macro Statistics
  7-bit up counter                                      : 2
  8-bit up counter                                      : 1
  9-bit up counter                                      : 3
-# Registers                                            : 2629
- Flip-Flops                                            : 2629
+# Registers                                            : 2652
+ Flip-Flops                                            : 2652
 # Comparators                                          : 120
  10-bit comparator greatequal                          : 1
  10-bit comparator lessequal                           : 3
@@ -2634,8 +2580,8 @@ INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_2> in Unit <gpu_top> is equ
 INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_1> in Unit <gpu_top> is equivalent to the following FF/Latch, which will be removed : <converter/Maddsub_write_addr_mult00011_6> 
 INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_0> in Unit <gpu_top> is equivalent to the following FF/Latch, which will be removed : <converter/Maddsub_write_addr_mult00011_7> 
 WARNING:Xst:2042 - Unit cpu: 16 internal tristates are replaced by logic (pull-up yes): addr_ext_in<0>, addr_ext_in<10>, addr_ext_in<11>, addr_ext_in<12>, addr_ext_in<13>, addr_ext_in<14>, addr_ext_in<15>, addr_ext_in<1>, addr_ext_in<2>, addr_ext_in<3>, addr_ext_in<4>, addr_ext_in<5>, addr_ext_in<6>, addr_ext_in<7>, addr_ext_in<8>, addr_ext_in<9>.
-WARNING:Xst:2042 - Unit tristate_1: 8 internal tristates are replaced by logic (pull-up yes): out<0>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>.
 WARNING:Xst:2042 - Unit mem: 8 internal tristates are replaced by logic (pull-up yes): data_ext<0>, data_ext<1>, data_ext<2>, data_ext<3>, data_ext<4>, data_ext<5>, data_ext<6>, data_ext<7>.
+WARNING:Xst:2042 - Unit tristate_1: 8 internal tristates are replaced by logic (pull-up yes): out<0>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>.
 WARNING:Xst:2042 - Unit tristate_2: 16 internal tristates are replaced by logic (pull-up yes): out<0>, out<10>, out<11>, out<12>, out<13>, out<14>, out<15>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>, out<8>, out<9>.
 WARNING:Xst:2042 - Unit nobus_buffer_2: 16 internal tristates are replaced by logic (pull-up yes): bus<0>, bus<10>, bus<11>, bus<12>, bus<13>, bus<14>, bus<15>, bus<1>, bus<2>, bus<3>, bus<4>, bus<5>, bus<6>, bus<7>, bus<8>, bus<9>.
 WARNING:Xst:2042 - Unit nobus_buffer_1: 8 internal tristates are replaced by logic (pull-up yes): bus<0>, bus<1>, bus<2>, bus<3>, bus<4>, bus<5>, bus<6>, bus<7>.
@@ -2703,44 +2649,12 @@ WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_0> (without init value) h
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_1> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_2> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_3> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <audio/regs/WR30_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR30_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR31_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR31_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR32_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR32_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR33_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR33_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR34_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR34_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR37_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR37_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR35_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR35_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR36_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR36_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR38_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR38_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR39_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR39_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3A_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3A_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3B_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3B_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3C_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3C_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3D_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3D_4> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_0> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_1> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_2> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_3> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_4> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_5> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3E_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3E_4> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3F_0> of sequential type is unconnected in block <lcd_top_flashcart>.
-WARNING:Xst:2677 - Node <audio/regs/WR3F_4> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR42_0> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR42_1> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR42_2> of sequential type is unconnected in block <lcd_top_flashcart>.
@@ -2776,85 +2690,85 @@ WARNING:Xst:2677 - Node <audio/regs/NR52_3> of sequential type is unconnected in
 WARNING:Xst:2677 - Node <gpu/dvi/init/Done> of sequential type is unconnected in block <lcd_top_flashcart>.
 
 Mapping all equations...
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>, dina<3>, lcd_top_flashcart/data_ext<3>LogicTrst58.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<2>, dina<2>, lcd_top_flashcart/data_ext<2>LogicTrst74.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<1>, lcd_top_flashcart/data_ext<1>LogicTrst74, lcd_top_flashcart/data_ext<1>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>, lcd_top_flashcart/data_ext<0>LogicTrst74, dina<0>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<7>, lcd_top_flashcart/data_ext<7>, lcd_top_flashcart/data_ext<7>LogicTrst76, lcd_top_flashcart/data_ext<7>LogicTrst29.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>LogicTrst76, dina<6>, lcd_top_flashcart/data_ext<6>LogicTrst29, lcd_top_flashcart/data_ext<6>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>LogicTrst33, dina<5>, lcd_top_flashcart/data_ext<5>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<4>, lcd_top_flashcart/data_ext<4>, lcd_top_flashcart/data_ext<4>LogicTrst58.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<0>, gb80_cpu/gb80_alu/Madd__old_result_low_13_Madd_lut<2>, gb80_cpu/alu_data1_in<1>32, gb80_cpu/alu_data_out<0>, gb80_cpu/alu_data1_in<4>, gb80_cpu/alu_data_out<4>, gb80_cpu/gb80_alu/alu_data_out_0_mux0000226, gb80_cpu/alu_data_out<2>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/alu_data1_in<2>32, gb80_cpu/alu_data1_in<1>, gb80_cpu/gb80_alu/_old_result_low_13<2>, gb80_cpu/data_bus<4>, gb80_cpu/gb80_alu/N19, gb80_cpu/alu_data_out<1>, gb80_cpu/alu_data1_in<2>, gb80_cpu/gb80_alu/Madd__old_result_high_16_Madd_lut<0>, gb80_cpu/gb80_alu/alu_data_out_4_mux0000142.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<3>, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/gb80_alu/Madd__old_result_low_10_Madd_lut<3>, gb80_cpu/alu_data1_in<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000189, gb80_cpu/data_bus<3>, gb80_cpu/gb80_alu/_old_result_low_10<3>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data0_in<5>, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/data_bus<5>, gb80_cpu/alu_data_out<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000153, gb80_cpu/gb80_alu/alu_data_out_5_mux0000181.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_high_11<2>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000162, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/gb80_alu/Madd__old_result_high_11_lut<2>, gb80_cpu/alu_data1_in<6>, gb80_cpu/alu_data_out<6>, gb80_cpu/data_bus<6>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data1_in<7>, gb80_cpu/alu_data_out<7>, gb80_cpu/data_bus<7>, gb80_cpu/alu_data1_in<7>28, gb80_cpu/gb80_alu/alu_data_out_7_mux0000209, gb80_cpu/data_buf/q_mux0000<7>, gb80_cpu/gb80_alu/_old_result_high_18<3>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>LogicTrst104, lcd_top_flashcart/data_ext<3>LogicTrst57, lcd_top_flashcart/data_ext<3>, dina<3>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<2>, lcd_top_flashcart/data_ext<2>LogicTrst110, lcd_top_flashcart/data_ext<2>LogicTrst57, lcd_top_flashcart/data_ext<2>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<1>, dina<1>, lcd_top_flashcart/data_ext<1>LogicTrst62.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>, lcd_top_flashcart/data_ext<0>LogicTrst57, lcd_top_flashcart/data_ext<0>LogicTrst110, dina<0>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<7>LogicTrst76, lcd_top_flashcart/data_ext<7>, dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst29.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>LogicTrst29, dina<6>, lcd_top_flashcart/data_ext<6>LogicTrst76, lcd_top_flashcart/data_ext<6>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>LogicTrst29, lcd_top_flashcart/data_ext<5>, lcd_top_flashcart/data_ext<5>LogicTrst76, dina<5>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<4>LogicTrst100, lcd_top_flashcart/data_ext<4>LogicTrst53, lcd_top_flashcart/data_ext<4>, dina<4>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_low_13<2>, gb80_cpu/data_bus<4>, gb80_cpu/data_bus<0>, gb80_cpu/alu_data1_in<2>32, gb80_cpu/alu_data_out<2>, gb80_cpu/gb80_alu/alu_data_out_4_mux0000142, gb80_cpu/gb80_alu/N19, gb80_cpu/alu_data1_in<1>32, gb80_cpu/alu_data1_in<4>, gb80_cpu/alu_data1_in<1>, gb80_cpu/gb80_alu/Madd__old_result_high_16_Madd_lut<0>, gb80_cpu/alu_data_out<0>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/gb80_alu/alu_data_out_0_mux0000226, gb80_cpu/gb80_alu/Madd__old_result_low_13_Madd_lut<2>, gb80_cpu/alu_data1_in<2>, gb80_cpu/alu_data_out<4>, gb80_cpu/alu_data_out<1>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data1_in<3>, gb80_cpu/gb80_alu/Madd__old_result_low_10_Madd_lut<3>, gb80_cpu/gb80_alu/_old_result_low_10<3>, gb80_cpu/alu_data_out<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000189, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/data_bus<3>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/alu_data0_in<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000153, gb80_cpu/alu_data_out<5>, gb80_cpu/data_bus<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000181.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data1_in<6>, gb80_cpu/gb80_alu/_old_result_high_11<2>, gb80_cpu/gb80_alu/Madd__old_result_high_11_lut<2>, gb80_cpu/alu_data_out<6>, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/data_bus<6>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000162.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<7>, gb80_cpu/data_buf/q_mux0000<7>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000209, gb80_cpu/alu_data1_in<7>28, gb80_cpu/alu_data1_in<7>, gb80_cpu/gb80_alu/_old_result_high_18<3>, gb80_cpu/alu_data_out<7>.
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block lcd_top_flashcart, actual ratio is 11.
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> 
+Found area constraint ratio of 100 (+ 5) on block lcd_top_flashcart, actual ratio is 12.
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> 
-INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG> 
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG> 
+INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG> 
 FlipFlop gb80_cpu/F_reg/q_4 has been replicated 1 time(s)
 FlipFlop gb80_cpu/gb80_decode/interrupt_handle has been replicated 1 time(s)
 
@@ -2869,8 +2783,8 @@ Unit <lcd_top_flashcart> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2776
- Flip-Flops                                            : 2776
+# Registers                                            : 2831
+ Flip-Flops                                            : 2831
 
 =========================================================================
 
@@ -2899,47 +2813,47 @@ Design Statistics
 # IOs                              : 113
 
 Cell Usage :
-# BELS                             : 7421
-#      GND                         : 38
-#      INV                         : 87
-#      LUT1                        : 435
-#      LUT2                        : 367
-#      LUT3                        : 406
-#      LUT4                        : 944
-#      LUT5                        : 987
-#      LUT6                        : 2562
+# BELS                             : 7633
+#      GND                         : 69
+#      INV                         : 77
+#      LUT1                        : 436
+#      LUT2                        : 368
+#      LUT3                        : 387
+#      LUT4                        : 938
+#      LUT5                        : 992
+#      LUT6                        : 2622
 #      MUXCY                       : 535
-#      MUXCY_L                     : 240
+#      MUXCY_L                     : 370
 #      MUXF5                       : 2
 #      MUXF6                       : 1
-#      MUXF7                       : 187
+#      MUXF7                       : 196
 #      MUXF8                       : 3
-#      VCC                         : 34
-#      XORCY                       : 593
-# FlipFlops/Latches                : 4118
-#      FD                          : 341
-#      FDC                         : 152
-#      FDCE                        : 721
+#      VCC                         : 42
+#      XORCY                       : 595
+# FlipFlops/Latches                : 5182
+#      FD                          : 589
+#      FDC                         : 150
+#      FDCE                        : 778
 #      FDE                         : 595
-#      FDP                         : 282
-#      FDPE                        : 1343
-#      FDR                         : 256
-#      FDRE                        : 340
+#      FDP                         : 530
+#      FDPE                        : 1843
+#      FDR                         : 258
+#      FDRE                        : 343
 #      FDRS                        : 5
 #      FDRSE                       : 3
-#      FDS                         : 45
+#      FDS                         : 53
 #      FDSE                        : 20
 #      LDC                         : 1
 #      ODDR                        : 14
-# RAMS                             : 580
+# RAMS                             : 642
 #      RAM256X1S                   : 512
 #      RAMB18                      : 1
-#      RAMB36_EXP                  : 67
-# Shift Registers                  : 408
-#      SRL16                       : 251
+#      RAMB36_EXP                  : 129
+# Shift Registers                  : 782
+#      SRL16                       : 499
 #      SRL16E                      : 1
-#      SRLC16E                     : 43
-#      SRLC32E                     : 113
+#      SRLC16E                     : 76
+#      SRLC32E                     : 206
 # Clock Buffers                    : 15
 #      BUFG                        : 12
 #      BUFGCTRL                    : 2
@@ -2966,27 +2880,27 @@ Selected Device : 5vlx110tff1136-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            4118  out of  69120     5%  
- Number of Slice LUTs:                 8244  out of  69120    11%  
-    Number used as Logic:              5788  out of  69120     8%  
-    Number used as Memory:             2456  out of  17920    13%  
+ Number of Slice Registers:            5182  out of  69120     7%  
+ Number of Slice LUTs:                 8650  out of  69120    12%  
+    Number used as Logic:              5820  out of  69120     8%  
+    Number used as Memory:             2830  out of  17920    15%  
        Number used as RAM:             2048
-       Number used as SRL:              408
+       Number used as SRL:              782
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:  10407
-   Number with an unused Flip Flop:    6289  out of  10407    60%  
-   Number with an unused LUT:          2163  out of  10407    20%  
-   Number of fully used LUT-FF pairs:  1955  out of  10407    18%  
-   Number of unique control sets:       360
+ Number of LUT Flip Flop pairs used:  11596
+   Number with an unused Flip Flop:    6414  out of  11596    55%  
+   Number with an unused LUT:          2946  out of  11596    25%  
+   Number of fully used LUT-FF pairs:  2236  out of  11596    19%  
+   Number of unique control sets:       369
 
 IO Utilization: 
  Number of IOs:                         113
  Number of bonded IOBs:                 103  out of    640    16%  
 
 Specific Feature Utilization:
- Number of Block RAM/FIFO:               68  out of    148    45%  
-    Number using Block RAM only:         68
+ Number of Block RAM/FIFO:              130  out of    148    87%  
+    Number using Block RAM only:        130
  Number of BUFG/BUFGCTRLs:               15  out of     32    46%  
  Number of DCM_ADVs:                      2  out of     12    16%  
  Number of DSP48Es:                       1  out of     64     1%  
@@ -3014,11 +2928,11 @@ Clock Signal                                                            | Clock 
 ------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------+-------+
 CLK_33MHZ_FPGA                                                          | IBUFG+BUFGCTRL                                                                                                                    | 1022  |
 br_wram/N1                                                              | NONE(br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP)| 2     |
-cdiv/clock_out1                                                         | BUFG                                                                                                                              | 2953  |
-cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL                            | BUFG                                                                                                                              | 318   |
+cdiv/clock_out1                                                         | BUFG                                                                                                                              | 4269  |
+cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL                            | BUFG                                                                                                                              | 509   |
 cicon/CONTROL0<13>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_LCE:O)| NONE(*)(cila/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_LDC)                                                                                  | 1     |
 cicon/U0/iUPDATE_OUT                                                    | NONE(cicon/U0/U_ICON/U_iDATA_CMD)                                                                                                 | 1     |
-ac97_bitclk                                                             | BUFGP                                                                                                                             | 287   |
+ac97_bitclk                                                             | BUFGP                                                                                                                             | 342   |
 cont/statediv/clock_out1                                                | BUFG                                                                                                                              | 24    |
 audio/freq3div/clock_out1                                               | BUFG                                                                                                                              | 21    |
 audio/lendiv/clock_out1                                                 | BUFG                                                                                                                              | 27    |
@@ -3040,11 +2954,15 @@ Asynchronous Control Signals Information:
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Control Signal                                                                                     | Buffer(FF name)                                                                                                                                                                         | Load  |
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
-GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1612  |
-cila/N1(cila/XST_VCC:P)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[0].u_ramb36/U_RAMB36)                 | 504   |
-cila/N0(cila/XST_GND:G)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_RST/U_POR)                                                                                                                                                  | 252   |
+GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1667  |
+cila/N1(cila/XST_VCC:P)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[0].u_ramb36/U_RAMB36)                 | 1000  |
+cila/N0(cila/XST_GND:G)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_RST/U_POR)                                                                                                                                                  | 500   |
+cicon/CONTROL0<35>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[15].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[15].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 256   |
 cicon/CONTROL0<21>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[1].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[1].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1) | 160   |
 cicon/CONTROL0<29>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/F_TW[0].U_TREG)                                                       | 128   |
+cicon/CONTROL0<32>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[12].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[12].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 80    |
+cicon/CONTROL0<33>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[13].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[13].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 80    |
+cicon/CONTROL0<34>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[14].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[14].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 80    |
 cicon/CONTROL0<30>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[10].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[10].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 64    |
 cicon/CONTROL0<31>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[11].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[11].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 64    |
 cicon/CONTROL0<20>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[0].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1) | 32    |
@@ -3056,7 +2974,7 @@ cicon/CONTROL0<24>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[4].U_HCE:O)        
 cicon/CONTROL0<26>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[6].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[6].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1) | 16    |
 cicon/CONTROL0<27>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[7].U_HCE:O)                           | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[7].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1) | 16    |
 gpu/setup/gpuclk_rst_cause_b_inv(gpu/setup/gpuclk_rst_cause_b_inv1:O)                              | NONE(gpu/setup/gpuclk_rst_b_seq_0)                                                                                                                                                      | 16    |
-cila/U0/I_NO_D.U_ILA/iRESET<1>(cila/U0/I_NO_D.U_ILA/U_RST/G_RST[1].U_RST:Q)                        | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_OREG.I_YES_OREG.U_OREG)                                                                                                       | 11    |
+cila/U0/I_NO_D.U_ILA/iRESET<1>(cila/U0/I_NO_D.U_ILA/U_RST/G_RST[1].U_RST:Q)                        | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[0].U_M/U_MU/I_OREG.I_YES_OREG.U_OREG)                                                                                                       | 15    |
 cicon/U0/U_ICON/U_CMD/iSEL_n(cicon/U0/U_ICON/U_CMD/U_SEL_n:O)                                      | NONE(cicon/U0/U_ICON/U_CMD/G_TARGET[10].I_NE0.U_TARGET)                                                                                                                                 | 10    |
 gpu/video/vram/N1(gpu/video/vram/XST_GND:G)                                                        | NONE(gpu/video/vram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/TRUE_DP.SINGLE_PRIM36.TDP)                                         | 8     |
 tima_module/_or0000(tima_module/_or00001:O)                                                        | NONE(tima_module/DIV/q_0)                                                                                                                                                               | 8     |
@@ -3076,8 +2994,8 @@ Timing Summary:
 Speed Grade: -1
 
    Minimum period: 48.957ns (Maximum Frequency: 20.426MHz)
-   Minimum input arrival time before clock: 4.663ns
-   Maximum output required time after clock: 15.955ns
+   Minimum input arrival time before clock: 5.214ns
+   Maximum output required time after clock: 15.977ns
    Maximum combinational path delay: 2.788ns
 
 Timing Detail:
@@ -3087,7 +3005,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK_33MHZ_FPGA'
   Clock period: 9.991ns (frequency: 100.094MHz)
-  Total number of paths / destination ports: 143964 / 4068
+  Total number of paths / destination ports: 143860 / 4068
 -------------------------------------------------------------------------
 Delay:               9.991ns (Levels of Logic = 16)
   Source:            gpu/video/line_count_2 (FF)
@@ -3124,7 +3042,7 @@ Delay:               9.991ns (Levels of Logic = 16)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cdiv/clock_out1'
   Clock period: 48.957ns (frequency: 20.426MHz)
-  Total number of paths / destination ports: 62045479757 / 6626
+  Total number of paths / destination ports: 62066484123 / 9992
 -------------------------------------------------------------------------
 Delay:               48.957ns (Levels of Logic = 64)
   Source:            gb80_cpu/inst_reg/q_5 (FF)
@@ -3208,32 +3126,33 @@ Delay:               48.957ns (Levels of Logic = 64)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL'
-  Clock period: 6.975ns (frequency: 143.369MHz)
-  Total number of paths / destination ports: 7362 / 2409
+  Clock period: 7.645ns (frequency: 130.804MHz)
+  Total number of paths / destination ports: 12384 / 4530
 -------------------------------------------------------------------------
-Delay:               6.975ns (Levels of Logic = 7)
-  Source:            cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[53].u_ramb36/U_RAMB36 (RAM)
+Delay:               7.645ns (Levels of Logic = 8)
+  Source:            cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[117].u_ramb36/U_RAMB36 (RAM)
   Destination:       cicon/U0/U_ICON/U_TDO_reg (FF)
   Source Clock:      cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising
   Destination Clock: cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising
 
-  Data Path: cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[53].u_ramb36/U_RAMB36 to cicon/U0/U_ICON/U_TDO_reg
+  Data Path: cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[117].u_ramb36/U_RAMB36 to cicon/U0/U_ICON/U_TDO_reg
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAMB36_EXP:REGCLKAL->DOA0    1   2.180   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[53].u_ramb36/U_RAMB36 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_data<106>)
-     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_134 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_134)
-     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_81 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_81)
-     LUT6:I1->O            1   0.094   0.000  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_31 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_3)
-     MUXF7:I1->O           1   0.254   0.576  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I7.U_MUX128/Mmux_O_2_f7 (U0/I_NO_D.U_ILA/iDATA_DOUT)
+     RAMB36_EXP:REGCLKAL->DOA0    1   2.180   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[117].u_ramb36/U_RAMB36 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_data<234>)
+     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_1714 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_1714)
+     LUT6:I1->O            1   0.094   0.973  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_124 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_124)
+     LUT6:I1->O            1   0.094   0.000  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_71 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_71)
+     MUXF7:I1->O           1   0.254   0.576  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6_f7 (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RD_COL_MUX/I8.U_MUX256/Mmux_O_6_f7)
+     LUT3:I1->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_col_addr_dly<7>1 (U0/I_NO_D.U_ILA/iDATA_DOUT)
      LUT3:I1->O            1   0.094   0.576  U0/I_NO_D.U_ILA/U_DOUT (CONTROL<3>)
      end scope: 'cila'
      begin scope: 'cicon'
      LUT6:I4->O            1   0.094   0.000  U0/U_ICON/U_TDO_MUX/U_CS_MUX/I4.U_MUX16/Mmux_O11 (U0/U_ICON/iTDO_next)
      FDE:D                    -0.018          U0/U_ICON/U_TDO_reg
     ----------------------------------------
-    Total                      6.975ns (2.904ns logic, 4.071ns route)
-                                       (41.6% logic, 58.4% route)
+    Total                      7.645ns (2.998ns logic, 4.647ns route)
+                                       (39.2% logic, 60.8% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cicon/U0/iUPDATE_OUT'
@@ -3260,7 +3179,7 @@ Delay:               1.392ns (Levels of Logic = 1)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ac97_bitclk'
   Clock period: 3.525ns (frequency: 283.688MHz)
-  Total number of paths / destination ports: 1539 / 156
+  Total number of paths / destination ports: 1748 / 277
 -------------------------------------------------------------------------
 Delay:               3.525ns (Levels of Logic = 4)
   Source:            audio/gen/rot/state_FSM_FFd2 (FF)
@@ -3284,28 +3203,27 @@ Delay:               3.525ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/freq3div/clock_out1'
-  Clock period: 4.767ns (frequency: 209.776MHz)
-  Total number of paths / destination ports: 553 / 40
+  Clock period: 4.356ns (frequency: 229.568MHz)
+  Total number of paths / destination ports: 557 / 40
 -------------------------------------------------------------------------
-Delay:               4.767ns (Levels of Logic = 4)
+Delay:               4.356ns (Levels of Logic = 3)
   Source:            audio/wp/freq_counter_9 (FF)
-  Destination:       audio/wp/index_hi_3 (FF)
+  Destination:       audio/wp/freq_counter_1 (FF)
   Source Clock:      audio/freq3div/clock_out1 rising
   Destination Clock: audio/freq3div/clock_out1 rising
 
-  Data Path: audio/wp/freq_counter_9 to audio/wp/index_hi_3
+  Data Path: audio/wp/freq_counter_9 to audio/wp/freq_counter_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDR:C->Q              2   0.471   0.978  audio/wp/freq_counter_9 (audio/wp/freq_counter_9)
-     LUT6:I1->O            1   0.094   1.069  audio/wp/upper_half_cmp_eq000012412_SW0 (N1249)
-     LUT6:I0->O            3   0.094   0.587  audio/wp/upper_half_cmp_eq000012412 (audio/wp/upper_half_cmp_eq000012412)
-     LUT3:I1->O            2   0.094   0.715  audio/wp/upper_half_cmp_eq000012494 (audio/wp/upper_half_cmp_eq0000)
-     LUT5:I2->O            5   0.094   0.358  audio/wp/index_hi_not00041 (audio/wp/index_hi_not0004)
-     FDRE:CE                   0.213          audio/wp/index_hi_3
+     LUT6:I1->O            1   0.094   1.069  audio/wp/upper_half_cmp_eq000012412_SW0 (N1255)
+     LUT6:I0->O            4   0.094   0.592  audio/wp/upper_half_cmp_eq000012412 (audio/wp/upper_half_cmp_eq000012412)
+     LUT5:I3->O           11   0.094   0.391  audio/wp/Mcount_freq_counter_val1 (audio/wp/Mcount_freq_counter_val)
+     FDR:R                     0.573          audio/wp/freq_counter_1
     ----------------------------------------
-    Total                      4.767ns (1.060ns logic, 3.707ns route)
-                                       (22.2% logic, 77.8% route)
+    Total                      4.356ns (1.326ns logic, 3.030ns route)
+                                       (30.4% logic, 69.6% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/lendiv/clock_out1'
@@ -3411,10 +3329,10 @@ Delay:               3.944ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'audio/framediv/clock_out'
-  Clock period: 2.307ns (frequency: 433.463MHz)
-  Total number of paths / destination ports: 63 / 21
+  Clock period: 2.306ns (frequency: 433.651MHz)
+  Total number of paths / destination ports: 60 / 21
 -------------------------------------------------------------------------
-Delay:               2.307ns (Levels of Logic = 1)
+Delay:               2.306ns (Levels of Logic = 1)
   Source:            audio/envdiv/counter_0 (FF)
   Destination:       audio/envdiv/counter_3 (FF)
   Source Clock:      audio/framediv/clock_out rising
@@ -3424,17 +3342,17 @@ Delay:               2.307ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              5   0.471   0.811  audio/envdiv/counter_0 (audio/envdiv/counter_0)
-     LUT4:I0->O            5   0.094   0.358  audio/envdiv/clock_out_cmp_eq00001 (audio/envdiv/clock_out_cmp_eq0000)
+     FDR:C->Q              6   0.471   0.816  audio/envdiv/counter_0 (audio/envdiv/counter_0)
+     LUT4:I0->O            4   0.094   0.352  audio/envdiv/clock_out_cmp_eq00001 (audio/envdiv/clock_out_cmp_eq0000)
      FDR:R                     0.573          audio/envdiv/counter_0
     ----------------------------------------
-    Total                      2.307ns (1.138ns logic, 1.169ns route)
+    Total                      2.306ns (1.138ns logic, 1.168ns route)
                                        (49.3% logic, 50.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CLK_27MHZ_FPGA'
   Clock period: 33.352ns (frequency: 29.983MHz)
-  Total number of paths / destination ports: 12354152 / 2443
+  Total number of paths / destination ports: 12354172 / 2443
 -------------------------------------------------------------------------
 Delay:               14.294ns (Levels of Logic = 13)
   Source:            gpu/converter/dvi_sync/y_2 (FF)
@@ -3509,32 +3427,32 @@ Delay:               1.385ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK_33MHZ_FPGA'
-  Total number of paths / destination ports: 520 / 494
+  Total number of paths / destination ports: 583 / 494
 -------------------------------------------------------------------------
-Offset:              4.020ns (Levels of Logic = 5)
-  Source:            flash_d<6> (PAD)
-  Destination:       br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP (RAM)
+Offset:              4.021ns (Levels of Logic = 5)
+  Source:            flash_d<2> (PAD)
+  Destination:       br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP (RAM)
   Destination Clock: CLK_33MHZ_FPGA rising
 
-  Data Path: flash_d<6> to br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP
+  Data Path: flash_d<2> to br_wram/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   0.818   0.973  flash_d_6_IBUF (flash_d_6_IBUF)
-     LUT6:I1->O            2   0.094   0.978  data_ext<6>LogicTrst52 (data_ext<6>LogicTrst52)
-     LUT6:I1->O            1   0.094   0.000  data_ext<6>LogicTrst831 (data_ext<6>LogicTrst83)
-     MUXF7:I1->O          52   0.254   0.467  data_ext<6>LogicTrst83_f7 (data_ext<6>)
+     IBUF:I->O             1   0.818   0.973  flash_d_2_IBUF (flash_d_2_IBUF)
+     LUT5:I0->O            2   0.094   0.978  data_ext<2>LogicTrst84 (data_ext<2>LogicTrst84)
+     LUT6:I1->O            1   0.094   0.000  data_ext<2>LogicTrst1171 (data_ext<2>LogicTrst117)
+     MUXF7:I1->O          55   0.254   0.468  data_ext<2>LogicTrst117_f7 (data_ext<2>)
      begin scope: 'br_wram'
-     RAMB36_EXP:DIA2           0.342          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP
+     RAMB36_EXP:DIA2           0.342          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SP.SINGLE_PRIM36.SP
     ----------------------------------------
-    Total                      4.020ns (1.602ns logic, 2.418ns route)
-                                       (39.9% logic, 60.1% route)
+    Total                      4.021ns (1.602ns logic, 2.419ns route)
+                                       (39.8% logic, 60.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL'
-  Total number of paths / destination ports: 407 / 396
+  Total number of paths / destination ports: 663 / 652
 -------------------------------------------------------------------------
-Offset:              3.898ns (Levels of Logic = 5)
+Offset:              3.908ns (Levels of Logic = 5)
   Source:            cicon/U0/U_ICON/I_YES_BSCAN.U_BS/I_V5.ISYN.I_USE_SOFTBSCAN_EQ0.U_BS:SHIFT (PAD)
   Destination:       cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/u_cnt/G[0].U_FDRE (FF)
   Destination Clock: cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL rising
@@ -3545,62 +3463,62 @@ Offset:              3.898ns (Levels of Logic = 5)
     ----------------------------------------  ------------
     BSCAN_VIRTEX5:SHIFT    3   0.000   0.491  U0/U_ICON/I_YES_BSCAN.U_BS/I_V5.ISYN.I_USE_SOFTBSCAN_EQ0.U_BS (U0/iSHIFT_OUT)
      LUT2:I1->O           32   0.094   0.916  U0/U_ICON/U_CTRL_OUT/U_DATA_VALID (U0/U_ICON/U_CTRL_OUT/iDATA_VALID)
-     LUT4:I0->O           23   0.094   0.693  U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[10].U_LCE (CONTROL0<14>)
+     LUT4:I0->O           24   0.094   0.698  U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[10].U_LCE (CONTROL0<14>)
      end scope: 'cicon'
      begin scope: 'cila'
      LUT2:I0->O            1   0.094   0.480  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_OR_RST_RD_ROW_WIDE (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/rd_col_addr_wide_rst)
-     LUT2:I1->O            7   0.094   0.369  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/u_rst (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/rst)
-     FDRE:R                    0.573          U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/u_cnt/G[6].U_FDRE
+     LUT2:I1->O            8   0.094   0.374  U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/u_rst (U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/rst)
+     FDRE:R                    0.573          U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/I_MULT_ROW.U_RD_COL_ADDR_B/u_cnt/G[7].U_FDRE
     ----------------------------------------
-    Total                      3.898ns (0.949ns logic, 2.949ns route)
+    Total                      3.908ns (0.949ns logic, 2.959ns route)
                                        (24.3% logic, 75.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'cdiv/clock_out1'
-  Total number of paths / destination ports: 181 / 99
+  Total number of paths / destination ports: 229 / 99
 -------------------------------------------------------------------------
-Offset:              4.663ns (Levels of Logic = 6)
-  Source:            flash_d<6> (PAD)
-  Destination:       tima_module/TIMA/q_6 (FF)
+Offset:              5.214ns (Levels of Logic = 6)
+  Source:            flash_d<2> (PAD)
+  Destination:       tima_module/TIMA/q_2 (FF)
   Destination Clock: cdiv/clock_out1 rising
 
-  Data Path: flash_d<6> to tima_module/TIMA/q_6
+  Data Path: flash_d<2> to tima_module/TIMA/q_2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   0.818   0.973  flash_d_6_IBUF (flash_d_6_IBUF)
-     LUT6:I1->O            2   0.094   0.978  data_ext<6>LogicTrst52 (data_ext<6>LogicTrst52)
-     LUT6:I1->O            1   0.094   0.000  data_ext<6>LogicTrst831 (data_ext<6>LogicTrst83)
-     MUXF7:I1->O          52   0.254   1.104  data_ext<6>LogicTrst83_f7 (data_ext<6>)
-     LUT6:I1->O            1   0.094   0.000  tima_module/_mux0000<6>61_G (N1596)
-     MUXF7:I1->O           1   0.254   0.000  tima_module/_mux0000<6>61 (tima_module/_mux0000<6>)
-     FDCE:D                   -0.018          tima_module/TIMA/q_6
+     IBUF:I->O             1   0.818   0.973  flash_d_2_IBUF (flash_d_2_IBUF)
+     LUT5:I0->O            2   0.094   0.978  data_ext<2>LogicTrst84 (data_ext<2>LogicTrst84)
+     LUT6:I1->O            1   0.094   0.000  data_ext<2>LogicTrst1171 (data_ext<2>LogicTrst117)
+     MUXF7:I1->O          55   0.254   0.842  data_ext<2>LogicTrst117_f7 (data_ext<2>)
+     LUT6:I3->O            1   0.094   0.973  tima_module/_mux0000<2>_SW2 (N1293)
+     LUT6:I1->O            1   0.094   0.000  tima_module/_mux0000<2> (tima_module/_mux0000<2>)
+     FDCE:D                   -0.018          tima_module/TIMA/q_2
     ----------------------------------------
-    Total                      4.663ns (1.608ns logic, 3.055ns route)
-                                       (34.5% logic, 65.5% route)
+    Total                      5.214ns (1.448ns logic, 3.766ns route)
+                                       (27.8% logic, 72.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bitclk'
-  Total number of paths / destination ports: 285 / 204
+  Total number of paths / destination ports: 499 / 259
 -------------------------------------------------------------------------
-Offset:              4.012ns (Levels of Logic = 5)
-  Source:            flash_d<7> (PAD)
-  Destination:       audio/regs/NR30_7 (FF)
+Offset:              3.951ns (Levels of Logic = 5)
+  Source:            rotary_inc_a (PAD)
+  Destination:       audio/gen/rot/level_3 (FF)
   Destination Clock: ac97_bitclk rising
 
-  Data Path: flash_d<7> to audio/regs/NR30_7
+  Data Path: rotary_inc_a to audio/gen/rot/level_3
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             1   0.818   0.973  flash_d_7_IBUF (flash_d_7_IBUF)
-     LUT6:I1->O            2   0.094   0.978  data_ext<7>LogicTrst52 (data_ext<7>LogicTrst52)
-     LUT6:I1->O            1   0.094   0.000  data_ext<7>LogicTrst831 (data_ext<7>LogicTrst83)
-     MUXF7:I1->O          50   0.254   0.707  data_ext<7>LogicTrst83_f7 (data_ext<7>)
-     LUT3:I1->O            1   0.094   0.000  audio/regs/NR30_7_rstpot (audio/regs/NR30_7_rstpot)
-     FDC:D                    -0.018          audio/regs/NR30_7
+     IBUF:I->O             5   0.818   0.811  rotary_inc_a_IBUF (rotary_inc_a_IBUF)
+     LUT4:I0->O            4   0.094   0.805  audio/gen/rot/level_and0000_SW0 (N518)
+     LUT6:I2->O            3   0.094   0.984  audio/gen/rot/level_and0000 (audio/gen/rot/level_and0000)
+     LUT6:I1->O            1   0.094   0.000  audio/gen/rot/Mcount_level_xor<3>112 (audio/gen/rot/Mcount_level_xor<3>111)
+     MUXF7:I0->O           1   0.251   0.000  audio/gen/rot/Mcount_level_xor<3>11_f7 (audio/gen/rot/Result<3>)
+     FDPE:D                   -0.018          audio/gen/rot/level_3
     ----------------------------------------
-    Total                      4.012ns (1.354ns logic, 2.658ns route)
-                                       (33.8% logic, 66.2% route)
+    Total                      3.951ns (1.351ns logic, 2.600ns route)
+                                       (34.2% logic, 65.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'cont/statediv/clock_out1'
@@ -3663,7 +3581,7 @@ Offset:              8.979ns (Levels of Logic = 8)
      LUT6:I1->O            6   0.094   0.363  lcd/state_cmp_eq000111 (lcd/N5)
      MUXF7:S->O            2   0.329   0.794  lcd/state_cmp_eq00021_f7 (lcd/N7)
      LUT6:I2->O           20   0.094   0.814  lcd/state_cmp_eq00022 (lcd/state_cmp_eq0002)
-     LUT6:I3->O            1   0.094   0.576  lcd/control<0>50_SW0 (N1283)
+     LUT6:I3->O            1   0.094   0.576  lcd/control<0>50_SW0 (N1289)
      LUT6:I4->O            1   0.094   0.336  lcd/control<0>50 (LCD_FPGA_E_OBUF)
      OBUF:I->O                 2.452          LCD_FPGA_E_OBUF (LCD_FPGA_E)
     ----------------------------------------
@@ -3674,7 +3592,7 @@ Offset:              8.979ns (Levels of Logic = 8)
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ac97_bitclk'
   Total number of paths / destination ports: 8225 / 4
 -------------------------------------------------------------------------
-Offset:              13.769ns (Levels of Logic = 14)
+Offset:              13.775ns (Levels of Logic = 14)
   Source:            audio/regs/NR32_5 (FF)
   Destination:       ac97_sdata_out (PAD)
   Source Clock:      ac97_bitclk rising
@@ -3683,7 +3601,7 @@ Offset:              13.769ns (Levels of Logic = 14)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q             8   0.471   0.827  audio/regs/NR32_5 (audio/regs/NR32_5)
+     FDCE:C->Q             9   0.471   0.833  audio/regs/NR32_5 (audio/regs/NR32_5)
      LUT4:I0->O           19   0.094   1.072  audio/gen/source/ac97_out_slot3<0>91 (audio/gen/source/ac97_out_slot3<0>_bdd21)
      LUT5:I0->O            1   0.094   0.000  audio/gen/source/ac97_out_slot3<0>1712 (audio/gen/source/ac97_out_slot3<0>1711)
      MUXF7:I0->O           2   0.251   0.978  audio/gen/source/ac97_out_slot3<0>171_f7 (audio/gen/source/ac97_out_slot3<0>_bdd19)
@@ -3691,7 +3609,7 @@ Offset:              13.769ns (Levels of Logic = 14)
      LUT6:I2->O            1   0.094   0.973  audio/gen/source/ac97_out_slot3<0>6145 (audio/gen/source/ac97_out_slot3<0>6145)
      LUT6:I1->O            7   0.094   0.609  audio/gen/source/ac97_out_slot3<0>6524 (audio/gen/source/ac97_out_slot3<0>_bdd6)
      LUT3:I1->O            3   0.094   0.721  audio/gen/source/ac97_out_slot3<11>51 (audio/gen/source/ac97_out_slot3<11>_bdd5)
-     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1279)
+     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1285)
      LUT6:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151 (audio/gen/link/Mmux_ac97_sdata_out_151)
      LUT6:I1->O            1   0.094   0.576  audio/gen/link/Mmux_ac97_sdata_out_10 (audio/gen/link/Mmux_ac97_sdata_out_10)
      LUT4:I2->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
@@ -3699,14 +3617,14 @@ Offset:              13.769ns (Levels of Logic = 14)
      LUT2:I1->O            1   0.094   0.336  audio/gen/link/curbit<7>1 (ac97_sdata_out_OBUF)
      OBUF:I->O                 2.452          ac97_sdata_out_OBUF (ac97_sdata_out)
     ----------------------------------------
-    Total                     13.769ns (4.462ns logic, 9.307ns route)
+    Total                     13.775ns (4.462ns logic, 9.313ns route)
                                        (32.4% logic, 67.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'cdiv/clock_out1'
-  Total number of paths / destination ports: 299828 / 158
+  Total number of paths / destination ports: 309604 / 158
 -------------------------------------------------------------------------
-Offset:              15.955ns (Levels of Logic = 17)
+Offset:              15.977ns (Levels of Logic = 17)
   Source:            gb80_cpu/inst_reg/q_7 (FF)
   Destination:       flash_a<13> (PAD)
   Source Clock:      cdiv/clock_out1 rising
@@ -3727,15 +3645,15 @@ Offset:              15.955ns (Levels of Logic = 17)
      MUXF7:I1->O          14   0.254   0.647  gb80_cpu/gb80_decode/addr_buf_write_ext413_f7 (gb80_cpu/addr_buf_write_ext)
      LUT5:I3->O           15   0.094   0.557  addr_ext<8>LogicTrst11 (N36)
      LUT5:I4->O           26   0.094   0.836  Madd_cart_address_lut<4>LogicTrst1 (Madd_cart_address_lut<4>)
-     LUT3:I0->O            5   0.094   0.811  reg_w_enable1411 (N208)
+     LUT3:I0->O            6   0.094   0.816  reg_w_enable1411 (N208)
      LUT5:I1->O            1   0.094   0.973  addr_in_cart24 (addr_in_cart24)
-     LUT5:I0->O           16   0.094   0.562  addr_in_cart39 (addr_in_cart)
+     LUT5:I0->O           19   0.094   0.579  addr_in_cart39 (addr_in_cart)
      LUT5:I4->O            4   0.094   1.085  flash_a<12>11 (N165)
      LUT6:I0->O            1   0.094   0.336  flash_a<13>1 (flash_a_13_OBUF)
      OBUF:I->O                 2.452          flash_a_13_OBUF (flash_a<13>)
     ----------------------------------------
-    Total                     15.955ns (4.747ns logic, 11.208ns route)
-                                       (29.8% logic, 70.2% route)
+    Total                     15.977ns (4.747ns logic, 11.230ns route)
+                                       (29.7% logic, 70.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'cont/statediv/clock_out1'
@@ -3777,7 +3695,7 @@ Offset:              13.551ns (Levels of Logic = 14)
      LUT6:I2->O            1   0.094   0.973  audio/gen/source/ac97_out_slot3<0>6145 (audio/gen/source/ac97_out_slot3<0>6145)
      LUT6:I1->O            7   0.094   0.609  audio/gen/source/ac97_out_slot3<0>6524 (audio/gen/source/ac97_out_slot3<0>_bdd6)
      LUT3:I1->O            3   0.094   0.721  audio/gen/source/ac97_out_slot3<11>51 (audio/gen/source/ac97_out_slot3<11>_bdd5)
-     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1279)
+     LUT6:I3->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151_SW0 (N1285)
      LUT6:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_151 (audio/gen/link/Mmux_ac97_sdata_out_151)
      LUT6:I1->O            1   0.094   0.576  audio/gen/link/Mmux_ac97_sdata_out_10 (audio/gen/link/Mmux_ac97_sdata_out_10)
      LUT4:I2->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
@@ -3805,12 +3723,12 @@ Offset:              13.848ns (Levels of Logic = 15)
      LUT3:I0->O           17   0.094   1.157  audio/wp/level<2>1 (audio/ch3_level<2>)
      LUT6:I0->O           12   0.094   0.770  audio/gen/source/ac97_out_slot3<0>151 (audio/gen/source/ac97_out_slot3<0>_bdd30)
      LUT6:I3->O            2   0.094   0.794  audio/gen/source/ac97_out_slot3<10>521 (audio/gen/source/ac97_out_slot3<10>_bdd90)
-     LUT6:I2->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14174_F (N1591)
+     LUT6:I2->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14174_F (N1593)
      MUXF7:I0->O           1   0.251   0.973  audio/gen/source/ac97_out_slot4<10>14174 (audio/gen/source/ac97_out_slot4<10>14174)
-     LUT6:I1->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14492_G (N1642)
+     LUT6:I1->O            1   0.094   0.000  audio/gen/source/ac97_out_slot4<10>14492_G (N1644)
      MUXF7:I1->O           4   0.254   0.592  audio/gen/source/ac97_out_slot4<10>14492 (audio/gen/source/ac97_out_slot4<10>_bdd8)
      LUT3:I1->O            4   0.094   0.726  audio/gen/source/ac97_out_slot4<11>71 (audio/gen/source/ac97_out_slot4<11>_bdd8)
-     LUT6:I3->O            2   0.094   0.794  audio/gen/link/Mmux_ac97_sdata_out_162_SW0 (N1267)
+     LUT6:I3->O            2   0.094   0.794  audio/gen/link/Mmux_ac97_sdata_out_162_SW0 (N1273)
      LUT5:I1->O            1   0.094   0.973  audio/gen/link/Mmux_ac97_sdata_out_162 (audio/gen/link/Mmux_ac97_sdata_out_162)
      LUT6:I1->O            1   0.094   0.789  audio/gen/link/Mmux_ac97_sdata_out_11 (audio/gen/link/Mmux_ac97_sdata_out_11)
      LUT4:I0->O            1   0.094   0.000  audio/gen/link/Mmux_ac97_sdata_out_6 (audio/gen/link/Mmux_ac97_sdata_out_6)
@@ -3870,14 +3788,14 @@ WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to cicon.
 WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to cicon.
 
 
-Total REAL time to Xst completion: 216.00 secs
-Total CPU time to Xst completion: 216.13 secs
+Total REAL time to Xst completion: 173.00 secs
+Total CPU time to Xst completion: 172.72 secs
  
 --> 
 
-Total memory usage is 546660 kilobytes
+Total memory usage is 572324 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  378 (   0 filtered)
+Number of warnings :  292 (   0 filtered)
 Number of infos    :   98 (   0 filtered)
 
