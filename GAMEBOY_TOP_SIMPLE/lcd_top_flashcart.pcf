@@ -1,9 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.40xd on Tue Dec 03 16:00:52 2013
+// Written by: Map P.40xd on Tue Dec 03 17:17:22 2013
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
 COMP "LCD_FPGA_RS" LOCATE = SITE "J17" LEVEL 1;
 COMP "LCD_FPGA_RW" LOCATE = SITE "AC10" LEVEL 1;
 COMP "USER_CLK" LOCATE = SITE "AH15" LEVEL 1;
@@ -47,6 +46,7 @@ COMP "flash_a<2>" LOCATE = SITE "H23" LEVEL 1;
 COMP "flash_a<3>" LOCATE = SITE "G23" LEVEL 1;
 COMP "flash_a<4>" LOCATE = SITE "H12" LEVEL 1;
 COMP "flash_a<5>" LOCATE = SITE "J12" LEVEL 1;
+COMP "flash_a<6>" LOCATE = SITE "K22" LEVEL 1;
 COMP "flash_a<7>" LOCATE = SITE "K23" LEVEL 1;
 COMP "flash_a<8>" LOCATE = SITE "K14" LEVEL 1;
 COMP "flash_a<9>" LOCATE = SITE "L14" LEVEL 1;
@@ -233,32 +233,39 @@ TIMEGRP ac97_bitclk = BEL "cont/statediv/counter_3" BEL
         BEL "audio/regs/WR3F_1" BEL "audio/regs/WR3F_2" BEL
         "audio/regs/WR3F_3" BEL "audio/regs/WR3F_4" BEL "audio/regs/WR3F_5"
         BEL "audio/regs/WR3F_6" BEL "audio/regs/WR3F_7" BEL
-        "audio/regs/NR51_0" BEL "audio/regs/NR51_1" BEL "audio/regs/NR51_2"
-        BEL "audio/regs/NR51_4" BEL "audio/regs/NR51_5" BEL
-        "audio/regs/NR51_6" BEL "audio/regs/NR52_7" BEL
-        "audio/gen/conf/state_FSM_FFd1" BEL "audio/gen/conf/state_FSM_FFd3"
-        BEL "audio/gen/conf/state_FSM_FFd2" BEL "audio/freq3div/counter_6" BEL
-        "audio/freq3div/counter_5" BEL "audio/freq3div/counter_4" BEL
-        "audio/freq3div/counter_3" BEL "audio/freq3div/counter_2" BEL
-        "audio/freq3div/counter_1" BEL "audio/freq3div/counter_0" BEL
-        "audio/freq12div/counter_5" BEL "audio/freq12div/counter_4" BEL
-        "audio/freq12div/counter_3" BEL "audio/freq12div/counter_2" BEL
-        "audio/freq12div/counter_1" BEL "audio/freq12div/counter_0" BEL
-        "audio/framediv/counter_14" BEL "audio/framediv/counter_13" BEL
-        "audio/framediv/counter_12" BEL "audio/framediv/counter_11" BEL
-        "audio/framediv/counter_10" BEL "audio/framediv/counter_9" BEL
-        "audio/framediv/counter_8" BEL "audio/framediv/counter_7" BEL
-        "audio/framediv/counter_6" BEL "audio/framediv/counter_5" BEL
-        "audio/framediv/counter_4" BEL "audio/framediv/counter_3" BEL
-        "audio/framediv/counter_2" BEL "audio/framediv/counter_1" BEL
-        "audio/framediv/counter_0" BEL "cont/state_14" BEL "cont/state_13" BEL
-        "cont/state_12" BEL "cont/state_11" BEL "cont/state_10" BEL
-        "cont/state_9" BEL "cont/state_8" BEL "cont/state_7" BEL
-        "cont/state_6" BEL "cont/state_5" BEL "cont/state_4" BEL
-        "cont/state_3" BEL "cont/state_2" BEL "cont/state_1" BEL
-        "cont/state_0" BEL "cont/statediv/clock_out" BEL
-        "audio/freq3div/clock_out" BEL "audio/freq12div/clock_out" BEL
-        "audio/framediv/clock_out" BEL "ac97_bitclk_BUFGP/BUFG";
+        "audio/regs/NR50_0" BEL "audio/regs/NR50_1" BEL "audio/regs/NR50_2"
+        BEL "audio/regs/NR50_3" BEL "audio/regs/NR50_4" BEL
+        "audio/regs/NR50_5" BEL "audio/regs/NR50_6" BEL "audio/regs/NR50_7"
+        BEL "audio/regs/NR51_0" BEL "audio/regs/NR51_1" BEL
+        "audio/regs/NR51_2" BEL "audio/regs/NR51_3" BEL "audio/regs/NR51_4"
+        BEL "audio/regs/NR51_5" BEL "audio/regs/NR51_6" BEL
+        "audio/regs/NR51_7" BEL "audio/regs/NR52_0" BEL "audio/regs/NR52_1"
+        BEL "audio/regs/NR52_2" BEL "audio/regs/NR52_3" BEL
+        "audio/regs/NR52_4" BEL "audio/regs/NR52_5" BEL "audio/regs/NR52_6"
+        BEL "audio/regs/NR52_7" BEL "audio/gen/conf/state_FSM_FFd1" BEL
+        "audio/gen/conf/state_FSM_FFd3" BEL "audio/gen/conf/state_FSM_FFd2"
+        BEL "audio/freq3div/counter_6" BEL "audio/freq3div/counter_5" BEL
+        "audio/freq3div/counter_4" BEL "audio/freq3div/counter_3" BEL
+        "audio/freq3div/counter_2" BEL "audio/freq3div/counter_1" BEL
+        "audio/freq3div/counter_0" BEL "audio/freq12div/counter_5" BEL
+        "audio/freq12div/counter_4" BEL "audio/freq12div/counter_3" BEL
+        "audio/freq12div/counter_2" BEL "audio/freq12div/counter_1" BEL
+        "audio/freq12div/counter_0" BEL "audio/framediv/counter_14" BEL
+        "audio/framediv/counter_13" BEL "audio/framediv/counter_12" BEL
+        "audio/framediv/counter_11" BEL "audio/framediv/counter_10" BEL
+        "audio/framediv/counter_9" BEL "audio/framediv/counter_8" BEL
+        "audio/framediv/counter_7" BEL "audio/framediv/counter_6" BEL
+        "audio/framediv/counter_5" BEL "audio/framediv/counter_4" BEL
+        "audio/framediv/counter_3" BEL "audio/framediv/counter_2" BEL
+        "audio/framediv/counter_1" BEL "audio/framediv/counter_0" BEL
+        "cont/state_14" BEL "cont/state_13" BEL "cont/state_12" BEL
+        "cont/state_11" BEL "cont/state_10" BEL "cont/state_9" BEL
+        "cont/state_8" BEL "cont/state_7" BEL "cont/state_6" BEL
+        "cont/state_5" BEL "cont/state_4" BEL "cont/state_3" BEL
+        "cont/state_2" BEL "cont/state_1" BEL "cont/state_0" BEL
+        "cont/statediv/clock_out" BEL "audio/freq3div/clock_out" BEL
+        "audio/freq12div/clock_out" BEL "audio/framediv/clock_out" BEL
+        "ac97_bitclk_BUFGP/BUFG";
 TS_ac97_bitclk = PERIOD TIMEGRP "ac97_bitclk" 12.288 MHz HIGH 50%;
 SCHEMATIC END;
 

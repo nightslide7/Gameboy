@@ -65,7 +65,8 @@ module sound_registers
    output wire         ch3_on_flag,
    output wire         ch2_on_flag,
    output wire         ch1_on_flag,
-   output wire [247:0] chipscope_signals
+   output wire [247:0] chipscope_signals,
+   output wire [23:0] control_regs
    );
 
    /* Channel 1 - Tone & Sweep */
@@ -505,6 +506,8 @@ end // always@ (posedge ac97_bitclk or negedge ac97_reset_b)
    wire [39:0] sound1, sound2, sound3;
    wire [127:0] waveform;
 
+   assign control_regs = {NR52, NR51, NR50};
+   
    assign sound1 = {NR14, NR13, NR12, NR11, NR10};
    assign sound2 = {NR24, NR23, NR22, NR21, NR14};
    assign sound3 = {NR34, NR33, NR32, NR31, NR30};

@@ -500,6 +500,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [15:0] reg_addr;
 
    wire [247:0] chipscope_signals;
+   wire [23:0]  control_regs;
    
    assign reg_w_enable = ((addr_ext >= 16'hFF10 && addr_ext <= 16'hFF1E) ||
 			  (addr_ext >= 16'hFF30 && addr_ext <= 16'hFF3F) ||
@@ -529,7 +530,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_addr(reg_addr),
 		   .reg_data(reg_data_in),
 		   .reg_w_enable(reg_w_enable),
-                   .chipscope_signals(chipscope_signals)
+                   .chipscope_signals(chipscope_signals),
+                   .control_regs(control_regs)
 		  );
 
    /* The cartridge */
@@ -695,6 +697,11 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_cart(.out(data_ext),
                              .in(cart_data),
                              .en(addr_in_cart & ~mem_we));
+   // Magic controller disable bits: 10101010 (AA)
+   wire [7:0]  cont_reg_in;
+   assign cont_reg_in = (bp_addr_part_in == 8'b10101010) ?
+                        8'hff :
+                        FF00_data_out;
    tristate #(8) gating_cont_reg(.out(data_ext),
                                  .in(FF00_data_out),
                                  .en(addr_in_controller & ~mem_we));
@@ -790,7 +797,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign TRIG8 = {mem_re, mem_we};
    assign TRIG9 = cycle_count;
    assign TRIG10 = {16'h0, high_mem_addr[15:0]};
-   assign TRIG11 = {24'h0, high_mem_data[7:0]};
+   assign TRIG11 = {control_regs, high_mem_data[7:0]};
    assign TRIG12 = sound1;
    assign TRIG13 = sound2;
    assign TRIG14 = sound3;

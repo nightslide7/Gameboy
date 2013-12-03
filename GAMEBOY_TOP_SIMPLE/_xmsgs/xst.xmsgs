@@ -137,19 +137,19 @@
 <msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;../fpgaboy_files/dvi_module.v&quot; line 82 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;lcd_top.v&quot; line 622 </arg>Connection to input port &apos;<arg fmt="%s" index="2">FF00_load_in</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;lcd_top.v&quot; line 624 </arg>Connection to input port &apos;<arg fmt="%s" index="2">FF00_load_in</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="Xst" num="852" delta="new" >&quot;<arg fmt="%s" index="1">lcd_top.v</arg>&quot; line <arg fmt="%d" index="2">464</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switches78</arg>&apos; of instance &apos;<arg fmt="%s" index="4">gpu</arg>&apos; is tied to GND.
+<msg type="warning" file="Xst" num="852" delta="old" >&quot;<arg fmt="%s" index="1">lcd_top.v</arg>&quot; line <arg fmt="%d" index="2">464</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switches78</arg>&apos; of instance &apos;<arg fmt="%s" index="4">gpu</arg>&apos; is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/blockram8192.v</arg>&quot; line <arg fmt="%d" index="2">656</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">blockram8192</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/blockram8192.v</arg>&quot; line <arg fmt="%d" index="2">658</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">blockram8192</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">815</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">823</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">835</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">843</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">data</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -204,9 +204,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">halt</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">NR52&lt;6:4&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">NR44&lt;5:0&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -317,7 +314,7 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">flags&lt;2:1&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="info" file="Xst" num="2117" delta="new" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">$old_interrupt_sel_7</arg>&gt; of Case statement line <arg fmt="%s" index="2">158</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+<msg type="info" file="Xst" num="2117" delta="old" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">$old_interrupt_sel_7</arg>&gt; of Case statement line <arg fmt="%s" index="2">158</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
 	- add an &apos;<arg fmt="%s" index="3">INIT</arg>&apos; attribute on signal &lt;<arg fmt="%s" index="4">$old_interrupt_sel_7</arg>&gt; (optimization is then done without any risk)
 	- use the attribute &apos;<arg fmt="%s" index="5">signal_encoding</arg> <arg fmt="%s" index="6">user</arg>&apos; to avoid onehot optimization
 	- use the attribute &apos;<arg fmt="%s" index="7">safe_implementation</arg> <arg fmt="%s" index="8">yes</arg>&apos; to force XST to perform a safe (but less efficient) optimization
@@ -551,33 +548,6 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">sprite_attributes_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">video</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR51_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR51_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">n_state_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">cont</arg>&gt;.
 </msg>
 
@@ -612,15 +582,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR44_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sound_registers</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sound_registers</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sound_registers</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR52_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">sound_registers</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">n_state_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">NES</arg>&gt;.
@@ -881,48 +842,6 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR44_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR50_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR51_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR51_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR52_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR52_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR52_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR52_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
-</msg>
-
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">gpu/dvi/init/Done</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
 </msg>
 
@@ -941,6 +860,8 @@
 <msg type="warning" file="Xst" num="2170" delta="old" >Unit <arg fmt="%s" index="1">br_wram</arg> : the following signal(s) form a combinatorial loop: </msg>
 
 <msg type="warning" file="Xst" num="2170" delta="old" >Unit <arg fmt="%s" index="1">br_wram</arg> : the following signal(s) form a combinatorial loop: </msg>
+
+<msg type="warning" file="Xst" num="2170" delta="old" >Unit <arg fmt="%s" index="1">lcd_top_flashcart</arg> : the following signal(s) form a combinatorial loop: </msg>
 
 <msg type="warning" file="Xst" num="2170" delta="old" >Unit <arg fmt="%s" index="1">lcd_top_flashcart</arg> : the following signal(s) form a combinatorial loop: </msg>
 
