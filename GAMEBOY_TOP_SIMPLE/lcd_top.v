@@ -373,8 +373,6 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire [16:0] high_mem_addr;
    wire        debug_halt;
 
-   wire [31:0] checksum;
-   
    cpu gb80_cpu(.mem_we(cpu_mem_we),
                 .mem_re(cpu_mem_re),
                 .halt(halt),
@@ -387,7 +385,6 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
                 .F_data(F_data),
                 .high_mem_data(high_mem_data[7:0]),
                 .high_mem_addr(high_mem_addr[15:0]),
-                .checksum(checksum),
                 .instruction(instruction),
                 .regs_data(regs_data),
                 .IF_data(IF_data),
@@ -801,7 +798,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    assign TRIG9 = cycle_count;
    assign TRIG10 = {16'h0, high_mem_addr[15:0]};
    assign TRIG11 = {control_regs, high_mem_data[7:0]};
-   assign TRIG12 = {checksum, 8'h0};//sound1;
+   assign TRIG12 = sound1;
    assign TRIG13 = sound2;
    assign TRIG14 = sound3;
    assign TRIG15 = waveform;

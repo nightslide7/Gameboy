@@ -15,9 +15,8 @@
  */
 module cpu(/*AUTOARG*/
    // Outputs
-   high_mem_data, high_mem_addr, checksum, F_data, A_data,
-   instruction, IF_data, IE_data, regs_data, mem_we, mem_re, halt,
-   debug_halt,
+   high_mem_data, high_mem_addr, F_data, A_data, instruction, IF_data,
+   IE_data, regs_data, mem_we, mem_re, halt, debug_halt,
    // Inouts
    addr_ext, data_ext,
    // Inputs
@@ -29,7 +28,6 @@ module cpu(/*AUTOARG*/
 
    output wire [7:0] high_mem_data;
    output wire [15:0] high_mem_addr;
-   output wire [31:0] checksum;
    
    output wire [7:0] F_data;
    output wire [7:0] A_data, instruction;
@@ -99,24 +97,13 @@ module cpu(/*AUTOARG*/
                                    .in(data_ext_out),
                                    .en(data_buf_write_ext & high_mem));
    
-   /*mem #(127, 0) high_mmmod(.data_ext(high_mem_data[7:0]),
+   mem #(127, 0) high_mmmod(.data_ext(high_mem_data[7:0]),
                             .addr_ext(high_mem_addr[15:0]),
                             .mem_we(addr_buf_write_ext & high_mem),
                             .mem_re(data_buf_load_ext & high_mem),
                             .reset(reset),
-                            .clock(clock));*/
+                            .clock(clock));
 
-   supermem #(127, 0) 
-   high_supermemmod(.data_ext(high_mem_data[7:0]),
-                    .addr_ext(high_mem_addr[15:0]),
-                    .mem_we(addr_buf_write_ext & high_mem),
-                    .mem_re(data_buf_load_ext & high_mem),
-                    .checksum(checksum),
-                    .reset(reset),
-                    .clock(clock));
-
-   
-   
    // Registers
    wire [7:0]   /*F_data, */temp1_data, temp0_data;
    wire [4:0]   IF_in_l, IE_in_l;
@@ -386,7 +373,7 @@ module cpu(/*AUTOARG*/
                 .alu_data1_in           (alu_data1_in[7:0]),
                 .alu_op                 (alu_op[4:0]),
                 .alu_flags_in           (alu_flags_in[3:0]),
-                .alu_size               (alu_size));
+                .alu_size               (alu_size[1:0]));
 
    // Regfile //////////////////////////////////////////////////////////////////
 
@@ -442,7 +429,7 @@ module cpu(/*AUTOARG*/
                       .alu_data0_in_sel (alu_data0_in_sel[1:0]),
                       .addr_ff00_sel    (addr_ff00_sel),
                       .alu_op           (alu_op[4:0]),
-                      .alu_size         (alu_size),
+                      .alu_size         (alu_size[1:0]),
                       .halt             (halt),
                       .debug_halt       (debug_halt),
                       // Inputs
