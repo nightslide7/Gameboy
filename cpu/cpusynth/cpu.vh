@@ -43,8 +43,9 @@
 /**
  * ALU size select
  */
-`define ALU_SIZE_8 1'd0
-`define ALU_SIZE_16 1'd1
+`define ALU_SIZE_8 2'd0
+`define ALU_SIZE_16 2'd1
+`define ALU_SIZE_SPEC 2'd2;
 
 /**
  * ALU flag indices
@@ -158,3 +159,4 @@
  * 1110 14  E
  * 1111 15  F
  */
+  
