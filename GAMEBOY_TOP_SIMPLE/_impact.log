@@ -1,25 +1,24 @@
 iMPACT Version: 14.3
 
-iMPACT log file Started on Tue Dec 03 17:20:53 2013
+iMPACT log file Started on Tue Dec  3 19:58:04 2013
 
 Welcome to iMPACT
 iMPACT Version: 14.3
-Project: C:\Users\Joseph\Documents\F13\18545\labs\2\chipscope\\auto_project.ipfcreated.
+Project: /root//auto_project.ipf created.
 // *** BATCH CMD : setMode -bs
 GUI --- Auto connect to cable...
 // *** BATCH CMD : setCable -port auto
-INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.4
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.3
 INFO:iMPACT - Digilent Plugin: no JTAG device was found.
 AutoDetecting cable. Please wait.
 *** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
 PROGRESS_START - Starting Operation.
+If you are using the Platform Cable USB, please refer to the USB CableInstallation Guide (UG344) to install the libusb package.
 Connecting to cable (Usb Port - USB21).
 Checking cable driver.
- Driver file xusb21.sys found.
- File C:/Xilinx/14.3/ISE_DS/ISE/bin/nt64/xusb21.sys not found.
- Driver file xusb_xlp.sys found.
- Driver version: src=1029, dest=1029.
- Driver windrvr6.sys version = 10.2.1.0. WinDriver v10.21 Jungo (c) 1997 - 2010 Build Date: Aug 31 2010 x86_64 64bit SYS14:14:44, version = 1021.
+File version of /opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/xusbdfwu.hex = 1030.
+File version of /etc/hotplug/usb/xusbdfwu.fw/xusbdfwu.hex = 1030.
+ WinDriver v10.31 Jungo (c) 1997 - 2011 Build Date: May 24 2011 x86_64 64bit18:13:19.
  Cable PID = 0008.
  Max current requested during enumeration is 74 mA.
 Type = 0x0004.
@@ -27,36 +26,36 @@ Type = 0x0004.
  Setting cable speed to 6 MHz.
 Cable connection established.
 Firmware version = 1303.
-File version of C:/Xilinx/14.3/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+File version of /opt/Xilinx/14.3/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
 Firmware hex file version = 1303.
 PLD file version = 0012h.
  PLD version = 0012h.
 PROGRESS_END - End Operation.
 Elapsed time =      0 sec.
 Type = 0x0004.
-ESN option: 000010EF936801.
+ESN option: 000010F0940B01.
 Attempting to identify devices in the boundary-scan chain configuration...
-INFO:iMPACT - Current time: 12/3/2013 5:20:57 PM
+INFO:iMPACT - Current time: 12/3/13 7:58 PM
 // *** BATCH CMD : Identify -inferir 
 PROGRESS_START - Starting Operation.
 Identifying chain contents...'0': : Manufacturer's ID = Xilinx xc5vlx110t, Version : 7
 INFO:iMPACT:1777 - 
-   Reading C:/Xilinx/14.3/ISE_DS/ISE/virtex5/data/xc5vlx110t.bsd...
+   Reading /opt/Xilinx/14.3/ISE_DS/ISE/virtex5/data/xc5vlx110t.bsd...
 INFO:iMPACT:501 - '1': Added Device xc5vlx110t successfully.
 ----------------------------------------------------------------------
 '1': : Manufacturer's ID = Xilinx xccace, Version : 0
 INFO:iMPACT:1777 - 
-   Reading C:/Xilinx/14.3/ISE_DS/ISE/acecf/data/xccace.bsd...
+   Reading /opt/Xilinx/14.3/ISE_DS/ISE/acecf/data/xccace.bsd...
 INFO:iMPACT:501 - '1': Added Device xccace successfully.
 ----------------------------------------------------------------------
 '2': : Manufacturer's ID = Xilinx xc95144xl, Version : 5
 INFO:iMPACT:1777 - 
-   Reading C:/Xilinx/14.3/ISE_DS/ISE/xc9500xl/data/xc95144xl.bsd...
+   Reading /opt/Xilinx/14.3/ISE_DS/ISE/xc9500xl/data/xc95144xl.bsd...
 INFO:iMPACT:501 - '1': Added Device xc95144xl successfully.
 ----------------------------------------------------------------------
 '3': : Manufacturer's ID = Xilinx xcf32p, Version : 15
 INFO:iMPACT:1777 - 
-   Reading C:/Xilinx/14.3/ISE_DS/ISE/xcfp/data/xcf32p.bsd...
+   Reading /opt/Xilinx/14.3/ISE_DS/ISE/xcfp/data/xcf32p.bsd...
 INFO:iMPACT:501 - '1': Added Device xcf32p successfully.
 ----------------------------------------------------------------------
 '4': : Manufacturer's ID = Xilinx xcf32p, Version : 15
@@ -66,8 +65,8 @@ done.
 PROGRESS_END - End Operation.
 Elapsed time =      1 sec.
 // *** BATCH CMD : identifyMPM 
-// *** BATCH CMD : assignFile -p 5 -file"C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit"
-'5': Loading file'C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit' ...
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit"
+'5': Loading file'/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit' ...
 done.
 INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
    but the original bitstream file remains unchanged.
@@ -75,14 +74,776 @@ UserID read from the bitstream file = 0xFFFFFFFF.
 ----------------------------------------------------------------------
 INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
 ----------------------------------------------------------------------
-INFO:iMPACT - Current time: 12/3/2013 5:21:25 PM
+INFO:iMPACT - Current time: 12/3/13 7:58 PM
 // *** BATCH CMD : Program -p 5 
 Maximum TCK operating frequency for this device chain: 10000000.
 Validating chain...
 Boundary-scan chain validated successfully.
-5: Device Temperature: Current Reading:   50.87 C, Min. Reading:   50.38 C, Max.Reading:   53.82 C
-5: VCCINT Supply: Current Reading:   1.005 V, Min. Reading:   1.002 V, Max.Reading:   1.017 V
-5: VCCAUX Supply: Current Reading:   2.508 V, Min. Reading:   2.502 V, Max.Reading:   2.534 V
+5: Device Temperature: Current Reading:   47.42 C, Min. Reading:   46.93 C, Max.Reading:   53.82 C
+5: VCCINT Supply: Current Reading:   1.046 V, Min. Reading:   1.043 V, Max.Reading:   1.066 V
+5: VCCAUX Supply: Current Reading:   2.610 V, Min. Reading:   2.605 V, Max.Reading:   2.657 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/3/13 8:35 PM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   46.44 C, Min. Reading:   45.95 C, Max.Reading:   48.41 C
+5: VCCINT Supply: Current Reading:   1.046 V, Min. Reading:   1.043 V, Max.Reading:   1.049 V
+5: VCCAUX Supply: Current Reading:   2.605 V, Min. Reading:   2.602 V, Max.Reading:   2.616 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/3/13 9:17 PM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   50.87 C, Min. Reading:   45.45 C, Max.Reading:   51.36 C
+5: VCCINT Supply: Current Reading:   1.049 V, Min. Reading:   1.043 V, Max.Reading:   1.052 V
+5: VCCAUX Supply: Current Reading:   2.619 V, Min. Reading:   2.599 V, Max.Reading:   2.625 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/3/13 9:55 PM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   49.88 C, Max.Reading:   52.84 C
+5: VCCINT Supply: Current Reading:   1.052 V, Min. Reading:   1.049 V, Max.Reading:   1.055 V
+5: VCCAUX Supply: Current Reading:   2.628 V, Min. Reading:   2.613 V, Max.Reading:   2.631 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/3/13 11:05 PM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.84 C, Min. Reading:   49.88 C, Max.Reading:   53.82 C
+5: VCCINT Supply: Current Reading:   1.055 V, Min. Reading:   1.049 V, Max.Reading:   1.058 V
+5: VCCAUX Supply: Current Reading:   2.628 V, Min. Reading:   2.616 V, Max.Reading:   2.637 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit"
+'5': Loading file '/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/3/13 11:05 PM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   51.36 C, Max.Reading:   53.33 C
+5: VCCINT Supply: Current Reading:   1.055 V, Min. Reading:   1.052 V, Max.Reading:   1.058 V
+5: VCCAUX Supply: Current Reading:   2.628 V, Min. Reading:   2.622 V, Max.Reading:   2.634 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit"
+'5': Loading file'/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/3/13 11:37 PM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   51.36 C, Max.Reading:   56.28 C
+5: VCCINT Supply: Current Reading:   1.058 V, Min. Reading:   1.052 V, Max.Reading:   1.066 V
+5: VCCAUX Supply: Current Reading:   2.640 V, Min. Reading:   2.622 V, Max.Reading:   2.660 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 12:09 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   53.33 C, Min. Reading:   48.90 C, Max.Reading:   54.31 C
+5: VCCINT Supply: Current Reading:   1.058 V, Min. Reading:   1.052 V, Max.Reading:   1.061 V
+5: VCCAUX Supply: Current Reading:   2.643 V, Min. Reading:   2.625 V, Max.Reading:   2.648 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 12:13 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   40.04 C, Min. Reading:   34.13 C, Max.Reading:   40.53 C
+5: VCCINT Supply: Current Reading:   1.020 V, Min. Reading:   1.002 V, Max.Reading:   1.020 V
+5: VCCAUX Supply: Current Reading:   2.537 V, Min. Reading:   2.493 V, Max.Reading:   2.540 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 12:32 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.47 C, Min. Reading:   40.04 C, Max.Reading:   44.96 C
+5: VCCINT Supply: Current Reading:   1.028 V, Min. Reading:   1.017 V, Max.Reading:   1.031 V
+5: VCCAUX Supply: Current Reading:   2.563 V, Min. Reading:   2.534 V, Max.Reading:   2.569 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 12:51 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.47 C, Min. Reading:   43.48 C, Max.Reading:   45.45 C
+5: VCCINT Supply: Current Reading:   1.028 V, Min. Reading:   1.025 V, Max.Reading:   1.031 V
+5: VCCAUX Supply: Current Reading:   2.563 V, Min. Reading:   2.561 V, Max.Reading:   2.569 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 1:02 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.96 C, Min. Reading:   43.48 C, Max.Reading:   47.42 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.025 V, Max.Reading:   1.040 V
+5: VCCAUX Supply: Current Reading:   2.569 V, Min. Reading:   2.561 V, Max.Reading:   2.590 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit"
+'5': Loading file '/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/4/13 1:03 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.96 C, Min. Reading:   43.98 C, Max.Reading:   45.45 C
+5: VCCINT Supply: Current Reading:   1.028 V, Min. Reading:   1.028 V, Max.Reading:   1.031 V
+5: VCCAUX Supply: Current Reading:   2.569 V, Min. Reading:   2.563 V, Max.Reading:   2.572 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 1:34 AM
+Updating config file /Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   53.82 C, Min. Reading:   43.98 C, Max.Reading:   64.65 C
+5: VCCINT Supply: Current Reading:   1.061 V, Min. Reading:   1.028 V, Max.Reading:   1.096 V
+5: VCCAUX Supply: Current Reading:   2.643 V, Min. Reading:   2.561 V, Max.Reading:   2.730 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 1:42 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   41.52 C, Min. Reading:   35.61 C, Max.Reading:   42.01 C
+5: VCCINT Supply: Current Reading:   1.022 V, Min. Reading:   1.002 V, Max.Reading:   1.022 V
+5: VCCAUX Supply: Current Reading:   2.543 V, Min. Reading:   2.499 V, Max.Reading:   2.546 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 1:45 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   43.98 C, Min. Reading:   39.55 C, Max.Reading:   44.47 C
+5: VCCINT Supply: Current Reading:   1.025 V, Min. Reading:   1.014 V, Max.Reading:   1.025 V
+5: VCCAUX Supply: Current Reading:   2.552 V, Min. Reading:   2.522 V, Max.Reading:   2.558 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 1:46 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.96 C, Min. Reading:   43.48 C, Max.Reading:   45.45 C
+5: VCCINT Supply: Current Reading:   1.028 V, Min. Reading:   1.022 V, Max.Reading:   1.028 V
+5: VCCAUX Supply: Current Reading:   2.561 V, Min. Reading:   2.552 V, Max.Reading:   2.563 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit"
+'5': Loading file'/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/4/13 2:35 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   41.52 C, Min. Reading:   39.55 C, Max.Reading:   47.42 C
+5: VCCINT Supply: Current Reading:   1.025 V, Min. Reading:   1.017 V, Max.Reading:   1.040 V
+5: VCCAUX Supply: Current Reading:   2.561 V, Min. Reading:   2.540 V, Max.Reading:   2.593 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 2:51 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   42.01 C, Min. Reading:   40.53 C, Max.Reading:   42.50 C
+5: VCCINT Supply: Current Reading:   1.025 V, Min. Reading:   1.022 V, Max.Reading:   1.028 V
+5: VCCAUX Supply: Current Reading:   2.561 V, Min. Reading:   2.555 V, Max.Reading:   2.563 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 2:52 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   42.50 C, Min. Reading:   41.02 C, Max.Reading:   42.99 C
+5: VCCINT Supply: Current Reading:   1.028 V, Min. Reading:   1.025 V, Max.Reading:   1.028 V
+5: VCCAUX Supply: Current Reading:   2.563 V, Min. Reading:   2.555 V, Max.Reading:   2.566 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 3:01 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   44.96 C, Min. Reading:   41.52 C, Max.Reading:   45.95 C
+5: VCCINT Supply: Current Reading:   1.034 V, Min. Reading:   1.025 V, Max.Reading:   1.037 V
+5: VCCAUX Supply: Current Reading:   2.575 V, Min. Reading:   2.558 V, Max.Reading:   2.581 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit"
+'5': Loading file '/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/4/13 3:05 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   43.98 C, Min. Reading:   43.98 C, Max.Reading:   45.45 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.028 V, Max.Reading:   1.034 V
+5: VCCAUX Supply: Current Reading:   2.569 V, Min. Reading:   2.566 V, Max.Reading:   2.578 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/4/13 3:06 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   36.59 C, Max.Reading:   60.22 C
+5: VCCINT Supply: Current Reading:   1.061 V, Min. Reading:   1.011 V, Max.Reading:   1.090 V
+5: VCCAUX Supply: Current Reading:   2.643 V, Min. Reading:   2.517 V, Max.Reading:   2.710 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit"
+'5': Loading file'/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/4/13 3:06 AM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   54.81 C, Min. Reading:   51.36 C, Max.Reading:   55.30 C
+5: VCCINT Supply: Current Reading:   1.066 V, Min. Reading:   1.058 V, Max.Reading:   1.069 V
+5: VCCAUX Supply: Current Reading:   2.660 V, Min. Reading:   2.637 V, Max.Reading:   2.666 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 3:15 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   52.34 C, Min. Reading:   52.34 C, Max.Reading:   55.30 C
+5: VCCINT Supply: Current Reading:   1.063 V, Min. Reading:   1.063 V, Max.Reading:   1.069 V
+5: VCCAUX Supply: Current Reading:   2.651 V, Min. Reading:   2.648 V, Max.Reading:   2.666 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/4/13 3:31 AM
+Updating config file/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   53.33 C, Min. Reading:   51.36 C, Max.Reading:   54.31 C
+5: VCCINT Supply: Current Reading:   1.069 V, Min. Reading:   1.061 V, Max.Reading:   1.069 V
+5: VCCAUX Supply: Current Reading:   2.663 V, Min. Reading:   2.643 V, Max.Reading:   2.669 V
 PROGRESS_START - Starting Operation.
 '5': Programming device...
  Match_cycle = NoWait.

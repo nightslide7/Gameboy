@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP_SIMPLE\lcd_top_flashcart.ncd
-OUTFILE=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP_SIMPLE\lcd_top_flashcart.bit
+INFILE=/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.ncd
+OUTFILE=/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bit
 FAMILY=Virtex5
 PART=xc5vlx110t-1ff1136
-WORKINGDIR=C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP_SIMPLE
+WORKINGDIR=/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE
 LICENSE=ISE
 USER_INFO=174679548_176449548_210570730_342

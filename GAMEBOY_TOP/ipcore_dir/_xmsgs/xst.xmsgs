@@ -5,25 +5,16 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="Xst" num="752" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">DATA</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
+<msg type="warning" file="Xst" num="752" delta="new" >&quot;<arg fmt="%s" index="1">/Gameboy/Gameboy_git/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">57</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">DATA</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
 </msg>
 
-<msg type="warning" file="Xst" num="752" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">TRIG12</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
+<msg type="warning" file="Xst" num="752" delta="new" >&quot;<arg fmt="%s" index="1">/Gameboy/Gameboy_git/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">57</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">TRIG15</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
 </msg>
 
-<msg type="warning" file="Xst" num="752" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">TRIG13</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
+<msg type="warning" file="Xst" num="753" delta="new" >&quot;<arg fmt="%s" index="1">/Gameboy/Gameboy_git/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">57</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">TRIG_OUT</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos;.
 </msg>
 
-<msg type="warning" file="Xst" num="752" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">TRIG14</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
-</msg>
-
-<msg type="warning" file="Xst" num="752" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">TRIG15</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos; is tied to default value.
-</msg>
-
-<msg type="warning" file="Xst" num="753" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila.vhd</arg>&quot; line <arg fmt="%d" index="2">54</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">TRIG_OUT</arg>&apos; of component &apos;<arg fmt="%s" index="4">chipscope_ila</arg>&apos;.
-</msg>
-
-<msg type="warning" file="Xst" num="753" delta="old" >&quot;<arg fmt="%s" index="1">C:/Users/Joseph/Documents/GitHub/Gameboy/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila_v1_05_a/ila_core.vhd</arg>&quot; line <arg fmt="%d" index="2">874</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">WR_TSTAMP_OVERFLOW</arg>&apos; of component &apos;<arg fmt="%s" index="4">ila_cap_storage</arg>&apos;.
+<msg type="warning" file="Xst" num="753" delta="old" >&quot;<arg fmt="%s" index="1">/Gameboy/Gameboy_git/GAMEBOY_TOP/ipcore_dir/tmp/_cg/_bbx/chipscope_ila_v1_05_a/ila_core.vhd</arg>&quot; line <arg fmt="%d" index="2">874</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">WR_TSTAMP_OVERFLOW</arg>&apos; of component &apos;<arg fmt="%s" index="4">ila_cap_storage</arg>&apos;.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CONTROL_I&lt;3&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -191,7 +182,13 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">din_dly1&lt;79:64&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">din_dly1&lt;79:64&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">1</arg>.
@@ -422,6 +419,33 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">gand_carry&lt;5&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_q&lt;6&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_a3</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_a2</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_a1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_a0</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">srl_a</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">gand_carry&lt;6&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CFG_EN_VEC</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
@@ -479,13 +503,13 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">MODE</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">MODE</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">sel</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">mult_and_out</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">mult_and_out</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -509,13 +533,16 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iTRIGGER</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iMATCH_TC&lt;7:3&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iMATCH_TC&lt;7:4&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iCFG_EN_VEC</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -524,7 +551,7 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iCFG_DOUT</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iCFG_DATA&lt;17:4&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">iCFG_DATA&lt;17:5&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -659,19 +686,25 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">1</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">MODE_Q</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0</arg>.
+<msg type="warning" file="Xst" num="653" delta="old" >Signal &lt;<arg fmt="%s" index="1">MODE_Q</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">DOUT_tmp</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">DOUT_tmp</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">CFG_DATA</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">CFG_DATA</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">sel</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -872,6 +905,27 @@
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">cfg_data</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">sel</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">din_dly2</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">din_dly1</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">comp</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">cfg_data</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIGGER</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
@@ -942,6 +996,33 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_0</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG_RESET</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CFG_EN_16_0</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CFG_EN_16_1</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">logic_1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">countCfgIn</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">cfg_data&lt;1&gt;</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">CFG_MC_EN_VEC</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">CFG_MC_EN</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG_RESET</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -1103,7 +1184,7 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">CFG_TRIGMCNT_EN</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CONTROL_IN&lt;34:31&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">CONTROL_IN&lt;34&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">CONTROL_IN&lt;17:14&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -1151,16 +1232,7 @@
 <msg type="warning" file="Xst" num="1305" delta="old" >Output &lt;<arg fmt="%s" index="1">TRIG_OUT</arg>&gt; is never assigned. Tied to value <arg fmt="%s" index="2">0</arg>.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG12&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG13&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG14&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">TRIG15&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">TRIG15&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">DATA&lt;0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -1182,6 +1254,96 @@
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">ATC_CLKIN</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[92].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[91].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[90].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[89].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[88].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[87].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[86].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[85].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[84].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[83].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[82].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[81].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[80].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[79].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[78].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[77].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[76].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[75].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[74].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[73].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[72].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[71].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[70].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[69].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[68].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[67].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[66].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[65].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[64].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
+</msg>
+
+<msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[63].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
 </msg>
 
 <msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[62].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
@@ -1373,100 +1535,100 @@
 <msg type="info" file="Xst" num="1901" delta="old" >Instance <arg fmt="%s" index="1">I_B36KGT0.G_RAMB36[0].u_ramb36/U_RAMB36</arg> in unit <arg fmt="%s" index="2">cs_bram_simple_v5</arg> of type <arg fmt="%s" index="3">RAMB36</arg> has been replaced by <arg fmt="%s" index="4">RAMB36_EXP</arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[23].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[28].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[17].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[22].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[27].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[16].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[11].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[21].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[26].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[15].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[10].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[20].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[25].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[9].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[4].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[14].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[19].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[3].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[8].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[31].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[2].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[7].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[30].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[6].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[1].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[24].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[29].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[0].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[5].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[18].U_IREG&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG&gt; </arg>
+<msg type="info" file="Xst" num="2260" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">chipscope_ila</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[13].U_IREG&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2169" delta="old" >HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.

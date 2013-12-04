@@ -8,7 +8,7 @@
 // \   \   \/     Version    : 14.3
 //  \   \         Application: Xilinx CORE Generator
 //  /   /         Filename   : chipscope_ila.v
-// /___/   /\     Timestamp  : Fri Nov 22 23:34:14 Eastern Standard Time 2013
+// /___/   /\     Timestamp  : Tue Dec 03 22:56:25 EST 2013
 // \   \  /  \
 //  \___\/\___\
 //
@@ -32,7 +32,10 @@ module chipscope_ila(
     TRIG8,
     TRIG9,
     TRIG10,
-    TRIG11) /* synthesis syn_black_box syn_noprune=1 */;
+    TRIG11,
+    TRIG12,
+    TRIG13,
+    TRIG14) /* synthesis syn_black_box syn_noprune=1 */;
 
 
 inout [35 : 0] CONTROL;
@@ -49,5 +52,8 @@ input [1 : 0] TRIG8;
 input [31 : 0] TRIG9;
 input [31 : 0] TRIG10;
 input [31 : 0] TRIG11;
+input [39 : 0] TRIG12;
+input [39 : 0] TRIG13;
+input [39 : 0] TRIG14;
 
 endmodule

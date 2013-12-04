@@ -1,7 +1,7 @@
-C:\Users\Joseph\Documents\GitHub\Gameboy\GAMEBOY_TOP_SIMPLE\lcd_top_flashcart.ngc 1386108965
-ipcore_dir/blockram8192.ngc 1385433817
-ipcore_dir/chipscope_ila.ngc 1386105974
-ipcore_dir/chipscope_icon.ngc 1385433817
-../GPU/ipcore_dir/OAM.ngc 1385433818
-../GPU/ipcore_dir/VRAM.ngc 1385433818
+/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.ngc 1386145663
+ipcore_dir/blockram8192.ngc 1385526051
+ipcore_dir/chipscope_ila.ngc 1386110384
+ipcore_dir/chipscope_icon.ngc 1385526051
+../GPU/ipcore_dir/OAM.ngc 1385496996
+../GPU/ipcore_dir/VRAM.ngc 1385496996
 OK
