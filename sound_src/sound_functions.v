@@ -108,9 +108,11 @@ endmodule // WaveformPlayer
  * 
  * Generates a square wave at a given frequency for channel 1 and channel 2
  * 
+ * Frequency sweep and volume envelope functions are also implemented
+ * 
  */
 module SquareWave(
-//                  input        ac97_bitclk,
+                  input        ac97_bitclk,
 //                  input        ac97_strobe,
 		  input        length_cntrl_clk,
 		  input        sweep_cntrl_clk,
@@ -129,12 +131,7 @@ module SquareWave(
                   input [10:0] frequency_data,
 		  output wire [3:0] level
                   );
-   
-   /*                  input [19:0]       freq,
-    input [3:0]        level,
-    output wire [19:0] sample*/
 
-//   parameter strobe_rate = 20'd47940;
    wire [8:0] 	       true_len; //# of length_cntrl_clk edges before reset
    reg [8:0] 	       len_counter = 0;
    reg [11:0] 	       true_freq; //rate at which square wave completes cycles
@@ -143,23 +140,40 @@ module SquareWave(
    reg [4:0] 	       env_counter = 1;
    reg [3:0] 	       reg_vol; // controlled by volume envelope	       
    reg [3:0] 	       sweep_counter, num_sweeps_done;
+
+   reg 		       last_initialize, initialized_flag;
+   reg 		       length_got, freq_got, sweep_got, env_got;
    
    assign true_len = 7'd64 - length_data;
-   assign level = ~initialize? 4'b0 : reg_level;
-      
+//   assign level = ~initialize? 4'b0 : reg_level;
+   assign level = reg_level;
+
+   always@(posedge ac97_bitclk) begin
+      if (last_initialize == 1'b0 && initialize == 1'b1) begin
+	 initialized_flag <= 1; //if trigger event occured, reset things
+      end
+      if (length_got & sweep_got & env_got & freq_got) begin
+	 initialized_flag <= 0;
+      end
+      last_initialize <= initialize;
+   end
+   
    always@(posedge length_cntrl_clk) begin //play for specified length
-      if (~initialize) begin
+      if (initialized_flag) begin
 	 len_counter <= 0;
+	 length_got <= 1;
       end
       else if (len_counter <= true_len+1) begin //just past true_len
 	 len_counter <= len_counter + 1;
+	 length_got <= 0;
       end
    end
 
    always@(posedge freq_cntrl_clk) begin
-      if (~initialize) begin
-	 reg_level <= initial_volume;
+      if (initialized_flag) begin
+//	 reg_level <= initial_volume;
 	 freq_counter <= 0;
+	 freq_got <= 1;
       end
       // Play only for specified length
       else if ((dont_loop && (len_counter <= true_len)) || ~dont_loop &&
@@ -222,22 +236,26 @@ module SquareWave(
 		 freq_counter <= freq_counter + 12'b1;
 	      end
 	   end // case: 2'b3
-	 endcase
+	 endcase // case (wave_duty)
+	 freq_got <= 0;
       end
       else begin //stop output
 	 reg_level <= 4'h0;
+	 freq_got <= 0;
       end
    end // always@ (posedge freq_cntrl_clk)
 
    always@ (posedge sweep_cntrl_clk) begin
-      if (~initialize) begin
+      if (initialized_flag) begin
 	 true_freq <= 12'd2048 - frequency_data;//Gameboy specific
 	 sweep_counter <= 4'b1;
 	 num_sweeps_done <= 4'b0;
+	 sweep_got <= 1;
       end
       else begin
 	 if (sweep_time==0) begin
 	    true_freq <= 12'd2048 - frequency_data;
+	    sweep_counter <= 4'b1;
 	 end
 	 else begin
 	    if (sweep_counter==sweep_time &&
@@ -268,13 +286,15 @@ module SquareWave(
 	       sweep_counter <= sweep_counter + 4'b1;
 	    end
 	 end // else: !if(sweep_time==0)
-      end // else: !if(initialize)
-   end // always@ (posedge sweep_cntrl_clk)
+	 sweep_got <= 0;
+      end
+  end // always@ (posedge sweep_cntrl_clk)
    
    always @(posedge env_cntrl_clk) begin
-      if (~initialize) begin
+      if (initialized_flag) begin
 	 reg_vol <= initial_volume;
 	 env_counter <= 1;
+	 env_got <= 1;
       end
       else begin
 	 /** NOTE: num_envelope_sweeps is the name given to this signal in
@@ -297,8 +317,9 @@ module SquareWave(
 	 end // if (env_counter == num_envelope_sweeps)
 	 else begin
 	    env_counter <= env_counter + 5'b1;
-	 end
-      end // else: !if(initialize)
+	 end // else: !if(env_counter == num_envelope_sweeps)
+	 env_got <= 0;
+      end
    end // always @ (posedge env_cntrl_clk)
 	 
 /*   reg [19:0] 			   strobe_counter = 20'b0;

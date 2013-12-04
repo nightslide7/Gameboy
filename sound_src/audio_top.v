@@ -122,7 +122,7 @@ module audio_top (input              square_wave_enable,
    // in multiples of 128Hz
    wire 			     square_sweep_cntrl_clk;
 
-   my_clock_divider #(.DIV_SIZE(3), .DIV_OVER_TWO(2))
+   my_clock_divider #(.DIV_SIZE(5), .DIV_OVER_TWO(2))
                     sweepdiv(.clock_out (square_sweep_cntrl_clk),
 			     .clock_in (frame_sequencer_clk)
 			     );
@@ -131,7 +131,7 @@ module audio_top (input              square_wave_enable,
    // in multiples of 64Hz
    wire 			     square_envelope_cntrl_clk;
 
-   my_clock_divider #(.DIV_SIZE(4), .DIV_OVER_TWO(4))
+   my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(4))
                     envdiv(.clock_out (square_envelope_cntrl_clk),
 			   .clock_in (frame_sequencer_clk)
 			   );
@@ -231,6 +231,7 @@ module audio_top (input              square_wave_enable,
    SquareWave ch1(// Outputs
 		  .level		(ch1_level[3:0]),
 		  // Inputs
+		  .ac97_bitclk          (ac97_bitclk),
 		  .length_cntrl_clk     (length_cntrl_clk),
 		  .sweep_cntrl_clk	(square_sweep_cntrl_clk),
 		  .env_cntrl_clk	(square_envelope_cntrl_clk),
@@ -250,6 +251,7 @@ module audio_top (input              square_wave_enable,
    SquareWave ch2(// Outputs
 		  .level		(ch2_level[3:0]),
 		  // Inputs
+		  .ac97_bitclk          (ac97_bitclk),
 		  .length_cntrl_clk     (length_cntrl_clk),
 		  .sweep_cntrl_clk	(square_sweep_cntrl_clk),
 		  .env_cntrl_clk	(square_envelope_cntrl_clk),
