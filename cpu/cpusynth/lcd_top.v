@@ -343,7 +343,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign IF_in_int[I_SERIAL] = 1'b0;
    
    assign IF_load = timer_interrupt | int_req[0] | int_req[1] | 
-                     joypad_interrupt;
+                     joypad_interrupt | (addr_in_IF & mem_we);
 
    assign IF_in = (addr_in_IF & mem_we) ?
                   data_ext :
@@ -354,7 +354,6 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign IE_in = 5'd0;
 
    // However, IE/IF reading is done out here
-
    
    assign int_ack[1] = IF_data[I_LCDC];
    assign int_ack[0] = IF_data[I_VBLANK];
