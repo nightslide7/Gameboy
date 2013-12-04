@@ -58,7 +58,7 @@ module decode(/*AUTOARG*/
 
    // ALU
    output reg [4:0]   alu_op;
-   output reg         alu_size;
+   output reg [1:0]   alu_size;
 
    // External
    output reg         halt;
@@ -194,7 +194,7 @@ module decode(/*AUTOARG*/
 
       // ALU
       alu_op = 5'd0;
-      alu_size = 1'd0;
+      alu_size = 2'd0;
 
       // CB, cycle, interrupt
       next_cb = cb;
@@ -1124,7 +1124,7 @@ module decode(/*AUTOARG*/
                    alu_op = `ALU_ADD;
                    alu_data_gate = 1'b1;
                    F_load = 1'b1;
-                   alu_size = `ALU_SIZE_16;
+                   alu_size = `ALU_SIZE_SPEC;
                    rn_in = `RGF_L;
                    regfile_we_l = 1'b1;
                 end
@@ -1140,7 +1140,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_FF;
                    alu_op = `ALU_ADC;
                    alu_data_gate = 1'b1;
-                   F_load = 1'b1;
+                   //F_load = 1'b1;
                    alu_size = `ALU_SIZE_16;
                    rn_in = `RGF_H;
                    regfile_we_l = 1'b1;
@@ -1286,7 +1286,6 @@ module decode(/*AUTOARG*/
                         3'b101: alu_op = `ALU_XOR;
                         3'b111: alu_op = `ALU_SUB;
                       endcase // case (instruction[5:3])
-                      A_load = 1'b1;
                    end
                  endcase
               end else begin
@@ -1502,7 +1501,7 @@ module decode(/*AUTOARG*/
                    alu_data0_in_sel = `ALU_0_SEL_TEMP0;
                    alu_op = `ALU_ADD;
                    F_load = 1'b1;
-                   alu_size = `ALU_SIZE_16;
+                   alu_size = `ALU_SIZE_SPEC;
                    alu_data_gate = 1'b1;
                    rn_in = `RGF_SPL;
                    regfile_we_l = 1'b1;
@@ -1518,7 +1517,7 @@ module decode(/*AUTOARG*/
                    alu_data1_in_sel = `ALU_1_SEL_TEMP1;
                    alu_data0_in_sel = `ALU_0_SEL_FF;
                    alu_op = `ALU_ADC;
-                   F_load = 1'b1;
+//                   F_load = 1'b1;
                    alu_size = `ALU_SIZE_16;
                    alu_data_gate = 1'b1;
                    rn_in = `RGF_SPH;
@@ -1558,6 +1557,7 @@ module decode(/*AUTOARG*/
                      2'b11: alu_op = `ALU_RR;
                    endcase // case (cycle)
                    alu_data1_in_sel = `ALU_1_SEL_A;
+                   alu_size = `ALU_SIZE_SPEC;
                    A_load = 1'b1;
                    F_load = 1'b1;
                 end // case: 5'd3

@@ -340,7 +340,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    assign IF_in_int[I_SERIAL] = 1'b0;
    
    assign IF_load = timer_interrupt | int_req[0] | int_req[1] |
-                     joypad_interrupt;
+                     joypad_interrupt | (addr_in_IF & mem_we);
 
    assign IF_in = (addr_in_IF & mem_we) ?
                   data_ext :
@@ -372,7 +372,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    wire [7:0]  high_mem_data;
    wire [16:0] high_mem_addr;
    wire        debug_halt;
-   
+
    cpu gb80_cpu(.mem_we(cpu_mem_we),
                 .mem_re(cpu_mem_re),
                 .halt(halt),

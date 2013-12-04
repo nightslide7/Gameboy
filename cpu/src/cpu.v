@@ -103,7 +103,7 @@ module cpu(/*AUTOARG*/
                             .mem_re(data_buf_load_ext & high_mem),
                             .reset(reset),
                             .clock(clock));
-   
+
    // Registers
    wire [7:0]   /*F_data, */temp1_data, temp0_data;
    wire [4:0]   IF_in_l, IE_in_l;
@@ -203,7 +203,7 @@ module cpu(/*AUTOARG*/
 
    // ALU
    wire [4:0]  alu_op;
-   wire        alu_size;
+   wire [1:0]  alu_size;
    
    // Regfile
    wire [4:0]  regfile_rn_in, regfile_rn_out;
@@ -373,7 +373,7 @@ module cpu(/*AUTOARG*/
                 .alu_data1_in           (alu_data1_in[7:0]),
                 .alu_op                 (alu_op[4:0]),
                 .alu_flags_in           (alu_flags_in[3:0]),
-                .alu_size               (alu_size));
+                .alu_size               (alu_size[1:0]));
 
    // Regfile //////////////////////////////////////////////////////////////////
 
@@ -429,7 +429,7 @@ module cpu(/*AUTOARG*/
                       .alu_data0_in_sel (alu_data0_in_sel[1:0]),
                       .addr_ff00_sel    (addr_ff00_sel),
                       .alu_op           (alu_op[4:0]),
-                      .alu_size         (alu_size),
+                      .alu_size         (alu_size[1:0]),
                       .halt             (halt),
                       .debug_halt       (debug_halt),
                       // Inputs

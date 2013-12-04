@@ -28,7 +28,7 @@ module alu
    input [7:0]      alu_data0_in, alu_data1_in;
    input [4:0]      alu_op;
    input [3:0]      alu_flags_in;
-   input            alu_size;
+   input [1:0]      alu_size;
 
    reg [8:0]        intermediate_result1, intermediate_result2;
    reg [4:0]        result_low;
@@ -59,6 +59,8 @@ module alu
            alu_data_out = {result_high[3:0], result_low[3:0]};
            if (alu_size == `ALU_SIZE_16) begin
               alu_flags_out[F_Z] = alu_flags_in[F_Z];
+           end else if (alu_size == `ALU_SIZE_SPEC) begin
+              alu_flags_out[F_Z] = 1'b0;
            end else begin
               alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
            end
@@ -126,13 +128,14 @@ module alu
         `ALU_DAA: begin
            // This is a stupid instruction.
            if (~alu_flags_in[F_N]) begin
-              if (alu_flags_in[F_H] | (alu_data1_in[3:0] > 4'h9)) begin
-                 intermediate_result1 = alu_data1_in + 8'h6;
+              if (alu_flags_in[F_H] | 
+                  ((alu_data1_in & 8'h0f) > 8'h9)) begin
+                 intermediate_result1 = {1'b0, alu_data1_in} + 9'h6;
               end
               else begin
-                 intermediate_result1 = alu_data1_in;
+                 intermediate_result1 = {1'b0, alu_data1_in};
               end
-              if (alu_flags_in[F_C] | (intermediate_result1 > 8'h9f)) begin
+              if (alu_flags_in[F_C] | (intermediate_result1 > 9'h9f)) begin
                  intermediate_result2 = intermediate_result1 + 9'h60;
               end
               else begin
@@ -141,24 +144,27 @@ module alu
            end
            else begin
               if (alu_flags_in[F_H]) begin
-                 intermediate_result1 = (alu_data1_in - 8'h6);
+                 intermediate_result1 = {1'b0, (alu_data1_in - 8'h6)};
               end
               else begin
-                 intermediate_result1 = alu_data1_in;
+                 intermediate_result1 = {1'b0, alu_data1_in};
               end
               if (alu_flags_in[F_C]) begin
-                 intermediate_result2 = intermediate_result1 - 8'h60;
+                 intermediate_result2 = intermediate_result1 - 9'h60;
               end
               else begin
                  intermediate_result2 = intermediate_result1;
               end
            end // else: !if(alu_flags_in[F_N])
-           alu_data_out = intermediate_result2;
+
+           alu_data_out = intermediate_result2[7:0];
+           
            alu_flags_out[F_N] = alu_flags_in[F_N];
            alu_flags_out[F_H] = 1'b0;
            alu_flags_out[F_C] = intermediate_result2[8] ? 1'b1 : 
                                 alu_flags_in[F_C];
-           alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           alu_flags_out[F_Z] = (intermediate_result2[7:0] == 8'd0) ? 
+                                1'b1 : 1'b0;
         end
         `ALU_NOT: begin
            alu_flags_out[F_Z] = alu_flags_in[F_Z];
@@ -181,25 +187,41 @@ module alu
            alu_data_out[0] = alu_data1_in[7];
            alu_data_out[7:1] = alu_data1_in[6:0];
            alu_flags_out[F_C] = alu_data1_in[7];
-           alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           if (alu_size == `ALU_SIZE_SPEC) begin
+              alu_flags_out[F_Z] = 1'b0;
+           end else begin
+              alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           end
         end
         `ALU_RL: begin
            alu_data_out[0] = alu_flags_in[F_C];
            alu_data_out[7:1] = alu_data1_in[6:0];
            alu_flags_out[F_C] = alu_data1_in[7];
-           alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           if (alu_size == `ALU_SIZE_SPEC) begin
+              alu_flags_out[F_Z] = 1'b0;
+           end else begin
+              alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           end
         end
         `ALU_RRC: begin
            alu_data_out[7] = alu_data1_in[0];
            alu_data_out[6:0] = alu_data1_in[7:1];
            alu_flags_out[F_C] = alu_data1_in[0];
-           alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           if (alu_size == `ALU_SIZE_SPEC) begin
+              alu_flags_out[F_Z] = 1'b0;
+           end else begin
+              alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           end
         end
         `ALU_RR: begin
            alu_data_out[7] = alu_flags_in[F_C];
            alu_data_out[6:0] = alu_data1_in[7:1];
            alu_flags_out[F_C] = alu_data1_in[0];
-           alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           if (alu_size == `ALU_SIZE_SPEC) begin
+              alu_flags_out[F_Z] = 1'b0;
+           end else begin
+              alu_flags_out[F_Z] = (alu_data_out == 8'd0) ? 1'b1 : 1'b0;
+           end
         end
         `ALU_SL: begin
            alu_data_out[7:1] = alu_data1_in[6:0];
