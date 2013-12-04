@@ -137,19 +137,19 @@
 <msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;../fpgaboy_files/dvi_module.v&quot; line 82 </arg>Connection to input port &apos;<arg fmt="%s" index="2">S</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;lcd_top.v&quot; line 627 </arg>Connection to input port &apos;<arg fmt="%s" index="2">FF00_load_in</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;lcd_top.v&quot; line 624 </arg>Connection to input port &apos;<arg fmt="%s" index="2">FF00_load_in</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="Xst" num="852" delta="old" >&quot;<arg fmt="%s" index="1">lcd_top.v</arg>&quot; line <arg fmt="%d" index="2">467</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switches78</arg>&apos; of instance &apos;<arg fmt="%s" index="4">gpu</arg>&apos; is tied to GND.
+<msg type="warning" file="Xst" num="852" delta="new" >&quot;<arg fmt="%s" index="1">lcd_top.v</arg>&quot; line <arg fmt="%d" index="2">464</arg>: Unconnected input port &apos;<arg fmt="%s" index="3">switches78</arg>&apos; of instance &apos;<arg fmt="%s" index="4">gpu</arg>&apos; is tied to GND.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/blockram8192.v</arg>&quot; line <arg fmt="%d" index="2">661</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">blockram8192</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/blockram8192.v</arg>&quot; line <arg fmt="%d" index="2">658</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">blockram8192</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">826</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_ila.v</arg>&quot; line <arg fmt="%d" index="2">823</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_ila</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="old" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">846</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">ipcore_dir/chipscope_icon.v</arg>&quot; line <arg fmt="%d" index="2">843</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">chipscope_icon</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">data</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
@@ -167,7 +167,7 @@
 <msg type="warning" file="Xst" num="790" delta="old" >&quot;<arg fmt="%s" index="1">../sound_src/sound_functions.v</arg>&quot; line <arg fmt="%d" index="2">81</arg>: Index value(s) does not match array range, simulation mismatch.
 </msg>
 
-<msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">i</arg>&gt; in unit &lt;<arg fmt="%s" index="2">supermem</arg>&gt; has a constant value of <arg fmt="%s" index="3">1111111</arg> during circuit operation. The register is replaced by logic.
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">i</arg>&gt; in unit &lt;<arg fmt="%s" index="2">mem</arg>&gt; has a constant value of <arg fmt="%s" index="3">1111111</arg> during circuit operation. The register is replaced by logic.
 </msg>
 
 <msg type="info" file="Xst" num="2679" delta="old" >Register &lt;<arg fmt="%s" index="1">i</arg>&gt; in unit &lt;<arg fmt="%s" index="2">regfile</arg>&gt; has a constant value of <arg fmt="%s" index="3">101</arg> during circuit operation. The register is replaced by logic.
@@ -314,7 +314,7 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">flags&lt;2:1&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="info" file="Xst" num="2117" delta="old" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">$old_interrupt_sel_7</arg>&gt; of Case statement line <arg fmt="%s" index="2">171</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+<msg type="info" file="Xst" num="2117" delta="new" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">$old_interrupt_sel_7</arg>&gt; of Case statement line <arg fmt="%s" index="2">158</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
 	- add an &apos;<arg fmt="%s" index="3">INIT</arg>&apos; attribute on signal &lt;<arg fmt="%s" index="4">$old_interrupt_sel_7</arg>&gt; (optimization is then done without any risk)
 	- use the attribute &apos;<arg fmt="%s" index="5">signal_encoding</arg> <arg fmt="%s" index="6">user</arg>&apos; to avoid onehot optimization
 	- use the attribute &apos;<arg fmt="%s" index="7">safe_implementation</arg> <arg fmt="%s" index="8">yes</arg>&apos; to force XST to perform a safe (but less efficient) optimization
@@ -449,9 +449,6 @@
 <msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">video_oam_addr</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="old" >Signal &lt;<arg fmt="%s" index="1">sound1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="1780" delta="old" >Signal &lt;<arg fmt="%s" index="1">reg_data_out</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -549,9 +546,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">sprite_attributes_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">video</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">NR10_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">regs</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">n_state_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">cont</arg>&gt;.
@@ -730,7 +724,7 @@
 
 <msg type="warning" file="Xst" num="2042" delta="old" >Unit <arg fmt="%s" index="1">cpu</arg>: <arg fmt="%d" index="2">16</arg> internal tristates are replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
 
-<msg type="warning" file="Xst" num="2042" delta="old" >Unit <arg fmt="%s" index="1">supermem</arg>: <arg fmt="%d" index="2">8</arg> internal tristates are replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
+<msg type="warning" file="Xst" num="2042" delta="new" >Unit <arg fmt="%s" index="1">mem</arg>: <arg fmt="%d" index="2">8</arg> internal tristates are replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
 
 <msg type="warning" file="Xst" num="2042" delta="old" >Unit <arg fmt="%s" index="1">tristate_1</arg>: <arg fmt="%d" index="2">8</arg> internal tristates are replaced by logic (pull-up <arg fmt="%s" index="3">yes</arg>): </msg>
 
@@ -774,9 +768,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">audio/ch2/num_sweeps_done_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">lcd_top_flashcart</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR10_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.
 </msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">audio/regs/NR41_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">lcd_top_flashcart</arg>&gt;.

@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: lcd_top_flashcart.prj
 
@@ -170,14 +170,14 @@ Module <ddr2_idelay_ctrl> compiled
 Compiling verilog file "../cpu/src/timers.v" in library work
 Compiling verilog include file "cpu.vh"
 Module <clk31p5_dcm> compiled
-Compiling verilog file "../cpu/src/supermem.v" in library work
-Module <timers> compiled
 Compiling verilog file "../cpu/src/regfile.v" in library work
 Compiling verilog include file "cpu.vh"
-Module <supermem> compiled
+Module <timers> compiled
+Compiling verilog file "../cpu/src/mem_synth.v" in library work
+Module <regfile> compiled
 Compiling verilog file "../cpu/src/dma.v" in library work
 Compiling verilog include file "cpu.vh"
-Module <regfile> compiled
+Module <mem> compiled
 Compiling verilog file "../cpu/src/decode.v" in library work
 Compiling verilog include file "cpu.vh"
 Module <dma> compiled
@@ -313,7 +313,7 @@ Analyzing hierarchy for module <register> in library <work> with parameters.
 	reset_value = "00000000000000000000000000000000"
 	width = "00000000000000000000000000000011"
 
-Analyzing hierarchy for module <supermem> in library <work> with parameters.
+Analyzing hierarchy for module <mem> in library <work> with parameters.
 	size = "00000000000000000000000001111111"
 	use_memfile = "00000000000000000000000000000000"
 
@@ -522,10 +522,10 @@ Analyzing top module <lcd_top_flashcart>.
 	I_SERIAL = 32'sb00000000000000000000000000000011
 	I_TIMA = 32'sb00000000000000000000000000000010
 	I_VBLANK = 32'sb00000000000000000000000000000000
-WARNING:Xst:852 - "lcd_top.v" line 467: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
-WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 661: Instantiating black box module <blockram8192>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 826: Instantiating black box module <chipscope_ila>.
-WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 846: Instantiating black box module <chipscope_icon>.
+WARNING:Xst:852 - "lcd_top.v" line 464: Unconnected input port 'switches78' of instance 'gpu' is tied to GND.
+WARNING:Xst:2211 - "ipcore_dir/blockram8192.v" line 658: Instantiating black box module <blockram8192>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_ila.v" line 823: Instantiating black box module <chipscope_ila>.
+WARNING:Xst:2211 - "ipcore_dir/chipscope_icon.v" line 843: Instantiating black box module <chipscope_icon>.
 Module <lcd_top_flashcart> is correct for synthesis.
  
     Set user-defined property "SYN_BLACK_BOX =  1" for instance <cila> in unit <lcd_top_flashcart>.
@@ -596,11 +596,11 @@ Analyzing module <cpu> in library <work>.
 	I_VBLANK = 32'sb00000000000000000000000000000000
 Module <cpu> is correct for synthesis.
  
-Analyzing module <supermem> in library <work>.
+Analyzing module <mem> in library <work>.
 	size = 32'sb00000000000000000000000001111111
 	use_memfile = 32'sb00000000000000000000000000000000
 INFO:Xst:1433 - Contents of array <data> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
-Module <supermem> is correct for synthesis.
+Module <mem> is correct for synthesis.
  
 Analyzing module <nobus_buffer.1> in library <work>.
 	reset_value = 32'sb00000000000000000000000000000000
@@ -989,7 +989,7 @@ Module <register.2> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <i> in unit <supermem> has a constant value of 1111111 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <i> in unit <mem> has a constant value of 1111111 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <i> in unit <regfile> has a constant value of 101 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <button>.
@@ -1147,18 +1147,18 @@ Synthesizing Unit <register_5>.
 Unit <register_5> synthesized.
 
 
-Synthesizing Unit <supermem>.
-    Related source file is "../cpu/src/supermem.v".
+Synthesizing Unit <mem>.
+    Related source file is "../cpu/src/mem_synth.v".
 WARNING:Xst:647 - Input <addr_ext<15:7>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1780 - Signal <data_ext_int> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 8-bit tristate buffer for signal <data_ext>.
-    Found 8-bit 127-to-1 multiplexer for signal <$varindex0000> created at line 37.
+    Found 8-bit 127-to-1 multiplexer for signal <$varindex0000> created at line 33.
     Found 1016-bit register for signal <data>.
 INFO:Xst:738 - HDL ADVISOR - 1016 flip-flops were inferred for signal <data>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
     Summary:
 	inferred   8 Multiplexer(s).
 	inferred   8 Tristate(s).
-Unit <supermem> synthesized.
+Unit <mem> synthesized.
 
 
 Synthesizing Unit <nobus_buffer_1>.
@@ -1948,7 +1948,7 @@ Synthesizing Unit <cpu>.
     Related source file is "../cpu/src/cpu.v".
 WARNING:Xst:646 - Signal <interrupt_sel> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <flags<2:1>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_7> of Case statement line 171 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_7> of Case statement line 158 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
    	- add an 'INIT' attribute on signal <$old_interrupt_sel_7> (optimization is then done without any risk)
    	- use the attribute 'signal_encoding user' to avoid onehot optimization
    	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
@@ -1956,8 +1956,8 @@ INFO:Xst:2117 - HDL ADVISOR - Mux Selector <$old_interrupt_sel_7> of Case statem
     Found 16-bit subtractor for signal <high_mem_addr>.
     Found 16-bit tristate buffer for signal <addr_ext_in>.
     Found 16-bit comparator equal for signal <bp_pc>.
-    Found 16-bit comparator greatequal for signal <high_mem$cmp_le0000> created at line 78.
-    Found 16-bit comparator lessequal for signal <high_mem$cmp_le0001> created at line 78.
+    Found 16-bit comparator greatequal for signal <high_mem$cmp_le0000> created at line 76.
+    Found 16-bit comparator lessequal for signal <high_mem$cmp_le0001> created at line 76.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   3 Comparator(s).
@@ -2036,7 +2036,6 @@ WARNING:Xst:646 - Signal <video_reg_addr> is assigned but never used. This uncon
 WARNING:Xst:1780 - Signal <video_oam_data_out> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <video_oam_data_in> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <video_oam_addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <sound1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <reg_data_out> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <nextString> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <mode_video> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -2060,27 +2059,27 @@ WARNING:Xst:1780 - Signal <CONTROL> is never used or assigned. This unconnected 
     | Encoding           | automatic                                      |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit adder for signal <$add0000> created at line 744.
-    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 544.
-    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 544.
-    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 633.
-    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 633.
-    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 429.
-    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 636.
-    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 636.
+    Found 32-bit adder for signal <$add0000> created at line 741.
+    Found 16-bit comparator lessequal for signal <addr_in_cart$cmp_le0000> created at line 541.
+    Found 16-bit comparator greatequal for signal <addr_in_cart$cmp_le0001> created at line 541.
+    Found 16-bit comparator greatequal for signal <addr_in_echo$cmp_le0000> created at line 630.
+    Found 16-bit comparator lessequal for signal <addr_in_echo$cmp_le0001> created at line 630.
+    Found 16-bit comparator less for signal <addr_in_flash$cmp_lt0000> created at line 426.
+    Found 16-bit comparator greatequal for signal <addr_in_wram$cmp_le0000> created at line 633.
+    Found 16-bit comparator lessequal for signal <addr_in_wram$cmp_le0001> created at line 633.
     Found 16-bit adder for signal <cart_address>.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 505.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 505.
-    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 505.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 505.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 505.
-    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 505.
-    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 459.
-    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 459.
-    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 441.
-    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 441.
-    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 450.
-    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 450.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0000> created at line 502.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0001> created at line 502.
+    Found 16-bit comparator greatequal for signal <reg_w_enable$cmp_ge0002> created at line 502.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0000> created at line 502.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0001> created at line 502.
+    Found 16-bit comparator lessequal for signal <reg_w_enable$cmp_le0002> created at line 502.
+    Found 16-bit comparator greatequal for signal <video_oam_w_enable$cmp_ge0000> created at line 456.
+    Found 16-bit comparator lessequal for signal <video_oam_w_enable$cmp_le0000> created at line 456.
+    Found 16-bit comparator greatequal for signal <video_reg_w_enable$cmp_ge0000> created at line 438.
+    Found 16-bit comparator lessequal for signal <video_reg_w_enable$cmp_le0000> created at line 438.
+    Found 16-bit comparator greatequal for signal <video_vram_w_enable$cmp_ge0000> created at line 447.
+    Found 16-bit comparator lessequal for signal <video_vram_w_enable$cmp_le0000> created at line 447.
     Found 16-bit subtractor for signal <wram_addr_long>.
     Summary:
 	inferred   1 Finite State Machine(s).
@@ -2364,7 +2363,6 @@ WARNING:Xst:2677 - Node <sprite_attributes_2> of sequential type is unconnected 
 WARNING:Xst:2677 - Node <sprite_attributes_3> of sequential type is unconnected in block <video>.
 WARNING:Xst:2677 - Node <sprite_attributes_5> of sequential type is unconnected in block <video>.
 WARNING:Xst:2677 - Node <sprite_attributes_6> of sequential type is unconnected in block <video>.
-WARNING:Xst:2677 - Node <NR10_7> of sequential type is unconnected in block <regs>.
 WARNING:Xst:2677 - Node <n_state_16> of sequential type is unconnected in block <cont>.
 WARNING:Xst:2677 - Node <state_16> of sequential type is unconnected in block <cont>.
 WARNING:Xst:2404 -  FFs/Latches <reg_level<3:3>> (without init value) have a constant value of 0 in block <WaveformPlayer>.
@@ -2567,7 +2565,7 @@ INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_2> in Unit <gpu_top> is equ
 INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_1> in Unit <gpu_top> is equivalent to the following FF/Latch, which will be removed : <converter/Maddsub_write_addr_mult00011_6> 
 INFO:Xst:2261 - The FF/Latch <video/pixel_data_count_0> in Unit <gpu_top> is equivalent to the following FF/Latch, which will be removed : <converter/Maddsub_write_addr_mult00011_7> 
 WARNING:Xst:2042 - Unit cpu: 16 internal tristates are replaced by logic (pull-up yes): addr_ext_in<0>, addr_ext_in<10>, addr_ext_in<11>, addr_ext_in<12>, addr_ext_in<13>, addr_ext_in<14>, addr_ext_in<15>, addr_ext_in<1>, addr_ext_in<2>, addr_ext_in<3>, addr_ext_in<4>, addr_ext_in<5>, addr_ext_in<6>, addr_ext_in<7>, addr_ext_in<8>, addr_ext_in<9>.
-WARNING:Xst:2042 - Unit supermem: 8 internal tristates are replaced by logic (pull-up yes): data_ext<0>, data_ext<1>, data_ext<2>, data_ext<3>, data_ext<4>, data_ext<5>, data_ext<6>, data_ext<7>.
+WARNING:Xst:2042 - Unit mem: 8 internal tristates are replaced by logic (pull-up yes): data_ext<0>, data_ext<1>, data_ext<2>, data_ext<3>, data_ext<4>, data_ext<5>, data_ext<6>, data_ext<7>.
 WARNING:Xst:2042 - Unit tristate_1: 8 internal tristates are replaced by logic (pull-up yes): out<0>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>.
 WARNING:Xst:2042 - Unit tristate_2: 16 internal tristates are replaced by logic (pull-up yes): out<0>, out<10>, out<11>, out<12>, out<13>, out<14>, out<15>, out<1>, out<2>, out<3>, out<4>, out<5>, out<6>, out<7>, out<8>, out<9>.
 WARNING:Xst:2042 - Unit nobus_buffer_2: 16 internal tristates are replaced by logic (pull-up yes): bus<0>, bus<10>, bus<11>, bus<12>, bus<13>, bus<14>, bus<15>, bus<1>, bus<2>, bus<3>, bus<4>, bus<5>, bus<6>, bus<7>, bus<8>, bus<9>.
@@ -2636,7 +2634,6 @@ WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_0> (without init value) h
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_1> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_2> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <audio/ch2/num_sweeps_done_3> (without init value) has a constant value of 0 in block <lcd_top_flashcart>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <audio/regs/NR10_7> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_0> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_1> of sequential type is unconnected in block <lcd_top_flashcart>.
 WARNING:Xst:2677 - Node <audio/regs/NR41_2> of sequential type is unconnected in block <lcd_top_flashcart>.
@@ -2664,21 +2661,21 @@ WARNING:Xst:2677 - Node <audio/regs/NR44_7> of sequential type is unconnected in
 WARNING:Xst:2677 - Node <gpu/dvi/init/Done> of sequential type is unconnected in block <lcd_top_flashcart>.
 
 Mapping all equations...
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<3>, dina<3>, lcd_top_flashcart/data_ext<3>LogicTrst51.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<2>, lcd_top_flashcart/data_ext<2>LogicTrst51, dina<2>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<1>LogicTrst51, lcd_top_flashcart/data_ext<1>, dina<1>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>LogicTrst51, lcd_top_flashcart/data_ext<0>, dina<0>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst10, lcd_top_flashcart/data_ext<7>.
-WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<6>, lcd_top_flashcart/data_ext<6>LogicTrst10, lcd_top_flashcart/data_ext<6>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<3>, lcd_top_flashcart/data_ext<3>LogicTrst51, lcd_top_flashcart/data_ext<3>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: dina<2>, lcd_top_flashcart/data_ext<2>, lcd_top_flashcart/data_ext<2>LogicTrst51.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<1>LogicTrst51, dina<1>, lcd_top_flashcart/data_ext<1>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<0>LogicTrst51, dina<0>, lcd_top_flashcart/data_ext<0>.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<7>, dina<7>, lcd_top_flashcart/data_ext<7>LogicTrst10.
+WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<6>LogicTrst10, dina<6>, lcd_top_flashcart/data_ext<6>.
 WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<5>, lcd_top_flashcart/data_ext<5>LogicTrst10, dina<5>.
 WARNING:Xst:2170 - Unit br_wram : the following signal(s) form a combinatorial loop: lcd_top_flashcart/data_ext<4>LogicTrst51, lcd_top_flashcart/data_ext<4>, dina<4>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<0>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/data_bus<7>, gb80_cpu/alu_data_out<7>, gb80_cpu/alu_data_out<0>, gb80_cpu/alu_data1_in<7>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000228.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/alu_data_out_1_mux0000229, gb80_cpu/data_buf/q_mux0000<1>, gb80_cpu/data_bus<1>, gb80_cpu/gb80_alu/Madd__old_result_low_10_Madd_lut<1>, gb80_cpu/alu_data_out<1>, gb80_cpu/gb80_alu/_old_result_low_10<1>, gb80_cpu/alu_data1_in<1>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_low_15<2>, gb80_cpu/alu_data1_in<2>, gb80_cpu/alu_data_out<2>, gb80_cpu/data_buf/q_mux0000<2>, gb80_cpu/gb80_alu/alu_data_out_2_mux0000189, gb80_cpu/data_bus<2>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<3>, gb80_cpu/alu_data_out<3>, gb80_cpu/gb80_alu/_old_result_low_15<3>, gb80_cpu/alu_data1_in<3>, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000197.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_high_18<0>, gb80_cpu/data_buf/q_mux0000<4>, gb80_cpu/alu_data_out<4>, gb80_cpu/data_bus<4>, gb80_cpu/gb80_alu/alu_data_out_4_mux0000165, gb80_cpu/alu_data1_in<4>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<5>, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/alu_data1_in<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000227, gb80_cpu/gb80_alu/_old_result_high_16<1>, gb80_cpu/data_bus<5>.
-WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_high_18<2>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000171, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/alu_data_out<6>, gb80_cpu/alu_data1_in<6>, gb80_cpu/data_bus<6>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<7>, gb80_cpu/data_buf/q_mux0000<0>, gb80_cpu/gb80_alu/alu_data_out_7_mux0000228, gb80_cpu/alu_data1_in<7>, gb80_cpu/alu_data_out<0>, gb80_cpu/data_bus<0>, gb80_cpu/data_bus<7>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_low_10<1>, gb80_cpu/gb80_alu/alu_data_out_1_mux0000229, gb80_cpu/alu_data1_in<1>, gb80_cpu/alu_data_out<1>, gb80_cpu/data_buf/q_mux0000<1>, gb80_cpu/data_bus<1>, gb80_cpu/gb80_alu/Madd__old_result_low_10_Madd_lut<1>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_low_15<2>, gb80_cpu/data_bus<2>, gb80_cpu/data_buf/q_mux0000<2>, gb80_cpu/alu_data1_in<2>, gb80_cpu/gb80_alu/alu_data_out_2_mux0000189, gb80_cpu/alu_data_out<2>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data1_in<3>, gb80_cpu/gb80_alu/alu_data_out_3_mux0000197, gb80_cpu/data_bus<3>, gb80_cpu/gb80_alu/_old_result_low_15<3>, gb80_cpu/data_buf/q_mux0000<3>, gb80_cpu/alu_data_out<3>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/gb80_alu/_old_result_high_18<0>, gb80_cpu/alu_data_out<4>, gb80_cpu/gb80_alu/alu_data_out_4_mux0000165, gb80_cpu/alu_data1_in<4>, gb80_cpu/data_bus<4>, gb80_cpu/data_buf/q_mux0000<4>.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/alu_data_out<5>, gb80_cpu/data_buf/q_mux0000<5>, gb80_cpu/gb80_alu/_old_result_high_16<1>, gb80_cpu/data_bus<5>, gb80_cpu/alu_data1_in<5>, gb80_cpu/gb80_alu/alu_data_out_5_mux0000227.
+WARNING:Xst:2170 - Unit lcd_top_flashcart : the following signal(s) form a combinatorial loop: gb80_cpu/data_bus<6>, gb80_cpu/data_buf/q_mux0000<6>, gb80_cpu/alu_data_out<6>, gb80_cpu/gb80_alu/_old_result_high_18<2>, gb80_cpu/gb80_alu/alu_data_out_6_mux0000171, gb80_cpu/alu_data1_in<6>.
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block lcd_top_flashcart, actual ratio is 12.
 INFO:Xst:2260 - The FF/Latch <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MUPPER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> in Unit <cila> is equivalent to the following FF/Latch : <U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[9].U_M/U_MU/I_MUT_RANGEX.U_match/U_VARX.U_MLOWER/I_SRL32.U_VARX_SRL32/I_YES_IREG.F_TW[12].U_IREG> 
@@ -2759,8 +2756,8 @@ Unit <lcd_top_flashcart> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2847
- Flip-Flops                                            : 2847
+# Registers                                            : 2848
+ Flip-Flops                                            : 2848
 
 =========================================================================
 
@@ -2806,10 +2803,10 @@ Cell Usage :
 #      MUXF8                       : 3
 #      VCC                         : 42
 #      XORCY                       : 595
-# FlipFlops/Latches                : 5198
+# FlipFlops/Latches                : 5199
 #      FD                          : 589
 #      FDC                         : 150
-#      FDCE                        : 794
+#      FDCE                        : 795
 #      FDE                         : 595
 #      FDP                         : 530
 #      FDPE                        : 1843
@@ -2856,7 +2853,7 @@ Selected Device : 5vlx110tff1136-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            5198  out of  69120     7%  
+ Number of Slice Registers:            5199  out of  69120     7%  
  Number of Slice LUTs:                 8581  out of  69120    12%  
     Number used as Logic:              5751  out of  69120     8%  
     Number used as Memory:             2830  out of  17920    15%  
@@ -2864,10 +2861,10 @@ Slice Logic Utilization:
        Number used as SRL:              782
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:  11525
-   Number with an unused Flip Flop:    6327  out of  11525    54%  
-   Number with an unused LUT:          2944  out of  11525    25%  
-   Number of fully used LUT-FF pairs:  2254  out of  11525    19%  
+ Number of LUT Flip Flop pairs used:  11526
+   Number with an unused Flip Flop:    6327  out of  11526    54%  
+   Number with an unused LUT:          2945  out of  11526    25%  
+   Number of fully used LUT-FF pairs:  2254  out of  11526    19%  
    Number of unique control sets:       370
 
 IO Utilization: 
@@ -2908,7 +2905,7 @@ cdiv/clock_out1                                                         | BUFG  
 cicon/U0/U_ICON/I_YES_BSCAN.U_BS/iDRCK_LOCAL                            | BUFG                                                                                                                              | 509   |
 cicon/CONTROL0<13>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[9].U_LCE:O)| NONE(*)(cila/U0/I_NO_D.U_ILA/U_STAT/U_DIRTY_LDC)                                                                                  | 1     |
 cicon/U0/iUPDATE_OUT                                                    | NONE(cicon/U0/U_ICON/U_iDATA_CMD)                                                                                                 | 1     |
-ac97_bitclk                                                             | BUFGP                                                                                                                             | 358   |
+ac97_bitclk                                                             | BUFGP                                                                                                                             | 359   |
 cont/statediv/clock_out1                                                | BUFG                                                                                                                              | 24    |
 audio/freq3div/clock_out1                                               | BUFG                                                                                                                              | 21    |
 audio/lendiv/clock_out1                                                 | BUFG                                                                                                                              | 27    |
@@ -2930,7 +2927,7 @@ Asynchronous Control Signals Information:
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Control Signal                                                                                     | Buffer(FF name)                                                                                                                                                                         | Load  |
 ---------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
-GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1683  |
+GPIO_SW_C                                                                                          | IBUF                                                                                                                                                                                    | 1684  |
 cila/N1(cila/XST_VCC:P)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_CAPSTOR/I_CASE1.I_YES_TB.U_TRACE_BUFFER/U_RAM/I_V5.U_CS_BRAM_CASCADE_V5/I_DEPTH_LTEQ_32K.U_SBRAM_0/I_B36KGT0.G_RAMB36[0].u_ramb36/U_RAMB36)                 | 1000  |
 cila/N0(cila/XST_GND:G)                                                                            | NONE(cila/U0/I_NO_D.U_ILA/U_RST/U_POR)                                                                                                                                                  | 500   |
 cicon/CONTROL0<35>(cicon/U0/U_ICON/U_CTRL_OUT/F_NCP[0].F_CMD[15].U_HCE:O)                          | NONE(cila/U0/I_NO_D.U_ILA/U_TRIG/U_TM/G_NMU[15].U_M/U_MU/I_MUT_GANDX.U_match/I_CS_GANDX.U_CS_GANDX_SRL/I_V5.U_CS_GANDX_SRL_V5/G_GAND_DLY1[0].I_IN_RANGE.I_USE_INPUT_REG_NE0.U_GAND_DLY1)| 256   |
@@ -3018,7 +3015,7 @@ Delay:               9.682ns (Levels of Logic = 16)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'cdiv/clock_out1'
   Clock period: 51.828ns (frequency: 19.295MHz)
-  Total number of paths / destination ports: 33647617038 / 10024
+  Total number of paths / destination ports: 33647617006 / 9992
 -------------------------------------------------------------------------
 Delay:               51.828ns (Levels of Logic = 66)
   Source:            bpmod/bp_addr_2 (FF)
@@ -3479,7 +3476,7 @@ Offset:              5.292ns (Levels of Logic = 8)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ac97_bitclk'
-  Total number of paths / destination ports: 2417 / 275
+  Total number of paths / destination ports: 2426 / 276
 -------------------------------------------------------------------------
 Offset:              4.332ns (Levels of Logic = 6)
   Source:            GPIO_DIP_SW3 (PAD)
@@ -3767,14 +3764,14 @@ WARNING:Xst:616 - Invalid property "SYN_BLACK_BOX 1": Did not attach to cicon.
 WARNING:Xst:616 - Invalid property "SYN_NOPRUNE 1": Did not attach to cicon.
 
 
-Total REAL time to Xst completion: 174.00 secs
-Total CPU time to Xst completion: 173.23 secs
+Total REAL time to Xst completion: 172.00 secs
+Total CPU time to Xst completion: 171.63 secs
  
 --> 
 
-Total memory usage is 572516 kilobytes
+Total memory usage is 572708 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  270 (   0 filtered)
+Number of warnings :  267 (   0 filtered)
 Number of infos    :   98 (   0 filtered)
 
