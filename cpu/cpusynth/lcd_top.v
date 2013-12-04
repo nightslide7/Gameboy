@@ -68,14 +68,22 @@ module lcd_top(CLK_33MHZ_FPGA,
 			dvi_de, 		//DIV Outputs
 			dvi_reset_b;		//DIV Outputs
    inout 		dvi_sda, dvi_scl;
-   output wire 		HDR1_2, HDR1_6, HDR1_8, HDR1_10;
+
+   // Cartridge address lines   
    output wire 		HDR1_12, HDR1_14, HDR1_16, HDR1_18;
    output wire 		HDR1_20, HDR1_22, HDR1_24, HDR1_26;
    output wire 		HDR1_28, HDR1_30, HDR1_32, HDR1_34;
    output wire 		HDR1_36, HDR1_38, HDR1_40, HDR1_42;
-   input 		HDR1_44, HDR1_46, HDR1_48, HDR1_50;
-   input 		HDR1_52, HDR1_54, HDR1_56, HDR1_58;
+
+   // Cartridge data lines
+   inout 		HDR1_44, HDR1_46, HDR1_48, HDR1_50;
+   inout 		HDR1_52, HDR1_54, HDR1_56, HDR1_58;
+
+   // Cartridge control lines
+   output wire 		HDR1_2, HDR1_6, HDR1_8, HDR1_10;
    output wire 		HDR1_60, HDR1_64;
+
+   // Controller lines
    input wire 		HDR2_2_SM_8_N;
    output wire 		HDR2_4_SM_8_P, HDR2_6_SM_7_N;
    wire   clock;
@@ -534,26 +542,47 @@ module lcd_top(CLK_33MHZ_FPGA,
 		  );
 
    /* The cartridge */
-   wire        addr_in_cart;
+   wire        addr_in_cart, addr_in_cram;
   /* assign addr_in_cart = (~bootstrap_reg_data[0]) ?
                          (16'h104 <= addr_ext) && 
                          (addr_ext <= `MEM_CART_END) :
                          ((`MEM_CART_START <= addr_ext) && 
                          (addr_ext <= `MEM_CART_END));*/
+   assign addr_in_cram = ((`MEM_CRAM_START <= addr_ext) && 
+                          (addr_ext <= `MEM_CRAM_END));
+   
    assign addr_in_cart = (bootstrap_reg_data[0]) ?
-                         ((`MEM_CART_START <= addr_ext) &&
-                          (addr_ext <= `MEM_CART_END)) :
-                         ((16'h104 <= addr_ext) &&
-                          (addr_ext <= `MEM_CART_END));
+                         // Cart ROM
+                         (((`MEM_CART_START <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END)) |
+                          // OR cart RAM
+                          addr_in_cram) :
+                         // Cart ROM minus the bootstrap
+                         (((16'h104 <= addr_ext) &&
+                          (addr_ext <= `MEM_CART_END)) |
+                          // OR cart RAM
+                          addr_in_cram);
    
    wire [7:0]  cart_data;
    wire [15:0] cart_address;
    wire        cart_w_enable_l, cart_r_enable_l, cart_reset_l, cart_cs_sram_l;
+   
    assign cart_address = addr_ext;
-   assign cart_w_enable_l = 1;
-   assign cart_r_enable_l = 0;
-   assign cart_reset_l = 1;
-   assign cart_cs_sram_l = 1;
+   
+   assign cart_w_enable_l = ~(mem_we & addr_in_cart);
+   assign cart_r_enable_l = ~(mem_re & addr_in_cart);
+   assign cart_reset_l = ~(reset);
+   assign cart_cs_sram_l = ~(addr_in_cram);
+
+   tristate #(8) gating_cart_in(.out(data_ext),
+                                .in({HDR1_58, HDR1_56, HDR1_54, HDR1_52, HDR1_50, HDR1_48,
+                HDR1_46, HDR1_44}),
+                                .en(addr_in_cart & mem_re));
+
+   tristate #(8) gating_cart_out(.out({HDR1_58, HDR1_56, HDR1_54, HDR1_52, HDR1_50, HDR1_48,
+                HDR1_46, HDR1_44}),
+                                 .in(data_ext),
+                                 .en(addr_in_cart & mem_we));
    
    cartridge cart (/*AUTOINST*/
 		   // Outputs
@@ -693,9 +722,9 @@ module lcd_top(CLK_33MHZ_FPGA,
    tristate #(8) gating_boostrap_reg(.out(data_ext),
                                      .in(bootstrap_reg_data),
                                      .en(addr_in_bootstrap_reg & ~mem_we));
-   tristate #(8) gating_cart(.out(data_ext),
+/*   tristate #(8) gating_cart(.out(data_ext),
                              .in(cart_data),
-                             .en(addr_in_cart & ~mem_we));
+                             .en(addr_in_cart & ~mem_we));*/
    // Magic controller disable bits: 10101010 (AA)
    wire [7:0]  cont_reg_in;
    assign cont_reg_in = (bp_addr_part_in == 8'b10101010) ?
