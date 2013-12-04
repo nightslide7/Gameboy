@@ -744,9 +744,7 @@ module lcd_top(CLK_33MHZ_FPGA,
                           .clock(cpu_clock));
 
    wire [39:0] sound3, sound2, sound1;
-   wire [127:0] waveform;
 
-   assign waveform = chipscope_signals[247:120];
    assign sound3 = chipscope_signals[119:80];
    assign sound2 = chipscope_signals[79:40];
    assign sound1 = chipscope_signals[39:0];
@@ -768,7 +766,6 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [39 : 0] TRIG12;
    wire [39 : 0] TRIG13;
    wire [39 : 0] TRIG14;
-   wire [127 : 0] TRIG15;
    
    assign TRIG0 = regs_data[15:0];
    assign TRIG1 = {A_data, F_data, regs_data[79:16]};
@@ -800,7 +797,6 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign TRIG12 = sound1;
    assign TRIG13 = sound2;
    assign TRIG14 = sound3;
-   assign TRIG15 = waveform;
    
    
 /*   assign wram_data_in = data_ext;
@@ -836,8 +832,7 @@ module lcd_top(CLK_33MHZ_FPGA,
           .TRIG11(TRIG11),
           .TRIG12(TRIG12),
           .TRIG13(TRIG13),
-          .TRIG14(TRIG14),
-          .TRIG15(TRIG15));
+          .TRIG14(TRIG14));
 
    chipscope_icon
      cicon(.CONTROL0(CONTROL0));

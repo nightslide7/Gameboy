@@ -18,8 +18,8 @@ module rotary_controller(
       end
       else begin
 	 state <= next_state;
-	 if (inc && (level != 4'hf)) level <= level + 1;
-	 else if (dec && (level != 0)) level <= level - 1;
+	 if (inc && (level != 4'hF)) level <= level + 1;
+	 else if (dec && (level != 4'hC)) level <= level - 1;
       end
    end
 
