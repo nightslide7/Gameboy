@@ -159,8 +159,8 @@ module AudioGen(
 		input [3:0]       ch1_level,
 		input [3:0]       ch2_level,
 		input [3:0]       ch3_level,
-		output reg [19:0]     ac97_out_slot3,
-		output reg [19:0]     ac97_out_slot4,
+		output wire [19:0]     ac97_out_slot3,
+		output wire [19:0]     ac97_out_slot4,
 		input             SO1_ch1_enable,
 		input             SO1_ch2_enable,
 		input             SO1_ch3_enable,
@@ -216,7 +216,7 @@ module AudioGen(
    end // always @ (posedge ac97_bitclk)
   */ 
    // Left Audio Channel
-   always @(*) begin
+/*TESTING   always @(*) begin
       if (master_sound_enable) begin
 	 if (SO1_ch1_enable && SO1_ch2_enable && SO1_ch3_enable) begin
 	    if ((ch1_level != 4'b0) && (ch2_level !=4'b0) &&
@@ -293,14 +293,15 @@ module AudioGen(
       else begin
 	 ac97_out_slot3 = 0;
       end // else: !if(master_sound_enable)
-   end // always @ (*)
-/*   assign ac97_out_slot3 = square_wave_enable ? ((ch1_level+ch2_level+ch3_level)<<(level)) : 
-			   0;
+   end // always @ (*)*/
+   /*TESTING*/
+   assign ac97_out_slot3 = ((ch1_level+ch2_level)<<(level)); //+ch3_level
+
    // Right Audio Channel
-   assign ac97_out_slot4 = ac97_out_slot3;*/
+   assign ac97_out_slot4 = ac97_out_slot3;
       
    // Right Audio Channel
-   always @(*) begin
+/*   always @(*) begin
       if (master_sound_enable) begin
 	 if (SO2_ch1_enable && SO2_ch2_enable && SO2_ch3_enable) begin
 	    if ((ch1_level != 4'b0) && (ch2_level !=4'b0) &&
@@ -377,7 +378,7 @@ module AudioGen(
       else begin
 	 ac97_out_slot4 = 0;
       end // else: !if(master_sound_enable)
-   end // always @ (*)
+   end // always @ (*)*/
 endmodule
 
 

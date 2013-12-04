@@ -17,11 +17,11 @@
  * Calculates the frequency of samples using "ch3_freq_cntrl_clk"
  * 
  */
-module WaveformPlayer (input clk,
+module WaveformPlayer (input ac97_bitclk,
 		       input ch3_enable,
 		       input [7:0] ch3_length_data,
 		       input [1:0] ch3_output_level,
-		       input ch3_reset, //initializer
+		       input ch3_initialize,
 		       input ch3_dont_loop,
 		       input [10:0] ch3_frequency_data,
 		       input [127:0] ch3_samples,
@@ -37,26 +37,42 @@ module WaveformPlayer (input clk,
    reg [11:0] 	       freq_counter = 0;
    reg [3:0] 	       reg_level; //synchronous level
 
+   reg 		       last_initialize, initialized_flag;
+   reg 		       length_got, freq_got;   
+
    // The following numbers are specific to the Gameboy CH 3
    assign true_len = 9'd256 - ch3_length_data;
    assign true_freq = 12'd2048 - ch3_frequency_data;
 
+   always@(posedge ac97_bitclk) begin
+      if (last_initialize == 1'b0 && ch3_initialize == 1'b1) begin
+	 initialized_flag <= 1; //if trigger event occured, reset things
+      end
+      if (length_got & freq_got) begin
+	 initialized_flag <= 0;
+      end
+      last_initialize <= ch3_initialize;
+   end
+
    always@(posedge length_cntrl_clk) begin //play for specified length
-      if (~ch3_reset) begin
+      if (initialized_flag || ~ch3_enable) begin
 	 len_counter <= 0;
+	 length_got <= 1;
       end
       //even if ch3_enable not asserted, still count up
       else if (len_counter <= true_len+1) begin //just past true_len
 	 len_counter <= len_counter + 1;
+	 length_got <= 0;
       end
    end
 
    always@(posedge ch3_freq_cntrl_clk) begin
-      if (~ch3_reset || ~ch3_enable) begin
-	 reg_level <= 0;
+      if (initialized_flag || ~ch3_enable) begin
+//	 reg_level <= 0;
 	 index_hi <= 8'd7;
 	 upper_half <= 1;
 	 freq_counter <= 0;
+	 freq_got <= 1;
       end
       else begin
 	 // Change samples at specified frequency
@@ -71,8 +87,8 @@ module WaveformPlayer (input clk,
 	    freq_counter <= freq_counter + 12'b1;
 	 end
 	 // Play only for specified length
-	 if ((ch3_dont_loop && (len_counter <= true_len)) ||
-	     ~ch3_dont_loop) begin
+	 if (((ch3_dont_loop && (len_counter <= true_len)) ||
+	     ~ch3_dont_loop) && true_freq != 0) begin
 	       if (index_hi <= 8'd127) begin
 		  if (upper_half) begin
 		     reg_level <= ch3_samples[index_hi -: 3]; //4 bits at a time
@@ -81,13 +97,14 @@ module WaveformPlayer (input clk,
 		     reg_level <= ch3_samples[index_hi-4 -: 3];
 		  end
 	       end
-	    else begin
-	       index_hi <= 8'd7; //back to first sample
-	    end
+	       else begin
+		  index_hi <= 8'd7; //back to first sample
+	       end
 	 end
-	 else if (len_counter > true_len) begin //stop output
+	 else begin //stop output
 	    reg_level <= 0;
 	 end
+	 freq_got <= 0;
       end // else: !if(ch3_reset)
    end // always@ (posedge clk)
 
@@ -139,7 +156,7 @@ module SquareWave(
    reg [3:0] 	       reg_level; //controlled by freq controller
    reg [4:0] 	       env_counter = 1;
    reg [3:0] 	       reg_vol; // controlled by volume envelope	       
-   reg [3:0] 	       sweep_counter, num_sweeps_done;
+   reg [3:0] 	       sweep_counter;
 
    reg 		       last_initialize, initialized_flag;
    reg 		       length_got, freq_got, sweep_got, env_got;
@@ -177,12 +194,12 @@ module SquareWave(
       end
       // Play only for specified length
       else if ((dont_loop && (len_counter <= true_len)) || ~dont_loop &&
-	       true_freq != 0) begin
+	       true_freq != 12'd0 && true_freq <= 12'd2048) begin
 	 case (wave_duty)
 	   /** NOTE: The PAN Docs are confusing on this point. They seem to
 	    *  imply that the % duty cycle is the amount of time the wave
 	    *  is LOW. This doesn't make logical sense but I've implemented
-	    *  it this way anyway. It may need to change later.
+	    *  it this way anyway. It matches the emulator so I trust it.
 	    */
 	   2'd0: begin
 	      if (freq_counter == (true_freq>>3)) begin //12.5% duty cycle
@@ -249,7 +266,6 @@ module SquareWave(
       if (initialized_flag) begin
 	 true_freq <= 12'd2048 - frequency_data;//Gameboy specific
 	 sweep_counter <= 4'b1;
-	 num_sweeps_done <= 4'b0;
 	 sweep_got <= 1;
       end
       else begin
@@ -258,29 +274,31 @@ module SquareWave(
 	    sweep_counter <= 4'b1;
 	 end
 	 else begin
-	    if (sweep_counter==sweep_time &&
-		num_sweeps_done<num_sweep_shifts) begin
+	    // NOTE: num_sweep shifts is not the number of shifts to perform!!!
+	    if (sweep_counter==sweep_time) begin
 	       /** NOTE: This is backwards from what I would expect. The sound
 		*  increases in frequency when I subtract from true_freq
 		*  and decreases when I add. This is strange, but it seems
 		*  to work otherwise.
 		*/
 	       if (~sweep_decreasing) begin
-		  true_freq <= true_freq - (true_freq>>num_sweep_shifts);
+		  if (true_freq >= (true_freq>>num_sweep_shifts)) begin
+		     true_freq <= true_freq - (true_freq>>num_sweep_shifts);
+		  end
+		  else begin
+		     true_freq <= 12'd0;
+		  end
 	       end
 	       else begin
-		  if ((true_freq+(true_freq>>num_sweep_shifts))<12'd2048) begin
-		    true_freq <= true_freq + (true_freq>>num_sweep_shifts);
-		  end
+		  if (true_freq + (true_freq>>num_sweep_shifts) < 12'd2048)
+		    begin
+		       true_freq <= true_freq + (true_freq>>num_sweep_shifts);
+		    end
 		  else begin
 		     true_freq <= 12'd0;
 		  end
 	       end // else: !if(~sweep_decreasing)
 	       sweep_counter <= 4'b1;
-	       num_sweeps_done <= num_sweeps_done + 4'b1;
-	    end
-	    else if (num_sweeps_done >= num_sweep_shifts) begin
-	       true_freq <= 12'd0;
 	    end
 	    else begin
 	       sweep_counter <= sweep_counter + 4'b1;

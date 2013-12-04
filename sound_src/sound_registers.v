@@ -251,9 +251,9 @@ module sound_registers
    reg [7:0]  WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38, WR37, WR36;
    reg [7:0]  WR35, WR34, WR33, WR32, WR31, WR30;
    // Samples are played zero index first
-   assign ch3_samples = {WR30, WR31, WR32, WR33, WR34, WR35, WR36,
-			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
-			 WR3E, WR3F};
+   assign ch3_samples = 128'h0123456789ABCDEFFEDCBA9876543210;//{WR30, WR31, WR32, WR33, WR34, WR35, WR36,
+//			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
+//			 WR3E, WR3F};
    /* DEPRECATED
    reg [3:0]  ch3_sample0 = MEMORY[FF3F][7:4];
    reg [3:0]  ch3_sample1 = MEMORY[FF3F][4:0];
