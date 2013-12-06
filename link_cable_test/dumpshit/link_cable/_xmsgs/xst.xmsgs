@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 30 </arg>&apos;<arg fmt="%s" index="2">SC</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 37 </arg>&apos;<arg fmt="%s" index="2">send_clock</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 43 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">internal_clock</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 48 </arg>&apos;<arg fmt="%s" index="2">sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 52 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 57 </arg>&apos;<arg fmt="%s" index="2">sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 57 </arg>&apos;<arg fmt="%s" index="2">next_sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 58 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 59 </arg>&apos;<arg fmt="%s" index="2">sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 61 </arg>&apos;<arg fmt="%s" index="2">next_sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 63 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 63 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 67 </arg>&apos;<arg fmt="%s" index="2">next_sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 73 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 74 </arg>&apos;<arg fmt="%s" index="2">counter</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 87 </arg>&apos;<arg fmt="%s" index="2">next_sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 88 </arg>&apos;<arg fmt="%s" index="2">send_clock</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 91 </arg>&apos;<arg fmt="%s" index="2">next_sck_state</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 92 </arg>&apos;<arg fmt="%s" index="2">send_clock</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="new" ><arg fmt="%s" index="1">&quot;../../../link_cable.v&quot; line 96 </arg>&apos;<arg fmt="%s" index="2">send_clock</arg>&apos; has not been declared
+</msg>
+
+</messages>
+

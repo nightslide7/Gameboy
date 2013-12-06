@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="30" />
+   <wvobject fp_name="/tb/HDR2_40_SM_6_P" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HDR2_40_SM_6_P</obj_property>
+      <obj_property name="ObjectShortName">HDR2_40_SM_6_P</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/HDR2_46_SM_12_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HDR2_46_SM_12_N</obj_property>
+      <obj_property name="ObjectShortName">HDR2_46_SM_12_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/data_ext" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data_ext[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_ext[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/addr_ext" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_ext[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_ext[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/addr_in_SB" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_in_SB</obj_property>
+      <obj_property name="ObjectShortName">addr_in_SB</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/addr_in_SC" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_in_SC</obj_property>
+      <obj_property name="ObjectShortName">addr_in_SC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/link_cable_interrupt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">link_cable_interrupt</obj_property>
+      <obj_property name="ObjectShortName">link_cable_interrupt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/cpu_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cpu_clock</obj_property>
+      <obj_property name="ObjectShortName">cpu_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/HDR2_42_SM_14_N" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HDR2_42_SM_14_N</obj_property>
+      <obj_property name="ObjectShortName">HDR2_42_SM_14_N</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/mem_we" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mem_we</obj_property>
+      <obj_property name="ObjectShortName">mem_we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/mem_re" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">mem_re</obj_property>
+      <obj_property name="ObjectShortName">mem_re</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clock_gate" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clock_gate</obj_property>
+      <obj_property name="ObjectShortName">clock_gate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ext_clock</obj_property>
+      <obj_property name="ObjectShortName">ext_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addr[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/data_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">data_en</obj_property>
+      <obj_property name="ObjectShortName">data_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/addr_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_en</obj_property>
+      <obj_property name="ObjectShortName">addr_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/internal_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">internal_clock</obj_property>
+      <obj_property name="ObjectShortName">internal_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/data_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">data_in</obj_property>
+      <obj_property name="ObjectShortName">data_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/using_external_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">using_external_clock</obj_property>
+      <obj_property name="ObjectShortName">using_external_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/link_cable_interrupt" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">link_cable_interrupt</obj_property>
+      <obj_property name="ObjectShortName">link_cable_interrupt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/data_out" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">data_out</obj_property>
+      <obj_property name="ObjectShortName">data_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/sck_state" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sck_state</obj_property>
+      <obj_property name="ObjectShortName">sck_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/next_sck_state" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">next_sck_state</obj_property>
+      <obj_property name="ObjectShortName">next_sck_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/send_clock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">send_clock</obj_property>
+      <obj_property name="ObjectShortName">send_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/SB" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SB[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SB[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/SC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SC[7:0]</obj_property>
+      <obj_property name="ObjectShortName">SC[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>

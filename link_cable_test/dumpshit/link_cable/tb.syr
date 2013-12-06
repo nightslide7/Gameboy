@@ -1,0 +1,157 @@
+Release 14.3 - xst P.40xd (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: tb.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "tb.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "tb"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : tb
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Off
+Reduce Control Sets                : Off
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../../../my_clock_divider.v" in library work
+Compiling verilog file "../../../cpu/src/cpu.v" in library work
+Compiling verilog include file "../../../cpu.vh"
+Module <my_clock_divider> compiled
+Module <cpu> compiled
+Module <rn_decode> compiled
+Module <tristate> compiled
+Module <register> compiled
+Module <buffer> compiled
+Compiling verilog file "../../../link_cable.v" in library work
+Module <nobus_buffer> compiled
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 30 'SC' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 37 'send_clock' has not been declared
+ERROR:HDLCompilers:27 - "../../../link_cable.v" line 43 Illegal redeclaration of 'internal_clock'
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 48 'sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 52 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 57 'sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 57 'next_sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 58 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 59 'sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 61 'next_sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 63 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 63 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 67 'next_sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 73 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 74 'counter' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 87 'next_sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 88 'send_clock' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 91 'next_sck_state' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 92 'send_clock' has not been declared
+ERROR:HDLCompilers:28 - "../../../link_cable.v" line 96 'send_clock' has not been declared
+Compiling verilog file "../../tb.v" in library work
+Module <link_cable> compiled
+Module <tb> compiled
+Analysis of file <"tb.prj"> failed.
+--> 
+
+
+Total memory usage is 615832 kilobytes
+
+Number of errors   :   20 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

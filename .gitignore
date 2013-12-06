@@ -202,3 +202,5 @@ GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.bgn
  	    GAMEBOY_TOP_SIMPLE/xst/work/vlg76/_a_c97_conf.bin
  	    GAMEBOY_TOP_SIMPLE/xst/work/vlg76/_a_c_link.bin
 GAMEBOY_TOP_SIMPLE/usage_statistics_webtalk.html
+GAMEBOY_TOP/ipcore_dir/tmp/_cg
+GAMEBOY_TOP_SIMPLE/ipcore_dir/tmp/_cg

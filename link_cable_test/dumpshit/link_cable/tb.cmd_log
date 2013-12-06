@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb.xst" -ofn "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb.syr" 
