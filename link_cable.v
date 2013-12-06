@@ -13,7 +13,7 @@ module link_cable (/*AUTOARG*/
    HDR2_46_SM_12_N, data_ext, addr_ext,
    // Inputs
    cpu_clock, reset, HDR2_42_SM_14_N, addr_in_SB,
-   addr_in_SC, mem_we, mem_re
+   addr_in_SC, mem_we, mem_re, link_chipscope
    );
 
    input cpu_clock;
@@ -28,6 +28,7 @@ module link_cable (/*AUTOARG*/
    input 	mem_we;
    input 	mem_re;
    output reg 	link_cable_interrupt;
+   output wire [19:0] link_chipscope;
 
    wire internal_clock;
    wire data_in;
@@ -36,7 +37,9 @@ module link_cable (/*AUTOARG*/
    reg 	sck_state, next_sck_state, send_clock;
    reg [4:0] counter;
    reg [7:0] SB, SC;
-   
+
+   assign link_chipscope = {SB, SC, link_cable_interrupt, HDR2_40_SM_6_P,
+			    HDR2_42_SM_14_N, HDR2_46_SM_12_N};
    assign data_in = HDR2_42_SM_14_N;
    assign HDR2_40_SM_6_P = data_out;
    assign using_external_clock = ~SC[0];

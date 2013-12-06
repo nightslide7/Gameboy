@@ -323,6 +323,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        timer_reg_addr; // addr_ext == timer MMIO address
    
    wire        dma_mem_re, dma_mem_we, cpu_mem_disable;
+   wire [7:0]  dma_chipscope;
    
    dma gb80_dma(.dma_mem_re(dma_mem_re),
                 .dma_mem_we(dma_mem_we),
@@ -332,7 +333,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .mem_re(cpu_mem_re),
                 .cpu_mem_disable(cpu_mem_disable),
                 .clock(cpu_clock),
-                .reset(reset));
+                .reset(reset),
+		.dma_chipscope(dma_chipscope));
 
    assign mem_we = cpu_mem_we | dma_mem_we;
    assign mem_re = cpu_mem_re | dma_mem_re;
@@ -603,6 +605,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_6		(HDR1_6),
 		   .HDR1_8		(HDR1_8),
 		   .HDR1_10		(HDR1_10),
+		   .HDR1_60		(HDR1_60),
+		   .HDR1_64		(HDR1_64),
 		   .HDR1_12		(HDR1_12),
 		   .HDR1_14		(HDR1_14),
 		   .HDR1_16		(HDR1_16),
@@ -619,10 +623,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_38		(HDR1_38),
 		   .HDR1_40		(HDR1_40),
 		   .HDR1_42		(HDR1_42),
-		   .HDR1_60		(HDR1_60),
-		   .HDR1_64		(HDR1_64),
-		   .cart_data		(cart_data[7:0]),
-		   // Inputs
+		   // Inouts
 		   .HDR1_44		(HDR1_44),
 		   .HDR1_46		(HDR1_46),
 		   .HDR1_48		(HDR1_48),
@@ -631,6 +632,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_54		(HDR1_54),
 		   .HDR1_56		(HDR1_56),
 		   .HDR1_58		(HDR1_58),
+		   .cart_data		(cart_data[7:0]),
+		   // Inputs
 		   .cart_address	(cart_address[15:0]),
 		   .clock		(clock),
 		   .cart_w_enable_l	(cart_w_enable_l),
@@ -665,11 +668,13 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        addr_in_SB, addr_in_SC;
    assign addr_in_SB = (addr_ext == `MMIO_SB);
    assign addr_in_SC = (addr_ext == `MMIO_SC);
+   wire [19:0] link_chipscope;
    
    link_cable lcable(/*AUTOINST*/
 		     // Outputs
 		     .HDR2_40_SM_6_P	(HDR2_40_SM_6_P),
 		     .link_cable_interrupt(link_cable_interrupt),
+		     .link_chipscope	(link_chipscope[19:0]),
 		     // Inouts
 		     .HDR2_46_SM_12_N	(HDR2_46_SM_12_N),
 		     .data_ext		(data_ext[7:0]),
@@ -831,7 +836,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [31 : 0] TRIG10;
    wire [31 : 0] TRIG11;
    wire [39 : 0] TRIG12;
-   wire [127: 0] TRIG13;
+   wire [19 : 0] TRIG13;
+   wire [7 : 0]  TRIG14;
    
    assign TRIG0 = regs_data[15:0];
    assign TRIG1 = {A_data, F_data, regs_data[79:16]};
@@ -861,7 +867,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign TRIG10 = {16'h0, high_mem_addr[15:0]};
    assign TRIG11 = {control_regs, high_mem_data[7:0]};
    assign TRIG12 = sound3;
-   assign TRIG13 = waveform;
+   assign TRIG13 = link_chipscope;
+   assign TRIG14 = dma_chipscope;   
    
 /*   assign wram_data_in = data_ext;
    assign wram_we = addr_in_wram & mem_we;
@@ -895,7 +902,8 @@ module lcd_top(CLK_33MHZ_FPGA,
           .TRIG10(TRIG10),
           .TRIG11(TRIG11),
           .TRIG12(TRIG12),
-          .TRIG13(TRIG13));
+          .TRIG13(TRIG13),
+	  .TRIG14(TRIG14));
 
    chipscope_icon
      cicon(.CONTROL0(CONTROL0));
