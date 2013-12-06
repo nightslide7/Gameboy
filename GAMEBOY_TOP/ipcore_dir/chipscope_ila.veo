@@ -8,7 +8,7 @@
 // \   \   \/     Version    : 14.3
 //  \   \         Application: Xilinx CORE Generator
 //  /   /         Filename   : chipscope_ila.veo
-// /___/   /\     Timestamp  : Tue Dec 03 22:56:25 EST 2013
+// /___/   /\     Timestamp  : Wed Dec 04 11:58:22 EST 2013
 // \   \  /  \
 //  \___\/\___\
 //
@@ -36,8 +36,7 @@ chipscope_ila YourInstanceName (
     .TRIG10(TRIG10), // IN BUS [31:0]
     .TRIG11(TRIG11), // IN BUS [31:0]
     .TRIG12(TRIG12), // IN BUS [39:0]
-    .TRIG13(TRIG13), // IN BUS [39:0]
-    .TRIG14(TRIG14) // IN BUS [39:0]
+    .TRIG13(TRIG13) // IN BUS [127:0]
 );
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------

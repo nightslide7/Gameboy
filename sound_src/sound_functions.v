@@ -16,6 +16,8 @@
  * Calculates length of sound from 256Hz timer "length_cntrl_clk"
  * Calculates the frequency of samples using "ch3_freq_cntrl_clk"
  * 
+ * Plays upper half of byte then lower half of byte.
+ * 
  */
 module WaveformPlayer (input ac97_bitclk,
 		       input ch3_enable,
@@ -27,6 +29,7 @@ module WaveformPlayer (input ac97_bitclk,
 		       input [127:0] ch3_samples,
 		       input length_cntrl_clk,
 		       input ch3_freq_cntrl_clk,
+		       input initialized,
 		       output reg [3:0] level
 		       );
    reg [7:0] 	       index_hi = 8'd7; //MSB of current sample pair
@@ -37,7 +40,7 @@ module WaveformPlayer (input ac97_bitclk,
    reg [11:0] 	       freq_counter = 0;
    reg [3:0] 	       reg_level; //synchronous level
 
-   reg 		       last_initialize, initialized_flag;
+   reg 		       last_initialized, initialized_flag;
    reg 		       length_got, freq_got;   
 
    // The following numbers are specific to the Gameboy CH 3
@@ -45,17 +48,17 @@ module WaveformPlayer (input ac97_bitclk,
    assign true_freq = 12'd2048 - ch3_frequency_data;
 
    always@(posedge ac97_bitclk) begin
-      if (last_initialize == 1'b0 && ch3_initialize == 1'b1) begin
+      if (last_initialized == 1'b0 && initialized == 1'b1) begin
 	 initialized_flag <= 1; //if trigger event occured, reset things
       end
       if (length_got & freq_got) begin
 	 initialized_flag <= 0;
       end
-      last_initialize <= ch3_initialize;
+      last_initialized <= initialized;
    end
 
    always@(posedge length_cntrl_clk) begin //play for specified length
-      if (initialized_flag || ~ch3_enable) begin
+      if (initialized_flag) begin
 	 len_counter <= 0;
 	 length_got <= 1;
       end
@@ -67,17 +70,17 @@ module WaveformPlayer (input ac97_bitclk,
    end
 
    always@(posedge ch3_freq_cntrl_clk) begin
-      if (initialized_flag || ~ch3_enable) begin
-//	 reg_level <= 0;
+      if (initialized_flag) begin
+	 //	 reg_level <= 0;
 	 index_hi <= 8'd7;
-	 upper_half <= 1;
+	 upper_half <= 0;
 	 freq_counter <= 0;
 	 freq_got <= 1;
       end
       else begin
 	 // Change samples at specified frequency
 	 if (freq_counter == true_freq) begin
-	    if (~upper_half) begin
+	    if (upper_half) begin
 	       index_hi <= index_hi + 8'd8; //play next sample pair
 	    end
 	    upper_half <= ~upper_half;
@@ -87,31 +90,35 @@ module WaveformPlayer (input ac97_bitclk,
 	    freq_counter <= freq_counter + 12'b1;
 	 end
 	 // Play only for specified length
-	 if (((ch3_dont_loop && (len_counter <= true_len)) ||
-	     ~ch3_dont_loop) && true_freq != 0) begin
-	       if (index_hi <= 8'd127) begin
-		  if (upper_half) begin
-		     reg_level <= ch3_samples[index_hi -: 3]; //4 bits at a time
-		  end
-		  else begin
-		     reg_level <= ch3_samples[index_hi-4 -: 3];
-		  end
+	 if ((ch3_dont_loop && (len_counter <= true_len)) ||
+	      ~ch3_dont_loop && true_freq != 0) begin
+	    if (index_hi <= 8'd127) begin
+	       if (upper_half) begin
+		  reg_level <= {ch3_samples[index_hi],ch3_samples[index_hi-1],
+				ch3_samples[index_hi-2],
+				ch3_samples[index_hi-3]}; //4 bits at a time
 	       end
 	       else begin
-		  index_hi <= 8'd7; //back to first sample
+		  reg_level <= {ch3_samples[index_hi-4],ch3_samples[index_hi-5],
+				ch3_samples[index_hi-6],
+				ch3_samples[index_hi-7]};
 	       end
+	    end
+	    else begin
+	       index_hi <= 8'd7; //back to first sample
+	    end
 	 end
 	 else begin //stop output
 	    reg_level <= 0;
 	 end
 	 freq_got <= 0;
-      end // else: !if(ch3_reset)
+      end
    end // always@ (posedge clk)
 
    always@(*) begin
       //adjust volume
-      if (ch3_output_level != 2'b0) begin
-	 level = (reg_level >> (ch3_output_level - 1));
+      if (ch3_output_level != 2'b0 && ch3_enable) begin
+	 level = (reg_level) >> (ch3_output_level - 1);
       end
       else begin
 	 level = 0;
@@ -146,6 +153,7 @@ module SquareWave(
                   input        initialize,
                   input        dont_loop,
                   input [10:0] frequency_data,
+		  input        initialized,
 		  output wire [3:0] level
                   );
 
@@ -158,21 +166,21 @@ module SquareWave(
    reg [3:0] 	       reg_vol; // controlled by volume envelope	       
    reg [3:0] 	       sweep_counter;
 
-   reg 		       last_initialize, initialized_flag;
+   reg 		       last_initialized, initialized_flag;
    reg 		       length_got, freq_got, sweep_got, env_got;
    
    assign true_len = 7'd64 - length_data;
-//   assign level = ~initialize? 4'b0 : reg_level;
+//   assign level = ~initialize? 4'b0 : reg_level; DON'T DO THAT!!!
    assign level = reg_level;
 
    always@(posedge ac97_bitclk) begin
-      if (last_initialize == 1'b0 && initialize == 1'b1) begin
+      if (last_initialized == 1'b0 && initialized == 1'b1) begin
 	 initialized_flag <= 1; //if trigger event occured, reset things
       end
       if (length_got & sweep_got & env_got & freq_got) begin
 	 initialized_flag <= 0;
       end
-      last_initialize <= initialize;
+      last_initialized <= initialized;
    end
    
    always@(posedge length_cntrl_clk) begin //play for specified length

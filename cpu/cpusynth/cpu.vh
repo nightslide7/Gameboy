@@ -123,6 +123,8 @@
 `define MMIO_TAC 16'hff07
 `define MMIO_BOOTSTRAP 16'hff50
 `define MMIO_CONTROLLER 16'hff00
+`define MMIO_SB 16'hff01
+`define MMIO_SC 16'hff02
 
 /**
  * Memory boundaries
@@ -159,4 +161,5 @@
  * 1110 14  E
  * 1111 15  F
  */
+  
   

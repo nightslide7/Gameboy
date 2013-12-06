@@ -1,7 +1,7 @@
-Release 14.3 Drc P.40xd (nt64)
+Release 14.3 Drc P.40xd (lin64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-Wed Dec 04 01:50:59 2013
+Thu Dec  5 21:42:24 2013
 
 drc -z lcd_top_flashcart.ncd lcd_top_flashcart.pcf
 
