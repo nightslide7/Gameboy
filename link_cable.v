@@ -20,7 +20,7 @@ module link_cable (/*AUTOARG*/
    input reset;
    output wire HDR2_40_SM_6_P; //pin 2
    input      HDR2_42_SM_14_N; //pin 3
-   inout      HDR2_46_SM_12_N; //pin 5 (clock in)
+   input wire HDR2_46_SM_12_N; //pin 5 (clock in)
    inout [7:0] data_ext;
    inout [15:0] addr_ext;
    input 	addr_in_SB;
@@ -47,8 +47,8 @@ module link_cable (/*AUTOARG*/
 
    tristate #(8) sb (.in(SB), .out(data_ext), .en(mem_re&addr_in_SB));
    tristate #(8) sc (.in(SC), .out(data_ext), .en(mem_re&addr_in_SC));
-   tristate #(1) clk (.in(internal_clock), .out(HDR2_46_SM_12_N),
-		     .en(send_clock));
+//   tristate #(1) clk (.in(internal_clock), .out(HDR2_46_SM_12_N),
+//		     .en(send_clock));
    
 //   register #(8) sc_reg (.d(data_ext), .q(SC), .load(mem_we&addr_in_SC),
 //			 .reset(reset), .clock(cpu_clock));
@@ -100,15 +100,16 @@ module link_cable (/*AUTOARG*/
    
    always@(*) begin
       if (SC[7]) begin
-	 if (using_external_clock) begin
-	    next_sck_state = HDR2_46_SM_12_N;
-	    send_clock = 0;
-	 end
-	 else begin
-	    next_sck_state = internal_clock;
-	    send_clock = 1;
-	 end
-      end // if (SC[7])
+//	 if (using_external_clock) begin
+	 next_sck_state = HDR2_46_SM_12_N;
+      end
+//	    send_clock = 0;
+//	 end
+//	 else begin
+//	    next_sck_state = internal_clock;
+//	    send_clock = 1;
+//	 end
+//      end // if (SC[7])
       else begin
 	 send_clock = 0;
 	 next_sck_state = 1'b1;
