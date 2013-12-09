@@ -190,3 +190,195 @@ INFO:iMPACT - '5': Checking done pin....done.
 '5': Programmed successfully.
 PROGRESS_END - End Operation.
 Elapsed time =      8 sec.
+Cable is not connected.
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+INFO:iMPACT - Digilent Plugin: Plugin Version: 2.4.3
+INFO:iMPACT - Digilent Plugin: no JTAG device was found.
+AutoDetecting cable. Please wait.
+*** WARNING ***: When port is set to auto detect mode, cable speed is set todefault 6 MHz regardless of explicit arguments supplied for setting the baudrates
+PROGRESS_START - Starting Operation.
+If you are using the Platform Cable USB, please refer to the USB CableInstallation Guide (UG344) to install the libusb package.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+File version of /opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/xusbdfwu.hex = 1030.
+File version of /etc/hotplug/usb/xusbdfwu.fw/xusbdfwu.hex = 1030.
+ WinDriver v10.31 Jungo (c) 1997 - 2011 Build Date: May 24 2011 x86_64 64bit18:13:19.
+ Cable PID = 0008.
+ Max current requested during enumeration is 74 mA.
+Type = 0x0004.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1028.
+File version of /opt/Xilinx/14.3/ISE_DS/ISE/data/xusb_xlp.hex = 1303.
+Firmware hex file version = 1303.
+Downloading /opt/Xilinx/14.3/ISE_DS/ISE/data/xusb_xlp.hex.
+Downloaded firmware version = 1303.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+Type = 0x0004.
+ESN option: 000010F0940B01.
+INFO:iMPACT - Current time: 12/6/13 1:17 PM
+Updating config file /Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   42.99 C, Min. Reading:   41.02 C, Max.Reading:   44.47 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.025 V, Max.Reading:   1.037 V
+5: VCCAUX Supply: Current Reading:   2.572 V, Min. Reading:   2.558 V, Max.Reading:   2.584 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+INFO:iMPACT - Current time: 12/6/13 1:36 PM
+Updating config file /Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   42.01 C, Min. Reading:   42.01 C, Max.Reading:   43.48 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.028 V, Max.Reading:   1.034 V
+5: VCCAUX Supply: Current Reading:   2.569 V, Min. Reading:   2.563 V, Max.Reading:   2.578 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      8 sec.
+INFO:iMPACT - Current time: 12/6/13 1:50 PM
+Updating config file /Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top.bit...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   42.99 C, Min. Reading:   41.52 C, Max.Reading:   43.48 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.028 V, Max.Reading:   1.034 V
+5: VCCAUX Supply: Current Reading:   2.569 V, Min. Reading:   2.563 V, Max.Reading:   2.575 V
+PROGRESS_START - Starting Operation.
+'5': Programming device...
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+// *** BATCH CMD : assignFile -p 5 -file"/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top_good.bit"
+'5': Loading file '/Gameboy/Gameboy_git/GAMEBOY_TOP/lcd_top_good.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+UserID read from the bitstream file = 0xFFFFFFFF.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '5': Added Device xc5vlx110t successfully.
+----------------------------------------------------------------------
+INFO:iMPACT - Current time: 12/6/13 1:52 PM
+// *** BATCH CMD : Program -p 5 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+5: Device Temperature: Current Reading:   43.48 C, Min. Reading:   42.01 C, Max.Reading:   43.98 C
+5: VCCINT Supply: Current Reading:   1.031 V, Min. Reading:   1.028 V, Max.Reading:   1.034 V
+5: VCCAUX Supply: Current Reading:   2.575 V, Min. Reading:   2.566 V, Max.Reading:   2.575 V
+'5': Programming device...
+PROGRESS_START - Starting Operation.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+done.
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 1111 0111 1110 0000 1011 1100 0000 
+INFO:iMPACT:579 - '5': Completed downloading bit file to device.
+INFO:iMPACT:188 - '5': Programming completed successfully.
+ Match_cycle = NoWait.
+Match cycle: NoWait
+ LCK_cycle = NoWait.
+LCK cycle: NoWait
+INFO:iMPACT - '5': Checking done pin....done.
+'5': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      9 sec.
+Backup of auto project '/root//auto_project_1.ipf' created.
+Project: '/root//auto_project.ipf' created.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : saveProjectFile -file "/root//auto_project.ipf"
+INFO:iMPACT - User_EnvOsname: 'RedHatEnterpriseServer'
+INFO:iMPACT - User_EnvOsrelease: 'Red Hat Enterprise Linux Server release 6.4   (Santiago)'
+// *** BATCH CMD : setMode -bs
+INFO:iMPACT - Launching WebTalk, please refer to the webtalk log at   /root/webtalk.log for details.
+INFO:iMPACT - Running wbtc successfully.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
