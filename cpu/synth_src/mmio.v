@@ -1,3 +1,0 @@
-module mmio(/*AUTOARG*/);
-   
-endmodule

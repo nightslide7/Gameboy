@@ -1,8 +1,0 @@
-Release 14.3 Drc P.40xd (lin64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
-
-Sat Oct 12 14:28:48 2013
-
-drc -z cartridge.ncd cartridge.pcf
-
-DRC detected 0 errors and 0 warnings.
