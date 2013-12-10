@@ -46,4 +46,4 @@ here, except for the rotary controller which is a top level file.
 
 All other modules are located at the top level. These include the rotary
 controller, the NES controller, the cartridge interface, the clock divider,
-and the link cable.
+the tristate module, and the link cable.
