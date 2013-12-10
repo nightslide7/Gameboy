@@ -47,3 +47,11 @@ here, except for the rotary controller which is a top level file.
 All other modules are located at the top level. These include the rotary
 controller, the NES controller, the cartridge interface, the clock divider,
 the tristate module, and the link cable.
+
+
+=================
+Testing Utilities
+=================
+Most unit test projects are located in the top-level directory in a folder 
+ending in _test. The CPU uses the auto_testbench as well as roms in the roms
+folder and dmg_emu folder.
