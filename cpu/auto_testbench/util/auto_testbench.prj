@@ -4,3 +4,6 @@ verilog work ../../src/regfile.v
 verilog work ../../src/cpu_auto_testbench.v
 verilog work ../../src/decode.v
 verilog work ../../src/mem.v
+verilog work ../../src/dma.v
+verilog work ../../src/timers.v
+verilog work ../../src/breakpoints.v
