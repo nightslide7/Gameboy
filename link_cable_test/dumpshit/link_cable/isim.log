@@ -1,0 +1,121 @@
+ISim log file
+Running: /Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_isim_beh.wdb 
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 95
+# restart
+# run all
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 95
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 95
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 95
+# restart
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 95
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 97
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 260 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 97
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 260 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 97
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 97
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+Stopped at time : 240 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 97
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 7280 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 120
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 7320 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 120
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 7460 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 120
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 8260 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 120
+ISim P.40xd (signature 0xfbc00daa)
+This is a Full version of ISim.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# run all
+Stopped at time : 8260 ns : File "/Gameboy/Gameboy_git/link_cable_test/tb.v" Line 120
+# exit 0

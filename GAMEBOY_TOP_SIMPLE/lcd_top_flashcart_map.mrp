@@ -1,4 +1,4 @@
-Release 14.3 Map P.40xd (nt64)
+Release 14.3 Map P.40xd (lin64)
 Xilinx Mapping Report File for Design 'lcd_top_flashcart'
 
 Design Information
@@ -10,21 +10,21 @@ Target Device  : xc5vlx110t
 Target Package : ff1136
 Target Speed   : -1
 Mapper Version : virtex5 -- $Revision: 1.55 $
-Mapped Date    : Wed Dec 04 01:48:43 2013
+Mapped Date    : Thu Dec  5 21:40:33 2013
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    1
 Slice Logic Utilization:
-  Number of Slice Registers:                 5,185 out of  69,120    7%
-    Number used as Flip Flops:               5,184
+  Number of Slice Registers:                 5,206 out of  69,120    7%
+    Number used as Flip Flops:               5,205
     Number used as Latches:                      1
-  Number of Slice LUTs:                      8,112 out of  69,120   11%
-    Number used as logic:                    5,208 out of  69,120    7%
-      Number using O6 output only:           4,374
-      Number using O5 output only:             376
-      Number using O5 and O6:                  458
+  Number of Slice LUTs:                      8,172 out of  69,120   11%
+    Number used as logic:                    5,269 out of  69,120    7%
+      Number using O6 output only:           4,419
+      Number using O5 output only:             381
+      Number using O5 and O6:                  469
     Number used as Memory:                   2,862 out of  17,920   15%
       Number used as Single Port RAM:        2,048
         Number using O6 output only:         2,048
@@ -32,20 +32,20 @@ Slice Logic Utilization:
         Number using O6 output only:           781
         Number using O5 output only:             1
         Number using O5 and O6:                 32
-    Number used as exclusive route-thru:        42
-  Number of route-thrus:                       422
-    Number using O6 output only:               417
+    Number used as exclusive route-thru:        41
+  Number of route-thrus:                       427
+    Number using O6 output only:               422
     Number using O5 output only:                 5
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 3,808 out of  17,280   22%
-  Number of LUT Flip Flop pairs used:       10,988
-    Number with an unused Flip Flop:         5,803 out of  10,988   52%
-    Number with an unused LUT:               2,876 out of  10,988   26%
-    Number of fully used LUT-FF pairs:       2,309 out of  10,988   21%
-    Number of unique control sets:             621
+  Number of occupied Slices:                 3,624 out of  17,280   20%
+  Number of LUT Flip Flop pairs used:       10,994
+    Number with an unused Flip Flop:         5,788 out of  10,994   52%
+    Number with an unused LUT:               2,822 out of  10,994   25%
+    Number of fully used LUT-FF pairs:       2,384 out of  10,994   21%
+    Number of unique control sets:             623
     Number of slice register sites lost
-      to control set restrictions:             229 out of  69,120    1%
+      to control set restrictions:             232 out of  69,120    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -67,8 +67,8 @@ Specific Feature Utilization:
       Number of 36k BlockRAM used:             129
       Number of 18k BlockRAM used:               1
     Total Memory used (KB):                  4,662 out of   5,328   87%
-  Number of BUFG/BUFGCTRLs:                     15 out of      32   46%
-    Number used as BUFGs:                       13
+  Number of BUFG/BUFGCTRLs:                     16 out of      32   50%
+    Number used as BUFGs:                       14
     Number used as BUFGCTRLs:                    2
   Number of IDELAYCTRLs:                         1 out of      22    4%
   Number of BSCANs:                              1 out of       4   25%
@@ -76,11 +76,11 @@ Specific Feature Utilization:
   Number of DSP48Es:                             1 out of      64    1%
 
   Number of RPM macros:           18
-Average Fanout of Non-Clock Nets:                5.74
+Average Fanout of Non-Clock Nets:                5.71
 
-Peak Memory Usage:  757 MB
-Total REAL time to MAP completion:  1 mins 
-Total CPU time to MAP completion:   59 secs 
+Peak Memory Usage:  1177 MB
+Total REAL time to MAP completion:  51 secs 
+Total CPU time to MAP completion:   50 secs 
 
 Table of Contents
 -----------------
@@ -136,7 +136,7 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance w
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-  46 block(s) removed
+  58 block(s) removed
  610 block(s) optimized away
   41 signal(s) removed
 
@@ -153,6 +153,18 @@ To quickly locate the original cause for the removal of a chain of logic, look
 above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<0>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<1>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<2>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<3>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<4>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lut<5>" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi1" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi2" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi3" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi4" (ROM) removed.
+Loadless block "audio/ch2/Mcompar_true_freq_cmp_lt0000_lutdi5" (ROM) removed.
 Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[10].U_LUT" (ROM)
 removed.
 Loadless block "cicon/U0/U_ICON/U_CMD/U_CORE_ID_SEL/I4.FI[11].U_LUT" (ROM)

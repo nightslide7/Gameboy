@@ -9,6 +9,7 @@
 
 module sound_registers
   (input               ac97_bitclk,
+   input               cpu_clock,
    input               reset,
    input [15:0]        reg_addr,
    input [7:0]         reg_data,
@@ -66,8 +67,11 @@ module sound_registers
    output wire         ch2_on_flag,
    output wire         ch1_on_flag,
    output wire [247:0] chipscope_signals,
-   output wire [23:0] control_regs
-   );
+   output wire [23:0] control_regs,
+   output reg       ch1_initialized,
+   output reg       ch2_initialized,
+   output reg       ch3_initialized);
+
 
    /* Channel 1 - Tone & Sweep */
    /** NR10 - Sweep register (R/W)
@@ -251,7 +255,7 @@ module sound_registers
    reg [7:0]  WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38, WR37, WR36;
    reg [7:0]  WR35, WR34, WR33, WR32, WR31, WR30;
    // Samples are played zero index first
-   assign ch3_samples = {WR30, WR31, WR32, WR33, WR34, WR35, WR36,
+   assign ch3_samples = {WR30, WR31, WR32, WR33, WR34, WR35, WR36,//128'h0123456789ABCDEFFEDCBA9876543210;
 			 WR37, WR38, WR39, WR3A, WR3B, WR3C, WR3D,
 			 WR3E, WR3F};
    /* DEPRECATED
@@ -414,9 +418,9 @@ module sound_registers
    
 
 /**
- * Combinational Register Assignment Logic
+ * Register Assignment Logic
  */
-always@(posedge ac97_bitclk or posedge reset) begin
+always@(posedge cpu_clock or posedge reset) begin
    if (reset) begin
       // initial values taken from devrs.com/gb/files/hosted/GBSOUND.txt
       NR10 <= 0;//8'h80;
@@ -434,22 +438,22 @@ always@(posedge ac97_bitclk or posedge reset) begin
       NR33 <= 0;//8'hFF;
       NR34 <= 0;//8'hBF;
       // The waveform ram values are basically arbitrary
-      WR30 <= 0;//8'hAC;
-      WR31 <= 0;//8'hDD;
-      WR32 <= 0;
-      WR33 <= 0;
-      WR34 <= 0;
-      WR35 <= 0;
-      WR36 <= 0;
-      WR37 <= 0;
-      WR38 <= 0;
-      WR39 <= 0;
-      WR3A <= 0;
-      WR3B <= 0;
-      WR3C <= 0;
-      WR3D <= 0;
-      WR3E <= 0;
-      WR3F <= 0;
+      WR30 <= 8'h01;
+      WR31 <= 8'h23;
+      WR32 <= 8'h45;
+      WR33 <= 8'h67;
+      WR34 <= 8'h89;
+      WR35 <= 8'hAB;
+      WR36 <= 8'hCD;
+      WR37 <= 8'hEF;
+      WR38 <= 8'hFE;
+      WR39 <= 8'hDC;
+      WR3A <= 8'hBA;
+      WR3B <= 8'h98;
+      WR3C <= 8'h76;
+      WR3D <= 8'h54;
+      WR3E <= 8'h32;
+      WR3F <= 8'h10;
       NR41 <= 0;//8'hFF;
       NR42 <= 0;//8'h00;
       NR43 <= 0;//8'h00;
@@ -461,48 +465,142 @@ always@(posedge ac97_bitclk or posedge reset) begin
    else begin
       if (reg_w_enable) begin
 	 case (reg_addr)
-           16'hFF10: NR10 <= reg_data;
-           16'hFF11: NR11 <= reg_data;
-           16'hFF12: NR12 <= reg_data;
-           16'hFF13: NR13 <= reg_data;
-           16'hFF14: NR14 <= reg_data;      
-           16'hFF16: NR21 <= reg_data;
-           16'hFF17: NR22 <= reg_data;
-           16'hFF18: NR23 <= reg_data;
-           16'hFF19: NR24 <= reg_data;
-           16'hFF1A: NR30 <= reg_data;
-           16'hFF1B: NR31 <= reg_data;
-           16'hFF1C: NR32 <= reg_data;
-           16'hFF1D: NR33 <= reg_data;
-           16'hFF1E: NR34 <= reg_data;
-           16'hFF30: WR30 <= reg_data;
-           16'hFF31: WR31 <= reg_data;
-           16'hFF32: WR32 <= reg_data;
-           16'hFF33: WR33 <= reg_data;
-           16'hFF34: WR34 <= reg_data;
-           16'hFF35: WR35 <= reg_data;
-           16'hFF36: WR36 <= reg_data;
-           16'hFF37: WR37 <= reg_data;
-           16'hFF38: WR38 <= reg_data;
-           16'hFF39: WR39 <= reg_data;
-           16'hFF3A: WR3A <= reg_data;
-           16'hFF3B: WR3B <= reg_data;
-           16'hFF3C: WR3C <= reg_data;
-           16'hFF3D: WR3D <= reg_data;
-           16'hFF3E: WR3E <= reg_data;
-           16'hFF3F: WR3F <= reg_data;
-           16'hFF20: NR41 <= reg_data;
+           16'hFF10: begin
+	      NR10 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF11: begin
+	      NR11 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF12: begin
+	      NR12 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF13: begin 
+	      NR13 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF14: begin
+	      NR14 <= reg_data;
+	      ch1_initialized <= reg_data[7];
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF16: begin
+	      NR21 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF17: begin
+	      NR22 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF18: begin
+	      NR23 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF19: begin
+	      NR24 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= reg_data[7];
+	      ch3_initialized <= 0;
+	   end
+           16'hFF1A: begin
+	      NR30 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF1B: begin
+	      NR31 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF1C: begin
+	      NR32 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF1D: begin
+	      NR33 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF1E: begin
+	      NR34 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= reg_data[7];
+	   end
+/*           16'hFF20: NR41 <= reg_data;
            16'hFF21: NR42 <= reg_data;
            16'hFF22: NR43 <= reg_data;
-           16'hFF23: NR44 <= reg_data;
-           16'hFF24: NR50 <= reg_data;
-           16'hFF25: NR51 <= reg_data;
-           16'hFF26: NR52 <= reg_data;
-	 endcase
+           16'hFF23: NR44 <= reg_data;*/
+           16'hFF24: begin
+	      NR50 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF25: begin
+	      NR51 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+           16'hFF26: begin
+	      NR52 <= reg_data;
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+	   default begin
+	      ch1_initialized <= 0;
+	      ch2_initialized <= 0;
+	      ch3_initialized <= 0;
+	   end
+	 endcase // case (reg_addr)
+	 if(~ch3_enable) begin
+	    case (reg_addr)
+	      16'hFF30: WR30 <= reg_data;
+              16'hFF31: WR31 <= reg_data;
+              16'hFF32: WR32 <= reg_data;
+              16'hFF33: WR33 <= reg_data;
+              16'hFF34: WR34 <= reg_data;
+              16'hFF35: WR35 <= reg_data;
+              16'hFF36: WR36 <= reg_data;
+              16'hFF37: WR37 <= reg_data;
+              16'hFF38: WR38 <= reg_data;
+              16'hFF39: WR39 <= reg_data;
+              16'hFF3A: WR3A <= reg_data;
+              16'hFF3B: WR3B <= reg_data;
+              16'hFF3C: WR3C <= reg_data;
+              16'hFF3D: WR3D <= reg_data;
+              16'hFF3E: WR3E <= reg_data;
+              16'hFF3F: WR3F <= reg_data;
+	    endcase // case (reg_addr)
+	 end
       end
    end // else: !if(~ac97_reset_b)
 end // always@ (posedge ac97_bitclk or negedge ac97_reset_b)
-
+   
    wire [39:0] sound1, sound2, sound3;
    wire [127:0] waveform;
 
@@ -511,8 +609,7 @@ end // always@ (posedge ac97_bitclk or negedge ac97_reset_b)
    assign sound1 = {NR14, NR13, NR12, NR11, NR10};
    assign sound2 = {NR24, NR23, NR22, NR21, NR14};
    assign sound3 = {NR34, NR33, NR32, NR31, NR30};
-   assign waveform = {WR3F, WR3E, WR3D, WR3C, WR3B, WR3A, WR39, WR38,
-                      WR37, WR36, WR35, WR34, WR33, WR32, WR31, WR30};
+   assign waveform = ch3_samples;
    
    assign chipscope_signals = {waveform, sound3, sound2, sound1};
    

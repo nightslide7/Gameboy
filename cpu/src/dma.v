@@ -22,7 +22,7 @@ module dma(/*AUTOARG*/
    // Inouts
    addr_ext, data_ext,
    // Inputs
-   mem_re, mem_we, clock, reset
+   mem_re, mem_we, clock, reset, dma_chipscope
    );
 
    // Inputs and Outputs ///////////////////////////////////////////////////////
@@ -35,6 +35,7 @@ module dma(/*AUTOARG*/
    
    input        mem_re, mem_we;
    input        clock, reset;
+   output wire [7:0] dma_chipscope;
 
    // DMA data blocks //////////////////////////////////////////////////////////
 
@@ -44,6 +45,7 @@ module dma(/*AUTOARG*/
    wire         dma_sel;
    reg          temp_data_gate, temp_load, temp_addr_rw, temp_addr_gate;
 
+   assign dma_chipscope = dma_data;
    // Select for DMA output address write, read
    assign temp_addr = (temp_addr_rw) ? {dma_data, count} : {8'hfe, count};
    

@@ -1,0 +1,28 @@
+Running: /opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/fuse -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_isim_beh.exe" -prj "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_beh.prj" "work.tb" "work.glbl" 
+ISim P.40xd (signature 0xfbc00daa)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/../../../my_clock_divider.v" into library work
+Analyzing Verilog file "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/../../../cpu/src/cpu.v" into library work
+Analyzing Verilog file "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/../../../link_cable.v" into library work
+Analyzing Verilog file "/Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/../../tb.v" into library work
+Analyzing Verilog file "/opt/Xilinx/14.3/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 94136 KB
+Fuse CPU Usage: 910 ms
+Compiling module tristate(width=8)
+Compiling module tristate
+Compiling module my_clock_divider(DIV_SIZE=10,DIV...
+Compiling module link_cable
+Compiling module tristate(width=16)
+Compiling module tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 7 Verilog Units
+Built simulation executable /Gameboy/Gameboy_git/link_cable_test/dumpshit/link_cable/tb_isim_beh.exe
+Fuse Memory Usage: 1176540 KB
+Fuse CPU Usage: 930 ms
+GCC CPU Usage: 130 ms

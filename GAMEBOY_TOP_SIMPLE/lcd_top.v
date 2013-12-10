@@ -508,6 +508,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
    audio_top audio(.square_wave_enable(1'b1), 
 		   .sample_no(1'b1),
 		   .ac97_bitclk(ac97_bitclk),
+		   .cpu_clock(cpu_clock),
 		   .ac97_sdata_in(ac97_sdata_in),
 		   .rotary_inc_a(rotary_inc_a),
 		   .rotary_inc_b(rotary_inc_b),
@@ -527,7 +528,7 @@ module lcd_top_flashcart(CLK_33MHZ_FPGA,
 		   .reg_addr(reg_addr),
 		   .reg_data(reg_data_in),
 		   .reg_w_enable(reg_w_enable),
-                   .chipscope_signals(chipscope_signals),
+                   .chipscope_signals_real(chipscope_signals),
                    .control_regs(control_regs)
 		  );
 

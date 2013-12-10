@@ -152,3 +152,93 @@ map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -regist
 par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
 trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
 bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+xst -intstyle ise -ifn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.xst" -ofn "/Gameboy/Gameboy_git/GAMEBOY_TOP_SIMPLE/lcd_top_flashcart.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ../GPU/ipcore_dir -sd ipcore_dir -nt timestamp -uc /Gameboy/Gameboy_git/fpgaboy_files/gpu_top.ucf -uc /Gameboy/Gameboy_git/sound_src/AC97.ucf -uc lcd_top.ucf -p xc5vlx110t-ff1136-1 lcd_top_flashcart.ngc lcd_top_flashcart.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o lcd_top_flashcart_map.ncd lcd_top_flashcart.ngd lcd_top_flashcart.pcf 
+par -w -intstyle ise -ol high -mt off lcd_top_flashcart_map.ncd lcd_top_flashcart.ncd lcd_top_flashcart.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml lcd_top_flashcart.twx lcd_top_flashcart.ncd -o lcd_top_flashcart.twr lcd_top_flashcart.pcf -ucf lcd_top.ucf 
+bitgen -intstyle ise -f lcd_top_flashcart.ut lcd_top_flashcart.ncd 

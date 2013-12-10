@@ -31,7 +31,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 	       dvi_d, dvi_vs, dvi_hs, dvi_xclk_p, dvi_xclk_n, dvi_reset_b,
 	       dvi_de,
 	       dvi_sda, dvi_scl,
-	       HDR1_2, HDR1_6, HDR1_8, HDR1_10,
+	       HDR1_2, HDR1_4, HDR1_6, HDR1_8, HDR1_10,
                HDR1_12, HDR1_14, HDR1_16, HDR1_18,
                HDR1_20, HDR1_22, HDR1_24, HDR1_26,
                HDR1_28, HDR1_30, HDR1_32, HDR1_34,
@@ -39,7 +39,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                HDR1_44, HDR1_46, HDR1_48, HDR1_50,
                HDR1_52, HDR1_54, HDR1_56, HDR1_58,
                HDR1_60, HDR1_64,
-	       HDR2_2_SM_8_N, HDR2_4_SM_8_P, HDR2_6_SM_7_N
+	       HDR2_2_SM_8_N, HDR2_4_SM_8_P, HDR2_6_SM_7_N,
+	       HDR2_40_SM_6_P, HDR2_42_SM_14_N, HDR2_46_SM_12_N
 );
    parameter
      I_HILO = 4, I_SERIAL = 3, I_TIMA = 2, I_LCDC = 1, I_VBLANK = 0;
@@ -69,6 +70,9 @@ module lcd_top(CLK_33MHZ_FPGA,
 			dvi_reset_b;		//DIV Outputs
    inout 		dvi_sda, dvi_scl;
 
+   // I have no idea
+   output wire 		HDR1_4;
+
    // Cartridge address lines   
    output wire 		HDR1_12, HDR1_14, HDR1_16, HDR1_18;
    output wire 		HDR1_20, HDR1_22, HDR1_24, HDR1_26;
@@ -86,6 +90,11 @@ module lcd_top(CLK_33MHZ_FPGA,
    // Controller lines
    input wire 		HDR2_2_SM_8_N;
    output wire 		HDR2_4_SM_8_P, HDR2_6_SM_7_N;
+
+   // Link cable
+   output wire 		HDR2_40_SM_6_P; // data out
+   input 		HDR2_42_SM_14_N; // data in
+   inout 		HDR2_46_SM_12_N; // pin 5 (clock in)
    wire   clock;
 
    assign clock = CLK_33MHZ_FPGA;
@@ -188,6 +197,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire       halt;
    wire       cpu_clock;
 
+   assign HDR1_4 = cpu_clock;
    wire       display_signal_done;
    reg        display_signal_start;
    display_signal #(16)
@@ -313,6 +323,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire        timer_reg_addr; // addr_ext == timer MMIO address
    
    wire        dma_mem_re, dma_mem_we, cpu_mem_disable;
+   wire [7:0]  dma_chipscope;
    
    dma gb80_dma(.dma_mem_re(dma_mem_re),
                 .dma_mem_we(dma_mem_we),
@@ -322,7 +333,8 @@ module lcd_top(CLK_33MHZ_FPGA,
                 .mem_re(cpu_mem_re),
                 .cpu_mem_disable(cpu_mem_disable),
                 .clock(cpu_clock),
-                .reset(reset));
+                .reset(reset),
+		.dma_chipscope(dma_chipscope));
 
    assign mem_we = cpu_mem_we | dma_mem_we;
    assign mem_re = cpu_mem_re | dma_mem_re;
@@ -342,16 +354,18 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign addr_in_IF = addr_ext == `MMIO_IF;
    assign addr_in_IE = addr_ext == `MMIO_IE;
 
-   wire        joypad_interrupt;
+   wire        joypad_interrupt, link_cable_interrupt;
    
    assign IF_in_int[I_TIMA] = timer_interrupt | (IF_data[I_TIMA] & IF_load);
    assign IF_in_int[I_VBLANK] = int_req[0] | (IF_data[I_VBLANK] & IF_load);
    assign IF_in_int[I_LCDC] = int_req[1] | (IF_data[I_LCDC] & IF_load);
    assign IF_in_int[I_HILO] = joypad_interrupt | (IF_data[I_HILO] & IF_load);
-   assign IF_in_int[I_SERIAL] = 1'b0;
+   assign IF_in_int[I_SERIAL] = link_cable_interrupt | 
+				(IF_data[I_SERIAL] & IF_load);
    
    assign IF_load = timer_interrupt | int_req[0] | int_req[1] | 
-                     joypad_interrupt | (addr_in_IF & mem_we);
+                     joypad_interrupt | link_cable_interrupt | 
+		     (addr_in_IF & mem_we);
 
    assign IF_in = (addr_in_IF & mem_we) ?
                   data_ext :
@@ -518,6 +532,7 @@ module lcd_top(CLK_33MHZ_FPGA,
    audio_top audio(.square_wave_enable(1'b1), 
 		   .sample_no(1'b1),
 		   .ac97_bitclk(ac97_bitclk),
+		   .cpu_clock(cpu_clock),
 		   .ac97_sdata_in(ac97_sdata_in),
 		   .rotary_inc_a(rotary_inc_a),
 		   .rotary_inc_b(rotary_inc_b),
@@ -537,7 +552,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .reg_addr(reg_addr),
 		   .reg_data(reg_data_in),
 		   .reg_w_enable(reg_w_enable),
-                   .chipscope_signals(chipscope_signals),
+                   .chipscope_signals_real(chipscope_signals),
                    .control_regs(control_regs)
 		  );
 
@@ -590,6 +605,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_6		(HDR1_6),
 		   .HDR1_8		(HDR1_8),
 		   .HDR1_10		(HDR1_10),
+		   .HDR1_60		(HDR1_60),
+		   .HDR1_64		(HDR1_64),
 		   .HDR1_12		(HDR1_12),
 		   .HDR1_14		(HDR1_14),
 		   .HDR1_16		(HDR1_16),
@@ -606,10 +623,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_38		(HDR1_38),
 		   .HDR1_40		(HDR1_40),
 		   .HDR1_42		(HDR1_42),
-		   .HDR1_60		(HDR1_60),
-		   .HDR1_64		(HDR1_64),
-		   .cart_data		(cart_data[7:0]),
-		   // Inputs
+		   // Inouts
 		   .HDR1_44		(HDR1_44),
 		   .HDR1_46		(HDR1_46),
 		   .HDR1_48		(HDR1_48),
@@ -618,6 +632,8 @@ module lcd_top(CLK_33MHZ_FPGA,
 		   .HDR1_54		(HDR1_54),
 		   .HDR1_56		(HDR1_56),
 		   .HDR1_58		(HDR1_58),
+		   .cart_data		(cart_data[7:0]),
+		   // Inputs
 		   .cart_address	(cart_address[15:0]),
 		   .clock		(clock),
 		   .cart_w_enable_l	(cart_w_enable_l),
@@ -647,6 +663,31 @@ module lcd_top(CLK_33MHZ_FPGA,
 	     .FF00_data_in		(FF00_data_in[7:0]),
 	     .FF00_load_in		(FF00_load_in));
 
+   /* Link Cable */
+
+   wire        addr_in_SB, addr_in_SC;
+   assign addr_in_SB = (addr_ext == `MMIO_SB);
+   assign addr_in_SC = (addr_ext == `MMIO_SC);
+   wire [19:0] link_chipscope;
+   
+   link_cable lcable(/*AUTOINST*/
+		     // Outputs
+		     .HDR2_40_SM_6_P	(HDR2_40_SM_6_P),
+		     .link_cable_interrupt(link_cable_interrupt),
+		     .link_chipscope	(link_chipscope[19:0]),
+		     // Inouts
+		     .HDR2_46_SM_12_N	(HDR2_46_SM_12_N),
+		     .data_ext		(data_ext[7:0]),
+		     .addr_ext		(addr_ext[15:0]),
+		     // Inputs
+		     .cpu_clock		(cpu_clock),
+		     .reset		(reset),
+		     .HDR2_42_SM_14_N	(HDR2_42_SM_14_N),
+		     .addr_in_SB	(addr_in_SB),
+		     .addr_in_SC	(addr_in_SC),
+		     .mem_we		(mem_we),
+		     .mem_re		(mem_re));
+   
    
    /* Memory stuff */
    
@@ -669,7 +710,7 @@ module lcd_top(CLK_33MHZ_FPGA,
 			 ~video_reg_w_enable & ~video_vram_w_enable &
 			 ~video_oam_w_enable & ~addr_in_bootstrap_reg & 
                          ~addr_in_cart & ~addr_in_echo & ~addr_in_controller &
-                         ~addr_in_IE & ~addr_in_IF;
+                         ~addr_in_IE & ~addr_in_IF & ~addr_in_SB & ~addr_in_SC;
 
    wire        wram_we;
    wire [12:0] wram_addr;
@@ -772,11 +813,13 @@ module lcd_top(CLK_33MHZ_FPGA,
                           .reset(reset),
                           .clock(cpu_clock));
 
-   wire [39:0] sound3, sound2, sound1;
+   wire [39:0] sound3;
+   wire [127:0] waveform;
 
    assign sound3 = chipscope_signals[119:80];
-   assign sound2 = chipscope_signals[79:40];
-   assign sound1 = chipscope_signals[39:0];
+//   assign sound2 = chipscope_signals[79:40];
+//   assign sound1 = chipscope_signals[39:0];
+   assign waveform = chipscope_signals[247:120];
    
    wire [35 : 0] CONTROL;
    
@@ -793,8 +836,8 @@ module lcd_top(CLK_33MHZ_FPGA,
    wire [31 : 0] TRIG10;
    wire [31 : 0] TRIG11;
    wire [39 : 0] TRIG12;
-   wire [39 : 0] TRIG13;
-   wire [39 : 0] TRIG14;
+   wire [19 : 0] TRIG13;
+   wire [7 : 0]  TRIG14;
    
    assign TRIG0 = regs_data[15:0];
    assign TRIG1 = {A_data, F_data, regs_data[79:16]};
@@ -823,10 +866,9 @@ module lcd_top(CLK_33MHZ_FPGA,
    assign TRIG9 = cycle_count;
    assign TRIG10 = {16'h0, high_mem_addr[15:0]};
    assign TRIG11 = {control_regs, high_mem_data[7:0]};
-   assign TRIG12 = sound1;
-   assign TRIG13 = sound2;
-   assign TRIG14 = sound3;
-   
+   assign TRIG12 = sound3;
+   assign TRIG13 = link_chipscope;
+   assign TRIG14 = dma_chipscope;   
    
 /*   assign wram_data_in = data_ext;
    assign wram_we = addr_in_wram & mem_we;
@@ -861,7 +903,7 @@ module lcd_top(CLK_33MHZ_FPGA,
           .TRIG11(TRIG11),
           .TRIG12(TRIG12),
           .TRIG13(TRIG13),
-          .TRIG14(TRIG14));
+	  .TRIG14(TRIG14));
 
    chipscope_icon
      cicon(.CONTROL0(CONTROL0));

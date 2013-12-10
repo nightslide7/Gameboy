@@ -1,8 +1,0 @@
-Release 14.3 Drc P.40xd (lin64)
-Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
-
-Wed Nov 27 00:37:24 2013
-
-drc -z NES.ncd NES.pcf
-
-DRC detected 0 errors and 0 warnings.

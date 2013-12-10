@@ -1,0 +1,4 @@
+verilog work "../../../my_clock_divider.v"
+verilog work "../../../cpu/src/cpu.v"
+verilog work "../../../link_cable.v"
+verilog work "../../tb.v"

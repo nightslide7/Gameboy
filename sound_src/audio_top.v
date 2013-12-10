@@ -2,6 +2,7 @@
 
 module audio_top (input              square_wave_enable, 
 		  input              sample_no,
+		  input              cpu_clock,
 		  input              ac97_bitclk,
 		  input              ac97_sdata_in,
 		  input              rotary_inc_a,
@@ -13,21 +14,17 @@ module audio_top (input              square_wave_enable,
 		  output wire        ac97_sdata_out,
 		  output wire        ac97_sync,
 		  output wire        ac97_reset_b,
-/*		  input wire         flash_wait,
-		  input wire [15:0]  flash_d,
-		  output wire [23:0] flash_a,
-		  output wire        flash_adv_n,
-		  output wire        flash_ce_n,
-		  output wire        flash_clk,
-		  output wire        flash_oe_n,
-		  output wire        flash_we_n,*/
 		  output wire        strobe,
-                  output wire [247:0] chipscope_signals,
+                  output wire [247:0] chipscope_signals_real,
                   output wire [23:0] control_regs
 		  );
    wire [3:0] 		     ch1_level;
    wire [3:0] 		     ch2_level;
    wire [3:0] 		     ch3_level;
+
+   wire [247:0] 	     chipscope_signals;
+   assign chipscope_signals_real = {chipscope_signals[247:48],4'b0,ch3_level,
+				    chipscope_signals[39:0]};
    
    
    wire [2:0] 			     ch1_sweep_time;
@@ -82,6 +79,9 @@ module audio_top (input              square_wave_enable,
    wire 			     ch3_on_flag;
    wire 			     ch2_on_flag;
    wire 			     ch1_on_flag;
+   wire 			     ch1_initialized;
+   wire 			     ch2_initialized;
+   wire 			     ch3_initialized;
    
    AC97 gen(/*AUTOINST*/
 	    // Outputs
@@ -104,7 +104,7 @@ module audio_top (input              square_wave_enable,
 	    .SO2_ch2_enable		(SO2_ch2_enable),
 	    .SO2_ch3_enable		(SO2_ch3_enable),
 	    .SO2_ch4_enable		(SO2_ch4_enable),
-	    .master_sound_enable        (master_sound_enable),
+	    .master_sound_enable	(master_sound_enable),
 	    .ch1_level			(ch1_level[3:0]),
 	    .ch2_level			(ch2_level[3:0]),
 	    .ch3_level			(ch3_level[3:0]));
@@ -160,7 +160,7 @@ module audio_top (input              square_wave_enable,
    wire 			     ch3_freq_cntrl_clk;
 
    /* NOT PERFECT - try to fix. Is 65361.702Hz, should be 65536Hz */
-   my_clock_divider #(.DIV_SIZE(7), .DIV_OVER_TWO(94))
+   my_clock_divider #(.DIV_SIZE(8), .DIV_OVER_TWO(94))
                     freq3div(.clock_out (ch3_freq_cntrl_clk),
 			     .clock_in (ac97_bitclk)
 			     );
@@ -219,10 +219,14 @@ module audio_top (input              square_wave_enable,
 			.ch3_on_flag	(ch3_on_flag),
 			.ch2_on_flag	(ch2_on_flag),
 			.ch1_on_flag	(ch1_on_flag),
-                        .chipscope_signals(chipscope_signals),
-                        .control_regs(control_regs),
+			.chipscope_signals(chipscope_signals[247:0]),
+			.control_regs	(control_regs[23:0]),
+			.ch1_initialized(ch1_initialized),
+			.ch2_initialized(ch2_initialized),
+			.ch3_initialized(ch3_initialized),
 			// Inputs
 			.ac97_bitclk	(ac97_bitclk),
+			.cpu_clock	(cpu_clock),
 			.reset		(reset),
 			.reg_addr	(reg_addr[15:0]),
 			.reg_data	(reg_data[7:0]),
@@ -246,7 +250,8 @@ module audio_top (input              square_wave_enable,
 		  .num_envelope_sweeps	(ch1_num_envelope_sweeps[2:0]),
 		  .initialize		(ch1_reset),
 		  .dont_loop		(ch1_dont_loop),
-		  .frequency_data	(ch1_frequency_data[10:0]));
+		  .frequency_data	(ch1_frequency_data[10:0]),
+		  .initialized          (ch1_initialized));
    
    SquareWave ch2(// Outputs
 		  .level		(ch2_level[3:0]),
@@ -266,19 +271,21 @@ module audio_top (input              square_wave_enable,
 		  .num_envelope_sweeps	(ch2_num_envelope_sweeps[2:0]),
 		  .initialize		(ch2_reset),
 		  .dont_loop		(ch2_dont_loop),
-		  .frequency_data	(ch2_frequency_data[10:0]));
+		  .frequency_data	(ch2_frequency_data[10:0]),
+		  .initialized          (ch2_initialized));
    
-   WaveformPlayer wp(.clk(ac97_bitclk),
+   WaveformPlayer wp(.ac97_bitclk(ac97_bitclk),
 		     .level(ch3_level),
 		     .ch3_enable	(ch3_enable),
 		     .ch3_length_data(ch3_length_data[7:0]),
 		     .ch3_output_level(ch3_output_level[1:0]),
-		     .ch3_reset	(ch3_reset),
+		     .ch3_initialize	(ch3_reset),
 		     .ch3_dont_loop	(ch3_dont_loop),
 		     .ch3_frequency_data(ch3_frequency_data[10:0]),
 		     .ch3_samples	(ch3_samples[127:0]),
 		     .length_cntrl_clk(length_cntrl_clk),
-		     .ch3_freq_cntrl_clk(ch3_freq_cntrl_clk));
+		     .ch3_freq_cntrl_clk(ch3_freq_cntrl_clk),
+		     .initialized        (ch3_initialized));
 endmodule // audio_top
 
 // Local Variables:

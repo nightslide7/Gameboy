@@ -1,0 +1,7 @@
+MO nobus_buffer NULL ../../../cpu/src/cpu.v vlg18/nobus__buffer.bin 1386313570
+MO my_clock_divider NULL ../../../my_clock_divider.v vlg13/my__clock__divider.bin 1386313570
+MO buffer NULL ../../../cpu/src/cpu.v vlg1E/buffer.bin 1386313570
+MO cpu NULL ../../../cpu/src/cpu.v vlg50/cpu.bin 1386313570
+MO register NULL ../../../cpu/src/cpu.v vlg29/register.bin 1386313570
+MO rn_decode NULL ../../../cpu/src/cpu.v vlg2F/rn__decode.bin 1386313570
+MO tristate NULL ../../../cpu/src/cpu.v vlg2C/tristate.bin 1386313570
