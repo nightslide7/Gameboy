@@ -1,0 +1,80 @@
+--------------------------------------------------------------------------------
+Release 14.3 Trace  (lin64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/14.3/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 1 -n
+3 -fastpaths -xml fb_top.twx fb_top.ncd -o fb_top.twr fb_top.pcf -ucf
+fb_top.ucf
+
+Design file:              fb_top.ncd
+Physical constraint file: fb_top.pcf
+Device,package,speed:     xc5vlx110t,ff1136,-1 (PRODUCTION 1.73 2012-10-12, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+WARNING:Timing:3223 - Timing constraint TS_dvi_setup = MAXDELAY FROM TIMEGRP 
+   "dvi_c" TO TIMEGRP "dvi_d" 0.5 ns; ignored during timing analysis.
+WARNING:Timing:3223 - Timing constraint TS_dvi_hold = MAXDELAY FROM TIMEGRP 
+   "dvi_d" TO TIMEGRP "dvi_c" 0.5 ns; ignored during timing analysis.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_dvi_setup = MAXDELAY FROM TIMEGRP "dvi_c" TO TIMEGRP 
+"dvi_d" 0.5 ns;
+For more information, see From:To (Multicycle) Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_dvi_hold = MAXDELAY FROM TIMEGRP "dvi_d" TO TIMEGRP 
+"dvi_c" 0.5 ns;
+For more information, see From:To (Multicycle) Analysis in the Timing Closure User Guide (UG612).
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+No constraints were found to generate data for the Data Sheet Report section.
+Use the Advanced Analysis (-a) option or generate global constraints for each
+clock, its pad to setup and clock to pad paths, and a pad to pad constraint.
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 0 paths, 0 nets, and 0 connections
+
+Design statistics:
+No global statistics to report.
+
+Analysis completed Wed Oct 23 12:42:36 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 598 MB
+
+
+
