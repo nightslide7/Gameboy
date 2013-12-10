@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/Gameboy/Gameboy_git/dvi/DVI/fb_top.ncd
-OUTFILE=/Gameboy/Gameboy_git/dvi/DVI/fb_top.bit
-FAMILY=Virtex5
-PART=xc5vlx110t-1ff1136
-WORKINGDIR=/Gameboy/Gameboy_git/dvi/DVI
-LICENSE=ISE
-USER_INFO=174679548_176449548_210550170_728
