@@ -1,3 +1,9 @@
+/**
+ * A simple breakpoints module for the GB80 CPU.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
 module breakpoints(/*AUTOARG*/
    // Outputs
    bp_addr, bp_addr_disp, hi_lo_disp,

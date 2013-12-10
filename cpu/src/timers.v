@@ -1,5 +1,11 @@
 `include "cpu.vh"
 
+/**
+ * The timer module for the GB80 CPU.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
 module timers(/*AUTOARG*/
    // Outputs
    timer_interrupt,

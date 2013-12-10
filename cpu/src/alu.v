@@ -1,6 +1,12 @@
 `include "cpu.vh"
 
 /**
+ * The GB80 ALU.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
+/**
  * The ALU.
  * 
  * @output data_out The result of the operation.

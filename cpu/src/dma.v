@@ -1,6 +1,12 @@
 `include "cpu.vh"
 
 /**
+ * Block transfer unit for the GB80 CPU.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
+/**
  * The DMA unit.
  * 
  * Contains the DMA register and performs DMA transfers when the register is
@@ -15,7 +21,6 @@
  * @input clock The CPU clock.
  * @input reset The CPU reset.
  */
-
 module dma(/*AUTOARG*/
    // Outputs
    dma_mem_re, dma_mem_we, cpu_mem_disable,

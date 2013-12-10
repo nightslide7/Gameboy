@@ -1,3 +1,9 @@
+/**
+ * Very simple bus-based memory module.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
 module mem(/*AUTOARG*/
    // Inouts
    data_ext,

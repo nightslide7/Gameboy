@@ -1,5 +1,9 @@
 `include "cpu.vh"
-
+/**
+ * The GB80 decode module.
+ * 
+ * Joseph Carlos (jdcarlos1@gmail.com)
+ */
 
 
 /**

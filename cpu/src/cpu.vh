@@ -1,7 +1,7 @@
 /**
  * Definition of useful constants for the GB80 CPU.
  * 
- * @author Joseph Carlos (jcarlos)
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
  */
 
 /**

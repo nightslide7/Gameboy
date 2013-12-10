@@ -1,5 +1,11 @@
 `include "cpu.vh"
 
+/**
+ * A simple simulation testbench for the GB80 CPU.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
 module cpu_auto_testbench();
 
    // Buses

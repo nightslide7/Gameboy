@@ -1,6 +1,13 @@
 `include "cpu.vh"
 
 /**
+ * The GB80 register file.
+ * 
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
+ */
+
+
+/**
  * The register file. It contains the 16-bit registers BC, DE, HL, SP, and PC
  * in the following array:
  * 

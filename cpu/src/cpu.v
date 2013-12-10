@@ -7,7 +7,7 @@
  * extra control hardware and parallel data and address buses. The buses output
  * to the user of the CPU through some buffers.
  * 
- * @author Joseph Carlos (jcarlos@andrew.cmu.edu)
+ * Author: Joseph Carlos (jdcarlos1@gmail.com)
  */
 
 /**
