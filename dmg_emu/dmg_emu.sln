@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dmg_emu", "dmg_emu\dmg_emu.vcxproj", "{EAB231E0-F803-4DD4-81E9-B740821594BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAB231E0-F803-4DD4-81E9-B740821594BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EAB231E0-F803-4DD4-81E9-B740821594BF}.Debug|Win32.Build.0 = Debug|Win32
+		{EAB231E0-F803-4DD4-81E9-B740821594BF}.Release|Win32.ActiveCfg = Release|Win32
+		{EAB231E0-F803-4DD4-81E9-B740821594BF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
