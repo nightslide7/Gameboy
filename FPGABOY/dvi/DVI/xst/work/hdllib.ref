@@ -1,5 +1,0 @@
-MO iic_init NULL iic_init.v vlg18/iic__init.bin 1382546490
-MO FBDCM NULL FBDCM.v vlg60/_f_b_d_c_m.bin 1382546490
-MO SyncGen NULL SyncGen.v vlg33/_sync_gen.bin 1382546490
-MO Framebuffer NULL Framebuffer.v vlg25/_framebuffer.bin 1382546490
-MO fb_top NULL fb_top.v vlg32/fb__top.bin 1382546490

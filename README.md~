@@ -13,9 +13,7 @@ This is our 18-545 project, a mostly working original Game Boy on an FPGA.
 If you have cloned this repo you probably want to know something about how it works, so we will explain that.
 ==========================
 
-==========
-Structure
-==========
+Structure:
 There are two top-level ISE projects. GAMEBOY_TOP works with the actual 
 cartridge, and GAMEBOY_TOP_SIMPLE works with a "flashcart" which is a ROM with
 the bootstrap code appended to the front of it.
@@ -45,5 +43,4 @@ relating to sound production including the setup of the AC97 codec is located
 here, except for the rotary controller which is a top level file.
 
 All other modules are located at the top level. These include the rotary
-controller, the NES controller, the cartridge interface, the clock divider,
-and the link cable.
+controller, the NES controller, the cartridge interface, 
