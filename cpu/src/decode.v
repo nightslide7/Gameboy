@@ -1,12 +1,11 @@
 `include "cpu.vh"
 
+
+
 /**
  * Giant ridiculous combinational circuit. Works by continuously fetching
  * instructions and then going through the states (microcode) that makes up
- * each instruction. Actually using microcode is a problem because there are
- * far too many control signals to fit it into the flash memory on the ML505.
- * Perhaps later I'll write a module to run the flash at 4x the processor speed
- * and shift microcode over to drastically reduce area and synthesis time.
+ * each instruction.
  */
 module decode(/*AUTOARG*/
    // Outputs
@@ -139,7 +138,7 @@ module decode(/*AUTOARG*/
 
    wire [5:0]         next_cycle_high;
    assign next_cycle_high = {1'b0, cycle} + 6'b1;
-   
+
    always @(posedge clock or posedge reset) begin
       if (reset) begin
          cycle <= 5'd0;
@@ -326,13 +325,6 @@ module decode(/*AUTOARG*/
               IF_load_l = 1'b1;
            end
          endcase
-//      end else if (halted & ~IME_data & interrupt) begin
-         // This is the crazy bug condition! We got an interrupt while the CPU
-         // was halted AND interrupts were disabled. We have to wake up and
-         // continue in a non-halt state, but SKIP the incrementation of the
-         // PC this fetch stage! How do we accomplish this feat? Well, since
-         // we were in a halt state, the PC is now pointing at the next inst-
-         // ruction.
       end else if (halted & ~(~IME_data & interrupt)) begin
          // Do nothing
          m_cycles = 4'd1;
@@ -348,6 +340,10 @@ module decode(/*AUTOARG*/
          // Fetch 1: PC++; Load DBUF
          m_cycles = 4'd1;
 
+         // This encodes the HALT 2x instruction bug documented in the PAN docs:
+         // if a HALT is executed when interrupts are disabled, the next
+         // instruction is executed but the PC is not incremented in the
+         // fetch 0 cycle.
          if (halted & ~IME_data & interrupt) begin
             halt = 1'b0;
          end else begin

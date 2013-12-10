@@ -7,7 +7,7 @@
  * extra control hardware and parallel data and address buses. The buses output
  * to the user of the CPU through some buffers.
  * 
- * @author Joseph Carlos (jcarlos)
+ * @author Joseph Carlos (jcarlos@andrew.cmu.edu)
  */
 
 /**
@@ -26,15 +26,20 @@ module cpu(/*AUTOARG*/
    inout [15:0] addr_ext;
    inout [7:0]  data_ext;
 
+   // Debugging outputs: translated high memory address line and high memory
+   // data line.
    output wire [7:0] high_mem_data;
    output wire [15:0] high_mem_addr;
-   
+
+   // Debugging outputs
    output wire [7:0] F_data;
    output wire [7:0] A_data, instruction;
-   output wire [4:0] IF_data, IE_data;
-
+   
+   // Debugging output: all registers except AF.
    output wire [79:0] regs_data;
 
+   output wire [4:0] IF_data, IE_data;
+   
    output wire  mem_we, mem_re;
    output wire  halt;
    output wire  debug_halt;
@@ -184,7 +189,6 @@ module cpu(/*AUTOARG*/
    wire        addr_buf_load, addr_buf_write;
    wire        data_buf_load, data_buf_write;
 
-
    // Outputs
    assign mem_we = data_buf_write_ext & ~high_mem & ~cpu_mem_disable;
    assign mem_re = data_buf_load_ext & ~high_mem & ~cpu_mem_disable;
@@ -289,8 +293,6 @@ module cpu(/*AUTOARG*/
    
    // Registers ////////////////////////////////////////////////////////////////
 
-   // TODO: make into a single always block
-   
    register #(8, 0) inst_reg(.q(instruction),
                              .d(data_bus),
                              .load(inst_reg_load),
@@ -457,8 +459,7 @@ module cpu(/*AUTOARG*/
 endmodule // cpu
 
 /**
- * Decoder from Nintendo's register number values (don't know why I didn't
- * just use these values... oops).
+ * Decoder for Nintendo's register values.
  * 
  * @output rgf_rn_out The regfile index value.
  * @input rgf_rn_in A regfile index value. If it is not `RGF_NONE, then this
@@ -466,6 +467,10 @@ endmodule // cpu
  * @input rn A 3-bit register number as specified in the GB Programming Manual.
  * @input rn16 1 if using a 16-bit register code in rn, 0 if using an 8-bit
  *    register code.
+ * @input lo 1 if selecting the low bits of a 16-bit register code, 0 otherwise
+ *    (should use this only in conjunction with rn16 == 1).
+ * @input hi 1 if selecting the high bits of a 16-bit register code, 0
+ *    otherwise.
  */
 module rn_decode(/*AUTOARG*/
    // Outputs
@@ -524,7 +529,7 @@ endmodule // rn_decode
 /**
  * A tristate buffer (because you can't assign multiple times to a single bus).
  * 
- * @param width The width of the input and output.
+ * @parameter width The width of the input and output.
  * @output out The bus to output to.
  * @input in The input signal.
  * @en out is driven to in if en == 1, z's otherwise.
@@ -585,9 +590,6 @@ endmodule // register
 /**
  * A buffer.
  * 
- * I'm pretty sure this doesn't actually do anything more efficient than a
- * register with a mux on the input and output plus some tristate buffers.
- * 
  * @parameter width The width of the buffer in bits.
  * @parameter reset_value The value to set the buffer to on reset.
  * @inout bus_in An internal bus.
@@ -634,6 +636,11 @@ module buffer(/*AUTOARG*/
    
 endmodule // buffer
 
+/**
+ * A buffer that has an internal bus and external data in and out lines.
+ * 
+ * This is used to facilitate connection to the high memory module in the CPU.
+ */
 module nobus_buffer(/*AUTOARG*/
    // Outputs
    bus_ext_out,
