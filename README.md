@@ -2,30 +2,27 @@
 ======
 
 18-545 Fighting Meerkats
+
 Project: The Game Boy
-Elon Bauer
-Joseph Carlos
-Alice Tsai
 
+Elon Bauer<br/>
+Joseph Carlos<br/>
+Alice Tsai<br/>
 
-==========================
 This is our 18-545 project, a mostly working original Game Boy on an FPGA.
-If you have cloned this repo you probably want to know something about how it works, so we will explain that.
-==========================
 
-==========
 Structure
 ==========
 The main piece of documentation for our system is the final project writeup,
-which is (shockingly and amazingly) Gameboy_Final_Report.pdf.
+which is (shockingly and amazingly) Gameboy\_Final\_Report.pdf.
 
-There are two top-level ISE projects. GAMEBOY_TOP works with the actual 
-cartridge, and GAMEBOY_TOP_SIMPLE works with a "flashcart" which is a ROM with
+There are two top-level ISE projects. GAMEBOY\_TOP works with the actual 
+cartridge, and GAMEBOY\_TOP\_SIMPLE works with a "flashcart" which is a ROM with
 the bootstrap code appended to the front of it.
 
-The actual top-level verilog module is lcd_top.v which is located in 
-cpu/cpusynth for GAMEBOY_TOP, and in GAMEBOY_TOP_SIMPLE for that project. 
-This is called lcd_top because we were using the code given in Lab 1 to 
+The actual top-level verilog module is lcd\_top.v which is located in 
+cpu/cpusynth for GAMEBOY\_TOP, and in GAMEBOY\_TOP\_SIMPLE for that project. 
+This is called lcd\_top because we were using the code given in Lab 1 to 
 control the LCD screen and never got around to changing the name. And it 
 would break everything if we did it now.
 
@@ -36,14 +33,14 @@ and the link cable.
 
 The code for the cpu is located in the cpu folder. Everything relating to the
 CPU is located here except the header file cpu.vh which had to be in the top-
-level directory. The auto_testbench is also included here, along with the 
+level directory. The auto\_testbench is also included here, along with the 
 bootstrap flash files and some Perl scripts to convert hex files.
 
-The code for the GPU is located in the fpgaboy_files folder. Everything
+The code for the GPU is located in the fpgaboy\_files folder. Everything
 relating to the GPU including the DVI module is located here, except for the
-block RAM IP cores, which are located in the GPU_IP/ipcore_dir folder.
+block RAM IP cores, which are located in the GPU\_IP/ipcore\_dir folder.
 
-The code for the audio interface is located in the sound_src folder. Everything
+The code for the audio interface is located in the sound\_src folder. Everything
 relating to sound production including the setup of the AC97 codec is located
 here, except for the rotary controller which is a top level file.
 
@@ -51,15 +48,13 @@ All other modules are located at the top level. These include the rotary
 controller, the NES controller, the cartridge interface, the clock divider,
 the tristate module, and the link cable.
 
-
-=================
 Testing Utilities
 =================
 Most unit test projects are located in the top-level directory in a folder 
-ending in _test. The CPU uses the auto_testbench as well as roms in the roms
-folder and dmg_emu folder.
+ending in \_test. The CPU uses the auto\_testbench as well as roms in the roms
+folder and dmg\_emu folder.
 
-The automatic testbench is found in auto_testbench and relies on the config.bat
+The automatic testbench is found in auto\_testbench and relies on the config.bat
 batch file to setup the Xilinx toolchain and gbdk. It sets the path to include
 gbdk and calls the Xilinx setup batch file. Unfortunately, I don't know where
 these things are on anyone else's system so you'll have to edit the gbdk and
@@ -67,7 +62,7 @@ Xilinx setup script paths in the config.bat file for it to work on your system.
 
 After running config.bat, you can use the ROM generation batch file found in
 roms/gb or run the automatic testbench. Running the automatic testbench
-can be done with run_all_sub.bat, which takes a single assembly file as an
+can be done with run\_all\_sub.bat, which takes a single assembly file as an
 argument. It creates a new directory for the test. It can be run multiple
 times on an assembly file from the top directory and it won't overwrite the
 test directory but simply re-run the test in that directory. In the created test
@@ -75,10 +70,8 @@ directory there should be a compiled executable and a waveform preferences file
 copied from util so that you can look at all the useful CPU signals when
 something goes awry.
 
-
-==============
 ROM Generation
-==============
+============
 Generating Xilinx .mcs files for the board is somewhat of an adventure. In
 roms/gb there are three scripts, dat2hex.pl, gb2flashcart.bat, and hex2dat.pl.
 
@@ -98,9 +91,9 @@ a .mcs file that can be loaded onto the board.
 
 The resulting flash ROM will look something like
 
-0x0000: 3131
-0x0001: FEFE
-0x0002: FFFF
+0x0000: 3131<br/>
+0x0001: FEFE<br/>
+0x0002: FFFF<br/>
 ...
 
 This is so we can just hook up the address bus to the flash address lines
