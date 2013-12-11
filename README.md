@@ -16,6 +16,9 @@ If you have cloned this repo you probably want to know something about how it wo
 ==========
 Structure
 ==========
+The main piece of documentation for our system is the final project writeup,
+which is (shockingly and amazingly) Gameboy_Final_Report.pdf.
+
 There are two top-level ISE projects. GAMEBOY_TOP works with the actual 
 cartridge, and GAMEBOY_TOP_SIMPLE works with a "flashcart" which is a ROM with
 the bootstrap code appended to the front of it.
